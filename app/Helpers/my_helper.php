@@ -269,47 +269,47 @@ function get_random_numbers($limit = 0) {
 
 function sendSMS($mobile, $msgtxt, $templateid) {
     //if (SEND_SMS) {
-        $mobile = ltrim($mobile, '0');
-        if (strlen($mobile) == 10) {
-            try {
-                $authKey = "151305AJEnTVXsFw633ee590P1";
-                $mobileNumber = $mobile;
-                $senderId = 'ALLAYH';
-                $message = urlencode($msgtxt);
-                $route = 4;
+    $mobile = ltrim($mobile, '0');
+    if (strlen($mobile) == 10) {
+        try {
+            $authKey = "151305AJEnTVXsFw633ee590P1";
+            $mobileNumber = $mobile;
+            $senderId = 'ALLAYH';
+            $message = urlencode($msgtxt);
+            $route = 4;
 
-                $postData = array(
-                    'authkey' => $authKey,
-                    'mobiles' => '91' . $mobileNumber,
-                    'message' => $message,
-                    'sender' => $senderId,
-                    'route' => $route,
-                    'DLT_TE_ID' => $templateid
-                );
+            $postData = array(
+                'authkey' => $authKey,
+                'mobiles' => '91' . $mobileNumber,
+                'message' => $message,
+                'sender' => $senderId,
+                'route' => $route,
+                'DLT_TE_ID' => $templateid
+            );
 
-                $url = "http://sms.adityahosting.com/api/sendhttp.php";
-                $ch = curl_init();
-                curl_setopt_array($ch, array(
-                    CURLOPT_URL => $url,
-                    CURLOPT_RETURNTRANSFER => true,
-                    CURLOPT_POST => true,
-                    CURLOPT_POSTFIELDS => $postData
-                        //,CURLOPT_FOLLOWLOCATION => true
-                ));
+            $url = "http://sms.adityahosting.com/api/sendhttp.php";
+            $ch = curl_init();
+            curl_setopt_array($ch, array(
+                CURLOPT_URL => $url,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_POST => true,
+                CURLOPT_POSTFIELDS => $postData
+                    //,CURLOPT_FOLLOWLOCATION => true
+            ));
 
-                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-                $output = curl_exec($ch);
-                curl_close($ch);
-                return $output;
-            } catch (Exception $e) {
-                return "Error In message Sending";
-            }
-        } else {
-            return "Invalid Mobile No";
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+            $output = curl_exec($ch);
+            curl_close($ch);
+            return $output;
+        } catch (Exception $e) {
+            return "Error In message Sending";
         }
+    } else {
+        return "Invalid Mobile No";
+    }
     //} else {
-     //   return "SMS Blocked";
+    //   return "SMS Blocked";
     //}
 }
 
@@ -341,7 +341,7 @@ function setMessage($text, $type = 'i') {
     $texts = array("s" => "Success!", "4" => "Success!", "i" => "Note!", "2" => "Note!", "e" => "Error!", "1" => "Error!", "w" => "Warning!", "3" => "Warning");
     $msg = '<div class="alert ' . $array[$type] . ' alert-dismissable fade show" role="alert">';
     $msg .= '<strong>' . $texts[$type] . ' </strong>';
-    $msg .= $text;    
+    $msg .= $text;
     $msg .= '</div>';
     return $msg;
 }
@@ -386,7 +386,7 @@ function sendEmail($data) {
     $mail->Subject = $subject; //'Here is the subject';
     $mail->Body = $template; //'This is the HTML message body <strong>in bold!</strong>';
     $mail->AltBody = '';
-   
+
     try {
         if (!$mail->Send()) {
             //echo 'Mailer Error: ' . $mail->ErrorInfo;
@@ -505,12 +505,7 @@ function calculateAge($dob) {
 }
 
 function getVersion() {
-//    $maxLength = 1024;
     $versionfile = __DIR__ . '/../../version.txt';
-//    $fp = fopen($versionfile, 'r');
-//    fseek($fp, -$maxLength, SEEK_END);
-//    $fewLines = explode("\n", fgets($fp, $maxLength));
-//    $lastLine = $fewLines[count($fewLines) - 1];
     $line = fgets(fopen($versionfile, 'r'));
     echo $line;
 }
