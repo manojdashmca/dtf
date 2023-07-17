@@ -1,11 +1,8 @@
 #codeigniter 4
-#/vendor/
-#/public/uploads/
-#!/public/uploads/config/*
-#!/public/uploads/pdf/*
-#!/public/uploads/emailattachments/index.html
-#!/public/uploads/images/kyc/index.html
-#!/public/uploads/images/default.jpg
-#!/public/uploads/images/product/*
-#!/public/uploads/images/profilepic/index.html
-#!/public/uploads/images/profilepic/default.jpg
+/writable/
+!/writable/Mylog/index.html
+!/writable/cache/index.html
+!/writable/captcha/index.html
+!/writable/debugbar/index.html
+!/writable/logs/index.html
+!/writable/session/index.html
