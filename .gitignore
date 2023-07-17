@@ -1,0 +1,12 @@
+#codeigniter 4
+/writable/
+#/vendor/
+#/public/uploads/
+#!/public/uploads/config/*
+#!/public/uploads/pdf/*
+#!/public/uploads/emailattachments/index.html
+#!/public/uploads/images/kyc/index.html
+#!/public/uploads/images/default.jpg
+#!/public/uploads/images/product/*
+#!/public/uploads/images/profilepic/index.html
+#!/public/uploads/images/profilepic/default.jpg
