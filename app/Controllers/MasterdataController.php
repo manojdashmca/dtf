@@ -241,7 +241,7 @@ class MasterdataController extends WebController {
         }
     }
 
-    public function createNewReportHeader() {
+    public function createNewReportHeader() { 
         if ($this->request->isAJAX()) {
             $header = trim($this->request->getPost('headername'));
             $createarray = array('header' => $header);
