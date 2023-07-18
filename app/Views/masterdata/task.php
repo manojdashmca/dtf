@@ -25,7 +25,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Latest News</h4>
+                    <h4 class="card-title mb-0 flex-grow-1">Task List</h4>
                     <div class="d-flex gap-1 flex-wrap" style='margin-right: 10px;'>
                         <form name='fileter' id='filter' action='' method='get'>                            
                             <input type="hidden" name="pager" value="<?= $pagerid ?>"/>
@@ -54,7 +54,8 @@
                         <table class="table table-borderless table-bordered align-middle table-nowrap mb-0">
                             <thead>
                                 <tr>
-                                    <th scope="col">SL NO</th>
+                                    
+                                    <th>Record Sl</th>
                                     <th scope="col">Task</th>
                                     <th scope="col">Breakup %</th>
                                     <th scope="col">Breakup Cost</th>                                    
@@ -63,11 +64,11 @@
                             </thead>
                             <tbody>
                                 <?php for ($x = 0; $x < count($task); $x++) { ?>
-                                    <tr>
-                                        <td class="fw-medium"><?= str_pad(($x + 1), 2, "0", STR_PAD_LEFT) ?></td>
+                                    <tr>                                        
+                                        <td class="fw-medium"><?=$task[$x]->record_sl?></td>
                                         <td><?= $task[$x]->task_name ?></td>
                                         <td><?= $task[$x]->task_breakup ?></td>
-                                        <td><?= round($task[$x]->contract_cost * ($task[$x]->componentbreakup / 100) * ($task[$x]->task_breakup / 100)) ?></td>                                    
+                                        <td><?= $task[$x]->breakupcost ?></td>                                    
                                         <td>
                                             <div class="hstack gap-3 fs-15">
                                                 <a href="javascript:void(0);" class="link-primary"><i class="ri-pencil-fill"></i></a>

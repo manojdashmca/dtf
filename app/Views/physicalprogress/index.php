@@ -56,7 +56,7 @@
                                     <tr>
                                         <th scope="row"><a href="javascript:void();" class="fw-medium">01</a></th>
                                         <td><?=$cityheader[$x]->header?></td>
-                                        <td><?=$cityheader[$x]->rh_data?></td>
+                                        <td><?= ($cityheader[$x]->rh_id!=6)?$cityheader[$x]->rh_data:$cc ?></td>
                                     </tr>
                                     <?php } ?>
                                     

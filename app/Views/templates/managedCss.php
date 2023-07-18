@@ -9,10 +9,7 @@ if (in_array('default', $cssarray)) {
     ?>
 
 <?php } if (in_array('dashboard', $cssarray)) { ?>
-    <!-- jsvectormap css -->
     <link href="assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
-
-    <!--Swiper slider css-->
     <link href="assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
     <?php
 }

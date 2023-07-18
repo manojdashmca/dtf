@@ -15,6 +15,7 @@ class MasterdataController extends WebController {
     }
 
     public function component() {
+        $this->data['title'] = 'Component Master';
         $this->data['css'] = 'sweetalert,validation,alertify';
         $this->data['js'] = 'sweetalert,validation,alertify';
         $this->data['includefile'] = 'componentvalidation.php';
@@ -35,15 +36,26 @@ class MasterdataController extends WebController {
             $taskcity = trim($this->request->getPost('taskcity'));
             $citycomponent = trim($this->request->getPost('citycomponent'));
             $componentbreakup = trim($this->request->getPost('componentbreakup'));
-            $createarray = array('city_id_city' => $taskcity, 'cm_id_cm' => $citycomponent, 'component_breakup' => $componentbreakup);
-            $this->webModel->createRecordInTable($createarray, 'city_has_component_breakup');
-            $data = array('status' => 'success', 'message' => 'Component Breakup Added Successfully');
+            $breakupalreadyadded = $this->masterdataModel->getComponentBreakUpPercent($taskcity);
+            $count = $this->masterdataModel->getCityComponentRecordCount($taskcity);
+            if (($breakupalreadyadded + $componentbreakup) <= 100) {
+                $createarray = array('cc_record_sl' => ($count + 1), 'city_id_city' => $taskcity, 'cm_id_cm' => $citycomponent, 'component_breakup' => $componentbreakup);
+                $insid = $this->webModel->createRecordInTable($createarray, 'city_has_component_breakup');
+                if (!empty($insid)) {
+                    $data = array('status' => 'success', 'message' => 'Component Breakup Added Successfully, ' . $breakupalreadyadded + $componentbreakup . '% allocated');
+                } else {
+                    $data = array('status' => 'error', 'message' => 'Unable To Add Component Breakup');
+                }
+            } else {
+                $data = array('status' => 'error', 'message' => 'Maximum Percentage Allocated');
+            }
             echo json_encode($data);
             exit;
         }
     }
 
     public function task() {
+        $this->data['title'] = 'Task Master';
         $this->data['css'] = 'sweetalert,validation,alertify';
         $this->data['js'] = 'sweetalert,validation,alertify';
         $city = $this->request->getVar('city');
@@ -67,15 +79,27 @@ class MasterdataController extends WebController {
             $citycomponent = trim($this->request->getPost('citycomponent'));
             $citycomponenttask = trim($this->request->getPost('citycomponenttask'));
             $taskbreakup = trim($this->request->getPost('taskbreakup'));
-            $createarray = array('city_id_city' => $taskcity, 'cm_id_cm' => $citycomponent, 'tm_id_tm' => $citycomponenttask, 'task_breakup' => $taskbreakup);
-            $this->webModel->createRecordInTable($createarray, 'city_has_component_has_task');
-            $data = array('status' => 'success', 'message' => 'Task Breakup Added Successfully');
+            $breakupalreadyadded = $this->masterdataModel->getTaskBreakUpPercent($taskcity, $citycomponent);
+            $count = $this->masterdataModel->getCityComponentTaskRecordCount($taskcity, $citycomponent);
+            if (($breakupalreadyadded + $taskbreakup) <= 100) {
+                $createarray = array('task_sl_no' => ($count + 1), 'city_id_city' => $taskcity, 'cm_id_cm' => $citycomponent, 'tm_id_tm' => $citycomponenttask, 'task_breakup' => $taskbreakup);
+                $insid = $this->webModel->createRecordInTable($createarray, 'city_has_component_has_task');
+                if (!empty($insid)) {
+                    $data = array('status' => 'success', 'message' => 'Task Breakup Added Successfully, ' . $breakupalreadyadded + $taskbreakup . '% allocated');
+                } else {
+                    $data = array('status' => 'error', 'message' => 'Unable To Add Task Breakup');
+                }
+            } else {
+                $data = array('status' => 'error', 'message' => 'Maximum Percentage Allocated');
+            }
+
             echo json_encode($data);
             exit;
         }
     }
 
     public function subtask() {
+        $this->data['title'] = 'Subtask Master';
         $this->data['css'] = 'sweetalert,validation,alertify';
         $this->data['js'] = 'sweetalert,validation,alertify';
         $this->data['includefile'] = 'subtaskvalidation.php';
@@ -103,18 +127,30 @@ class MasterdataController extends WebController {
             $subtaskqty = trim($this->request->getPost('subtaskqty'));
             $allowpartial = trim($this->request->getPost('allowpartial'));
             $subtaskbreakup = trim($this->request->getPost('subtaskbreakup'));
-            $createarray = array('city_id_city' => $taskcity, 'cm_id_cm' => $citycomponent,
-                'tm_id_tm' => $citycomponenttask, 'sm_id_sm' => $citycomponentsubtask,
-                'subtask_unit' => $subtaskunit, 'subtask_qty' => $subtaskqty,
-                'allowed_partial' => $allowpartial, 'sub_task_breakup' => $subtaskbreakup);
-            $this->webModel->createRecordInTable($createarray, 'city_has_component_has_task_has_subtask');
-            $data = array('status' => 'success', 'message' => 'Sub Task Breakup Added Successfully');
+            $breakupalreadyadded = $this->masterdataModel->getSubTaskBreakUpPercent($taskcity, $citycomponent, $citycomponenttask);
+            $count = $this->masterdataModel->getCityComponentTaskSubtaskRecordCount($taskcity, $citycomponent, $citycomponenttask);
+
+            if (($breakupalreadyadded + $subtaskbreakup) <= 100) {
+                $createarray = array('subtask_sl_no' => ($count + 1), 'city_id_city' => $taskcity, 'cm_id_cm' => $citycomponent,
+                    'tm_id_tm' => $citycomponenttask, 'sm_id_sm' => $citycomponentsubtask,
+                    'subtask_unit' => $subtaskunit, 'subtask_qty' => $subtaskqty,
+                    'allowed_partial' => $allowpartial, 'sub_task_breakup' => $subtaskbreakup);
+                $insid = $this->webModel->createRecordInTable($createarray, 'city_has_component_has_task_has_subtask');
+                if (!empty($insid)) {
+                    $data = array('status' => 'success', 'message' => 'Sub Task Breakup Added Successfully, ' . $breakupalreadyadded + $subtaskbreakup . '% allocated');
+                } else {
+                    $data = array('status' => 'error', 'message' => 'Unable To Add Sub Task Breakup');
+                }
+            } else {
+                $data = array('status' => 'error', 'message' => 'Maximum Percentage Allocated');
+            }
             echo json_encode($data);
             exit;
         }
     }
 
     public function reportheader() {
+        $this->data['title'] = 'Report Header';
         $this->data['css'] = 'sweetalert,validation,alertify';
         $this->data['js'] = 'sweetalert,validation,alertify';
         $this->data['includefile'] = 'headervalidation.php';
@@ -124,6 +160,7 @@ class MasterdataController extends WebController {
         $this->data['headermaster'] = $this->masterdataModel->getreportheaderMasterData();
         if (!empty($city)) {
             $this->data['headerdata'] = $this->masterdataModel->getCityHeader($city);
+            $this->data['cc'] = $this->masterdataModel->getCityContractCost($city);
         }
         return view('templates/header', $this->data)
                 . view('masterdata/reportheader', $this->data)

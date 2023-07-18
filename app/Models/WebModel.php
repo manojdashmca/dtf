@@ -18,38 +18,42 @@ class WebModel extends Model {
         $result = $this->db->query($sql);
         return $result->getRow();
     }
-    
+
     public function getUserProfileDetail($userid) {
         $sql = "select user_name,user_mobile,user_email,user_profile_pic from users where id_user='$userid'";
-        
+
         $result = $this->db->query($sql);
         return $result->getRow();
     }
-     public function getUserLoginInfo($userid) {
+
+    public function getUserLoginInfo($userid) {
         $sql = "select * from user_log_history where user_id_user='$userid'";
         $result = $this->db->query($sql);
         return $result->getResult();
     }
-    
-    public function getTotalContractCost(){
-        $sql="select coalesce(sum(contract_cost),0) as totalcost from cities_master where 1=1";
+
+    public function getTotalContractCost() {
+        $sql = "select coalesce(sum(contract_cost),0) as totalcost from cities_master where 1=1";
         $result = $this->db->query($sql);
         return $result->getRow()->totalcost;
     }
-    
-    public function getTotalCity(){
-        $sql="select count(*) as citycount from cities_master where 1=1";
+
+    public function getTotalCity() {
+        $sql = "select count(*) as citycount from cities_master where 1=1";
         $result = $this->db->query($sql);
         return $result->getRow()->citycount;
     }
-    
-    public function getAchievedProgress(){
+
+    public function getAchievedProgress() {
         //$sql="select count(*) as citycount from cities_master where 1=1";
         //$result = $this->db->query($sql);
         //return $result->getRow()->citycount;
-        return rand(100000000,999999999);
+        return rand(100000000, 999999999);
     }
 
-    
-
+    public function getAllIsuue($cityid) {
+        $sql = "select a.*,b.city_name from issues a join cities_master b on city_id_city=city_id where city_id_city='$cityid'";
+        $result = $this->db->query($sql);
+        return $result->getResult();
+    }
 }

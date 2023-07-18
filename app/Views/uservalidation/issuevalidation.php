@@ -1,6 +1,6 @@
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#createcomponent').formValidation({
+        $('#createreportheader').formValidation({
             message: 'This value is not valid',
             icon: {
             },
@@ -12,21 +12,17 @@
                         }
                     }
                 },
-                citycomponent: {
+                header: {
                     validators: {
                         notEmpty: {
-                            message: "Select The City Component"
+                            message: "Select Header"
                         }
                     }
                 },
-                componentbreakup: {
+                headervalue: {
                     validators: {
                         notEmpty: {
-                            message: "Enter breakup percent"
-                        }, between: {
-                            min: 0,
-                            max: 100,
-                            message: "Max breakup 100%"
+                            message: "Enter header value"
                         }
                     }
                 }
@@ -34,17 +30,17 @@
         }).on('success.form.fv', function (e) {
             // Prevent form submission
             e.preventDefault();
-            createComponent();
+            createHeader();
         });
-        $('#createnewcomponent').formValidation({
+        $('#createnewreportheader').formValidation({
             message: 'This value is not valid',
             icon: {
             },
             fields: {
-                componentname: {
+                reportheadername: {
                     validators: {
                         notEmpty: {
-                            message: "Enter The Component Name"
+                            message: "Enter The Report Header Name"
                         }
                     }
                 }
@@ -52,18 +48,39 @@
         }).on('success.form.fv', function (e) {
             // Prevent form submission
             e.preventDefault();
-            createMissingComponent();
+            createMissingHeader();
         });
 
 
     });
-    function createMissingComponent() {
+
+    function createHeader() {
         $("#preloader1").show();
-        var componentname = $("#componentname").val();
+        var taskcity = $("#taskcity").val();
+        var header = $("#header").val();
+        var headervalue = $("#headervalue").val();
         $.ajax({
             type: "POST",
-            url: '<?= CUSTOMPATH ?>create-new-component',
-            data: {componentname: componentname},
+            url: '<?= CUSTOMPATH ?>create-header-mapping',
+            data: {taskcity: taskcity, header: header, headervalue: headervalue},
+            success: function (data) {
+                var jsonData = JSON.parse(data);
+                if (jsonData.status == 'success') {
+                    location.reload();
+                } else {
+                    Swal.fire({title: jsonData.message, confirmButtonClass: "btn btn-primary w-xs mt-2", buttonsStyling: !1, showCloseButton: !0});
+                }
+
+            }
+        });
+    }
+function createMissingHeader() {
+        $("#preloader1").show();
+        var headername = $("#reportheadername").val();
+        $.ajax({
+            type: "POST",
+            url: '<?= CUSTOMPATH ?>create-new-reportheader',
+            data: {headername: headername},
             success: function (data) {
                 var jsonData = JSON.parse(data);
                 if (jsonData.status == 'success') {
@@ -79,30 +96,4 @@
             }
         });
     }
-
-    function createComponent() {
-        $("#preloader1").show();
-        var taskcity = $("#taskcity").val();
-        var citycomponent = $("#citycomponent").val();
-        var componentbreakup = $("#componentbreakup").val();
-        $.ajax({
-            type: "POST",
-            url: '<?= CUSTOMPATH ?>create-component-breakup',
-            data: {taskcity: taskcity, citycomponent: citycomponent, componentbreakup: componentbreakup},
-            success: function (data) {
-                var jsonData = JSON.parse(data);
-                if (jsonData.status == 'success') {
-                    alertify.success(jsonData.message);
-//                    setTimeout(function () {
-//                        location.reload();
-//                    }, 3000);
-
-                } else {
-                    alertify.error(jsonData.message);
-                }
-
-            }
-        });
-    }
-
 </script>

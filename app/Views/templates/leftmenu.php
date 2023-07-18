@@ -54,7 +54,7 @@
                         <i class="bi bi-layout-text-sidebar-reverse"></i> <span data-key="t-hovered">Progress Entry</span> </a>
                 </li> 
                 <li class="nav-item">
-                    <a href="#" class="nav-link menu-link" > 
+                    <a href="/project-clearance" class="nav-link menu-link" > 
                         <i class="bi bi-briefcase"></i> <span data-key="t-two-column">Project Clearance/Issues</span> 
                     </a>
                 </li>

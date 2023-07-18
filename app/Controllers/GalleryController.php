@@ -13,6 +13,7 @@ class GalleryController extends WebController {
     }
     
     public function index() {
+        $this->data['title'] = 'Gallery';
         $this->data['css']='dashboard';
         $this->data['js']='dashboard';
         return view('templates/header', $this->data)

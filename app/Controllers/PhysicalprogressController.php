@@ -24,6 +24,7 @@ class PhysicalprogressController extends WebController {
         } else {
             $this->data['cityheader'] = $masterdataModel->getCityHeader($city);
             $this->data['citycomponent'] = $masterdataModel->getCityHasComponent($city);
+            $this->data['cc'] = $masterdataModel->getCityContractCost($city);
         }
         return view('templates/header', $this->data)
                 . view('physicalprogress/index', $this->data)

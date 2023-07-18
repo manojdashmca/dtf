@@ -131,9 +131,13 @@
             success: function (data) {
                 var jsonData = JSON.parse(data);
                 if (jsonData.status == 'success') {
-                    location.reload();
+                    alertify.success(jsonData.message);
+//                    setTimeout(function () {
+//                        location.reload();
+//                    }, 3000);
+
                 } else {
-                    Swal.fire({title: jsonData.message, confirmButtonClass: "btn btn-primary w-xs mt-2", buttonsStyling: !1, showCloseButton: !0});
+                    alertify.error(jsonData.message);
                 }
 
             }

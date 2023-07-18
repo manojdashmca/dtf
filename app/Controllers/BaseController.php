@@ -37,6 +37,7 @@ abstract class BaseController extends Controller {
         $this->data['css'] = 'default';
         $this->data['includefile'] = '';
         $this->data['js'] = 'default';
+        $this->data['title'] = '';
         $this->data['modals'] = [];
         $this->data['session'] = $this->session;
         $this->data['methodname'] = $this->method;

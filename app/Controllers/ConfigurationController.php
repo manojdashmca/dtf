@@ -13,6 +13,7 @@ class ConfigurationController extends WebController {
     }
     
     public function index() {
+        $this->data['title'] = 'City Configuration';
         $this->data['css']='sweetalert,validation';
         $this->data['js']='sweetalert,validation';
         $this->data['includefile']='configvalidation.php';        

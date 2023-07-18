@@ -24,7 +24,7 @@
                 task += '<tbody>';
                 for (var i = 0; i < tasks.length; i++) {
                     task += '<tr>';
-                    task += '<td>' + (i + 1) + '</td>';
+                    task += '<td class="fw-medium">' + tasks[i].record_sl + '</td>';
                     task += '<td>' + tasks[i].task_name + '</td>';
                     task += '<td></td>';
                     task += '<td><button class="btn btn-primary" onclick="getsubtaskdata('+cityid+','+componentid+','+tasks[i].tm_id_tm+')">See Subtasks Below</button></td>';
@@ -64,7 +64,7 @@
                 subtask += '<tbody>';                
                 for (var i = 0; i < subtasks.length; i++) {
                     subtask += '<tr>';
-                    subtask += '<td>' + (i + 1) + '</td>';
+                    subtask += '<td class="fw-medium">' + subtasks[i].record_sl + '</td>';
                     subtask += '<td><a href="javascript:void();" class="fw-medium" data-bs-toggle="modal" data-bs-target="#progress-entry-modal">' + subtasks[i].subtask + '</a></td>';                    
                     subtask += '<td>' + subtasks[i].subtask_unit + '</td>';
                     subtask += '<td></td>';

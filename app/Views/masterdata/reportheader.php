@@ -25,7 +25,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Latest News</h4>
+                    <h4 class="card-title mb-0 flex-grow-1">Report Header Data</h4>
                     <div class="d-flex gap-1 flex-wrap" style='margin-right: 10px;'>
                         <form name='fileter' id='filter' action='' method='get'>                            
                             <input type="hidden" name="pager" value="<?= $pagerid ?>"/>
@@ -65,7 +65,7 @@
                                     <tr>
                                         <td class="fw-medium"><?= str_pad(($x + 1), 2, "0", STR_PAD_LEFT) ?></td>
                                         <td><?= $headerdata[$x]->header ?></td>
-                                        <td><?= $headerdata[$x]->rh_data ?></td>                                    
+                                        <td><?= ($headerdata[$x]->rh_id!=6)?$headerdata[$x]->rh_data:$cc ?></td>                                    
                                         <td>
                                             <div class="hstack gap-3 fs-15">
                                                 <a href="javascript:void(0);" class="link-primary"><i class="ri-pencil-fill"></i></a>

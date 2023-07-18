@@ -13,6 +13,7 @@ class DashboardController extends WebController {
     }
 
     public function index() {
+        $this->data['title'] = 'Dashboard';
         $this->data['css']='dashboard';
         $this->data['js']='dashboard';
         $this->data['topdata']=array('budget'=>$this->webModel->getTotalContractCost(),'location'=>$this->webModel->getTotalCity(),'progress'=>$this->webModel->getAchievedProgress());
