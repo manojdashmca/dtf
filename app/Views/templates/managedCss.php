@@ -1,8 +1,10 @@
 <?php
 $cssarray = explode(',', $css);
-if (in_array('sweetalert', $cssarray)) { ?>
+if (in_array('sweetalert', $cssarray)) {
+    ?>
     <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
-<?php }
+<?php
+}
 if (in_array('default', $cssarray)) {
     ?>
 
@@ -24,7 +26,9 @@ if (in_array('datatable', $cssarray)) {
 
 <?php }if (in_array('validation', $cssarray)) { ?>
     <link type="text/css" rel="stylesheet" href="assets/libs/formvalidation/formValidation.min.css">
-<?php }
-?>
+<?php } if (in_array('alertify', $cssarray)) { ?>
+    <link href="assets/libs/alertifyjs/build/css/alertify.min.css" rel="stylesheet" type="text/css" />
+<?php
+}
 
 

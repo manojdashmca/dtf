@@ -38,11 +38,16 @@
                             <input type="hidden" name="transactionid" value="<?= $session->get('trnid') ?>"/>
                         </form>
                     </div>
-                    <div class="d-flex gap-1 flex-wrap">
+                    <div class="d-flex gap-1 flex-wrap" style='margin-right: 10px;'>
                         <button type="button" class="btn btn-success create-btn" data-bs-toggle="modal" data-bs-target="#add-component-modal">
                             <i class="ri-add-line align-bottom me-1"></i>Add New Record
                         </button>
-                    </div>                    
+                    </div> 
+                    <div class="d-flex gap-1 flex-wrap">
+                        <button type="button" class="btn btn-primary create-btn" data-bs-toggle="modal" data-bs-target="#add-missing-component-modal">
+                            <i class="ri-add-line align-bottom me-1"></i>Add Missing Component
+                        </button>
+                    </div> 
                 </div>
                 <div class="card-body">                
                     <div class="table-responsive">
@@ -104,7 +109,7 @@
         <form autocomplete="off" name="createcomponent" id="createcomponent">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addTaskModalLabel">Create New Component</h5>
+                    <h5 class="modal-title" id="addTaskModalLabel">Create New Component Breakup</h5>
                     <button type="button" class="btn-close" id="close-modal" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -131,6 +136,39 @@
                     <div class="form-group mb-3">
                         <label for="breakup-percent" class="form-label">Breakup Percent <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="componentbreakup" name="componentbreakup" placeholder="Task breakup min 0.0 max 100">
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <div class="hstack gap-2 justify-content-end">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="createtask">Create Component Breakup</button>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- modal content -->
+    </div>
+</div>
+<!-- end modal -->
+<div class="modal fade" id="add-missing-component-modal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form autocomplete="off" name="createnewcomponent" id="createnewcomponent">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addTaskModalLabel">Create New Component</h5>
+                    <button type="button" class="btn-close" id="close-modal" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div id="api-key-error-msg" class="alert alert-danger py-2 d-none"></div>                    
+                    
+                                       
+                    <div class="form-group mb-3">
+                        <label for="breakup-percent" class="form-label">Component Name<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="componentname" name="componentname" placeholder="Enter the component Name">
                     </div>
 
 

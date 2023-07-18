@@ -15,8 +15,8 @@ class MasterdataController extends WebController {
     }
 
     public function component() {
-        $this->data['css'] = 'sweetalert,validation';
-        $this->data['js'] = 'sweetalert,validation';
+        $this->data['css'] = 'sweetalert,validation,alertify';
+        $this->data['js'] = 'sweetalert,validation,alertify';
         $this->data['includefile'] = 'componentvalidation.php';
         $city = $this->request->getVar('city');
         $this->data['city'] = $city;
@@ -44,8 +44,8 @@ class MasterdataController extends WebController {
     }
 
     public function task() {
-        $this->data['css'] = 'sweetalert,validation';
-        $this->data['js'] = 'sweetalert,validation';
+        $this->data['css'] = 'sweetalert,validation,alertify';
+        $this->data['js'] = 'sweetalert,validation,alertify';
         $city = $this->request->getVar('city');
         $this->data['city'] = $city;
         $this->data['task'] = array();
@@ -76,8 +76,8 @@ class MasterdataController extends WebController {
     }
 
     public function subtask() {
-        $this->data['css'] = 'sweetalert,validation';
-        $this->data['js'] = 'sweetalert,validation';
+        $this->data['css'] = 'sweetalert,validation,alertify';
+        $this->data['js'] = 'sweetalert,validation,alertify';
         $this->data['includefile'] = 'subtaskvalidation.php';
         $this->data['component'] = array();
         $this->data['subtask'] = array();
@@ -103,9 +103,9 @@ class MasterdataController extends WebController {
             $subtaskqty = trim($this->request->getPost('subtaskqty'));
             $allowpartial = trim($this->request->getPost('allowpartial'));
             $subtaskbreakup = trim($this->request->getPost('subtaskbreakup'));
-            $createarray = array('city_id_city' => $taskcity, 'cm_id_cm' => $citycomponent, 
-                'tm_id_tm' => $citycomponenttask, 'sm_id_sm' => $citycomponentsubtask, 
-                'subtask_unit' => $subtaskunit, 'subtask_qty' => $subtaskqty, 
+            $createarray = array('city_id_city' => $taskcity, 'cm_id_cm' => $citycomponent,
+                'tm_id_tm' => $citycomponenttask, 'sm_id_sm' => $citycomponentsubtask,
+                'subtask_unit' => $subtaskunit, 'subtask_qty' => $subtaskqty,
                 'allowed_partial' => $allowpartial, 'sub_task_breakup' => $subtaskbreakup);
             $this->webModel->createRecordInTable($createarray, 'city_has_component_has_task_has_subtask');
             $data = array('status' => 'success', 'message' => 'Sub Task Breakup Added Successfully');
@@ -115,8 +115,8 @@ class MasterdataController extends WebController {
     }
 
     public function reportheader() {
-        $this->data['css'] = 'sweetalert,validation';
-        $this->data['js'] = 'sweetalert,validation';
+        $this->data['css'] = 'sweetalert,validation,alertify';
+        $this->data['js'] = 'sweetalert,validation,alertify';
         $this->data['includefile'] = 'headervalidation.php';
         $city = $this->request->getVar('city');
         $this->data['city'] = $city;
@@ -154,27 +154,29 @@ class MasterdataController extends WebController {
             exit;
         }
     }
+
     public function getCityHasComponent() {
         if ($this->request->isAJAX()) {
-            $city = trim($this->request->getPost('cityid'));            
+            $city = trim($this->request->getPost('cityid'));
             $component = $this->masterdataModel->getCityHasComponent($city);
             $data = array('status' => 'success', 'message' => 'data retrived successfully', 'data' => $component);
             echo json_encode($data);
             exit;
         }
     }
-    
-    public function getCityHasComponentHasTaskHasSubtask(){
+
+    public function getCityHasComponentHasTaskHasSubtask() {
         if ($this->request->isAJAX()) {
             $city = trim($this->request->getPost('cityid'));
             $component = trim($this->request->getPost('componentid'));
             $task = trim($this->request->getPost('taskid'));
-            $subtask = $this->masterdataModel->getCityComponentHasTaskHasSubtask($city, $component,$task);
+            $subtask = $this->masterdataModel->getCityComponentHasTaskHasSubtask($city, $component, $task);
             $data = array('status' => 'success', 'message' => 'data retrived successfully', 'data' => $subtask);
             echo json_encode($data);
             exit;
         }
     }
+
     public function createCity() {
         if ($this->request->isAJAX()) {
             $cityname = trim($this->request->getPost('cityname'));
@@ -188,7 +190,70 @@ class MasterdataController extends WebController {
             exit;
         }
     }
-    
-    
 
+    public function createNewComponent() {
+        if ($this->request->isAJAX()) {
+
+            $component = trim($this->request->getPost('componentname'));
+            $createarray = array('component' => $component);
+            $insid = $this->webModel->createRecordInTable($createarray, 'component_master_data');
+
+            if (!empty($insid)) {
+                $data = array('status' => 'success', 'message' => 'Component Added Successfully');
+            } else {
+                $data = array('status' => 'error', 'message' => 'Unable To create Component');
+            }
+
+            echo json_encode($data);
+            exit;
+        }
+    }
+
+    public function createNewTask() {
+        if ($this->request->isAJAX()) {
+            $task = trim($this->request->getPost('taskname'));
+            $createarray = array('task_name' => $task);
+            $insid=$this->webModel->createRecordInTable($createarray, 'task_master_data');
+             if (!empty($insid)) {
+                $data = array('status' => 'success', 'message' => 'Component Added Successfully');
+            } else {
+                $data = array('status' => 'error', 'message' => 'Unable To create Component');
+            }
+
+            echo json_encode($data);
+            exit;
+        }
+    }
+
+    public function createNewSubtask() {
+        if ($this->request->isAJAX()) {
+            $subtask = trim($this->request->getPost('subtaskname'));
+            $createarray = array('subtask' => $subtask);
+            $insid=$this->webModel->createRecordInTable($createarray, 'subtask_master_data');
+             if (!empty($insid)) {
+                $data = array('status' => 'success', 'message' => 'Component Added Successfully');
+            } else {
+                $data = array('status' => 'error', 'message' => 'Unable To create Component');
+            }
+
+            echo json_encode($data);
+            exit;
+        }
+    }
+
+    public function createNewReportHeader() {
+        if ($this->request->isAJAX()) {
+            $header = trim($this->request->getPost('headername'));
+            $createarray = array('header' => $header);
+            $insid=$this->webModel->createRecordInTable($createarray, 'report_header_master');
+             if (!empty($insid)) {
+                $data = array('status' => 'success', 'message' => 'Report Header Added Successfully');
+            } else {
+                $data = array('status' => 'error', 'message' => 'Unable To create Report Header');
+            }
+
+            echo json_encode($data);
+            exit;
+        }
+    }
 }

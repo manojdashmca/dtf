@@ -30,6 +30,25 @@ class WebModel extends Model {
         $result = $this->db->query($sql);
         return $result->getResult();
     }
+    
+    public function getTotalContractCost(){
+        $sql="select coalesce(sum(contract_cost),0) as totalcost from cities_master where 1=1";
+        $result = $this->db->query($sql);
+        return $result->getRow()->totalcost;
+    }
+    
+    public function getTotalCity(){
+        $sql="select count(*) as citycount from cities_master where 1=1";
+        $result = $this->db->query($sql);
+        return $result->getRow()->citycount;
+    }
+    
+    public function getAchievedProgress(){
+        //$sql="select count(*) as citycount from cities_master where 1=1";
+        //$result = $this->db->query($sql);
+        //return $result->getRow()->citycount;
+        return rand(100000000,999999999);
+    }
 
     
 

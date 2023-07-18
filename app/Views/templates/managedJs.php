@@ -3,7 +3,7 @@ $jsarray = explode(',', $js);
 if (in_array('sweetalert', $jsarray)) {
     ?>
     <script src="assets/libs/sweetalert2/sweetalert2.min.js"></script>
-<?php
+    <?php
 }
 if (in_array('default', $jsarray)) {
     ?>
@@ -35,8 +35,10 @@ if (in_array('dashboard', $jsarray)) {
 <?php }if (in_array('validation', $jsarray)) { ?>    
     <script src="assets/libs/formvalidation/formValidation.min.js"></script>
     <script src="assets/libs/formvalidation/framework/bootstrap.js"></script>
-<?php }
-?>
+<?php } if (in_array('alertify', $jsarray)) { ?>
+    <script src="assets/libs/alertifyjs/build/alertify.min.js"></script>
+<?php
+}
 
 
 

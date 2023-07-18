@@ -32,7 +32,24 @@
             e.preventDefault();
             createHeader();
         });
-
+        $('#createnewreportheader').formValidation({
+            message: 'This value is not valid',
+            icon: {
+            },
+            fields: {
+                reportheadername: {
+                    validators: {
+                        notEmpty: {
+                            message: "Enter The Report Header Name"
+                        }
+                    }
+                }
+            }
+        }).on('success.form.fv', function (e) {
+            // Prevent form submission
+            e.preventDefault();
+            createMissingHeader();
+        });
 
 
     });
@@ -57,5 +74,26 @@
             }
         });
     }
+function createMissingHeader() {
+        $("#preloader1").show();
+        var headername = $("#reportheadername").val();
+        $.ajax({
+            type: "POST",
+            url: '<?= CUSTOMPATH ?>create-new-reportheader',
+            data: {headername: headername},
+            success: function (data) {
+                var jsonData = JSON.parse(data);
+                if (jsonData.status == 'success') {
+                    alertify.success(jsonData.message);
+                    setTimeout(function () {
+                        location.reload();
+                    }, 3000);
 
+                } else {
+                    alertify.error(jsonData.message);
+                }
+
+            }
+        });
+    }
 </script>

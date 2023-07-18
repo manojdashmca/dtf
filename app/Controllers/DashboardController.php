@@ -15,6 +15,7 @@ class DashboardController extends WebController {
     public function index() {
         $this->data['css']='dashboard';
         $this->data['js']='dashboard';
+        $this->data['topdata']=array('budget'=>$this->webModel->getTotalContractCost(),'location'=>$this->webModel->getTotalCity(),'progress'=>$this->webModel->getAchievedProgress());
         return view('templates/header', $this->data)
                 . view('dashboard/index', $this->data)
                 . view('templates/footer', $this->data);
