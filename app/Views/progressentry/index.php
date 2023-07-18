@@ -28,14 +28,14 @@
                     <h4 class="card-title mb-0 flex-grow-1"></h4>
                     <div class="d-flex gap-1 flex-wrap" style='margin-right: 10px;'>
                         <form name='fileter' id='filter' action='' method='get'>                            
-                            <input type="hidden" name="pager" value="<?=$pagerid?>"/>
+                            <input type="hidden" name="pager" value="<?= $pagerid ?>"/>
                             <select name='city' id='city' class='form-control  form-select' onchange="this.form.submit();">
                                 <option value="">Select City</option>
-                                <?php for($x=0;$x<count($citydropdown);$x++){?>
-                                <option value='<?=$citydropdown[$x]->city_id?>' <?= ($city==$citydropdown[$x]->city_id)?'selected="selected"':''?>><?=$citydropdown[$x]->city_name?></option>
-                                <?php }?>                                
+                                <?php for ($x = 0; $x < count($citydropdown); $x++) { ?>
+                                    <option value='<?= $citydropdown[$x]->city_id ?>' <?= ($city == $citydropdown[$x]->city_id) ? 'selected="selected"' : '' ?>><?= $citydropdown[$x]->city_name ?></option>
+                                <?php } ?>                                
                             </select>
-                            <input type="hidden" name="transactionid" value="<?=$session->get('trnid')?>"/>
+                            <input type="hidden" name="transactionid" value="<?= $session->get('trnid') ?>"/>
                         </form>
                     </div>                   
                 </div>
@@ -61,18 +61,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php for($x=0;$x<count($component);$x++){?>
-                                        <tr>
-                                            <td><?=str_pad(($x+1), 2, "0", STR_PAD_LEFT)?></td>
-                                            <td><?=$component[$x]->component?></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><button class="btn btn-primary" onclick="gettaskdata(<?=$city?>,<?=$component[$x]->cm_id_cm?>);">Tasks>></button></td>
+                                        <?php for ($x = 0; $x < count($component); $x++) { ?>
+                                            <tr>
+                                                <td><?= str_pad(($x + 1), 2, "0", STR_PAD_LEFT) ?></td>
+                                                <td><?= $component[$x]->component ?></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><button class="btn btn-primary" onclick="gettaskdata(<?= $city ?>,<?= $component[$x]->cm_id_cm ?>);">Tasks>></button></td>
 
-                                        </tr>
-                                        <?php }?>
-                                        
+                                            </tr>
+                                        <?php } ?>
+
 
                                     </tbody>
                                 </table>
@@ -89,7 +89,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive" id="taskdata">
-                                
+
                             </div>
                         </div>
                     </div>
@@ -99,11 +99,11 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="card">
-                            <div class="table-responsive" id="subtaskdata">                               
-                                    
-                                
-                            </div>
-                        
+                        <div class="table-responsive" id="subtaskdata">                               
+
+
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -118,20 +118,61 @@
         <form autocomplete="off" name="createcity" id="createcity">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addTaskModalLabel">Create New City</h5>
+                    <h5 class="modal-title" id="addTaskModalLabel">Progress Update Dialog</h5>
                     <button type="button" class="btn-close" id="close-modal" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
 
-                                        
-                    <div class="form-group mb-3">
-                        <label for="breakup-percent" class="form-label">City Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="cityname" name="cityname" placeholder="City Name">
+                    <div class="row">
+                        <div class="form-group mb-3">
+                            <label for="breakup-percent" class="form-label">Subtask Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="subtaskname" name="subtaskname" placeholder="Subtask Name" readonly="">
+                        </div> 
                     </div>
-                                        
-                    <div class="form-group mb-3">
-                        <label for="breakup-percent" class="form-label">Contract Cost <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="contractcost" name="contractcost" placeholder="min 1 max 10000000000">
+
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="breakup-percent" class="form-label">Unit <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="units" name="units" placeholder="" readonly="">
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="breakup-percent" class="form-label">Quantity <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="quantity" name="quantity" placeholder="" readonly="">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="breakup-percent" class="form-label">Break Up <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="breakup" name="breakup" placeholder="" readonly="">
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="breakup-percent" class="form-label">Status <span class="text-danger">*</span></label>
+                            <select name="pstatus" id="pstatus" class="form-select">
+                                <option>In Progress</option>
+                                <option>Completed</option>
+                                <option>Not Started</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="breakup-percent" class="form-label">User Entered Progress % <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="userentryprogress" name="userentryprogress" placeholder="">
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="breakup-percent" class="form-label">Entered By Qty/Distance <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="entryqty" name="entryqty" placeholder="" readonly="">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="breakup-percent" class="form-label">Allow Partial <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="allowpartial" name="allowpartial" placeholder="" readonly="">
+                        </div>
+
                     </div>
 
 

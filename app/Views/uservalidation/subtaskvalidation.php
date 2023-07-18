@@ -71,11 +71,49 @@
             e.preventDefault();
             createSubTask();
         });
-
+        $('#createnewsubtask').formValidation({
+            message: 'This value is not valid',
+            icon: {
+            },
+            fields: {
+                subtaskname: {
+                    validators: {
+                        notEmpty: {
+                            message: "Enter The Subtask Name"
+                        }
+                    }
+                }
+            }
+        }).on('success.form.fv', function (e) {
+            // Prevent form submission
+            e.preventDefault();
+            createMissingSubtask();
+        });
 
 
     });
+    function createMissingSubtask() {
+        $("#preloader1").show();
+        var subtaskname = $("#subtaskname").val();
+        $.ajax({
+            type: "POST",
+            url: '<?= CUSTOMPATH ?>create-new-subtask',
+            data: {subtaskname: subtaskname},
+            success: function (data) {
+                var jsonData = JSON.parse(data);
+                if (jsonData.status == 'success') {
+                    alertify.success(jsonData.message);
+                    setTimeout(function () {
+                        location.reload();
+                    }, 3000);
 
+                } else {
+                    alertify.error(jsonData.message);
+                }
+
+            }
+        });
+    }
     function createSubTask() {
         var taskcity = $("#taskcity").val();
         var citycomponent = $("#citycomponent").val();

@@ -213,11 +213,11 @@ class MasterdataController extends WebController {
         if ($this->request->isAJAX()) {
             $task = trim($this->request->getPost('taskname'));
             $createarray = array('task_name' => $task);
-            $insid=$this->webModel->createRecordInTable($createarray, 'task_master_data');
-             if (!empty($insid)) {
-                $data = array('status' => 'success', 'message' => 'Component Added Successfully');
+            $insid = $this->webModel->createRecordInTable($createarray, 'task_master_data');
+            if (!empty($insid)) {
+                $data = array('status' => 'success', 'message' => 'Task Added Successfully');
             } else {
-                $data = array('status' => 'error', 'message' => 'Unable To create Component');
+                $data = array('status' => 'error', 'message' => 'Unable To create Task');
             }
 
             echo json_encode($data);
@@ -229,11 +229,11 @@ class MasterdataController extends WebController {
         if ($this->request->isAJAX()) {
             $subtask = trim($this->request->getPost('subtaskname'));
             $createarray = array('subtask' => $subtask);
-            $insid=$this->webModel->createRecordInTable($createarray, 'subtask_master_data');
-             if (!empty($insid)) {
-                $data = array('status' => 'success', 'message' => 'Component Added Successfully');
+            $insid = $this->webModel->createRecordInTable($createarray, 'subtask_master_data');
+            if (!empty($insid)) {
+                $data = array('status' => 'success', 'message' => 'Subtask Added Successfully');
             } else {
-                $data = array('status' => 'error', 'message' => 'Unable To create Component');
+                $data = array('status' => 'error', 'message' => 'Unable To create Subtask');
             }
 
             echo json_encode($data);
@@ -241,12 +241,12 @@ class MasterdataController extends WebController {
         }
     }
 
-    public function createNewReportHeader() {  
+    public function createNewReportHeader() {
         if ($this->request->isAJAX()) {
             $header = trim($this->request->getPost('headername'));
             $createarray = array('header' => $header);
-            $insid=$this->webModel->createRecordInTable($createarray, 'report_header_master');
-             if (!empty($insid)) {
+            $insid = $this->webModel->createRecordInTable($createarray, 'report_header_master');
+            if (!empty($insid)) {
                 $data = array('status' => 'success', 'message' => 'Report Header Added Successfully');
             } else {
                 $data = array('status' => 'error', 'message' => 'Unable To create Report Header');

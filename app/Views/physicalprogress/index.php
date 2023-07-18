@@ -52,36 +52,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php for($x=0;$x<count($cityheader);$x++){?>
                                     <tr>
                                         <th scope="row"><a href="javascript:void();" class="fw-medium">01</a></th>
-                                        <td>Name of Work</td>
-                                        <td>Improvement of water supply to provide safe & clean drinking water confirming to drink from tap quality to Anandpur ULB on Engineering Procurement & Construction (EPC) Contract including Operation & Maintenance for the period of three years (Package III)</td>
+                                        <td><?=$cityheader[$x]->header?></td>
+                                        <td><?=$cityheader[$x]->rh_data?></td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row"><a href="javascript:void();" class="fw-medium">02</a></th>
-                                        <td>Name of Contractor</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="javascript:void();" class="fw-medium">03</a></th>
-                                        <td>Date of Contract</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="javascript:void();" class="fw-medium">04</a></th>
-                                        <td>Date of Commencement</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="javascript:void();" class="fw-medium">05</a></th>
-                                        <td>Date of Completion</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="javascript:void();" class="fw-medium">06</a></th>
-                                        <td>Contract Cost</td>
-                                        <td></td>
-                                    </tr>
+                                    <?php } ?>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -103,148 +81,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php for($a=0;$a<count($citycomponent);$a++){?>
                                     <tr>
-                                        <td>01</td>
-                                        <td>Detailed survey & Investigation and preparation of Base Data, Design & Drawing</td>
-                                        <td>Inprogress</td>
+                                        <td class="fw-medium"><?= str_pad(($a + 1), 2, "0", STR_PAD_LEFT) ?></td>
+                                        
+                                        <td><?=$citycomponent[$a]->component?></td>
                                         <td></td>
-                                        <td></td>
-                                        <td>32.50</td>
-                                        <td>0.49</td>
-
-                                    </tr>
-                                    <tr>
-
-                                        <td>02</td>
-                                        <td>Intake arrangement/Gabion wall for Intake</td>
-                                        <td>Inprogress</td>
-                                        <td>1.00</td>
-                                        <td>0.00</td>
-                                        <td>3.25</td>
-                                        <td>0.06</td>
-
-                                    </tr>
-                                    <tr>
-
-                                        <td>03</td>
-                                        <td>Raw Water Pumping Station Above the Intake Well</td>
-                                        <td>Not Started</td>
-                                        <td>1.00</td>
-                                        <td></td>
-                                        <td>0.00</td>
-                                        <td>0.00</td>
-
-                                    </tr>
-                                    <tr>
-
-                                        <td>04</td>
-                                        <td>Raw Water Rising Main</td>
-                                        <td>Completed</td>
-                                        <td>1.00</td>
-                                        <td></td>
-                                        <td>1.00</td>
-                                        <td>0.00</td>
-
-                                    </tr>
-                                    <tr>
-
-                                        <td>05</td>
-                                        <td>Water Treatment Plant (WTP)</td>
-                                        <td>Completed</td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
 
                                     </tr>
-                                    <tr>
-
-                                        <td>06</td>
-                                        <td>Clear Water Rising Main</td>
-                                        <td>Completed</td>
-                                        <td>22.36</td>
-                                        <td></td>
-                                        <td>2.36</td>
-                                        <td>0.46</td>
-
-                                    </tr>
-                                    <tr>
-
-                                        <td>07</td>
-                                        <td>OHSR</td>
-                                        <td>Completed</td>
-                                        <td>8.00</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-
-                                    </tr>
-                                    <tr>
-
-                                        <td>08</td>
-                                        <td>Distribution Pipeline (DI-K7) & Fittings & Civil Works</td>
-                                        <td>Completed</td>
-                                        <td>93.04</td>
-                                        <td></td>
-                                        <td>26.23</td>
-                                        <td></td>
-
-                                    </tr>
-                                    <tr>
-
-                                        <td>09</td>
-                                        <td>House connection (New & Replacement work) & consumer Metering</td>
-                                        <td>Completed</td>
-                                        <td>1.00</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-
-                                    </tr>
-                                    <tr>
-
-                                        <td>10</td>
-                                        <td>SCADA & Automation</td>
-                                        <td>Completed</td>
-                                        <td>8.00</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-
-                                    </tr>
-                                    <tr>
-
-                                        <td>11</td>
-                                        <td>Mechanical Work (Piping work inside WTP)</td>
-                                        <td>Completed</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-
-                                    </tr>
-                                    <tr>
-
-                                        <td>12</td>
-                                        <td>Electrical Work (Electromechanical Work)*</td>
-                                        <td>Completed</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-
-                                    </tr>
-                                    <tr>
-
-                                        <td>13</td>
-                                        <td>IT & Hardware</td>
-                                        <td>Completed</td>
-                                        <td>1.00</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-
-                                    </tr>
+                                    <?php }?>
 
                                 </tbody>
                             </table>
