@@ -79,11 +79,16 @@ $routes->match(['get', 'post'], 'create-city', 'MasterdataController::createCity
 
 $routes->post('cancel-booking', 'UserController::cancelbooking');
 $routes->post('reschedule-booking-s1', 'UserController::reschedulebookingcetting');
+
+//-----------------------------By Chitta for pipeline
+$routes->match(['get', 'post'], 'pipeline-dashboard', 'PipelineController::dashboard');
+//-----------------------------By chitta for pipeline
 //-----------------------------
 //
 //
 //--------------------Autometic jobs--------
 $routes->get('/jobs/publish-email', 'WebController::sendPendingEmails');
+
 
 //----------------------------------------
 
