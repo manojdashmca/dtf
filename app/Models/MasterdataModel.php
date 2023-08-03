@@ -22,7 +22,7 @@ class MasterdataModel extends Model {
                 . "from city_has_component_breakup "
                 . "join component_master_data on cm_id=cm_id_cm  "
                 . "JOIN cities_master on city_id=city_id_city "
-                . "where city_id_city='$cityid' order by cm_id asc";
+                . "where city_id_city='$cityid' order by cc_record_sl asc";
 
         $result = $this->db->query($sql);
         $return = $result->getResult();
