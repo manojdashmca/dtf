@@ -44,7 +44,12 @@ class pipeLineDashboardController extends WebController {
     }
 
     public function waterMeterConnection(){
-        $id = $_GET['id'];
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+        }else{
+            $id = 1;
+        }
+        
         $this->data['title'] = 'Pipeline Dashboard';
         $this->data['css']='';
         $this->data['js']='';
