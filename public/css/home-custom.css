@@ -144,7 +144,7 @@ position: relative;}
     color: #000;
 }
 .left-map path.active, .left-map path:hover, path.map-selected.current {
-    fill: #1e5ca5;
+    fill: #15982e;
     background: none;
 }
 .left-map .carousel-indicators .active {

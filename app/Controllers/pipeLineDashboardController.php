@@ -81,9 +81,17 @@ class pipeLineDashboardController extends WebController {
     }
 
     public function getRevewnuecolected(){
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+        }else{
+            $id = 1;
+        }
         $this->data['title'] = 'Pipeline Dashboard';
         $this->data['css']='';
         $this->data['js']='';
+        $getddddata =$this->pipelineModel->getPipeMeterConDivisionControl($id);
+        $arrayData = get_object_vars($getddddata);
+        $this->data['pipe_meter_landing']=$arrayData;
         return view('waterprogressdashboard/template_pipe/header', $this->data)
                 . view('waterprogressdashboard/pages/revenue-collection', $this->data)
                 . view('waterprogressdashboard/template_pipe/footer', $this->data);
