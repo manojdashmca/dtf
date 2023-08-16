@@ -56,6 +56,7 @@ if ($includefile) {
 }
 ?>
 <!-- apexcharts -->
+<script src="assets/js/pipeline/dependent.js"></script>
 <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
 
 <!-- Vector map-->
@@ -70,8 +71,6 @@ if ($includefile) {
 
 <!-- App js -->
 <script src="assets/js/app.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
 <script src="assets/js/pipeline/waterprogressdashboard.js"></script>
 
 <!-- <script>
