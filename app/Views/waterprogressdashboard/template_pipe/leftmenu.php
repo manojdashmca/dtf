@@ -42,7 +42,7 @@
                                 <span>NRW</span> </a>
                         </li>
                         <li>
-                            <a href="javascript:" onclick="redirecturl('jalasathi')" class="nav-link menu-link">
+                            <a href="jalasathi" class="nav-link menu-link">
                                 <span>Jal Sathi</span> </a>
                         </li>
                         <li>

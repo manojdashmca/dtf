@@ -11,9 +11,9 @@
 		</div>
 	</footer>
 	<!--Font Accessibility-->
-	<script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
+	<!-- <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script> -->
 	<script src="js/jquery.font-accessibility.min.js"></script>
-	<!--<script src="js/jquery.min.js"></script>-->
+	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<!--Photo Gallery-->
