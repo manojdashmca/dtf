@@ -1,17 +1,13 @@
-</div>
-    <!-- end page content-->
-
-
+<!-- End Page-content -->
 <footer class="footer">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-6">
-                <script>document.write(new Date().getFullYear())</script> © Drink From Tap.
-            </div>
-            <div class="col-sm-6">
-                <div class="text-sm-end d-none d-sm-block">
-                    Design & Develop by Endevs <?= getVersion(); ?>
-                </div>
+            <div class="col-sm-12">
+                ©
+                <script>
+                    document.write(new Date().getFullYear())
+                </script> Water Corporation of Odisha. All
+                Rights Reserved
             </div>
         </div>
     </div>
@@ -40,8 +36,9 @@
 </div>
 
 
+
+
 <!-- JAVASCRIPT -->
-<script src="assets/js/jquery.min.js"></script>
 <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/libs/simplebar/simplebar.min.js"></script>
 <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
@@ -58,18 +55,34 @@ if ($includefile) {
     }
 }
 ?>
-<!-- gride Table -->
-<script src="assets/libs/prismjs/prism.js"></script>
-<script src="assets/libs/gridjs/gridjs.umd.js"></script>
+<!-- apexcharts -->
+<script src="assets/libs/apexcharts/apexcharts.min.js"></script>
 
-<!-- <script src="assets/js/pipeline/division-table.js"></script> -->
-<!-- gride Table -->
+<!-- Vector map-->
+<script src="assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
+<script src="assets/libs/jsvectormap/maps/world-merc.js"></script>
+
+<!--Swiper slider js-->
+<script src="assets/libs/swiper/swiper-bundle.min.js"></script>
+
+<!-- Dashboard init -->
+<script src="assets/js/pages/dashboard-ecommerce.init.js"></script>
+
+<!-- App js -->
 <script src="assets/js/app.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<script src="assets/js/pipeline/division-table.js"></script>
-<script src="assets/libs/sweetalert2/sweetalert2.min.js"></script> 
-<script src="assets/js/pages/sweetalerts.init.js"></script>
+<script src="assets/js/pipeline/waterprogressdashboard.js"></script>
+
+<script>
+    function redirecturl(url) {
+        var division = $('#divisions').val();
+        var city = $('#citys').val();
+        var redirect = '/' + url + '?division=' + division + '&city=' + city;
+        window.location = redirect;
+    }
+</script>
+
 </body>
 
 </html>

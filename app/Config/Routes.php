@@ -82,6 +82,23 @@ $routes->post('reschedule-booking-s1', 'UserController::reschedulebookingcetting
 
 //-----------------------------By Chitta for pipeline
 $routes->match(['get', 'post'], 'pipeline-dashboard', 'PipelineController::dashboard');
+$routes->match(['get', 'post'], 'pipe-divisions-master', 'PipelineController::divisionMaster');
+
+$routes->match(['get', 'post'], 'pipe-dashboard', 'pipeLineDashboardController::pipeDashboard');
+
+$routes->match(['get', 'post'], 'waterprogress-dashboard', 'pipeLineDashboardController::waterProgressDashboard');
+$routes->match(['get', 'post'], 'pipeconnection', 'pipeLineDashboardController::waterMeterConnection');
+$routes->match(['get', 'post'], 'jalasathi', 'pipeLineDashboardController::getJalasathi');
+$routes->match(['get', 'post'], 'nrw', 'pipeLineDashboardController::getNrw');
+$routes->match(['get', 'post'], 'revewnuecolected', 'pipeLineDashboardController::getRevewnuecolected');
+$routes->match(['get', 'post'], 'grievance', 'pipeLineDashboardController::getGrievance');
+$routes->match(['get', 'post'], 'wqm', 'pipeLineDashboardController::getWqm');
+$routes->match(['get', 'post'], 'reportgeneration', 'pipeLineDashboardController::reportGeneration');
+$routes->match(['get', 'post'], 'reviewmetting', 'pipeLineDashboardController::reviewMetting');
+$routes->match(['get', 'post'], 'rtm', 'pipeLineDashboardController::getRtm');
+
+
+
 //-----------------------------By chitta for pipeline
 //-----------------------------
 //

@@ -1,0 +1,131 @@
+#page-topbar, .navbar-menu {
+    top: 0;
+}
+button.btn.btn-sm.px-3.fs-16.header-item.vertical-menu-btn.topnav-hamburger i {
+    font-size: 29px;
+}
+.simplebar-mask {
+    background: #1e5ca5;
+}
+.navbar-menu .navbar-nav .nav-link {
+    color: #ffffff;
+}
+.logo {
+    line-height: unset;
+}
+.sidebar-background {
+    opacity: 1;
+    background: #2c5da7;
+}
+.navbar-brand-box {
+    background: #fff;
+    text-align: left;
+    padding: 10px 0 10px 15px;
+}
+.logo-lg img {
+    width: 63px;
+    height: auto;
+    float: left;
+    margin-right: 5px;
+}
+span.logo-lg .logo-caption {
+    float: left;
+}
+span.logo-lg .logo-caption h1 {
+    font-size: 18px;
+    max-width: 160px;
+    color: #005ba3;
+    line-height: 18px;
+    margin-bottom: 0;
+}
+span.logo-lg .logo-caption p {
+    padding: 0;
+    margin: 0;
+    color: #7d7d7d;
+}
+span.logo-lg {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.drink-from-tap-logo img {
+    width: 53px;
+}
+.topbar-user {
+    background-color: #1e5ba5;
+    padding: 10px;
+}
+.navbar-header {
+    height: 90px;
+}
+.header-item {
+    height: auto;
+}
+.blue-bg {
+    background-color: #2c5da7!important;
+}
+.navbar-menu .navbar-nav .nav-link.active {
+    color: #c5dcff;
+}
+.filter-wrapper-top {
+    background: #2c5da7;
+    width: 100%;
+    float: left;
+    color: #fff;
+    padding: 7px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+.filter-wrapper-top select {
+    padding: 3px;
+}
+.filter-wrapper-top .city-filter, .filter-wrapper-top .division-filter {
+    float: left;
+}
+.city-filter {
+    float: right!important;
+}
+.filter-wrapper-top h2 {
+    font-size: 19px;
+    float: left;
+    color: #fff;
+    font-weight: 400;
+    padding: 1px 10px  0 0;
+    margin: 0;
+}
+.pahge-heading {
+    color: #365ea9;
+    font-size: 25px;
+}
+@media(min-width:992px){
+    button.btn.btn-sm.px-3.fs-16.header-item.vertical-menu-btn.topnav-hamburger {
+        display: none;
+    }
+}
+
+@media(max-width:768px){
+span.logo-lg .logo-caption h1 {
+    font-size: 12px;
+    line-height: 13px;
+}
+.logo-lg img {
+    width: 49px;
+}
+span.logo-lg .logo-caption p {
+    font-size: 10px;
+}
+span.logo-lg .logo-caption {
+    max-width: 119px;
+}
+.drink-from-tap-logo img {
+    width: 39px;
+}
+.filter-wrapper-top h2 {
+    font-size: 12px;
+    line-height: 20px;
+}
+.filter-wrapper-top select {
+    font-size: 10px;
+}
+
+}
