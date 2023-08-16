@@ -74,14 +74,14 @@ if ($includefile) {
 
 <script src="assets/js/pipeline/waterprogressdashboard.js"></script>
 
-<script>
+<!-- <script>
     function redirecturl(url) {
         var division = $('#divisions').val();
         var city = $('#citys').val();
         var redirect = '/' + url + '?division=' + division + '&city=' + city;
         window.location = redirect;
     }
-</script>
+</script> -->
 
 </body>
 

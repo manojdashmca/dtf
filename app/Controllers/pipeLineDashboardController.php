@@ -152,7 +152,7 @@ class pipeLineDashboardController extends WebController {
         return json_encode($getCity); 
     }
 
-    public function getJalsathiConDivision() {
+    public function getJalsathiConDivision() { 
         extract($_POST);
         $getDivjalsathi = $this->pipelineModel->getJalsathiConDivisionMod($div_id);
         return json_encode($getDivjalsathi); 
