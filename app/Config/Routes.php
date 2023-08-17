@@ -103,6 +103,8 @@ $routes->match(['get', 'post'], 'getPipeMeterConCityes', 'pipeLineDashboardContr
 $routes->match(['get', 'post'], 'getJalsathiConCity', 'pipeLineDashboardController::getJalsathiConCity');
 $routes->match(['get', 'post'], 'getJalsathiConDivision', 'pipeLineDashboardController::getJalsathiConDivision');
 
+$routes->match(['get', 'post'], 'getHomePipeMeterConDivision', 'pipeLineDashboardController::getHomePipeMeterConDivision');
+
 //-----------------------------By chitta for pipeline
 //-----------------------------
 //
