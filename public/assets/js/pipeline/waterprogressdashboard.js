@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     $('#divisions').change(function () {
         var division_id = $(this).val();
         $.post("getPipeMeterConDivision", { div_id: division_id }, function (data) {
@@ -13,7 +12,6 @@ $(document).ready(function () {
                 $('#hmcdhousecomplete').text(pmcon.division_house_connection);
                 $('#hmcdmetercomplete').text(pmcon.division_meter_connection);
             }
-
             $('#citys').html('<option value="">Loading...</option>');
             $.post("getCitiesinDivision", { division_id: division_id }, function (data) {
                 $('#citys').html('<option value="">Select City</option>');
@@ -23,16 +21,11 @@ $(document).ready(function () {
                     $('#citys').append('<option value="' + value.id + '">' + value.city_name + '</option>');
                 });
             });
-
-
             if (division_id) {
                 $('#citys').change(function () {
                     var city_id = $(this).val();
-
                     $.post("getPipeMeterConCityes", { cit_id: city_id }, function (data_city) {
                         var pipemeterconcity = JSON.parse(data_city);
-                        // console.log(pipemeterconcity);
-
                         $('#hmcd').text(pipemeterconcity.no_of_dma);
                         $('#pmcondashheading').text('NO OF DMA');
                         $('#hmcdpopulation').text(pipemeterconcity.city_population);
@@ -40,7 +33,6 @@ $(document).ready(function () {
                         $('#hmcdhousecomplete').text(pipemeterconcity.city_house_connection);
                         $('#hmcdmetercomplete').text(pipemeterconcity.city_meter_connection);
                     });
-
                     // jalsathi 
                     $.post("getJalsathiConCity", { cit_id: city_id }, function (data_city_jalsathi) {
                         var jalsathi_ccity = JSON.parse(data_city_jalsathi);
@@ -58,11 +50,8 @@ $(document).ready(function () {
                             $('#revenue_collected_by_jalasathi').text('0');
                         }
                     });
-
-
                 });
             }
-
             $.post("getJalsathiConDivision", { div_id: division_id }, function (division_jalasathi) {
                 var jalscon = JSON.parse(division_jalasathi);
                 if (jalscon != null) {
@@ -79,21 +68,8 @@ $(document).ready(function () {
                 // console.log(jalscon);
 
             });
-
-
-
-
-
         });
-
-
     });
-
-    
-
-
-
-
 });
 
 $(document).ready(function() {
@@ -102,18 +78,24 @@ $(document).ready(function() {
         var division_id = $(this).val();
         $.post("getHomePipeMeterConDivision", { div_id: division_id }, function (data) {
             var h_dp_dv = JSON.parse(data);
-
-            if (h_dp_dv != null) {
+            
+                        if (h_dp_dv != null) {
                 $('#h_no_division').hide();
-                $('#h_no_city').text(h_dp_dv[0]['total_cities']);
-                $('#h_no_dma').text(h_dp_dv[0]['total_dma']);
-                $('#h_no_nrw').text(h_dp_dv[0]['nrw_average_value']);
-                $('#h_population').text(h_dp_dv[0]['total_no_population']);
+                $('#h_no_city').text(h_dp_dv[0]['total_cities'] !== null ? h_dp_dv[0]['total_cities'] : 0);
+                $('#h_no_dma').text(h_dp_dv[0]['total_dma'] !== null ? h_dp_dv[0]['total_dma'] : 0);
+                $('#h_no_nrw').text(h_dp_dv[0]['nrw_average_value'] !== null ? h_dp_dv[0]['nrw_average_value'] : 0);
+                $('#h_population').text(h_dp_dv[0]['total_no_population'] !== null ? h_dp_dv[0]['total_no_population'] : 0);
 
-                $('#h_household').text(h_dp_dv[0]['total_no_house_holds']);
-                $('#h_h_complete').text(h_dp_dv[0]['total_no_house_coction']);
-                $('#h_m_complete').text(h_dp_dv[0]['total_no_metered_house_connections']);
+                $('#h_household').text(h_dp_dv[0]['total_no_house_holds'] !== null ? h_dp_dv[0]['total_no_house_holds'] : 0);
+                $('#h_h_complete').text(h_dp_dv[0]['total_no_house_coction'] !== null ? h_dp_dv[0]['total_no_house_coction'] : 0);
+                $('#h_m_complete').text(h_dp_dv[0]['total_no_metered_house_connections'] !== null ? h_dp_dv[0]['total_no_metered_house_connections'] : 0);
                 $('#h_jalasathi').text(h_dp_dv[0]['total_jalasathi'] !== null ? h_dp_dv[0]['total_jalasathi'] : 0);
+                if(h_dp_dv[0]['division_district_image'] != null){
+                    var division_district_image = 'images/Map/' + h_dp_dv[0]['division_district_image'];
+                }else{
+                    var division_district_image = 'images/Map/default_division.png';
+                }
+                $('#division_district_image').attr('src', division_district_image);
                 
             }
         });
