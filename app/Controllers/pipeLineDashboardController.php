@@ -34,6 +34,38 @@ class pipeLineDashboardController extends WebController {
                 . view('pipelinedashboard/template_pipe/footer', $this->data);
     } 
 
+    public function divisionDishboard(){
+        
+        $this->data['title'] = 'Pipeline Dashboard';
+        $this->data['css']='';
+        $this->data['js']='';
+        $this->data['alldivisionname']=$this->pipelineModel->getAllDivisionName();
+        $this->data['allstataedata']=$this->pipelineModel->getAllStatedata();
+        $this->data['allcitydata']=$this->pipelineModel->getAllCityDetails();
+        $this->data['getall'] = $this->pipelineModel->getAll();
+
+
+        return view('pipelinedashboard/template_pipe/header', $this->data)
+                . view('pipelinedashboard/pages/division_dashboard', $this->data)
+                . view('pipelinedashboard/template_pipe/footer', $this->data);
+    }
+
+    public function cityDishboard(){
+        
+        $this->data['title'] = 'Pipeline Dashboard';
+        $this->data['css']='';
+        $this->data['js']='';
+        $this->data['alldivisionname']=$this->pipelineModel->getAllDivisionName();
+        $this->data['allstataedata']=$this->pipelineModel->getAllStatedata();
+        $this->data['allcitydata']=$this->pipelineModel->getAllCityDetails();
+        $this->data['getall'] = $this->pipelineModel->getAll();
+
+
+        return view('pipelinedashboard/template_pipe/header', $this->data)
+                . view('pipelinedashboard/pages/city_dashboard', $this->data)
+                . view('pipelinedashboard/template_pipe/footer', $this->data);
+    } 
+
     public function waterProgressDashboard(){
         $this->data['title'] = 'Pipeline Dashboard';
         $this->data['css']='';

@@ -209,7 +209,8 @@ class PipelineModel extends Model
 
     public function getHomeAllStatedata($h_div_id)
     {
-        $sql = "SELECT SUM(z.population) AS total_no_population, 
+        $sql = "SELECT SUM(z.population) AS total_no_population,
+        (SELECT district_image FROM divisions WHERE id = '$h_div_id') AS division_district_image, 
         SUM(z.no_house_holds) AS total_no_house_holds, 
         SUM(z.no_house_coction) AS total_no_house_coction, 
         SUM(z.no_house_connection_replaced) AS total_no_house_connection_replaced, 

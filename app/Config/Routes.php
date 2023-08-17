@@ -82,6 +82,9 @@ $routes->post('reschedule-booking-s1', 'UserController::reschedulebookingcetting
 
 //-----------------------------By Chitta for pipeline
 $routes->match(['get', 'post'], 'pipeline-dashboard', 'PipelineController::dashboard');
+$routes->match(['get', 'post'], 'division-dashboard', 'pipeLineDashboardController::divisionDishboard');
+$routes->match(['get', 'post'], 'city-dashboard', 'pipeLineDashboardController::cityDishboard');
+
 $routes->match(['get', 'post'], 'pipe-divisions-master', 'PipelineController::divisionMaster');
 
 $routes->match(['get', 'post'], 'pipe-dashboard', 'pipeLineDashboardController::pipeDashboard');
