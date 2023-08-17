@@ -23,6 +23,7 @@
 	<!--AOS Animation-->
 	<script src="https://cdn.rawgit.com/michalsnik/aos/2.0.1/dist/aos.js"></script>
 	<script src="js/custom.js"></script>
+	<script src="assets/js/pipeline/waterprogressdashboard.js"></script>
 	<script></script>
 	<!--Maping-->
 

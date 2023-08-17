@@ -207,5 +207,22 @@ class PipelineModel extends Model
         $this->db->close();
     }
 
+    public function getHomeAllStatedata($h_div_id)
+    {
+        $sql = "SELECT SUM(z.population) AS total_no_population, 
+        SUM(z.no_house_holds) AS total_no_house_holds, 
+        SUM(z.no_house_coction) AS total_no_house_coction, 
+        SUM(z.no_house_connection_replaced) AS total_no_house_connection_replaced, 
+        SUM(z.no_metered_house_connections) AS total_no_metered_house_connections, 
+        COUNT(DISTINCT(z.division_id)) AS total_division, 
+        COUNT(DISTINCT(z.city_id)) AS total_cities, 
+        COUNT(DISTINCT(z.id)) AS total_dma,
+        (SELECT COUNT(id) FROM `jalsathi_word` WHERE division_id = '$h_div_id') as total_jalasathi,
+        ROUND(AVG(nrw), 2) AS nrw_average_value
+         FROM zone_master z WHERE z.division_id = '$h_div_id';";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        return $return;
+    }
 
 }
