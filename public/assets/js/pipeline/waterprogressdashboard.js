@@ -100,11 +100,9 @@ $(document).ready(function() {
     $('#divisions_home_all').change(function () {
         console.log("Tect chitta");
         var division_id = $(this).val();
-        $.post("pipeLineDashboardController/getHomePipeMeterConDivision", { div_id: division_id }, function (data) {
+        $.post("getHomePipeMeterConDivision", { div_id: division_id }, function (data) {
             var h_dp_dv = JSON.parse(data);
-            console.log(h_dp_dv);
 
-            console.log(h_dp_dv[0]['nrw_average_value']);
             if (h_dp_dv != null) {
                 $('#h_no_division').hide();
                 $('#h_no_city').text(h_dp_dv[0]['total_cities']);
