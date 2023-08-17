@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\PipelineModel;
+use App\Controllers\Exception;
 
 use App\Libraries;
 
@@ -171,6 +172,19 @@ class pipeLineDashboardController extends WebController {
         $getJalCit = $this->pipelineModel->getJalsathiConCityMod($cit_id);
         return json_encode($getJalCit); 
     }
+
+    public function getHomePipeMeterConDivision() {
+        try {
+            extract($_POST);
+            $h_dropdown = $this->pipelineModel->getHomeAllStatedata($div_id); // Check parameter name
+            return json_encode($h_dropdown);
+        } catch (Exception $e) {
+            // Log or print the error message for debugging
+            error_log($e->getMessage());
+            return json_encode(['error' => 'An error occurred']);
+        }
+    }
+    
 
     
 

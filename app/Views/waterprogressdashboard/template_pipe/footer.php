@@ -70,8 +70,8 @@ if ($includefile) {
 <script src="assets/js/pages/dashboard-ecommerce.init.js"></script>
 
 <!-- App js -->
-<script src="assets/js/app.js"></script>
 <script src="assets/js/pipeline/waterprogressdashboard.js"></script>
+<script src="assets/js/app.js"></script>
 
 <!-- <script>
     function redirecturl(url) {
