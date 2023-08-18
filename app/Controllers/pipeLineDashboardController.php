@@ -56,10 +56,7 @@ class pipeLineDashboardController extends WebController {
         $this->data['css']='';
         $this->data['js']='';
         $this->data['alldivisionname']=$this->pipelineModel->getAllDivisionName();
-        $this->data['allstataedata']=$this->pipelineModel->getAllStatedata();
-        $this->data['allcitydata']=$this->pipelineModel->getAllCityDetails();
-        $this->data['getall'] = $this->pipelineModel->getAll();
-
+        $this->data['getallcitiscdashboard'] = $this->pipelineModel->getTotalCityDetailsCityDashboard();
 
         return view('pipelinedashboard/template_pipe/header', $this->data)
                 . view('pipelinedashboard/pages/city_dashboard', $this->data)
@@ -98,8 +95,6 @@ class pipeLineDashboardController extends WebController {
         $this->data['title'] = 'Pipeline Dashboard';
         $this->data['css']='';
         $this->data['js']='';
-        // $this->data['division']=$this->request->getVar('division');
-
         return view('waterprogressdashboard/template_pipe/header', $this->data)
                 . view('waterprogressdashboard/pages/jalsathi', $this->data)
                 . view('waterprogressdashboard/template_pipe/footer', $this->data);
@@ -208,10 +203,20 @@ class pipeLineDashboardController extends WebController {
     public function getHomePipeMeterConDivision() {
         try {
             extract($_POST);
-            $h_dropdown = $this->pipelineModel->getHomeAllStatedata($div_id); // Check parameter name
+            $h_dropdown = $this->pipelineModel->getHomeAllStatedata($div_id); 
             return json_encode($h_dropdown);
         } catch (Exception $e) {
-            // Log or print the error message for debugging
+            error_log($e->getMessage());
+            return json_encode(['error' => 'An error occurred']);
+        }
+    }
+
+    public function getCityDashboardById() {
+        try {
+            extract($_POST);
+            $h_dropdown = $this->pipelineModel->getTotalCityDetailsCityDashboardOnCityId($city_id); 
+            return json_encode($h_dropdown);
+        } catch (Exception $e) {
             error_log($e->getMessage());
             return json_encode(['error' => 'An error occurred']);
         }

@@ -226,4 +226,24 @@ class PipelineModel extends Model
         return $return;
     }
 
+    public function getTotalCityDetailsCityDashboard()
+    {
+        $sql = "SELECT (SELECT COUNT(*) FROM pl_citys) AS no_of_city,(SELECT COUNT(*) FROM jalsathi_word) AS no_of_jalasathi,COUNT(zone_master.id) AS no_of_dma, SUM(population) AS total_population, SUM(no_house_holds) AS house_holds, SUM(no_house_coction) AS total_house_connection,SUM(no_metered_house_connections) AS total_meter_connection, (SUM(no_house_coction) / SUM(no_house_holds) * 100) AS house_connection_percentage, (SUM(no_metered_house_connections) / SUM(no_house_holds) * 100) AS metered_connections_percentage FROM zone_master INNER JOIN pl_citys ON zone_master.city_id = pl_citys.id;";
+        $result = $this->db->query($sql);
+        $return = $result->getRow();
+        // print_r();die;
+        return $return;
+        $this->db->close();
+    }
+
+    public function getTotalCityDetailsCityDashboardOnCityId($city_id)
+    {
+        $sql = "SELECT (SELECT COUNT(id) FROM jalsathi_word WHERE jalsathi_ulb_city_id = '$city_id') AS no_of_jalasathi,COUNT(zone_master.id) AS no_of_dma, SUM(population) AS total_population, SUM(no_house_holds) AS house_holds, SUM(no_house_coction) AS total_house_connection,SUM(no_metered_house_connections) AS total_meter_connection, (SUM(no_house_coction) / SUM(no_house_holds) * 100) AS house_connection_percentage, (SUM(no_metered_house_connections) / SUM(no_house_holds) * 100) AS metered_connections_percentage FROM zone_master INNER JOIN pl_citys ON zone_master.city_id = pl_citys.id WHERE pl_citys.id = '$city_id';";
+        $result = $this->db->query($sql);
+        $return = $result->getRow();
+        return $return;
+        $this->db->close();
+    }
+
+
 }
