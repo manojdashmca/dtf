@@ -104,7 +104,7 @@
                                  <a href="pipe-divisions-master" class="nav-link" data-key="t-basic-tables">Division</a>
                              </li>
                              <li class="nav-item">
-                                 <a href="pipe-cities-master" class="nav-link" data-key="t-basic-tables">Cities</a>
+                                 <a href="cityTablePage" class="nav-link" data-key="t-basic-tables">Cities</a>
                              </li>
                              <li class="nav-item">
                                  <a href="pipe-zones-master" class="nav-link" data-key="t-grid-js">DMA/Zone</a>
