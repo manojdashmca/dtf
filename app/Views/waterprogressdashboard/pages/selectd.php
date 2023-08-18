@@ -1,3 +1,4 @@
+<a href="pipe-dashboard" class="btn btn-info btn-sm mb-2">Home</a>
 <div class="filter-wrapper-top">
                                     <div class="division-filter">
                                         <h2><span>Division : </span></h2>                                        
@@ -15,4 +16,4 @@
                                             
                                         </select>
                                     </div>
-                                </div>
+                                </div> 
