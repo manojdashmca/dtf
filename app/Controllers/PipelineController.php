@@ -124,5 +124,19 @@ class PipelineController extends WebController {
             echo json_encode($res);  
         }
 
+        public function getDmaInfo() {
+// print_r("Test Chitta");die;
+            $allDmainfo = $this->pipelineModel->getAllDmainfo();
+            echo json_encode($allDmainfo);
+        }
+
+        public function getDmaInfoPage(){
+            $this->data['title'] = 'Pipeline Dashboard';
+            $this->data['css']='';
+            $this->data['js']='';
+            // $this->data['alldivisionname']=$this->pipelineModel->getAllDivisionName();
+            return view('templates/dma-home', $this->data);
+        }
+
 
 }

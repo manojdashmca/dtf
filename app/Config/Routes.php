@@ -113,6 +113,9 @@ $routes->match(['get', 'post'], 'getCityDashboardById', 'pipeLineDashboardContro
 //-----------------------------City Master-------------
 $routes->match(['get', 'post'], 'cityTablePage', 'PipelineController::cityTablePage');
 $routes->match(['get', 'post'], 'addnewcity', 'PipelineController::addNewCity');
+$routes->match(['get', 'post'], 'getDmaInfo', 'PipelineController::getDmaInfo');
+$routes->match(['get', 'post'], 'DmaInfoPage', 'PipelineController::getDmaInfoPage');
+
 
 // $routes->match(['get', 'post'], 'getCityTableData', 'PipelineController::getCityTableData');
 
