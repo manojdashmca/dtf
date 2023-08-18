@@ -273,4 +273,14 @@ class PipelineModel extends Model
     }
 
 
+    public function getAllDmainfo()
+    {
+        $sql = "SELECT * FROM zone_master;";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        // print_r($return);die;
+        return $return;
+    }
+
+
 }

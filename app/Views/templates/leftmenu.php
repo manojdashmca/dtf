@@ -107,7 +107,7 @@
                                  <a href="cityTablePage" class="nav-link" data-key="t-basic-tables">Cities</a>
                              </li>
                              <li class="nav-item">
-                                 <a href="pipe-zones-master" class="nav-link" data-key="t-grid-js">DMA/Zone</a>
+                                 <a href="DmaInfoPage" class="nav-link" data-key="t-grid-js">DMA/Zone</a>
                              </li>
                          </ul>
                      </div>
