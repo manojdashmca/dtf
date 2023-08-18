@@ -30,6 +30,16 @@ class PipelineModel extends Model
         $this->db->close();
     }
 
+    public function checkDuplicateCity($city_name)
+    {
+
+        $sql = "SELECT city_name from pl_citys WHERE city_name = '$city_name';";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        return $return;
+        $this->db->close();
+    }
+
     public function insertDivision($division_name)
     {
         $sql = "INSERT INTO divisions(division_name)VALUES('$division_name')";
@@ -242,6 +252,23 @@ class PipelineModel extends Model
         $result = $this->db->query($sql);
         $return = $result->getRow();
         return $return;
+        $this->db->close();
+    }
+
+    public function getAllCities()
+    {
+        $sql = "SELECT c.id,d.division_name,c.city_name FROM pl_citys c INNER JOIN divisions d ON c.division_id = d.id;";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        return $return;
+    }
+
+    public function insertCityTable($division_id, $city_name)
+    {
+        $sql = "INSERT INTO pl_citys(division_id,city_name)VALUES('$division_id','$city_name')";
+        $result = $this->db->query($sql);
+
+        return $result;
         $this->db->close();
     }
 

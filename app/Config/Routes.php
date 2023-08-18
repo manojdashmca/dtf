@@ -110,7 +110,12 @@ $routes->match(['get', 'post'], 'getHomePipeMeterConDivision', 'pipeLineDashboar
 $routes->match(['get', 'post'], 'getCityDashboardById', 'pipeLineDashboardController::getCityDashboardById');
 
 //-----------------------------By chitta for pipeline
-//-----------------------------
+//-----------------------------City Master-------------
+$routes->match(['get', 'post'], 'cityTablePage', 'PipelineController::cityTablePage');
+$routes->match(['get', 'post'], 'addnewcity', 'PipelineController::addNewCity');
+
+// $routes->match(['get', 'post'], 'getCityTableData', 'PipelineController::getCityTableData');
+
 //
 //
 //--------------------Autometic jobs--------

@@ -22,7 +22,7 @@ window.onload = function() {
                       width: "150px",
                       formatter: function(e, row) {
                           return gridjs.html(`
-                            <button data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-info btn-sm" id="editDistrict" data-id='${row.cells[0].data}' onclick="editDistrict()">Edit</button>
+                            <button data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-info btn-sm" id="editDistrict" data-id='${row.cells[0].data}' onclick="editDistrict()" disabled>Edit</button>
                             <button class="btn btn-danger btn-sm delete-district" onclick="deleteDistrict()" id="deleteDistrict" data-id='${row.cells[0].data}'>Delete</button>
                           `);
                         }
@@ -126,7 +126,7 @@ window.onload = function() {
 
     function refreshDiv()
     {
-        window.getAllDistrict().reload()
+      window.location.reload()
     }
 
 
