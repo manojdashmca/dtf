@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-12">
+        <div class="col-lg-12">
             <a href="pipe-dashboard" class="btn btn-info btn-sm">Home</a>
         </div>
     </div>
@@ -22,8 +22,8 @@
         </div>
     </div>
     <div class="row mt-3">
-        <div class="col-12"><h6 class="text-info">CITIES DETAILS : </h6></div>
-        <div class="col-4 col-sm-12" id="cd_no_ct_card">
+        <div class="col-lg-12"><h6 class="text-info">CITIES DETAILS : </h6></div>
+        <div class="col-lg-4 col-sm-12" id="cd_no_ct_card">
             <div class="card">
                 <div class="card-body">
                     <p>NO OF. CITIES</p>
@@ -32,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4 col-sm-12">
+        <div class="col-lg-4 col-sm-12">
             <div class="card">
                 <div class="card-body">
                 <p>NO OF. DMA/ZONE</p>
@@ -40,7 +40,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4 col-sm-12">
+        <div class="col-lg-4 col-sm-12">
             <div class="card">
                 <div class="card-body">
                     <p>TOTAL POPULATION</p>
@@ -48,7 +48,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4 col-sm-12">
+        <div class="col-lg-4 col-sm-12">
             <div class="card">
                 <div class="card-body">
                     <p>TOTAL NO OF HOUSEHOLD</p>
@@ -56,7 +56,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4 col-sm-12">
+        <div class="col-lg-4 col-sm-12">
             <div class="card">
                 <div class="card-body">
                     <p>HOUSE CONNNECTION COMPLETED</p>
@@ -64,7 +64,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4 col-sm-12">
+        <div class="col-lg-4 col-sm-12">
             <div class="card">
                 <div class="card-body">
                     <p>METER CONNNECTION COMPLETED</p>
@@ -72,7 +72,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4 col-sm-12">
+        <div class="col-lg-4 col-sm-12">
             <div class="card">
                 <div class="card-body">
                     <p>TOTAL NO OF JALASATHI</p>
@@ -80,10 +80,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-4 col-sm-12" id="explore_division_city">
-            
-                    <a  href="revewnuecolected?id=1" class="btn btn-info btn-small">Explore Division</a>
-               
+        <div class="col-lg-4 col-sm-12 mb-4" id="explore_division_city">
+            <a  href="revewnuecolected?id=1" class="btn btn-info btn-small">Explore Division</a>
         </div>
     </div>
 </div>
