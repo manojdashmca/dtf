@@ -31,6 +31,7 @@
             <ul class="navbar-nav" id="navbar-nav">
 
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                <a href="pipe-dashboard" class="btn btn-warning btn-small">Back To Home</a>
                 <li class="nav-item">
                     <a href="/dashboard" class="nav-link menu-link"> <i class="bi bi-speedometer2"></i> <span data-key="t-dashboard">Dashboard</span> </a>
                 </li>
