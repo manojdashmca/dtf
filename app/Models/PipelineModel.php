@@ -282,5 +282,21 @@ class PipelineModel extends Model
         return $return;
     }
 
+    public function getDmadataOnCityId($city_id){
+        $sql = "SELECT id,dma_no,area_name FROM zone_master WHERE city_id = '$city_id';";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+
+        return $return;
+    }
+
+    public function getDmadataInfo($dma_id){
+        $sql = "SELECT * FROM zone_master WHERE id = '$dma_id';";
+        $result = $this->db->query($sql);
+        $return = $result->getRow();
+
+        return $return;
+    }
+
 
 }

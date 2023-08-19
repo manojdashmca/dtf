@@ -115,6 +115,11 @@ $routes->match(['get', 'post'], 'cityTablePage', 'PipelineController::cityTableP
 $routes->match(['get', 'post'], 'addnewcity', 'PipelineController::addNewCity');
 $routes->match(['get', 'post'], 'getDmaInfo', 'PipelineController::getDmaInfo');
 $routes->match(['get', 'post'], 'DmaInfoPage', 'PipelineController::getDmaInfoPage');
+// Division Dashboard
+
+$routes->match(['get', 'post'], 'dmaZoneDashboard', 'pipeLineDashboardController::dmaZoneDashboard');
+$routes->match(['get', 'post'], 'getAllDmaInfoDashboardOnCity', 'pipeLineDashboardController::getAllDmaInfoDashboardOnCity');
+$routes->match(['get', 'post'], 'getAllDmaInfoOnCity', 'pipeLineDashboardController::getAllDmaInfoOnCity');
 
 
 // $routes->match(['get', 'post'], 'getCityTableData', 'PipelineController::getCityTableData');

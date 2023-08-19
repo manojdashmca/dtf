@@ -1,4 +1,4 @@
-<footer>
+<footer style="position: absolute;bottom: 0;">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12 text-center">
