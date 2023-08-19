@@ -34,6 +34,7 @@ class pipeLineDashboardController extends WebController {
                 . view('pipelinedashboard/template_pipe/footer', $this->data);
     } 
 
+    // Division Dashboard
     public function divisionDishboard(){
         
         $this->data['title'] = 'Pipeline Dashboard';
@@ -50,6 +51,7 @@ class pipeLineDashboardController extends WebController {
                 . view('pipelinedashboard/template_pipe/footer', $this->data);
     }
 
+    // City Dashboard
     public function cityDishboard(){
         
         $this->data['title'] = 'Pipeline Dashboard';
@@ -60,6 +62,20 @@ class pipeLineDashboardController extends WebController {
 
         return view('pipelinedashboard/template_pipe/header', $this->data)
                 . view('pipelinedashboard/pages/city_dashboard', $this->data)
+                . view('pipelinedashboard/template_pipe/footer', $this->data);
+    } 
+
+    // Dma Dashboard
+    public function dmaZoneDashboard(){
+        
+        $this->data['title'] = 'Pipeline Dashboard';
+        $this->data['css']='';
+        $this->data['js']='';
+        $this->data['alldivisionname']=$this->pipelineModel->getAllDivisionName();
+        // $this->data['getallcitiscdashboard'] = $this->pipelineModel->getTotalCityDetailsCityDashboard();
+
+        return view('pipelinedashboard/template_pipe/header', $this->data)
+                . view('pipelinedashboard/pages/dma-dashboard', $this->data)
                 . view('pipelinedashboard/template_pipe/footer', $this->data);
     } 
 
@@ -221,7 +237,27 @@ class pipeLineDashboardController extends WebController {
             return json_encode(['error' => 'An error occurred']);
         }
     }
-    
+    public function getAllDmaInfoDashboardOnCity() {
+        try {
+            extract($_POST);
+            $dma_dh_dropdown = $this->pipelineModel->getDmadataOnCityId($city_id); 
+            return json_encode($dma_dh_dropdown);
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            return json_encode(['error' => 'An error occurred']);
+        }
+    }
+
+    public function getAllDmaInfoOnCity() {
+        try {
+            extract($_POST);
+            $dma_d = $this->pipelineModel->getDmadataInfo($dma_id); 
+            return json_encode($dma_d);
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            return json_encode(['error' => 'An error occurred']);
+        }
+    }
 
     
 

@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $('#explore_division_city').hide();
+    $('#dma_container_d').hide();
 
     $('#divisions').change(function () {
         var division_id = $(this).val();
@@ -146,4 +147,39 @@ $(document).ready(function () {
 
     });
 });
+
+
+$(document).ready(function () {
+    $('#city_dashboard_city').change(function () {
+        var city_d_id = $(this).val();
+            $('#dma_zone_dash').html('<option value="">Loading...</option>');
+            $.post("getAllDmaInfoDashboardOnCity", { city_id: city_d_id }, function (data) {
+                $('#dma_zone_dash').html('<option value="">Select City</option>');
+                var city_das_data = JSON.parse(data);
+                $.each(city_das_data, function (key, value) {
+                    $('#dma_zone_dash').append('<option value="' + value.id + '">' + value.dma_no + '</option>');
+                });
+            });
+    });
+
+    $('#dma_zone_dash').change(function () {
+        var city_d_idget_dma = $(this).val();
+        $.post("getAllDmaInfoOnCity", { dma_id: city_d_idget_dma }, function (data) {
+            var dmadata_info_d = JSON.parse(data);
+            if(dmadata_info_d){
+                $('#dma_container_d').show();
+                $('#dma_d_name').text(dmadata_info_d.dma_no !== null ? dmadata_info_d.dma_no : "xxxx");
+                $('#dma_d_areaname').text(dmadata_info_d.area_name !== null ? dmadata_info_d.area_name : "0");
+                $('#dma_d_population').text(dmadata_info_d.population !== null ? dmadata_info_d.population : "0");
+                $('.dma_house_con_target').text(dmadata_info_d.no_house_holds !== null ? dmadata_info_d.no_house_holds : "0");
+                $('.dma_house_con_complete').text(dmadata_info_d.no_house_coction !== null ? dmadata_info_d.no_house_coction : "0");
+                $('.dma_meter_con_target').text(dmadata_info_d.no_house_holds !== null ? dmadata_info_d.no_house_holds : "0");
+                $('.dma_meter_con_complete').text(dmadata_info_d.no_metered_house_connections !== null ? dmadata_info_d.no_metered_house_connections : "0");
+                $('.dma_completed_month_year').text(dmadata_info_d.dft_complete_m_y !== null ? dmadata_info_d.dft_complete_m_y : "xx-xx");
+                $('.dma_target_date_of_completion').text(dmadata_info_d.dft_target_date_completion !== null ? dmadata_info_d.dft_target_date_completion : "xx-xx");
+            }
+        });
+    });
+});
+
 
