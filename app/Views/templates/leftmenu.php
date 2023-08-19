@@ -32,6 +32,11 @@
 
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                 <li class="nav-item">
+                    <a href="pipe-dashboard" class="nav-link menu-link" > 
+                        <i class="ri-home-7-fill"></i> <span >Home</span> 
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="/dashboard" class="nav-link menu-link"> <i class="bi bi-speedometer2"></i> <span data-key="t-dashboard">Dashboard</span> </a>
                 </li>
 <!--                <li class="nav-item">
