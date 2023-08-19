@@ -102,7 +102,9 @@
                     </div>
                     <div id="navbar-nav">
                         <div class="nav flex-column nav-pills vertical-tab-left" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <button class="nav-link active" id="v-pills-Construction-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Construction" type="button" role="tab" aria-controls="v-pills-Construction" aria-selected="true">Construction</button>
+
+                            <a class="nav-link active" href="dashboard">Construction</a>
+                            <!-- <button class="nav-link active" id="v-pills-Construction-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Construction" type="button" role="tab" aria-controls="v-pills-Construction" aria-selected="true">Construction</button> -->
                             <button class="nav-link" id="v-pills-HouseConnection-tab" data-bs-toggle="pill" data-bs-target="#v-pills-HouseConnection" type="button" role="tab" aria-controls="v-pills-HouseConnection" aria-selected="false">House connection and
                                 metering</button>
                             <button class="nav-link" id="v-pills-NRW-tab" data-bs-toggle="pill" data-bs-target="#v-pills-NRW" type="button" role="tab" aria-controls="v-pills-NRW" aria-selected="false">NRW</button>

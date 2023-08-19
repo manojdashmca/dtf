@@ -2094,7 +2094,7 @@
 								<div class="col-sm-4 col-6">
 									<div class="map-box2">
 
-										<a href="#" class="content">
+										<a href="dmaZoneDashboard" class="content">
 											<h3 id="h_no_dma"><?= $allstataedata[0]->total_dma ?></h3>
 											<p>Nos. of DMAs</p>
 										</a>
