@@ -2085,7 +2085,7 @@
 								</div>
 								<div class="col-sm-4 col-6">
 									<div class="map-box2">
-										<a href="city-dashboard" class="content">
+										<a href="revewnuecolected?id=1" class="content">
 											<h3 id="h_no_city"><?= $allstataedata[0]->total_cities ?></h3>
 											<p>Nos. of City</p>
 										</a>
