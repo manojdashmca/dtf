@@ -31,6 +31,42 @@
     <?php
     require_once __DIR__ . '/managedCss.php';
     ?>
+
+    <style>
+        
+        .progress-container {
+            display: flex;
+            height: 100px;
+            width: 35px;
+            background-color: #ff00009e;
+            overflow: hidden;
+            rotate: 180deg;
+        }
+
+        .progress-bar {
+            flex: 1;
+        }
+
+        .outer-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .progress-bar-round {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.progress-bar-round::before {
+  content: attr(data-progress);
+}
+    </style>
 </head>
 
 <body>
