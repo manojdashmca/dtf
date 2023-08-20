@@ -291,12 +291,12 @@ class PipelineModel extends Model
     }
 
     public function getDmadataInfo($dma_id){
-        $sql = "SELECT * FROM zone_master WHERE id = '$dma_id';";
+        $sql = "SELECT id,dma_no,area_name,dft_complete_m_y,dft_target_date_completion,SUM(population) AS total_population, SUM(no_house_holds) AS house_holds, SUM(no_house_coction) AS total_house_connection,SUM(no_metered_house_connections) AS total_meter_connection,FLOOR((SUM(no_house_coction) / SUM(no_house_holds) * 100)) AS house_connection_percentage,(FLOOR(SUM(no_metered_house_connections) / SUM(no_house_holds) * 100)) AS metered_connections_percentage,nrw FROM zone_master WHERE id = '$dma_id';";
         $result = $this->db->query($sql);
         $return = $result->getRow();
 
         return $return;
     }
 
-
+    
 }
