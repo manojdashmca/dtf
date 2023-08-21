@@ -42,6 +42,52 @@
 .vertical-tab-left button.active {
     background: #2a68c7!important;
 }
+
+/* nrw css */
+
+
+/* chart formatting */
+.grid-chart-nrw {
+  /* background-image: linear-gradient(to top, #444, #111); */
+  padding: 0.5rem;
+  border-radius: 3px;
+}
+  .chart-label {
+    text-align: center;
+    font-size: 1.3rem;
+  }
+  .bar-chart-nrw {
+    /* //height: 250px; */
+    padding-top: 2em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(1.5em, 1fr));
+    grid-gap: 4px;
+    align-items: end;
+  }
+  .bar-nrw {
+    background-color: rgba(0, 255, 127, 0.5);
+    position: relative;
+    border-radius: 3px 3px 0 0;
+    max-height: 200px;
+  }
+    .bar-label-nrw {
+      text-align: center;
+      width: 100%;
+      position: absolute;
+      top: -1.2em;
+      left: 0;
+      color: #2c5da7;
+    }
+  /* } */
+  .item-label-nrw {
+    display: block;
+    color: #2c5da7;
+    font-size: 0.8em;
+    text-align: center;
+    padding: 4px 0 1em 0;
+  }
+/* } */
+
     </style>
 </head>
 
