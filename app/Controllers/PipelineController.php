@@ -125,7 +125,6 @@ class PipelineController extends WebController {
         }
 
         public function getDmaInfo() {
-// print_r("Test Chitta");die;
             $allDmainfo = $this->pipelineModel->getAllDmainfo();
             echo json_encode($allDmainfo);
         }
@@ -134,8 +133,69 @@ class PipelineController extends WebController {
             $this->data['title'] = 'Pipeline Dashboard';
             $this->data['css']='';
             $this->data['js']='';
-            // $this->data['alldivisionname']=$this->pipelineModel->getAllDivisionName();
+            $this->data['alldivisionname']=$this->pipelineModel->getAllDivisionName();
             return view('templates/dma-home', $this->data);
+        }
+
+        public function InsertDmaData() {
+            extract($_POST);
+            $res = "";
+            if($z_division_id == "")
+            {
+                $res = array("res" => "enterDivision");
+            } 
+            elseif($z_citys == "")
+            {
+                $res = array("res" => "enterCity");
+            }elseif($z_zone == "")
+            {
+                $res = array("res" => "enterZone");
+            }elseif($z_area_name == "")
+            {
+                $res = array("res" => "enterArea");
+            }elseif($z_population == "")
+            {
+                $res = array("res" => "enterPopulation");
+            }elseif($z_no_of_house_holds == "")
+            {
+                $res = array("res" => "enterHouseHold");
+            }elseif($z_house_connection_replaced == "")
+            {
+                $res = array("res" => "enterHouseConnectionReplaced");
+            }elseif($z_house_connection == "")
+            {
+                $res = array("res" => "enterHouseConnection");
+            }elseif($z_meter_connection == "")
+            {
+                $res = array("res" => "enterMeterConnection");
+            }elseif($z_dft_complete_month_year == "")
+            {
+                $res = array("res" => "enterDftCompleteMonthYear");
+            }elseif($z_dft_target_date == "")
+            {
+                $res = array("res" => "enterDftTargetDate");
+            }elseif($z_nrw == "")
+            {
+                $res = array("res" => "enterNrw");
+            }else {
+                $checkDuplicateCity = array();
+                $checkDuplicateCity = $this->pipelineModel->checkDuplicateDma($z_division_id,$z_citys,$z_zone);
+                if(!empty($checkDuplicateCity)){
+                        $res = array("res" => "exist", "dma_name" => $z_zone);
+                }else{
+                    $insertCityTable = $this->pipelineModel->insertDmaTable($z_division_id,$z_citys,$z_zone,$z_area_name,$z_population,$z_no_of_house_holds,$z_house_connection_replaced,$z_house_connection,$z_meter_connection,$z_dft_complete_month_year,$z_dft_target_date,$z_nrw);
+                    if($insertCityTable)
+                    {
+                        $res = array("res" => "success", "dma_name" => $z_zone);
+                    }
+                    else
+                    {
+                        $res = array("res" => "failed", "dma_name" => $z_zone);
+                    }
+                }
+            }
+            // print_r($res);die;
+            echo json_encode($res);  
         }
 
 

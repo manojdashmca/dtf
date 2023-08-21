@@ -298,5 +298,33 @@ class PipelineModel extends Model
         return $return;
     }
 
+    public function insertCityTabled($division_id, $city_name)
+    {
+        $sql = "INSERT INTO pl_citys(division_id,city_name)VALUES('$division_id','$city_name')";
+        $result = $this->db->query($sql);
+
+        return $result;
+        $this->db->close();
+    }
+
+    public function checkDuplicateDma($z_division_id,$z_citys,$z_zone)
+    {
+        $sql = "SELECT dma_no from zone_master WHERE division_id = '$z_division_id' AND city_id='$z_citys' AND dma_no = '$z_zone';";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        return $return;
+        $this->db->close();
+    }
+
+    public function insertDmaTable($z_division_id,$z_citys,$z_zone,$z_area_name,$z_population,$z_no_of_house_holds,$z_house_connection_replaced,$z_house_connection,$z_meter_connection,$z_dft_complete_month_year,$z_dft_target_date,$z_nrw)
+    {
+        $sql = "INSERT INTO zone_master(division_id,city_id,dma_no,area_name,`population`,no_house_holds,no_house_coction,no_house_connection_replaced,no_metered_house_connections,dft_complete_m_y,dft_target_date_completion,nrw)VALUES('$z_division_id','$z_citys','$z_zone','$z_area_name','$z_population','$z_no_of_house_holds','$z_house_connection_replaced','$z_house_connection','$z_meter_connection','$z_dft_complete_month_year','$z_dft_target_date','$z_nrw')";
+        // print_r($sql);die;
+        $result = $this->db->query($sql);
+
+        return $result;
+        $this->db->close();
+    }
+
     
 }
