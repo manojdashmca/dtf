@@ -159,134 +159,124 @@
 
 
         <!-- Modal -->
-    <!-- Add  -->
-    <div class="modal fade modal-lg" id="showModalZone" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Add DMA/Zone Details :</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
-                </div>
-                <div class="modal-body p-5">
-                    <!-- Input with Placeholder -->
+        <!-- Add  -->
+        <div class="modal fade modal-lg" id="showModalZone" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel">Add DMA/Zone Details :</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                    </div>
+                    <div class="modal-body p-5">
+                        <!-- Input with Placeholder -->
 
-                    <form method="post" id="adddmazonedata" onsubmit="addDMAZonedata()"> 
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <div class="mb-3">
-                                        <p class="text-muted">Select District <span class="text-danger">*</span> :</p>
-                                        <select class="form-control" name="z_district_id" id="z_district_id">
-                                            <option value="">Select District</option>
-                                        </select>
+                        <form method="post" id="adddmazonedata">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Select District <span class="text-danger">*</span> :</p>
+                                            <select class="form-control" name="z_division_id" id="z_division_id">
+                                                <option value="">Select District</option>
+                                                <?php for ($x = 0; $x < count($alldivisionname); $x++) { ?>
+                                                    <option value='<?= $alldivisionname[$x]->id ?>' <?= ($city == $alldivisionname[$x]->id) ? 'selected="selected"' : '' ?>><?= $alldivisionname[$x]->division_name ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <div class="mb-3">
-                                        <p class="text-muted">Select City <span class="text-danger">*</span> :</p>
-                                        <select class="form-control" name="z_citys" id="z_citys">
-                                            <option value="">Select City</option>
-                                        </select>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Select City <span class="text-danger">*</span> :</p>
+                                            <select class="form-control" name="z_citys" id="z_citys">
+                                                <option value="">Select City</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <div class="mb-3">
-                                        <p class="text-muted">Select DMA / Zone <span class="text-danger">*</span> :</p>
-                                        <input type="text" class="form-control" name="z_zone" id="z_zone">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Select DMA / Zone <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="z_zone" id="z_zone">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <div class="mb-3">
-                                        <p class="text-muted">Area Name : <span class="text-danger">*</span> :</p>
-                                        <input type="text" class="form-control" name="z_area_name" id="z_area_name">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Area Name : <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="z_area_name" id="z_area_name">
+                                        </div>
                                     </div>
-                                </div>
 
 
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Population : <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="z_population" id="z_population">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <p class="text-muted">No. of House Holds : <span class="text-danger">*</span> :
+                                            </p>
+                                            <input type="text" class="form-control" name="z_no_of_house_holds" id="z_no_of_house_holds">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <p class="text-muted">No. of House Connections : <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="z_house_connection" id="z_house_connection">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <p class="text-muted">No. of House Connections replaced : <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="z_house_connection_replaced" id="z_house_connection_replaced">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <p class="text-muted">No. of Metered House Connections : <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="z_meter_connection" id="z_meter_connection">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <p>Status of Commissioning of DFT</p>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Completed (Month & year) : <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="z_dft_complete_month_year" id="z_dft_complete_month_year">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <p class="text-muted">In progress (Target Date of Completion) : <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="z_dft_target_date" id="z_dft_target_date">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <p class="text-muted">NRW (%) : <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="z_nrw" id="z_nrw">
+                                        </div>
+                                    </div>
+
+
+                                </div>
                             </div>
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <p class="text-muted">Population : <span class="text-danger">*</span> :</p>
-                                        <input type="text" class="form-control" name="z_population" id="z_population">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <p class="text-muted">No. of House Holds : <span class="text-danger">*</span> :
-                                        </p>
-                                        <input type="text" class="form-control" name="z_no_of_house_holds"
-                                            id="z_no_of_house_holds">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <p class="text-muted">No. of House Connections : <span
-                                                class="text-danger">*</span> :</p>
-                                        <input type="text" class="form-control" name="z_house_connection"
-                                            id="z_house_connection">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <p class="text-muted">No. of House Connections replaced : <span
-                                                class="text-danger">*</span> :</p>
-                                        <input type="text" class="form-control" name="z_house_connection_replaced"
-                                            id="z_house_connection_replaced">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <p class="text-muted">No. of Metered House Connections : <span
-                                                class="text-danger">*</span> :</p>
-                                        <input type="text" class="form-control" name="z_meter_connection"
-                                            id="z_meter_connection">
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <p>Status of Commissioning of DFT</p>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <p class="text-muted">Completed (Month & year) : <span
-                                                class="text-danger">*</span> :</p>
-                                        <input type="text" class="form-control" name="z_dft_complete_month_year"
-                                            id="z_dft_complete_month_year">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <p class="text-muted">In progress (Target Date of Completion) : <span
-                                                class="text-danger">*</span> :</p>
-                                        <input type="text" class="form-control" name="z_dft_target_date"
-                                            id="z_dft_target_date">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <p class="text-muted">NRW (%) : <span class="text-danger">*</span> :</p>
-                                        <input type="text" class="form-control" name="z_nrw" id="z_nrw">
-                                    </div>
-                                </div>
 
-
+                            <div class="mt-4">
+                                <div class="hstack gap-2 justify-content-center">
+                                    <a href="javascript:void(0);" class="btn btn-link link-success fw-medium" data-bs-dismiss="modal"><i class="ri-close-line me-1 align-middle"></i> Close</a>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
 
-                        <div class="mt-4">
-                            <div class="hstack gap-2 justify-content-center">
-                                <a href="javascript:void(0);" class="btn btn-link link-success fw-medium"
-                                    data-bs-dismiss="modal"><i class="ri-close-line me-1 align-middle"></i> Close</a>
-                                <button type="submit" class="btn btn-success">Submit</button>
-                            </div>
-                        </div>
-                    </form>
-
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
 

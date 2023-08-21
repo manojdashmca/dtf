@@ -121,6 +121,9 @@ $routes->match(['get', 'post'], 'dmaZoneDashboard', 'pipeLineDashboardController
 $routes->match(['get', 'post'], 'getAllDmaInfoDashboardOnCity', 'pipeLineDashboardController::getAllDmaInfoDashboardOnCity');
 $routes->match(['get', 'post'], 'getAllDmaInfoOnCity', 'pipeLineDashboardController::getAllDmaInfoOnCity');
 
+// Dma Master 
+$routes->match(['get', 'post'], 'addnewdmainfo', 'PipelineController::InsertDmaData');
+
 
 // $routes->match(['get', 'post'], 'getCityTableData', 'PipelineController::getCityTableData');
 

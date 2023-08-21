@@ -142,7 +142,7 @@
                     <!-- <span class="float-end">75%</span> -->
                     <div class="card-header text-center">
                         <!-- <span class="float-end">75%</span> -->
-                        <h6 class="card-title mb-0">NRW <span class="badge bg-danger align-middle fs-10">Last Updated Date: 11-04-2023</span></h6>
+                        <h6 class="card-title mb-0">NRW <span class="badge bg-danger align-middle fs-10">Last Updated: 11-04-2023</span></h6>
                     </div>
                     <div class="card-body">
                         <div class="row">
