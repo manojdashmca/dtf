@@ -84,9 +84,8 @@ $('#z_division_id').change(function () {
     var dma_division_id = $(this).val();
     $.post("getCitiesinDivision", { division_id: dma_division_id }, function (data) {
         var division_dma_data = JSON.parse(data);
-        $('#z_citys').html('<option value="">Loading...</option>');
+        $('#z_citys').html('<option value="">Select City</option>');
         $.each(division_dma_data, function (key, value) {
-            $('#z_citys').html('<option value="">Select City</option>');
             $('#z_citys').append('<option value="' + value.id + '">' + value.city_name + '</option>');
         });
     });
