@@ -2,7 +2,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-1"></div>
-			<div class="col-lg-11"><a href="pipe-dashboard" class="btn btn-dark btn-sm">Home</a></div>
+			<div class="col-lg-11"><a href="pipe-dashboard" class="btn btn-info btn-sm">Home</a></div>
 		</div>
 		<div class="row">
 
@@ -2056,9 +2056,9 @@
 
 
 							<div class="row mb-2">
-								<div class="col-12">
+								<div class="col-8">
 									<div>
-										<label for="" style="font-size: 20px;"><b>DIVISION</b> : </label>
+										<label for="" style="font-size: 20px;"><b class="text-info">DIVISION</b> : </label>
 
 										<select name='divisions_home_all' id='divisions_home_all' class="form-control" style="max-width: 200px;display: inline-block;">
 
@@ -2069,6 +2069,9 @@
 										</select>
 									</div>
 
+								</div>
+								<div class="col-4">
+									<a href="revewnuecolected?id=1" class="btn btn-info btn-sm">Explore Division</a>
 								</div>
 							</div>
 
@@ -2085,7 +2088,7 @@
 								<div class="col-sm-4 col-6">
 									<div class="map-box2">
 
-										<a href="#" class="content">
+										<a href="dmaZoneDashboard" class="content">
 											<h3 id="h_no_dma"><?= $allstataedata[0]->total_dma ?></h3>
 											<p>Nos. of DMAs</p>
 										</a>
