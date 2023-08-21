@@ -249,9 +249,111 @@
                                     </div><!-- end card header -->
 
                                     <div class="card-body p-0 pb-2">
-                                        <div class="w-100">
-                                            <div id="customer_impression_charts" data-colors='["--tb-dark", "--tb-primary", "--tb-secondary"]' class="apex-charts" dir="ltr"></div>
-                                        </div>
+                                    <div class="grid-chart-nrw">
+            <!-- <div class="chart-label">Hits per Hour, Yesterday</div> -->
+            <div class="bar-chart-nrw">
+                <div class="item">
+                    <div class="bar-nrw" style="height: 200px;" title="200 (100%)"><span class="bar-label-nrw">100%</span></div>
+                    <span class="item-label-nrw">Jan5</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw" style="height: 196px;" title="12 (17%)"><span class="bar-label-nrw">98%</span></div>
+                    <span class="item-label-nrw">Feb8</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw" style="height: 170px;" title="13 (18%)"><span class="bar-label-nrw">85%</span></div>
+                    <span class="item-label-nrw">Mar8</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw" style="height: 160px;" title="10 (14%)"><span class="bar-label-nrw">80%</span></div>
+                    <span class="item-label-nrw">Apr10</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw" style="height: 150px;" title="30 (42%)"><span class="bar-label-nrw">75%</span></div>
+                    <span class="item-label-nrw">May11</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw" style="height: 130px;" title="31 (43%)"><span class="bar-label-nrw">65%</span></div>
+                    <span class="item-label-nrw">June11</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw" style="height: 108px;" title="54 (74%)"><span class="bar-label-nrw">54%</span></div>
+                    <span class="item-label-nrw">July12</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw warning" style="height: 80px;" title="65 (90%)"><span class="bar-label-nrw">40%</span>
+                    </div>
+                    <span class="item-label-nrw">Aug8</span>
+                </div>
+                <!-- <div class="item">
+                    <div class="bar-nrw danger" style="height: 200px;" title="73 (100%)"><span class="bar-label-nrw">73</span>
+                    </div>
+                    <span class="item-label-nrw">08</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw warning" style="height: 187px;" title="68 (94%)"><span class="bar-label-nrw">68</span>
+                    </div>
+                    <span class="item-label-nrw">09</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw warning" style="height: 198px;" title="72 (99%)"><span class="bar-label-nrw">72</span>
+                    </div>
+                    <span class="item-label-nrw">10</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw" style="height: 168px;" title="61 (84%)"><span class="bar-label-nrw">61</span></div>
+                    <span class="item-label-nrw">11</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw" style="height: 168px;" title="61 (84%)"><span class="bar-label-nrw">61</span></div>
+                    <span class="item-label-nrw">12</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw" style="height: 157px;" title="57 (79%)"><span class="bar-label-nrw">57</span></div>
+                    <span class="item-label-nrw">13</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw" style="height: 132px;" title="48 (66%)"><span class="bar-label-nrw">48</span></div>
+                    <span class="item-label-nrw">14</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw" style="height: 151px;" title="55 (76%)"><span class="bar-label-nrw">55</span></div>
+                    <span class="item-label-nrw">15</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw" style="height: 168px;" title="61 (84%)"><span class="bar-label-nrw">61</span></div>
+                    <span class="item-label-nrw">16</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw" style="height: 162px;" title="59 (81%)"><span class="bar-label-nrw">59</span></div>
+                    <span class="item-label-nrw">17</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw" style="height: 113px;" title="41 (57%)"><span class="bar-label-nrw">41</span></div>
+                    <span class="item-label-nrw">18</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw" style="height: 127px;" title="46 (64%)"><span class="bar-label-nrw">46</span></div>
+                    <span class="item-label-nrw">19</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw" style="height: 94px;" title="34 (47%)"><span class="bar-label-nrw">34</span></div>
+                    <span class="item-label-nrw">20</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw" style="height: 96px;" title="35 (48%)"><span class="bar-label-nrw">35</span></div>
+                    <span class="item-label-nrw">21</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw" style="height: 85px;" title="31 (43%)"><span class="bar-label-nrw">31</span></div>
+                    <span class="item-label-nrw">22</span>
+                </div>
+                <div class="item">
+                    <div class="bar-nrw" style="height: 44px;" title="16 (22%)"><span class="bar-label-nrw">16</span></div>
+                    <span class="item-label-nrw">23</span>
+                </div> -->
+            </div> <!-- /.bar-chart-nrw -->
+        </div> 
                                     </div><!-- end card body -->
                                 </div><!-- end card -->
                             </div>
