@@ -66,6 +66,17 @@
 .progress-bar-round::before {
   content: attr(data-progress);
 }
+
+@media screen and (max-width: 1180px) {
+  .construction_progress1 {
+    display: none;
+  }
+}
+@media screen and (min-width: 1180px) {
+  .construction_progress2 {
+    display: none;
+  }
+}
     </style>
 </head>
 

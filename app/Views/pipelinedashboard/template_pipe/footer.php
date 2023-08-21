@@ -10,6 +10,13 @@
 			</div>
 		</div>
 	</footer>
+	<div class="back-btn" style="z-index: 16;">
+		<a href="pipe-dashboard" class="btn btn-primary p-0 avatar-sm rounded-circle" data-bs-toggle="tooltip" data-bs-title="Back to Dashboard">
+			<div class="avatar-title rounded-circle">
+				<i class="bi bi-house-door-fill"></i>
+			</div>
+		</a>
+	</div>
 	<!--Font Accessibility-->
 	<!-- <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script> -->
 	<script src="js/jquery.font-accessibility.min.js"></script>

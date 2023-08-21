@@ -62,14 +62,14 @@
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <p style="background:#cc4647;padding-left: 15px;color: white;">HOUSE CONNECTION TARGET | <span class="dma_house_con_target text-white"></span></p>
-                <p style="background:#cc4647;padding-left: 15px;color: white;">HOUSE CONNECTION COMPLETE | <span class="dma_house_con_complete text-white"></span></p>
-                <p style="background:#cc4647;padding-left: 15px;color: white;">HOUSE CONNECTION COMPLETE % | <span class="dma_house_connection_d_persentage_text text-white"></span></p>
+                <p style="background:#cc4647;padding-left: 15px;color: white;">HOUSE CONNECTION TARGET | <span class="dma_house_con_target text-white" style="background: #2966bb;float: right;width: 20%;text-align: center;"></span></p>
+                <p style="background:#cc4647;padding-left: 15px;color: white;">HOUSE CONNECTION COMPLETE | <span class="dma_house_con_complete text-white" style="background: #2966bb;float: right;width: 20%;text-align: center;"></span></p>
+                <p style="background:#cc4647;padding-left: 15px;color: white;">HOUSE CONNECTION COMPLETE % | <span class="dma_house_connection_d_persentage_text text-white" style="background: #2966bb;float: right;width: 20%;text-align: center;"></span></p>
             </div>
             <div class="col-lg-6">
-                <p style="background:#cc4647;padding-left: 15px;color: white;">METER CONNECTION TARGET | <span class="dma_meter_con_target text-white"></span></p>
-                <p style="background:#cc4647;padding-left: 15px;color: white;">METER CONNECTION COMPLETE | <span class="dma_meter_con_complete text-white"></span></p>
-                <p style="background:#cc4647;padding-left: 15px;color: white;">METER CONNECTION COMPLETE % | <span class="dma_meter_connection_d_persentage_text text-white"></span></p>
+                <p style="background:#cc4647;padding-left: 15px;color: white;">METER CONNECTION TARGET | <span class="dma_meter_con_target text-white" style="background: #2966bb;float: right;width: 20%;text-align: center;"></span></p>
+                <p style="background:#cc4647;padding-left: 15px;color: white;">METER CONNECTION COMPLETE | <span class="dma_meter_con_complete text-white" style="background: #2966bb;float: right;width: 20%;text-align: center;"></span></p>
+                <p style="background:#cc4647;padding-left: 15px;color: white;">METER CONNECTION COMPLETE % | <span class="dma_meter_connection_d_persentage_text text-white" style="background: #2966bb;float: right;width: 20%;text-align: center;"></span></p>
             </div>
         </div>
         <div class="row">
@@ -139,7 +139,11 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="card">
-                    <div class="card-header text-center">NRW</div>
+                    <!-- <span class="float-end">75%</span> -->
+                    <div class="card-header text-center">
+                        <!-- <span class="float-end">75%</span> -->
+                        <h6 class="card-title mb-0">NRW <span class="badge bg-danger align-middle fs-10">Last Updated Date: 11-04-2023</span></h6>
+                    </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-6 text-center">
@@ -166,6 +170,6 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 </div>
