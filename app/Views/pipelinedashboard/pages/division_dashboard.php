@@ -1,4 +1,4 @@
-<section id="carouselExampleIndicators" class="map-section carousel slide" data-ride="carousel">
+<section id="carouselExampleIndicators" class="map-section carousel slide" data-ride="carousel" style="margin-bottom: 31px;">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-1"></div>
@@ -2141,9 +2141,18 @@
 											</div>
 							
 								</div>
+
 								<div class="col-sm-4 col-6">
 									<div class="map-con">
 										<a href="https://goo.gl/maps/i1U8xaprdy9bdiAy7" target="_blank"><img id="division_district_image" src="images/Map/default_division.png" alt="" title="" style="width: 100%;"></a>
+									</div>
+								</div>
+								<div class="col-sm-4 col-6 construction_progress2">
+									<div class="map-box2">
+										<a href="#" class="content bg-info text-white">
+											<h3 id="">45%</h3>
+											<p>Construction Progress</p>
+										</a>
 									</div>
 								</div>
 
@@ -2160,5 +2169,15 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="back-btn construction_progress1" style="position: absolute;
+    bottom: 234px;
+    left: 390px;">
+		<a href="pipe-dashboard" class="btn btn-primary p-0 avatar-sm rounded-circle" data-bs-toggle="tooltip" data-bs-title="Back to Dashboard" style="height: 5rem;
+    width: 7rem;font-size: smaller;">
+			<div class="avatar-title rounded-circle">
+				<i>Construction <br> Progress <br> 45%</i>
+			</div>
+		</a>
 	</div>
 </section>

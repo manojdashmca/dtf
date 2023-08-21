@@ -114,7 +114,7 @@ $(document).ready(function () {
             $('#dma_zone_dash').html('<option value="">Loading...</option>');
             $.post("getCitiesinDivision", { division_id: division_id }, function (data) {
                 $('#city_dashboard_city').html('<option value="">Select City</option>');
-                $('#dma_zone_dash').html('<option value="">Select Dma</option>');
+                $('#dma_zone_dash').html('<option value="">Select DMA</option>');
                 var ddata = JSON.parse(data);
                 $.each(ddata, function (key, value) {
 
@@ -157,7 +157,7 @@ $(document).ready(function () {
         var city_d_id = $(this).val();
             $('#dma_zone_dash').html('<option value="">Loading...</option>');
             $.post("getAllDmaInfoDashboardOnCity", { city_id: city_d_id }, function (data) {
-                $('#dma_zone_dash').html('<option value="">Select City</option>');
+                $('#dma_zone_dash').html('<option value="">Select DMA</option>');
                 var city_das_data = JSON.parse(data);
                 $.each(city_das_data, function (key, value) {
                     $('#dma_zone_dash').append('<option value="' + value.id + '">' + value.dma_no + '</option>');

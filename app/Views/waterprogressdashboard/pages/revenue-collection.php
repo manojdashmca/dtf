@@ -4,7 +4,7 @@
 <!-- Start right Content here -->
 <!-- ============================================================== -->
 <div class="main-content">
-    
+
 
     <div class="page-content">
         <div class="tab-wrapper">
@@ -12,9 +12,9 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                        <?php
-                        require_once __DIR__ . '/selectd.php';
-                        ?>
+                            <?php
+                            require_once __DIR__ . '/selectd.php';
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -26,8 +26,10 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header border-0 align-items-center d-flex">
+                                    <a class="btn btn-info btn-sm" href="dashboard">Construction</a>  
                                         <h4 class="card-title mb-0 flex-grow-1">Overall progress | Component
                                             wise progress</h4>
+                                            
                                         <div>
                                             <button type="button" class="btn btn-soft-secondary btn-sm">
                                                 ALL
@@ -58,169 +60,169 @@
                     <!-- container-fluid -->
                 </div>
                 <div class="tab-pane fade" id="v-pills-HouseConnection" role="tabpanel" aria-labelledby="v-pills-HouseConnection-tab" tabindex="0">
-                <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="h-100">
-                        <div class="card card-animate">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between"> 
-                                    <div class="flex-grow-1">
-                                        <p class="text-uppercase fw-medium text-muted text-truncate fs-13" id="pmcondashheading">
-                                            No of City</p>
-                                        <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcd"><?= $pipe_meter_landing['no_of_city']; ?></span></h4>
-                                    </div>
-                                    <div class="avatar-sm flex-shrink-0">
-                                        <span class="avatar-title blue-bg rounded fs-3">
-                                            <i class="bx bx-water"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div><!-- end card body -->
-                            <div class="animation-effect-6 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="h-100">
+                                    <div class="card card-animate">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="flex-grow-1">
+                                                    <p class="text-uppercase fw-medium text-muted text-truncate fs-13" id="pmcondashheading">
+                                                        No of City</p>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcd"><?= $pipe_meter_landing['no_of_city']; ?></span></h4>
+                                                </div>
+                                                <div class="avatar-sm flex-shrink-0">
+                                                    <span class="avatar-title blue-bg rounded fs-3">
+                                                        <i class="bx bx-water"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div><!-- end card body -->
+                                        <div class="animation-effect-6 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                        <div class="animation-effect-4 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                        <div class="animation-effect-3 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                    </div><!-- end card -->
+
+                                </div> <!-- end .h-100-->
+
+                            </div> <!-- end col -->
+                            <div class="col-md-4">
+                                <div class="h-100">
+                                    <div class="card card-animate">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="flex-grow-1">
+                                                    <p class="text-uppercase fw-medium text-muted text-truncate fs-13">Population</p>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdpopulation"><?= $pipe_meter_landing['division_population']; ?></span></h4>
+
+                                                </div>
+                                                <div class="avatar-sm flex-shrink-0">
+                                                    <span class="avatar-title blue-bg rounded fs-3">
+                                                        <i class="bx bx-water"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div><!-- end card body -->
+                                        <div class="animation-effect-6 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                        <div class="animation-effect-4 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                        <div class="animation-effect-3 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                    </div><!-- end card -->
+
+                                </div> <!-- end .h-100-->
+
+                            </div> <!-- end col -->
+                            <div class="col-md-4">
+                                <div class="h-100">
+                                    <div class="card card-animate">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="flex-grow-1">
+                                                    <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
+                                                        Total Household</p>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdhousehold"><?= $pipe_meter_landing['division_household']; ?></span></h4>
+
+                                                </div>
+                                                <div class="avatar-sm flex-shrink-0">
+                                                    <span class="avatar-title blue-bg rounded fs-3">
+                                                        <i class="bx bx-water"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div><!-- end card body -->
+                                        <div class="animation-effect-6 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                        <div class="animation-effect-4 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                        <div class="animation-effect-3 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                    </div><!-- end card -->
+
+                                </div> <!-- end .h-100-->
+
+                            </div> <!-- end col -->
+                            <div class="col-md-4">
+                                <div class="h-100">
+                                    <div class="card card-animate">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="flex-grow-1">
+                                                    <p class="text-uppercase fw-medium text-muted text-truncate fs-13">House Connnection Completed</p>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdhousecomplete"><?= $pipe_meter_landing['division_house_connection']; ?></span></h4>
+
+                                                </div>
+                                                <div class="avatar-sm flex-shrink-0">
+                                                    <span class="avatar-title blue-bg rounded fs-3">
+                                                        <i class="bx bx-water"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div><!-- end card body -->
+                                        <div class="animation-effect-6 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                        <div class="animation-effect-4 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                        <div class="animation-effect-3 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                    </div><!-- end card -->
+
+                                </div> <!-- end .h-100-->
+
                             </div>
-                            <div class="animation-effect-4 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
+
+                            <div class="col-md-4">
+                                <div class="h-100">
+                                    <div class="card card-animate">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="flex-grow-1">
+                                                    <p class="text-uppercase fw-medium text-muted text-truncate fs-13">Meter Connnection Completed </p>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdmetercomplete"><?= $pipe_meter_landing['division_meter_connection']; ?></span></h4>
+
+                                                </div>
+                                                <div class="avatar-sm flex-shrink-0">
+                                                    <span class="avatar-title blue-bg rounded fs-3">
+                                                        <i class="bx bx-water"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div><!-- end card body -->
+                                        <div class="animation-effect-6 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                        <div class="animation-effect-4 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                        <div class="animation-effect-3 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                    </div><!-- end card -->
+
+                                </div> <!-- end .h-100-->
+
                             </div>
-                            <div class="animation-effect-3 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                        </div><!-- end card -->
 
-                    </div> <!-- end .h-100-->
+                        </div>
 
-                </div> <!-- end col -->
-                <div class="col-md-4">
-                    <div class="h-100">
-                        <div class="card card-animate">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div class="flex-grow-1">
-                                        <p class="text-uppercase fw-medium text-muted text-truncate fs-13">Population</p>
-                                        <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdpopulation"><?= $pipe_meter_landing['division_population']; ?></span></h4>
-
-                                    </div>
-                                    <div class="avatar-sm flex-shrink-0">
-                                        <span class="avatar-title blue-bg rounded fs-3">
-                                            <i class="bx bx-water"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div><!-- end card body -->
-                            <div class="animation-effect-6 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                            <div class="animation-effect-4 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                            <div class="animation-effect-3 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                        </div><!-- end card -->
-
-                    </div> <!-- end .h-100-->
-
-                </div> <!-- end col -->
-                <div class="col-md-4">
-                    <div class="h-100">
-                        <div class="card card-animate">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div class="flex-grow-1">
-                                        <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
-                                            Total Household</p>
-                                        <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdhousehold"><?= $pipe_meter_landing['division_household']; ?></span></h4>
-
-                                    </div>
-                                    <div class="avatar-sm flex-shrink-0">
-                                        <span class="avatar-title blue-bg rounded fs-3">
-                                            <i class="bx bx-water"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div><!-- end card body -->
-                            <div class="animation-effect-6 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                            <div class="animation-effect-4 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                            <div class="animation-effect-3 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                        </div><!-- end card -->
-
-                    </div> <!-- end .h-100-->
-
-                </div> <!-- end col -->
-                <div class="col-md-4">
-                    <div class="h-100">
-                        <div class="card card-animate">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div class="flex-grow-1">
-                                        <p class="text-uppercase fw-medium text-muted text-truncate fs-13">House Connnection Completed</p>
-                                        <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdhousecomplete"><?= $pipe_meter_landing['division_house_connection']; ?></span></h4>
-
-                                    </div>
-                                    <div class="avatar-sm flex-shrink-0">
-                                        <span class="avatar-title blue-bg rounded fs-3">
-                                            <i class="bx bx-water"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div><!-- end card body -->
-                            <div class="animation-effect-6 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                            <div class="animation-effect-4 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                            <div class="animation-effect-3 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                        </div><!-- end card -->
-
-                    </div> <!-- end .h-100-->
-
-                </div>
-
-                <div class="col-md-4">
-                    <div class="h-100">
-                        <div class="card card-animate">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div class="flex-grow-1">
-                                        <p class="text-uppercase fw-medium text-muted text-truncate fs-13">Meter Connnection Completed </p>
-                                        <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdmetercomplete"><?= $pipe_meter_landing['division_meter_connection']; ?></span></h4>
-
-                                    </div>
-                                    <div class="avatar-sm flex-shrink-0">
-                                        <span class="avatar-title blue-bg rounded fs-3">
-                                            <i class="bx bx-water"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div><!-- end card body -->
-                            <div class="animation-effect-6 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                            <div class="animation-effect-4 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                            <div class="animation-effect-3 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                        </div><!-- end card -->
-
-                    </div> <!-- end .h-100-->
-
-                </div>
-
-            </div>
-
-        </div>
+                    </div>
                     <!-- container-fluid -->
                 </div>
                 <div class="tab-pane fade" id="v-pills-NRW" role="tabpanel" aria-labelledby="v-pills-NRW-tab" tabindex="0">
@@ -259,143 +261,139 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="v-pills-JalSathi" role="tabpanel" aria-labelledby="v-pills-JalSathi-tab" tabindex="0">
-                <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="h-100">
-                        <div class="card card-animate">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div class="flex-grow-1">
-                                        <p class="text-uppercase fw-medium text-muted text-truncate fs-13">Nos.
-                                            of Jalsathi</p>
-                                        <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value"
-                                                id="no_of_jalsathi">0</span></h4>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="h-100">
+                                    <div class="card card-animate">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="flex-grow-1">
+                                                    <p class="text-uppercase fw-medium text-muted text-truncate fs-13">Nos.
+                                                        of Jalsathi</p>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" id="no_of_jalsathi">0</span></h4>
 
-                                    </div>
-                                    <div class="avatar-sm flex-shrink-0">
-                                        <span class="avatar-title blue-bg rounded fs-3">
-                                            <i class="bx bx-water"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div><!-- end card body -->
-                            <div class="animation-effect-6 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
+                                                </div>
+                                                <div class="avatar-sm flex-shrink-0">
+                                                    <span class="avatar-title blue-bg rounded fs-3">
+                                                        <i class="bx bx-water"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div><!-- end card body -->
+                                        <div class="animation-effect-6 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                        <div class="animation-effect-4 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                        <div class="animation-effect-3 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                    </div><!-- end card -->
+
+                                </div> <!-- end .h-100-->
+
+                            </div> <!-- end col -->
+                            <div class="col-md-4">
+                                <div class="h-100">
+                                    <div class="card card-animate">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="flex-grow-1">
+                                                    <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
+                                                        Revenue collected by Jalsathi:</p>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" id="no_of_test_conducted_by_jalasathi">0</span></h4>
+
+                                                </div>
+                                                <div class="avatar-sm flex-shrink-0">
+                                                    <span class="avatar-title blue-bg rounded fs-3">
+                                                        <i class="bx bx-water"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div><!-- end card body -->
+                                        <div class="animation-effect-6 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                        <div class="animation-effect-4 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                        <div class="animation-effect-3 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                    </div><!-- end card -->
+
+                                </div> <!-- end .h-100-->
+
                             </div>
-                            <div class="animation-effect-4 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
+
+                            <div class="col-md-4">
+                                <div class="h-100">
+                                    <div class="card card-animate">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="flex-grow-1">
+                                                    <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
+                                                        Incentive paid to Jalsathi</p>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" id="incentive_paid_to_jalsathi">0</span></h4>
+
+                                                </div>
+                                                <div class="avatar-sm flex-shrink-0">
+                                                    <span class="avatar-title blue-bg rounded fs-3">
+                                                        <i class="bx bx-water"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div><!-- end card body -->
+                                        <div class="animation-effect-6 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                        <div class="animation-effect-4 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                        <div class="animation-effect-3 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                    </div><!-- end card -->
+
+                                </div> <!-- end .h-100-->
+
                             </div>
-                            <div class="animation-effect-3 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
+                            <div class="col-md-4">
+                                <div class="h-100">
+                                    <div class="card card-animate">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="flex-grow-1">
+                                                    <p class="text-uppercase fw-medium text-muted text-truncate fs-13">Nos.
+                                                        of test conducted by Jalsathi</p>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" id="revenue_collected_by_jalasathi">0</span></h4>
+
+                                                </div>
+                                                <div class="avatar-sm flex-shrink-0">
+                                                    <span class="avatar-title blue-bg rounded fs-3">
+                                                        <i class="bx bx-water"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div><!-- end card body -->
+                                        <div class="animation-effect-6 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                        <div class="animation-effect-4 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                        <div class="animation-effect-3 text-success opacity-25 fs-18">
+                                            <i class=" bx bxs-droplet-half"></i>
+                                        </div>
+                                    </div><!-- end card -->
+
+                                </div> <!-- end .h-100-->
+
                             </div>
-                        </div><!-- end card -->
 
-                    </div> <!-- end .h-100-->
-
-                </div> <!-- end col -->
-                <div class="col-md-4">
-                    <div class="h-100">
-                        <div class="card card-animate">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div class="flex-grow-1">
-                                        <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
-                                            Revenue collected by Jalsathi:</p>
-                                        <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value"
-                                                id="no_of_test_conducted_by_jalasathi">0</span></h4>
-
-                                    </div>
-                                    <div class="avatar-sm flex-shrink-0">
-                                        <span class="avatar-title blue-bg rounded fs-3">
-                                            <i class="bx bx-water"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div><!-- end card body -->
-                            <div class="animation-effect-6 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                            <div class="animation-effect-4 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                            <div class="animation-effect-3 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                        </div><!-- end card -->
-
-                    </div> <!-- end .h-100-->
-
-                </div>
-
-                <div class="col-md-4">
-                    <div class="h-100">
-                        <div class="card card-animate">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div class="flex-grow-1">
-                                        <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
-                                            Incentive paid to Jalsathi</p>
-                                        <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value"
-                                                id="incentive_paid_to_jalsathi">0</span></h4>
-
-                                    </div>
-                                    <div class="avatar-sm flex-shrink-0">
-                                        <span class="avatar-title blue-bg rounded fs-3">
-                                            <i class="bx bx-water"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div><!-- end card body -->
-                            <div class="animation-effect-6 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                            <div class="animation-effect-4 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                            <div class="animation-effect-3 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                        </div><!-- end card -->
-
-                    </div> <!-- end .h-100-->
-
-                </div>
-                <div class="col-md-4">
-                    <div class="h-100">
-                        <div class="card card-animate">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div class="flex-grow-1">
-                                        <p class="text-uppercase fw-medium text-muted text-truncate fs-13">Nos.
-                                            of test conducted by Jalsathi</p>
-                                        <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value"
-                                                id="revenue_collected_by_jalasathi">0</span></h4>
-
-                                    </div>
-                                    <div class="avatar-sm flex-shrink-0">
-                                        <span class="avatar-title blue-bg rounded fs-3">
-                                            <i class="bx bx-water"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div><!-- end card body -->
-                            <div class="animation-effect-6 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                            <div class="animation-effect-4 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                            <div class="animation-effect-3 text-success opacity-25 fs-18">
-                                <i class=" bx bxs-droplet-half"></i>
-                            </div>
-                        </div><!-- end card -->
-
-                    </div> <!-- end .h-100-->
-
-                </div>
-
-                <!-- <div class="col-md-4">
+                            <!-- <div class="col-md-4">
                     <div class="h-100">
                         <div class="card card-animate">
                             <div class="card-body">
@@ -428,9 +426,9 @@
                     </div> 
 
                 </div> -->
-            </div>
+                        </div>
 
-        </div>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="v-pills-RevenueCollection" role="tabpanel" aria-labelledby="v-pills-RevenueCollection-tab" tabindex="0">
                     <div class="container-fluid">
