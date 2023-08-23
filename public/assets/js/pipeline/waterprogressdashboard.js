@@ -39,7 +39,7 @@ $(document).ready(function () {
                     // jalsathi 
                     $.post("getJalsathiConCity", { cit_id: city_id }, function (data_city_jalsathi) {
                         var jalsathi_ccity = JSON.parse(data_city_jalsathi);
-                        console.log(jalsathi_ccity);
+                        // console.log(jalsathi_ccity);
 
                         if (jalsathi_ccity != null) {
                             $('#no_of_jalsathi').text(jalsathi_ccity.no_of_jalasathi);
@@ -119,7 +119,7 @@ $(document).ready(function () {
                 $.each(ddata, function (key, value) {
 
                     $('#city_dashboard_city').append('<option value="' + value.id + '">' + value.city_name + '</option>');
-                    
+
 
                 });
             });
@@ -129,10 +129,10 @@ $(document).ready(function () {
     $('#city_dashboard_city').change(function () {
         $('#explore_division_city').show();
         var city_id_cd = $(this).val();
-        if(city_id_cd){
+        if (city_id_cd) {
             $.post("getCityDashboardById", { city_id: city_id_cd }, function (data_city_dash) {
                 var citydivisionctdata = JSON.parse(data_city_dash);
-                console.log(citydivisionctdata.house_connection_percentage);
+                // console.log(citydivisionctdata.house_connection_percentage);
                 $('#cd_no_dma').text(citydivisionctdata.no_of_dma);
                 $('#cd_no_ct_card').hide();
                 $('#cd_household').text(citydivisionctdata.house_holds);
@@ -145,7 +145,7 @@ $(document).ready(function () {
 
             });
         }
-        
+
 
     });
 });
@@ -155,24 +155,26 @@ $(document).ready(function () {
     $('#city_dashboard_city').change(function () {
         $('#dma_container_d').hide();
         var city_d_id = $(this).val();
-            $('#dma_zone_dash').html('<option value="">Loading...</option>');
-            $.post("getAllDmaInfoDashboardOnCity", { city_id: city_d_id }, function (data) {
-                $('#dma_zone_dash').html('<option value="">Select DMA</option>');
-                var city_das_data = JSON.parse(data);
-                $.each(city_das_data, function (key, value) {
-                    $('#dma_zone_dash').append('<option value="' + value.id + '">' + value.dma_no + '</option>');
-                });
+        $('#dma_zone_dash').html('<option value="">Loading...</option>');
+        $.post("getAllDmaInfoDashboardOnCity", { city_id: city_d_id }, function (data) {
+            $('#dma_zone_dash').html('<option value="">Select DMA</option>');
+            var city_das_data = JSON.parse(data);
+            $.each(city_das_data, function (key, value) {
+                $('#dma_zone_dash').append('<option value="' + value.id + '">' + value.dma_no + '</option>');
             });
+        });
     });
 
     $('#dma_zone_dash').change(function () {
         $('#dma_container_d').hide();
+        $('#inner_div .item:last-child').remove();
+
         var city_d_idget_dma = $(this).val();
         $.post("getAllDmaInfoOnCity", { dma_id: city_d_idget_dma }, function (data) {
             var dmadata_info_d = JSON.parse(data);
-            console.log(dmadata_info_d);
+            // console.log(dmadata_info_d);
 
-            if(dmadata_info_d){
+            if (dmadata_info_d) {
                 $('#dma_container_d').show();
                 $('#dma_d_name').text(dmadata_info_d.dma_no !== null ? dmadata_info_d.dma_no : "xxxx");
                 $('#dma_d_areaname').text(dmadata_info_d.area_name !== null ? dmadata_info_d.area_name : "0");
@@ -185,20 +187,39 @@ $(document).ready(function () {
                 $('.dma_target_date_of_completion').text(dmadata_info_d.dft_target_date_completion !== null ? dmadata_info_d.dft_target_date_completion : "xx-xx");
                 $('.dma_house_connection_d_persentage').text(dmadata_info_d.house_connection_percentage !== null ? dmadata_info_d.house_connection_percentage : "xx-xx");
                 $('.dma_meter_connection_d_persentage').text(dmadata_info_d.metered_connections_percentage !== null ? dmadata_info_d.metered_connections_percentage : "xx-xx");
-                var dma_house_complete_bar = dmadata_info_d.house_connection_percentage +'%';
+                var dma_house_complete_bar = dmadata_info_d.house_connection_percentage + '%';
                 $('.dma_house_connection_d_persentage_text').text(dmadata_info_d.house_connection_percentage !== null ? dma_house_complete_bar : '0%');
                 $(".dma_house_complete_bar").css("height", dma_house_complete_bar);
 
-                var dma_meterd_complete_bar = dmadata_info_d.house_connection_percentage +'%';
+                var dma_meterd_complete_bar = dmadata_info_d.metered_connections_percentage !== null ? dmadata_info_d.metered_connections_percentage + '%' : '0%';
+
+                // console.log(dma_meterd_complete_bar);
                 $('.dma_meter_connection_d_persentage_text').text(dmadata_info_d.metered_connections_percentage !== null ? dma_meterd_complete_bar : '0%');
                 $(".dma_meterd_complete_bar").css("height", dma_meterd_complete_bar);
 
-                var progressBar = $(".progress-bar-round");                
-                var check_nrw_null = dmadata_info_d.nrw !== null ? dmadata_info_d.nrw : 0 ;
+                var progressBar = $(".progress-bar-round");
+                var check_nrw_null = dmadata_info_d.nrw !== null ? dmadata_info_d.nrw : 0;
                 var content = check_nrw_null + "%";
-                progressBar.css('background', 'radial-gradient(closest-side, white 79%, transparent 80% 100%), conic-gradient(red '+ content +', green 0)');
+                progressBar.css('background', 'radial-gradient(closest-side, white 79%, transparent 80% 100%), conic-gradient(red ' + content + ', green 0)');
                 progressBar.attr("data-progress", content);
             }
+        });
+        // Dma NRW Progress 
+        $.post("getnrwDataWithDmaId", { dma_id: city_d_idget_dma }, function (data) {
+            var nrw_progress_dma = JSON.parse(data);
+            if (nrw_progress_dma) {
+                $("#inner_div").empty();
+                var tot_h = '200';
+                $.each(nrw_progress_dma, function (key, dpnrw) {
+                    var mod_set_height_d = dpnrw.mod_set_height;
+                    var conn_dot = mod_set_height_d / 100;
+                    var barheight = (conn_dot * tot_h);
+                    var nrd_dma_down_date = dpnrw.dma_nrw_modification_date !== null ? dpnrw.dma_nrw_modification_date : '00-00-0000';
+                    var nrd_dma_top_persent = dpnrw.dma_nrw_p;
+                    $('#inner_div').append('<div class="item"><div class="bar-nrw" style="height: ' + barheight + 'px;" title="200 (100%)"><span class="bar-label-nrw">' + nrd_dma_top_persent + '%</span></div><span class="item-label-nrw">' + nrd_dma_down_date + '</span></div>');
+                });
+            }
+
         });
     });
 });

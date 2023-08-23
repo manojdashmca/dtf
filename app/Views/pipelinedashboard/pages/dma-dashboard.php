@@ -169,6 +169,19 @@
                     </div>
                 </div>
             </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header text-center">NRW Progress Monthly</div>
+                    <div class="card-body">
+                        <div class="grid-chart-nrw">
+                            <div class="bar-chart-nrw" id="inner_div">
+
+
+                            </div> <!-- /.bar-chart-nrw -->
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>

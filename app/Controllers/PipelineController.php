@@ -198,5 +198,16 @@ class PipelineController extends WebController {
             echo json_encode($res);  
         }
 
+        public function getnrwDataWithDmaId() {
+            try {
+                extract($_POST);
+                $dmaprogress = $this->pipelineModel->getnrwDataWithDmaIdData($dma_id); 
+                return json_encode($dmaprogress);
+            } catch (Exception $e) {
+                error_log($e->getMessage());
+                return json_encode(['error' => 'An error occurred']);
+            }
+        }
+
 
 }
