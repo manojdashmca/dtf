@@ -326,5 +326,17 @@ class PipelineModel extends Model
         $this->db->close();
     }
 
+    public function getnrwDataWithDmaIdData($dma_id)
+    {
+        $sql = "SELECT id,city_id,ROUND(max(nrw)) AS mod_set_height,MAX(DATE_FORMAT(modification_date, '%d-%m-%Y')) AS dma_nrw_modification_date,max(nrw) AS dma_nrw_p FROM `t_hist_zone_master` WHERE id = '$dma_id' GROUP BY MONTH (modification_date), YEAR (modification_date);
+        ";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        // print_r($return);die;
+        return $return;
+        $this->db->close();
+        
+    }
+
     
 }

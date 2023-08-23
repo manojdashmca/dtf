@@ -123,6 +123,7 @@ $routes->match(['get', 'post'], 'getAllDmaInfoOnCity', 'pipeLineDashboardControl
 
 // Dma Master 
 $routes->match(['get', 'post'], 'addnewdmainfo', 'PipelineController::InsertDmaData');
+$routes->match(['get', 'post'], 'getnrwDataWithDmaId', 'PipelineController::getnrwDataWithDmaId');
 
 
 // $routes->match(['get', 'post'], 'getCityTableData', 'PipelineController::getCityTableData');
