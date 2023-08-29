@@ -71,6 +71,8 @@ if ($includefile) {
 
 <!-- App js -->
 <script src="assets/js/pipeline/waterprogressdashboard.js"></script>
+<script src="assets/js/pipeline/nrw_progress_filter.js"></script>
+
 <script src="assets/js/app.js"></script>
 
 <!-- <script>

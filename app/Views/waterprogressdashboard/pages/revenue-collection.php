@@ -231,133 +231,83 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header border-0 align-items-center d-flex">
-                                        <h4 class="card-title mb-0 flex-grow-1">NRW</h4>
-                                        <div>
-                                            <button type="button" class="btn btn-soft-secondary btn-sm">
-                                                ALL
-                                            </button>
-                                            <button type="button" class="btn btn-soft-secondary btn-sm">
-                                                1M
-                                            </button>
-                                            <button type="button" class="btn btn-soft-secondary btn-sm">
-                                                6M
-                                            </button>
-                                            <button type="button" class="btn btn-secondary btn-sm">
-                                                1Y
-                                            </button>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h4 class="card-title mb-0">NRW</h4>
+                                            </div>
                                         </div>
-                                    </div><!-- end card header -->
+                                    </div>
 
                                     <div class="card-body p-0 pb-2">
                                         <div class="grid-chart-nrw">
-                                            <!-- <div class="chart-label">Hits per Hour, Yesterday</div> -->
-                                            <div class="bar-chart-nrw">
-                                                <div class="item">
-                                                    <div class="bar-nrw" style="height: 200px;" title="200 (100%)"><span class="bar-label-nrw">100%</span></div>
-                                                    <span class="item-label-nrw">Jan5</span>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="bar-nrw" style="height: 196px;" title="12 (17%)"><span class="bar-label-nrw">98%</span></div>
-                                                    <span class="item-label-nrw">Feb8</span>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="bar-nrw" style="height: 170px;" title="13 (18%)"><span class="bar-label-nrw">85%</span></div>
-                                                    <span class="item-label-nrw">Mar8</span>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="bar-nrw" style="height: 160px;" title="10 (14%)"><span class="bar-label-nrw">80%</span></div>
-                                                    <span class="item-label-nrw">Apr10</span>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="bar-nrw" style="height: 150px;" title="30 (42%)"><span class="bar-label-nrw">75%</span></div>
-                                                    <span class="item-label-nrw">May11</span>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="bar-nrw" style="height: 130px;" title="31 (43%)"><span class="bar-label-nrw">65%</span></div>
-                                                    <span class="item-label-nrw">June11</span>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="bar-nrw" style="height: 108px;" title="54 (74%)"><span class="bar-label-nrw">54%</span></div>
-                                                    <span class="item-label-nrw">July12</span>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="bar-nrw warning" style="height: 80px;" title="65 (90%)"><span class="bar-label-nrw">40%</span>
+                                            <form action="">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <div class="row">
+                                                            <label for="colFormLabelSm" class="col-sm-4 col-form-label col-form-label-sm">Monthly</label>
+                                                            <div class="col-sm-8">
+                                                                <select class="form-select form-select-sm  mb-3" aria-label=".form-select-sm example" id="select_dft_nrw_monthly">
+                                                                    <option value="">Select Month</option>
+                                                                    <option value="01">January</option>
+                                                                    <option value="02">February</option>
+                                                                    <option value="03">March</option>
+                                                                    <option value="04">April</option>
+                                                                    <option value="05">May</option>
+                                                                    <option value="06">June</option>
+                                                                    <option value="07">July</option>
+                                                                    <option value="08">August</option>
+                                                                    <option value="09">September</option>
+                                                                    <option value="10">October</option>
+                                                                    <option value="11">November</option>
+                                                                    <option value="12">December</option>
+                                                                </select>
+                                                            </div>
+                                                            <hr>
+                                                        </div>
                                                     </div>
-                                                    <span class="item-label-nrw">Aug8</span>
-                                                </div>
-                                                <!-- <div class="item">
-                    <div class="bar-nrw danger" style="height: 200px;" title="73 (100%)"><span class="bar-label-nrw">73</span>
-                    </div>
-                    <span class="item-label-nrw">08</span>
-                </div>
-                <div class="item">
-                    <div class="bar-nrw warning" style="height: 187px;" title="68 (94%)"><span class="bar-label-nrw">68</span>
-                    </div>
-                    <span class="item-label-nrw">09</span>
-                </div>
-                <div class="item">
-                    <div class="bar-nrw warning" style="height: 198px;" title="72 (99%)"><span class="bar-label-nrw">72</span>
-                    </div>
-                    <span class="item-label-nrw">10</span>
-                </div>
-                <div class="item">
-                    <div class="bar-nrw" style="height: 168px;" title="61 (84%)"><span class="bar-label-nrw">61</span></div>
-                    <span class="item-label-nrw">11</span>
-                </div>
-                <div class="item">
-                    <div class="bar-nrw" style="height: 168px;" title="61 (84%)"><span class="bar-label-nrw">61</span></div>
-                    <span class="item-label-nrw">12</span>
-                </div>
-                <div class="item">
-                    <div class="bar-nrw" style="height: 157px;" title="57 (79%)"><span class="bar-label-nrw">57</span></div>
-                    <span class="item-label-nrw">13</span>
-                </div>
-                <div class="item">
-                    <div class="bar-nrw" style="height: 132px;" title="48 (66%)"><span class="bar-label-nrw">48</span></div>
-                    <span class="item-label-nrw">14</span>
-                </div>
-                <div class="item">
-                    <div class="bar-nrw" style="height: 151px;" title="55 (76%)"><span class="bar-label-nrw">55</span></div>
-                    <span class="item-label-nrw">15</span>
-                </div>
-                <div class="item">
-                    <div class="bar-nrw" style="height: 168px;" title="61 (84%)"><span class="bar-label-nrw">61</span></div>
-                    <span class="item-label-nrw">16</span>
-                </div>
-                <div class="item">
-                    <div class="bar-nrw" style="height: 162px;" title="59 (81%)"><span class="bar-label-nrw">59</span></div>
-                    <span class="item-label-nrw">17</span>
-                </div>
-                <div class="item">
-                    <div class="bar-nrw" style="height: 113px;" title="41 (57%)"><span class="bar-label-nrw">41</span></div>
-                    <span class="item-label-nrw">18</span>
-                </div>
-                <div class="item">
-                    <div class="bar-nrw" style="height: 127px;" title="46 (64%)"><span class="bar-label-nrw">46</span></div>
-                    <span class="item-label-nrw">19</span>
-                </div>
-                <div class="item">
-                    <div class="bar-nrw" style="height: 94px;" title="34 (47%)"><span class="bar-label-nrw">34</span></div>
-                    <span class="item-label-nrw">20</span>
-                </div>
-                <div class="item">
-                    <div class="bar-nrw" style="height: 96px;" title="35 (48%)"><span class="bar-label-nrw">35</span></div>
-                    <span class="item-label-nrw">21</span>
-                </div>
-                <div class="item">
-                    <div class="bar-nrw" style="height: 85px;" title="31 (43%)"><span class="bar-label-nrw">31</span></div>
-                    <span class="item-label-nrw">22</span>
-                </div>
-                <div class="item">
-                    <div class="bar-nrw" style="height: 44px;" title="16 (22%)"><span class="bar-label-nrw">16</span></div>
-                    <span class="item-label-nrw">23</span>
-                </div> -->
-                                            </div> <!-- /.bar-chart-nrw -->
-                                        </div>
-                                    </div><!-- end card body -->
-                                </div><!-- end card -->
-                            </div>
+                                                    <div class="col-3">
+                                                        <div class="row">
+                                                        <label for="colFormLabelSm" class="col-sm-4 col-form-label col-form-label-sm">Weekly</label>
+                                                            <div class="col-sm-8">
+                                                                <select class="form-select form-select-sm  mb-3" aria-label=".form-select-sm example" id="select_dft_nrw_weekly">
+                                                                    <option value="">Select Week</option>
+                                                                    <option value="01 AND 07">Week One</option>
+                                                                    <option value="08 AND 14">Week Two</option>
+                                                                    <option value="15 AND 21">Week Three</option>
+                                                                    <option value="22 AND 28">Week Four</option>
+                                                                    <option value="29 AND 31">Week Five</option>
+                                                                    <option value="01 AND 31">All Week</option>
+                                                                </select>
+                                                            </div>
+                                                            <hr>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <button type="button" class="btn btn-soft-secondary btn-sm" onclick="getAllDistrict()">SEARCH</button>
 
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <select class="form-select form-select-sm  mb-3" aria-label=".form-select-sm example">
+                                                            <option selected>Store Type</option>
+                                                            <option value="1">Today</option>
+                                                            <option value="2">This Week</option>
+                                                            <option value="3">Last Week</option>
+                                                            <option value="3">This Month</option>
+                                                            <option value="3">All</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <button type="reset" class="btn btn-soft-secondary btn-sm">RESET</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <div class="bar-chart-nrw" id="inner_div_nrw_city_wise">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>

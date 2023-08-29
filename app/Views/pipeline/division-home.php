@@ -50,11 +50,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
             </div>
             <div class="modal-body p-5">
-                <form method="post" id="updateDistrict" onsubmit="updateDistrict()">
-                    <input type="hidden" class="form-control" id="edit_id" name="edit_id">
+                <form method="post" id="updatedmazonedata">
+                    <input type="hidden" class="form-control" id="old_division_id" name="old_division_id">
                     <div>
                         <label for="placeholderInput" class="form-label">Division :</label>
-                        <input type="text" class="form-control" id="district_name" name="district_name" placeholder="Enter Divisions Name">
+                        <input type="text" class="form-control" id="edit_division_name" name="edit_division_name" placeholder="Enter Divisions Name">
                     </div>
 
                     <div class="mt-4">

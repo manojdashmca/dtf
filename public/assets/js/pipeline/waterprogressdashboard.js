@@ -53,6 +53,25 @@ $(document).ready(function () {
                             $('#revenue_collected_by_jalasathi').text('0');
                         }
                     });
+
+                    // Nrw Progress 
+                    $.post("getNrwProgressCitywise", { cit_id: city_id }, function (data_nrw_p_city_wise) {
+                        var nrw_progress_dma_citywise = JSON.parse(data_nrw_p_city_wise);
+                        if (nrw_progress_dma_citywise) {
+                            $("#inner_div_nrw_city_wise").empty();
+                            var tot_h_nc = '200';
+                            $.each(nrw_progress_dma_citywise, function (key, dpnrw_cn) {
+                                var mod_set_height_dnc = dpnrw_cn.nrw_cn;
+                                var conn_dot_nc = mod_set_height_dnc / 100;
+                                var barheight = (conn_dot_nc * tot_h_nc);
+                                var nrd_dma_down_date_nc = dpnrw_cn.modification_date_sn  !== null ? dpnrw_cn.modification_date_sn  : '00-00-0000';
+                                var nrd_dma_top_persent = dpnrw_cn.nrw_cn;
+                                $('#inner_div_nrw_city_wise').append('<div class="item"><div class="bar-nrw" style="height: ' + barheight + 'px;" title="200 (100%)"><span class="bar-label-nrw">' + nrd_dma_top_persent + '%</span></div><span class="item-label-nrw">' + nrd_dma_down_date_nc + '</span></div>');
+                            });
+                        }
+                    });
+
+
                 });
             }
             $.post("getJalsathiConDivision", { div_id: division_id }, function (division_jalasathi) {
@@ -71,6 +90,24 @@ $(document).ready(function () {
                 // console.log(jalscon);
 
             });
+            // nrw division wise 
+            $.post("getNrwProgressDivisionwise", { div_id: division_id }, function (data_nrw_p_division_wise) {
+                var nrw_progress_dma_divisionwise = JSON.parse(data_nrw_p_division_wise);
+                if (nrw_progress_dma_divisionwise) {
+                    $("#inner_div_nrw_city_wise").empty();
+                    var tot_h_dn = '200';
+                    $.each(nrw_progress_dma_divisionwise, function (key, dpnrw_dn) {
+                        var mod_set_height_dnd = dpnrw_dn.nrw_dn;
+                        var conn_dot_dn = mod_set_height_dnd / 100;
+                        var barheight_dn = (conn_dot_dn * tot_h_dn);
+                        var nrd_dma_down_date_dn = dpnrw_dn.modification_date_dn  !== null ? dpnrw_dn.modification_date_dn  : '00-00-0000';
+                        var nrd_dma_top_persent_dn = dpnrw_dn.nrw_dn;
+                        $('#inner_div_nrw_city_wise').append('<div class="item"><div class="bar-nrw" style="height: ' + barheight_dn + 'px;" title="200 (100%)"><span class="bar-label-nrw">' + nrd_dma_top_persent_dn + '%</span></div><span class="item-label-nrw">' + nrd_dma_down_date_dn + '</span></div>');
+                    });
+                }
+            });
+
+
         });
     });
 });
