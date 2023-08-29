@@ -115,15 +115,35 @@ $routes->match(['get', 'post'], 'cityTablePage', 'PipelineController::cityTableP
 $routes->match(['get', 'post'], 'addnewcity', 'PipelineController::addNewCity');
 $routes->match(['get', 'post'], 'getDmaInfo', 'PipelineController::getDmaInfo');
 $routes->match(['get', 'post'], 'DmaInfoPage', 'PipelineController::getDmaInfoPage');
-// Division Dashboard
+// edit 
+$routes->match(['get', 'post'], 'getCityDetailsOnId', 'PipelineController::getCityDetailsOnId');
+$routes->match(['get', 'post'], 'editCityDataInId', 'PipelineController::editCityDataInId');
+$routes->match(['get', 'post'], 'deleteCity', 'PipelineController::deleteCity');
+
+// -----------------------Division-------------------
 
 $routes->match(['get', 'post'], 'dmaZoneDashboard', 'pipeLineDashboardController::dmaZoneDashboard');
 $routes->match(['get', 'post'], 'getAllDmaInfoDashboardOnCity', 'pipeLineDashboardController::getAllDmaInfoDashboardOnCity');
 $routes->match(['get', 'post'], 'getAllDmaInfoOnCity', 'pipeLineDashboardController::getAllDmaInfoOnCity');
+// Edit 
+$routes->match(['get', 'post'], 'getDivisionDetailsOnId', 'PipelineController::getDivisionDetailsOnId');
+$routes->match(['get', 'post'], 'editDivisionDataInId', 'PipelineController::editDivisionDataInId');
+
+
 
 // Dma Master 
 $routes->match(['get', 'post'], 'addnewdmainfo', 'PipelineController::InsertDmaData');
 $routes->match(['get', 'post'], 'getnrwDataWithDmaId', 'PipelineController::getnrwDataWithDmaId');
+$routes->match(['get', 'post'], 'getDmaDetailsOnId', 'PipelineController::getDmaDetailsOnId');
+
+$routes->match(['get', 'post'], 'getCitiesinDivision', 'pipeLineDashboardController::getCitiesinDivision');
+
+// nrw 
+
+$routes->match(['get', 'post'], 'getNrwProgressCitywise', 'PipelineController::getNrwProgressCitywise');
+$routes->match(['get', 'post'], 'getNrwProgressDivisionwise', 'PipelineController::getNrwProgressDivisionwise');
+$routes->match(['get', 'post'], 'dateBetweenNrwfromto', 'PipelineController::dateBetweenNrwfromto');
+$routes->match(['get', 'post'], 'updatenewdmainfo', 'PipelineController::updateDmaDataInId');
 
 
 // $routes->match(['get', 'post'], 'getCityTableData', 'PipelineController::getCityTableData');

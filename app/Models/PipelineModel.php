@@ -169,7 +169,6 @@ class PipelineModel extends Model
          FROM divisions d INNER JOIN zone_master z ON d.id = z.division_id WHERE d.id = '$div_id' GROUP BY d.id;";
         $result = $this->db->query($sql);
         $return = $result->getRow();
-        // print_r();die;
         return $return;
         $this->db->close();
     }
@@ -184,7 +183,6 @@ class PipelineModel extends Model
          FROM zone_master z WHERE z.city_id = '$cit_id' GROUP BY z.city_id;";
         $result = $this->db->query($sql);
         $return = $result->getRow();
-        // print_r();die;
         return $return;
         $this->db->close();
     }
@@ -198,7 +196,6 @@ class PipelineModel extends Model
         FROM `jalsathi_word` WHERE division_id = '$div_id' GROUP BY division_id;";
         $result = $this->db->query($sql);
         $return = $result->getRow();
-        // print_r();die;
         return $return;
         $this->db->close();
     }
@@ -212,7 +209,6 @@ class PipelineModel extends Model
         FROM `jalsathi_word` WHERE jalsathi_ulb_city_id = '$cit_id' GROUP BY jalsathi_ulb_city_id;";
         $result = $this->db->query($sql);
         $return = $result->getRow();
-        // print_r();die;
         return $return;
         $this->db->close();
     }
@@ -241,7 +237,6 @@ class PipelineModel extends Model
         $sql = "SELECT (SELECT COUNT(*) FROM pl_citys) AS no_of_city,(SELECT COUNT(*) FROM jalsathi_word) AS no_of_jalasathi,COUNT(zone_master.id) AS no_of_dma, SUM(population) AS total_population, SUM(no_house_holds) AS house_holds, SUM(no_house_coction) AS total_house_connection,SUM(no_metered_house_connections) AS total_meter_connection, (SUM(no_house_coction) / SUM(no_house_holds) * 100) AS house_connection_percentage, (SUM(no_metered_house_connections) / SUM(no_house_holds) * 100) AS metered_connections_percentage FROM zone_master INNER JOIN pl_citys ON zone_master.city_id = pl_citys.id;";
         $result = $this->db->query($sql);
         $return = $result->getRow();
-        // print_r();die;
         return $return;
         $this->db->close();
     }
@@ -278,7 +273,6 @@ class PipelineModel extends Model
         $sql = "SELECT * FROM zone_master;";
         $result = $this->db->query($sql);
         $return = $result->getResult();
-        // print_r($return);die;
         return $return;
     }
 
@@ -307,6 +301,15 @@ class PipelineModel extends Model
         $this->db->close();
     }
 
+    public function getCityDetailsOnIdData($city_editid)
+    {
+        $sql = "SELECT * FROM pl_citys WHERE id = '$city_editid';";
+        $result = $this->db->query($sql);
+        $return = $result->getRow();
+        return $return;
+        $this->db->close();
+    }
+
     public function checkDuplicateDma($z_division_id,$z_citys,$z_zone)
     {
         $sql = "SELECT dma_no from zone_master WHERE division_id = '$z_division_id' AND city_id='$z_citys' AND dma_no = '$z_zone';";
@@ -319,10 +322,18 @@ class PipelineModel extends Model
     public function insertDmaTable($z_division_id,$z_citys,$z_zone,$z_area_name,$z_population,$z_no_of_house_holds,$z_house_connection_replaced,$z_house_connection,$z_meter_connection,$z_dft_complete_month_year,$z_dft_target_date,$z_nrw)
     {
         $sql = "INSERT INTO zone_master(division_id,city_id,dma_no,area_name,`population`,no_house_holds,no_house_coction,no_house_connection_replaced,no_metered_house_connections,dft_complete_m_y,dft_target_date_completion,nrw,modification_date)VALUES('$z_division_id','$z_citys','$z_zone','$z_area_name','$z_population','$z_no_of_house_holds','$z_house_connection_replaced','$z_house_connection','$z_meter_connection','$z_dft_complete_month_year','$z_dft_target_date','$z_nrw',NOW())";
-        // print_r($sql);die;
         $result = $this->db->query($sql);
 
         return $result;
+        $this->db->close();
+    }
+
+    public function getDmaDetailsOnIdData($dma_editid)
+    {
+        $sql = "SELECT * FROM zone_master WHERE id = '$dma_editid';";
+        $result = $this->db->query($sql);
+        $return = $result->getRow();
+        return $return;
         $this->db->close();
     }
 
@@ -332,10 +343,92 @@ class PipelineModel extends Model
         ";
         $result = $this->db->query($sql);
         $return = $result->getResult();
-        // print_r($return);die;
         return $return;
         $this->db->close();
         
+    }
+
+    public function getNrwProgressCitywiseData($cit_id)
+    {
+        $sql = "SELECT round(avg(nrw),2) AS nrw_cn,MAX(DATE_FORMAT(modification_date, '%d-%m-%Y')) AS modification_date_sn FROM `vw_city_wise_nrw` WHERE city_id = '$cit_id' GROUP BY YEAR(modification_date),MONTH(modification_date) ORDER BY modification_date ASC;";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        return $return;
+        $this->db->close();
+        
+    }
+
+    public function getNrwProgressDivisionwiseData($div_id)
+    {
+        $sql = "SELECT round(avg(nrw),2) AS nrw_dn,MAX(DATE_FORMAT(modification_date, '%d-%m-%Y')) AS modification_date_dn FROM `vw_city_wise_nrw` WHERE division_id = '$div_id' GROUP BY YEAR(modification_date),MONTH(modification_date) ORDER BY modification_date ASC;";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        return $return;
+        $this->db->close();
+        
+    }
+
+    public function dateBetweenNrwfromtoData($nrw_monthly_date,$nrw_weekly_date)
+    {
+        $sql = "SELECT round(avg(nrw),2) AS nrw_dn,
+        DATE_FORMAT(modification_date, '%d-%m-%Y') AS modification_date_dn 
+        FROM `vw_city_wise_nrw` 
+        WHERE MONTH(modification_date) = '$nrw_monthly_date' AND DAY(modification_date) BETWEEN $nrw_weekly_date GROUP BY MONTH(modification_date) ORDER BY modification_date ASC;";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        return $return;
+        $this->db->close();
+        
+    }
+
+    public function updateDmaTable($old_dma_id,$z_division_id_u,$z_citys_d,$dma_edit_dma_name,$dma_edit_area_name,$dma_edit_population,$dma_edit_no_of_house_holds,$dma_edit_house_connection_replaced,$dma_edit_house_connection,$dma_edit_meter_connection,$dma_edit_dft_complete_month_year,$dma_edit_dft_target_date,$dma_edit_nrw)
+    {
+        $sql = "UPDATE zone_master SET division_id = '$z_division_id_u',city_id = '$z_citys_d',dma_no = '$dma_edit_dma_name',area_name = '$dma_edit_area_name',population = '$dma_edit_population',no_house_holds = '$dma_edit_no_of_house_holds',no_house_coction = '$dma_edit_house_connection',no_house_connection_replaced = '$dma_edit_house_connection_replaced',no_metered_house_connections = '$dma_edit_meter_connection',dft_complete_m_y = '$dma_edit_dft_complete_month_year',dft_target_date_completion = '$dma_edit_dft_target_date',nrw = '$dma_edit_nrw',modification_date = NOW() WHERE id='$old_dma_id';";
+        $result = $this->db->query($sql);
+        return $result;
+        $this->db->close();
+    }
+
+    public function getDivisionDetailsOnIdData($division_edit_gt_id)
+    {
+        $sql = "SELECT * FROM divisions WHERE id = '$division_edit_gt_id';";
+        $result = $this->db->query($sql);
+        $return = $result->getRow();
+        return $return;
+        $this->db->close();
+    }
+
+    public function updateDivision($old_division_id, $edit_division_name)
+    {
+        $sql = "UPDATE divisions SET division_name = '$edit_division_name' WHERE id='$old_division_id';";
+        $result = $this->db->query($sql);
+        return $result;
+        $this->db->close();
+    }
+
+    public function checkDuplicateCityEdit($division_id, $city_name)
+    {
+        $sql = "SELECT * FROM pl_citys WHERE division_id = '$division_id' AND city_name = '$city_name';";
+        $result = $this->db->query($sql);
+        $return = $result->getRow();
+        return $return;
+        $this->db->close();
+    }
+
+    public function updateCityTable($city_id,$division_id,$city_name)
+    {
+        $sql = "UPDATE pl_citys SET division_id = '$division_id',city_name = '$city_name' WHERE id ='$city_id';";
+        $result = $this->db->query($sql);
+        return $result;
+        $this->db->close();
+    }
+
+    public function deleteCity($city_id)
+    {
+        $sql = "DELETE FROM pl_citys WHERE id='$city_id';";
+        $result = $this->db->query($sql);
+        return $result;
+        $this->db->close();
     }
 
     

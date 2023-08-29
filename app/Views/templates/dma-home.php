@@ -156,7 +156,125 @@
 
         </div>
 
+<!-- Modal Update -->
+        <!-- Edit  -->
+        <div class="modal fade modal-lg" id="editDmaZoneDetails" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel">Edit DMA/Zone Details :</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                    </div>
+                    <div class="modal-body p-5">
+                        <!-- Input with Placeholder -->
+                        <form method="post" id="updatedmazonedata">
+                            <input type="hidden" name="old_dma_id" id="old_dma_id">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Select Division <span class="text-danger">*</span> :</p>
+                                            <select class="form-control" name="z_division_id_u" id="z_division_id_u">
+                                                <option value="">Select Division</option>
+                                                <?php for ($x = 0; $x < count($alldivisionname); $x++) { ?>
+                                                    <option value='<?= $alldivisionname[$x]->id ?>' ><?= $alldivisionname[$x]->division_name ?></option>
 
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Select City <span class="text-danger">*</span> :</p>
+                                            <select class="form-control" name="z_citys_d" id="z_citys_d">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Select DMA / Zone <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="dma_edit_dma_name" id="dma_edit_dma_name">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Area Name : <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="dma_edit_area_name" id="dma_edit_area_name">
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Population : <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="dma_edit_population" id="dma_edit_population">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <p class="text-muted">No. of House Holds : <span class="text-danger">*</span> :
+                                            </p>
+                                            <input type="text" class="form-control" name="dma_edit_no_of_house_holds" id="dma_edit_no_of_house_holds">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <p class="text-muted">No. of House Connections : <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="dma_edit_house_connection" id="dma_edit_house_connection">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <p class="text-muted">No. of House Connections replaced : <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="dma_edit_house_connection_replaced" id="dma_edit_house_connection_replaced">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <p class="text-muted">No. of Metered House Connections : <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="dma_edit_meter_connection" id="dma_edit_meter_connection">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <p>Status of Commissioning of DFT</p>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Completed (Month & year) : <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="dma_edit_dft_complete_month_year" id="dma_edit_dft_complete_month_year">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <p class="text-muted">In progress (Target Date of Completion) : <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="dma_edit_dft_target_date" id="dma_edit_dft_target_date">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <p class="text-muted">NRW (%) : <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="dma_edit_nrw" id="dma_edit_nrw">
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <div class="hstack gap-2 justify-content-center">
+                                    <a href="javascript:void(0);" class="btn btn-link link-success fw-medium" data-bs-dismiss="modal"><i class="ri-close-line me-1 align-middle"></i> Close</a>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Modal -->
         <!-- Add  -->
@@ -175,9 +293,9 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="mb-3">
-                                            <p class="text-muted">Select District <span class="text-danger">*</span> :</p>
+                                            <p class="text-muted">Select Division <span class="text-danger">*</span> :</p>
                                             <select class="form-control" name="z_division_id" id="z_division_id">
-                                                <option value="">Select District</option>
+                                                <option value="">Select Division</option>
                                                 <?php for ($x = 0; $x < count($alldivisionname); $x++) { ?>
                                                     <option value='<?= $alldivisionname[$x]->id ?>' <?= ($city == $alldivisionname[$x]->id) ? 'selected="selected"' : '' ?>><?= $alldivisionname[$x]->division_name ?></option>
                                                 <?php } ?>
