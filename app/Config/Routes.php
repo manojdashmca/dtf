@@ -145,6 +145,21 @@ $routes->match(['get', 'post'], 'getNrwProgressDivisionwise', 'PipelineControlle
 $routes->match(['get', 'post'], 'dateBetweenNrwfromto', 'PipelineController::dateBetweenNrwfromto');
 $routes->match(['get', 'post'], 'updatenewdmainfo', 'PipelineController::updateDmaDataInId');
 
+// Login City Controller
+$routes->match(['get', 'post'], 'logincity', 'LoginCityController::home');
+// $routes->match(['get', 'post'], 'dmadetails', 'LoginCityController::dmaDetailsHome');
+$routes->get('dmadetails', 'LoginCityController::dmaDetailsHome');
+$routes->get('editdmapage/(:any)', 'LoginCityController::editDmadetails/$1');
+$routes->post('updateDmaDetails/(:any)', 'LoginCityController::updateDmaZone/$1');
+
+
+$routes->match(['get', 'post'], 'cityJalasathi', 'LoginCityController::cityJalasathi');
+$routes->match(['get', 'post'], 'cityJalasathiAddnew', 'LoginCityController::cityJalasathiAddnew');
+
+
+$routes->get('cityLoginrevenuecoll', 'LoginCityController::cityUserRevenueCollection');
+
+
 
 // $routes->match(['get', 'post'], 'getCityTableData', 'PipelineController::getCityTableData');
 
