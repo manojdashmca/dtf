@@ -159,6 +159,8 @@ $routes->match(['get', 'post'], 'cityJalasathiAddnew', 'LoginCityController::cit
 
 $routes->get('cityLoginrevenuecoll', 'LoginCityController::cityUserRevenueCollection');
 
+$routes->get('cityLogingrevanceCust', 'LoginCityController::cityUsergrevanceCustection');
+$routes->get('citylogwqm', 'LoginCityController::citylogwqm');
 
 
 // $routes->match(['get', 'post'], 'getCityTableData', 'PipelineController::getCityTableData');

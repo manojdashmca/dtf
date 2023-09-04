@@ -89,5 +89,19 @@ if($dmaeditdata){
         return view('logincity/cityuserrevenuecollected', $this->data);
     }
 
+    public function cityUsergrevanceCustection(){
+        // $this->data['title'] = 'Pipeline Dashboard';
+        $this->data['css']='';
+        $this->data['js']='';
+        return view('logincity/grievancecustomer', $this->data);
+    }
+
+    public function citylogwqm(){
+        // $this->data['title'] = 'Pipeline Dashboard';
+        $this->data['css']='';
+        $this->data['js']='';
+        return view('logincity/cityloginwqm', $this->data);
+    }
+
     
 }

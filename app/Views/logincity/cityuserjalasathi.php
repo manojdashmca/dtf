@@ -282,10 +282,10 @@
                             <a href="cityLoginrevenuecoll" class="nav-link menu-link"> <i class="ri-layout-fill"></i> <span>Revenue Collection</span> </a>
                         </li>
                         <li class="nav-item">
-                            <a href="index.html" class="nav-link menu-link"> <i class="ri-customer-service-2-line"></i> <span>Grievance / Customer Service</span> </a>
+                            <a href="cityLogingrevanceCust" class="nav-link menu-link"> <i class="ri-customer-service-2-line"></i> <span>Grievance / Customer Service</span> </a>
                         </li>
                         <li class="nav-item">
-                            <a href="index.html" class="nav-link menu-link"> <i class="ri-slideshow-line"></i> <span>WQM</span> </a>
+                            <a href="citylogwqm" class="nav-link menu-link"> <i class="ri-slideshow-line"></i> <span>WQM</span> </a>
                         </li>
                         <li class="nav-item">
                             <a href="cityJalasathi" class="nav-link menu-link"> <i class="ri-water-flash-line"></i> <span>Jala Sathi</span> </a>

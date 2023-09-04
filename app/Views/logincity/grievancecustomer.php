@@ -4,14 +4,14 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>INCENTIVE DETAILS OF JALASATHIS OF WATCO</title>
+    <title>CITY USER</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Minimal Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
-<!--datatable css-->
-<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" />
+    <!--datatable css-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" />
     <!--datatable responsive css-->
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
@@ -40,7 +40,7 @@
     </style>
 </head>
 
-    
+
 <body>
 
     <!-- Begin page -->
@@ -316,74 +316,55 @@
                 <div class="container-fluid set_height">
                     <div class="row">
                         <div class="col-12 text-center">
-                            <h5 class="text-info">INCENTIVE DETAILS OF JALASATHIS OF WATCO</h5>
+                            <h5 class="text-info">GRIEVANCE | CUSTOMER SERVICES</h5>
                             <h5 class="text-info">KEONJHAR,BARBIL</h5>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-header">
-                                <span class="float-end"><a href="cityJalasathiAddnew" type="button" class="btn btn-outline-info btn-sm">Add New Jalasathi</a></span>
-                                    <h5 class="card-title mb-0 text-info">JALASATHI DETAILS</h5>
-                                </div>
-                                <div class="card-body">
-                                   <div class="table-responsive">
-                                    <table id="buttons-datatables" class="display table table-bordered table-nowrap" style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th>SL NO</th>
-                                                <th>DIVISION</th>
-                                                <th>ULB NAME</th>
-                                                <th>WARD NO</th>
-                                                <th>NAME OF THE MSG/SHG</th>
-                                                <th>JALASATHI NAME</th>
-                                                <th>PAN NO</th>
-                                                <th>BANK ACCOUNT NO</th>
-                                                <th>IFSC CODE</th>
-                                                <th>BANK NAME AND BRANCH</th>
-                                                <th>COLLECTION BY JALASATHI(MPOS)</th>
-                                                <th>5% Incentive From water charges</th>
-                                                <th>No New Water Supply Connection</th>
-                                                <th>Total Amount of new Water Connection (*Rs 100/)</th>
-                                                <th>Total No of Water Quality Tests</th>
-                                                <th>Water Quality tests (Nos of test * Rs.20/)</th>
-                                                <th>Total Incentive of Jalasathi (Rs.)</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        
-                                            <?php 
-                                            $counter_js = 1;
-                                            foreach ($cityjalasathi as $jalasathi_city) : 
-                                           
-                                            ?>
-                                            <tr>
-                                                <td><?= $counter_js ?></td>
-                                                <td><?= $jalasathi_city->division_name ?></td>
-                                                <td><?= $jalasathi_city->city_name ?></td>
-                                                <td><?= $jalasathi_city->word_names ?></td>
-                                                <td><?= $jalasathi_city->msg_shg_name ?></td>
-                                                <td><?= $jalasathi_city->jalasathi_name ?></td>
-                                                <td><?= $jalasathi_city->pan_no ?></td>
-                                                <td><?= $jalasathi_city->bank_account_no ?></td>
-                                                <td><?= $jalasathi_city->ifsc_code ?></td>
-                                                <td><?= $jalasathi_city->bank_name_branch ?></td>
-                                                <td><?= $jalasathi_city->collection_by_jalasathi ?></td>
-                                                <td><?= $jalasathi_city->ibu_5p_incentive_from_water_charges ?></td>
-                                                <td><?= $jalasathi_city->ibu_no_new_water_supply_connection ?></td>
-                                                <td><?= $jalasathi_city->ibu_total_amt_of_new_water_con ?></td>
-                                                <td><?= $jalasathi_city->ibu_total_no_of_water_quality_testa ?></td>
-                                                <td><?= $jalasathi_city->ibu_water_quality_tests ?></td>
-                                                <td><?= $jalasathi_city->total_incentive_of_jalasathi ?></td>
-                                                
-                                            </tr>
-                                            <?php
-                                            $counter_js++;
-                                            endforeach; ?>
-                                    </table>
-                                </div>
+                        <div class="col-6">
+                            <div>
+                                <label for="placeholderInput" class="form-label">TOTAL NOS. OF GRIEVANCE RECEIVED :</label>
+                                <input type="text" class="form-control" name="city_user_dft_complete_m_y" placeholder="0000" value="">
                             </div>
+                        </div>
+                        <div class="col-6">
+                            <div>
+                                <label for="placeholderInput" class="form-label">NOS OF GRIEVENCED ADDRESSED :</label>
+                                <input type="text" class="form-control" name="city_user_dft_complete_m_y" placeholder="0000" value="">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div>
+                                <label for="placeholderInput" class="form-label">RESOLVED WITH IN TIME LIMIT :</label>
+                                <input type="text" class="form-control" name="city_user_dft_complete_m_y" placeholder="0000" value="">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div>
+                                <label for="placeholderInput" class="form-label">RESOLVED AFTER TIME LIMIT :</label>
+                                <input type="text" class="form-control" name="city_user_dft_complete_m_y" placeholder="0000" value="">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div>
+                                <label for="placeholderInput" class="form-label">GRIEVANCE VIA 24 X 7 CUSTOMER SERVICE :</label>
+                                <input type="text" class="form-control" name="city_user_dft_complete_m_y" placeholder="0000" value="">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div>
+                                <label for="placeholderInput" class="form-label">GRIEVANCE VIA JALSATHI :</label>
+                                <input type="text" class="form-control" name="city_user_dft_complete_m_y" placeholder="0000" value="">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div>
+                                <label for="placeholderInput" class="form-label">GRIEVANCE BY DIRECT VISIT/ PHYSICAL :</label>
+                                <input type="text" class="form-control" name="city_user_dft_complete_m_y" placeholder="0000" value="">
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3 text-center">
+                            <button class="btn btn-info">Submit</button>
                         </div>
                     </div><!--end row-->
                 </div>
