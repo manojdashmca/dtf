@@ -2,7 +2,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-1"></div>
-			<div class="col-lg-11"><a href="pipe-dashboard" class="btn btn-info btn-sm">Home</a></div>
+			<div class="col-lg-11"><a href="pipe-dashboard" class="btn btn-info btn-sm">Home</a><a href="logincity" class="btn btn-info ml-1 btn-sm text-white">CITY USER</a></div>
 		</div>
 		<div class="row">
 
