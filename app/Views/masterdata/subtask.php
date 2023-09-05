@@ -51,7 +51,7 @@
                 </div>
                 <div class="card-body">                
                     <div class="table-responsive">
-                        <table class="table table-borderless table-bordered align-middle table-nowrap mb-0">
+                        <table class="table table-borderless table-bordered align-middle mb-0">
                             <thead>
                                 <tr>
                                     
@@ -72,12 +72,12 @@
                                     <tr>
                                         
                                         <td class="fw-medium"><?= $subtask[$x]->record_sl ?></td>
-                                        <td><?= $subtask[$x]->subtask ?></td>
+                                        <td width="10%"><?= $subtask[$x]->subtask ?></td>
                                         <td><?= $subtask[$x]->subtask_unit ?></td>
                                         <td><?= $subtask[$x]->subtask_qty ?></td> 
                                         <td><?= $subtask[$x]->sub_task_breakup ?></td>
                                         <td><?= $subtask[$x]->breakup_cost ?></td> 
-                                        <td><?= $subtask[$x]->subtask_status ?></td>
+                                        <td><?= $subtask[$x]->status ?></td>
                                         <td><?= $subtask[$x]->entered_progress ?></td> 
                                         <td><?= $subtask[$x]->allowedpartial ?></td>
                                         <td>
