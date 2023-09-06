@@ -2119,6 +2119,14 @@
 								<div class="col-sm-4 col-6">
 									<div class="map-box2">
 										<a href="#" class="content">
+											<h3 id="h_be_population"><?= $allstataedata[0]->beneficiary_population ?></h3>
+											<p>Beneficiary Population</p>
+										</a>
+									</div>
+								</div>
+								<div class="col-sm-4 col-6">
+									<div class="map-box2">
+										<a href="#" class="content">
 											<h3 id="h_household"><?= $allstataedata[0]->total_no_house_holds ?></h3>
 											<p>Nos. of Households</p>
 										</a>
@@ -2160,7 +2168,7 @@
 
 						</div>
 
-						<?php for ($x = 0; $x < count($getall); $x++) { ?>
+						<?php for ($x = 0; $x < count($getall); $x++) { ?> 
 							<div class="carousel-item">
 								<div class="statistics-sec">
 									<h3>DIVISION: <span><?= $getall[$x]['division_name']; ?></span></h3>
