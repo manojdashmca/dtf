@@ -112,7 +112,7 @@ class PipelineController extends WebController {
             $this->data['title'] = 'Pipeline Dashboard';
             $this->data['css']='';
             $this->data['js']='';
-            $this->data['alldivisionname']=$this->pipelineModel->getAllDivisionName();
+            $this->data['alldivisionname']=$this->pipelineModel->getAllDivisionName(); 
             return view('templates/city-home', $this->data);
         }
 

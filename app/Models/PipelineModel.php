@@ -75,7 +75,8 @@ class PipelineModel extends Model
         COUNT(DISTINCT(z.city_id)) AS total_cities, 
         COUNT(DISTINCT(z.id)) AS total_dma,
         (SELECT COUNT(id) FROM `jalsathi_word`) as total_jalasathi,
-        ROUND(AVG(nrw), 2) AS nrw_average_value
+        ROUND(AVG(nrw), 2) AS nrw_average_value,
+        (SELECT SUM(population) FROM zone_master WHERE no_house_holds = no_house_coction AND no_house_holds = no_metered_house_connections) AS beneficiary_population 
          FROM zone_master z;";
         $result = $this->db->query($sql);
         $return = $result->getResult();
@@ -225,8 +226,9 @@ class PipelineModel extends Model
         COUNT(DISTINCT(z.city_id)) AS total_cities, 
         COUNT(DISTINCT(z.id)) AS total_dma,
         (SELECT COUNT(id) FROM `jalsathi_word` WHERE division_id = '$h_div_id') as total_jalasathi,
-        ROUND(AVG(nrw), 2) AS nrw_average_value
-         FROM zone_master z WHERE z.division_id = '$h_div_id';";
+        ROUND(AVG(nrw), 2) AS nrw_average_value,
+        (SELECT SUM(population) FROM zone_master WHERE division_id = '$h_div_id' AND no_house_holds = no_house_coction AND no_house_holds = no_metered_house_connections) AS beneficiary_population 
+        FROM zone_master z WHERE z.division_id = '$h_div_id';";
         $result = $this->db->query($sql);
         $return = $result->getResult();
         return $return;

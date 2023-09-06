@@ -117,13 +117,14 @@ $(document).ready(function () {
         var division_id = $(this).val();
         $.post("getHomePipeMeterConDivision", { div_id: division_id }, function (data) {
             var h_dp_dv = JSON.parse(data);
-
+            
             if (h_dp_dv != null) {
                 $('#h_no_division').hide();
                 $('#h_no_city').text(h_dp_dv[0]['total_cities'] !== null ? h_dp_dv[0]['total_cities'] : 0);
                 $('#h_no_dma').text(h_dp_dv[0]['total_dma'] !== null ? h_dp_dv[0]['total_dma'] : 0);
                 $('#h_no_nrw').text(h_dp_dv[0]['nrw_average_value'] !== null ? h_dp_dv[0]['nrw_average_value'] : 0);
                 $('#h_population').text(h_dp_dv[0]['total_no_population'] !== null ? h_dp_dv[0]['total_no_population'] : 0);
+                $('#h_be_population').text(h_dp_dv[0]['beneficiary_population'] !== null ? h_dp_dv[0]['beneficiary_population'] : 0);
 
                 $('#h_household').text(h_dp_dv[0]['total_no_house_holds'] !== null ? h_dp_dv[0]['total_no_house_holds'] : 0);
                 $('#h_h_complete').text(h_dp_dv[0]['total_no_house_coction'] !== null ? h_dp_dv[0]['total_no_house_coction'] : 0);
