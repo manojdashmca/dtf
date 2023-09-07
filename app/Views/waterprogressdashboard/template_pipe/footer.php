@@ -50,7 +50,7 @@ require_once __DIR__ . '/managedJs.php';
 <?php
 if ($includefile) {
     $files = explode(',', $includefile);
-    for ($x = 0; $x < count($files); $x++) {
+    for ($x = 0; $x < count($files); $x++) { 
         require_once __DIR__ . '/../uservalidation/' . $files[$x];
     }
 }
@@ -74,15 +74,6 @@ if ($includefile) {
 <script src="assets/js/pipeline/nrw_progress_filter.js"></script>
 
 <script src="assets/js/app.js"></script>
-
-<!-- <script>
-    function redirecturl(url) {
-        var division = $('#divisions').val();
-        var city = $('#citys').val();
-        var redirect = '/' + url + '?division=' + division + '&city=' + city;
-        window.location = redirect;
-    }
-</script> -->
 
 </body>
 

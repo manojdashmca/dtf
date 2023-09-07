@@ -125,6 +125,9 @@ $routes->match(['get', 'post'], 'deleteCity', 'PipelineController::deleteCity');
 $routes->match(['get', 'post'], 'dmaZoneDashboard', 'pipeLineDashboardController::dmaZoneDashboard');
 $routes->match(['get', 'post'], 'getAllDmaInfoDashboardOnCity', 'pipeLineDashboardController::getAllDmaInfoDashboardOnCity');
 $routes->match(['get', 'post'], 'getAllDmaInfoOnCity', 'pipeLineDashboardController::getAllDmaInfoOnCity');
+// Get table 
+$routes->match(['get', 'post'], 'getAllDivision', 'PipelineController::getDivision');
+$routes->match(['get', 'post'], 'addDivision', 'PipelineController::addDivision');
 // Edit 
 $routes->match(['get', 'post'], 'getDivisionDetailsOnId', 'PipelineController::getDivisionDetailsOnId');
 $routes->match(['get', 'post'], 'editDivisionDataInId', 'PipelineController::editDivisionDataInId');

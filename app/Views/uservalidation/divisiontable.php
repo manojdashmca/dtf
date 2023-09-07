@@ -1,11 +1,12 @@
-window.onload = function () {
+<script type="text/javascript">
+    window.onload = function () {
   getAllDistrict();
 };
 
 
 function getAllDistrict() {
   $(document).ready(function () {
-    $.getJSON('PipelineController/getDivision', function (data) {
+    $.getJSON('getAllDivision', function (data) {
       const outputArray = data.map(item => [item.id, item.division_name]);
       document.getElementById("table-gridjs-m-division") && new gridjs.Grid({
         columns: [{
@@ -42,7 +43,7 @@ function getAllDistrict() {
 
 $(document).on("submit", "#addDivision", function () {
   var vvv = $(this).serialize();
-  $.post("PipelineController/addDivision", $(this).serialize(), function (data) {
+  $.post("addDivision", $(this).serialize(), function (data) {
     if (data.res == "enterDivision") {
       Swal.fire(
         'No Division',
@@ -171,3 +172,5 @@ function refreshDiv() {
 }
 
 
+
+</script>
