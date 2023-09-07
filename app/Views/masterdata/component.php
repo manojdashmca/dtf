@@ -51,7 +51,7 @@
                 </div>
                 <div class="card-body">                
                     <div class="table-responsive">
-                        <table class="table table-borderless table-bordered align-middle table-nowrap mb-0">
+                        <table class="table table-borderless table-bordered align-middle mb-0">
                             <thead>
                                 <tr>
                                     <th scope="col">SL NO</th>
@@ -70,7 +70,7 @@
                                     $totalcost += $component[$x]->breakupcost;
                                     ?>
                                     <tr>
-                                        <td class="fw-medium"><?= str_pad(($x + 1), 2, "0", STR_PAD_LEFT) ?></td>
+                                        <td class="fw-medium"><?= str_pad($component[$x]->cc_record_sl, 2, "0", STR_PAD_LEFT) ?></td>
                                         <td><?= $component[$x]->component ?></td>
                                         <td><?= $component[$x]->component_breakup ?></td>
                                         <td><?= $component[$x]->breakupcost ?></td>                                    
@@ -164,8 +164,8 @@
                 <div class="modal-body">
 
                     <div id="api-key-error-msg" class="alert alert-danger py-2 d-none"></div>                    
-                    
-                                       
+
+
                     <div class="form-group mb-3">
                         <label for="breakup-percent" class="form-label">Component Name<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="componentname" name="componentname" placeholder="Enter the component Name">

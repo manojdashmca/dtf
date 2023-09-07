@@ -41,10 +41,8 @@ if (in_array('dashboard', $jsarray)) {
 }if (in_array('divisionmastertable', $jsarray)) { ?>   
 <!-- Division Master Table -->
     <script src="assets/libs/prismjs/prism.js"></script>
-    <script src="assets/libs/gridjs/gridjs.umd.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="assets/libs/sweetalert2/sweetalert2.min.js"></script> 
-    <script src="assets/js/pages/sweetalerts.init.js"></script>
+    <script src="assets/libs/gridjs/gridjs.umd.js"></script>    
+    <script src="assets/js/pipeline/division-table.js"></script>    
 <?php
 }
 

@@ -24,7 +24,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://dftm.com:8090';
+    public $baseURL = 'https://dft.onewaterindia.com/';
 
     /**
      * --------------------------------------------------------------------------

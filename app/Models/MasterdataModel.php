@@ -18,7 +18,7 @@ class MasterdataModel extends Model {
     }
 
     public function getCityComponent($cityid) {
-        $sql = "SELECT chcb_id,cm_id_cm,component,component_breakup,round((contract_cost * component_breakup/100),2) as breakupcost,contract_cost "
+        $sql = "SELECT cc_record_sl,chcb_id,cm_id_cm,component,component_breakup,round((contract_cost * component_breakup/100),2) as breakupcost,contract_cost "
                 . "from city_has_component_breakup "
                 . "join component_master_data on cm_id=cm_id_cm  "
                 . "JOIN cities_master on city_id=city_id_city "
@@ -30,7 +30,7 @@ class MasterdataModel extends Model {
     }
 
     public function getCityComponentTask($cityid) {
-        $sql = "SELECT chcht_id,chcht.cm_id_cm,task_name,task_breakup,concat(cc_record_sl,'.',task_sl_no) record_sl,"
+        $sql = "SELECT chcht_id,chcht.cm_id_cm,task_name,task_breakup,task_sl_no record_sl,"
                 . "round(contract_cost * (select component_breakup from city_has_component_breakup chcb1 where chcb1.cm_id_cm=chcht.cm_id_cm and chcb1.city_id_city=chcht.city_id_city)/100 * task_breakup/100 ,2) as breakupcost "
                 . "from city_has_component_has_task chcht "
                 . "JOIN task_master_data tmd on chcht.tm_id_tm=tm_id  "
@@ -72,9 +72,15 @@ class MasterdataModel extends Model {
     }
 
     public function getCitySubTask($cityid) {
-        $sql = "SELECT chchths_id,subtask,sub_task_breakup,concat(cc_record_sl,'.',task_sl_no,'.',subtask_sl_no) record_sl,"
-                . "ROUND((select contract_cost * (select component_breakup from city_has_component_breakup schc where schc.city_id_city=chchthc.city_id_city and schc.cm_id_cm=chchthc.cm_id_cm)/100 * "
-                . " (select task_breakup from city_has_component_has_task as chcht where chcht.city_id_city=chchthc.city_id_city and chcht.cm_id_cm=chchthc.cm_id_cm and chcht.tm_id_tm=chchthc.tm_id_tm)/100 * sub_task_breakup/100 from cities_master scm where scm.city_id=chchthc.city_id_city ),2) as breakup_cost,subtask_unit,subtask_qty,if(allowed_partial='1','Yes','No') allowedpartial,subtask_status,entered_progress "
+        $sql = "SELECT chchths_id,subtask,sub_task_breakup,subtask_sl_no record_sl,"
+                . "ROUND((select contract_cost * "
+                . "(select component_breakup from city_has_component_breakup schc "
+                . "where schc.city_id_city=chchthc.city_id_city and schc.cm_id_cm=chchthc.cm_id_cm)/100 * "
+                . " (select task_breakup from city_has_component_has_task as chcht "
+                . "where chcht.city_id_city=chchthc.city_id_city "
+                . "and chcht.cm_id_cm=chchthc.cm_id_cm and chcht.tm_id_tm=chchthc.tm_id_tm)/100 * "
+                . "sub_task_breakup/100 from cities_master scm where scm.city_id=chchthc.city_id_city ),2) as breakup_cost,"
+                . "subtask_unit,subtask_qty,if(allowed_partial='1','Yes','No') allowedpartial,status,entered_progress "
                 . "FROM city_has_component_has_task_has_subtask chchthc "
                 . "JOIN subtask_master_data on sm_id_sm=sm_id "
                 . "JOIN city_has_component_breakup chcb on chcb.city_id_city=chchthc.city_id_city and chcb.cm_id_cm=chchthc.cm_id_cm "
@@ -87,11 +93,11 @@ class MasterdataModel extends Model {
     }
 
     public function getCityComponentHasTask($cityid, $componentid) {
-        $sql = "SELECT tm_id_tm,task_name,concat(cc_record_sl,'.',task_sl_no) record_sl  "
+        $sql = "SELECT tm_id_tm,task_name,task_sl_no record_sl  "
                 . "from city_has_component_has_task chcht "
                 . "JOIN task_master_data tmd on chcht.tm_id_tm=tm_id  "
                 . "JOIN city_has_component_breakup chcb on chcb.city_id_city=chcht.city_id_city and chcb.cm_id_cm=chcht.cm_id_cm "
-                . "where chcht.city_id_city='$cityid' and chcht.cm_id_cm='$componentid' order by task_name asc";
+                . "where chcht.city_id_city='$cityid' and chcht.cm_id_cm='$componentid' order by task_sl_no asc";
 
         $result = $this->db->query($sql);
         $return = $result->getResult();
@@ -110,7 +116,9 @@ class MasterdataModel extends Model {
     }
 
     public function getCityComponentHasTaskHasSubtask($city, $component, $task) {
-        $sql = "SELECT chchths_id,concat(cc_record_sl,'.',task_sl_no,'.',subtask_sl_no) record_sl,subtask,sub_task_breakup,subtask_unit,subtask_qty,if(allowed_partial='1','Yes','No') allowedpartial,subtask_status,entered_progress "
+        $sql = "SELECT chchths_id,subtask_sl_no record_sl,"
+                . "subtask,sub_task_breakup,subtask_unit,subtask_qty,if(allowed_partial='1','Yes','No') allowedpartial,"
+                . "status,entered_progress "
                 . "FROM city_has_component_has_task_has_subtask chchths "
                 . "JOIN subtask_master_data on sm_id_sm=sm_id "
                 . "JOIN city_has_component_breakup chcb on chcb.city_id_city=chchths.city_id_city and chcb.cm_id_cm=chchths.cm_id_cm "
