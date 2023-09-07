@@ -11,8 +11,11 @@
         <!-- App favicon -->
 
         <!-- Gride Table -->
-        <link rel="shortcut icon" href="assets/images/logo-single.png">       
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href="assets/images/logo-single.png">   
+        
+        <?php
+        require_once __DIR__ . '/managedJsTaplePagination.php';
+        ?>
         <link rel="stylesheet" href="assets/libs/gridjs/theme/mermaid.min.css">
         <!-- gride Table -->
 
@@ -26,7 +29,6 @@
         <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
         <!-- custom Css-->
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
-        <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
         <?php
         require_once __DIR__ . '/managedCss.php';
         ?>
