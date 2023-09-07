@@ -24,8 +24,9 @@ class PipelineController extends WebController {
 
     public function divisionMaster(){
         $this->data['title'] = 'Pipeline Dashboard';
-        $this->data['css']='';
-        $this->data['js']='';
+        $this->data['css']='sweetalert';
+        $this->data['js']='sweetalert,divisionmastertable';
+        $this->data['jspagination']='divisionmastertable';
         $this->data['usernewname']='chhitaranjan';
         return view('templates/header', $this->data)
                 . view('pipeline/division-home', $this->data)

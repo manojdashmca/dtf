@@ -7,7 +7,7 @@ function getAllDistrict() {
   $(document).ready(function () {
     $.getJSON('PipelineController/getDivision', function (data) {
       const outputArray = data.map(item => [item.id, item.division_name]);
-      document.getElementById("table-gridjs") && new gridjs.Grid({
+      document.getElementById("table-gridjs-m-division") && new gridjs.Grid({
         columns: [{
           name: "ID",
           width: "80px",
@@ -33,7 +33,7 @@ function getAllDistrict() {
         sort: !0,
         search: !0,
         data: outputArray,
-      }).render(document.getElementById("table-gridjs"));
+      }).render(document.getElementById("table-gridjs-m-division"));
     });
   });
 }

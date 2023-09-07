@@ -59,17 +59,7 @@ if ($includefile) {
 }
 ?>
 <!-- gride Table -->
-<script src="assets/libs/prismjs/prism.js"></script>
-<script src="assets/libs/gridjs/gridjs.umd.js"></script>
-
-<!-- <script src="assets/js/pipeline/division-table.js"></script> -->
-<!-- gride Table -->
 <script src="assets/js/app.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<script src="assets/js/pipeline/division-table.js"></script>
-<script src="assets/libs/sweetalert2/sweetalert2.min.js"></script> 
-<script src="assets/js/pages/sweetalerts.init.js"></script>
 </body>
 
 </html>
