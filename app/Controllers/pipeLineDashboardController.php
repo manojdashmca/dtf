@@ -79,6 +79,17 @@ class pipeLineDashboardController extends WebController {
                 . view('pipelinedashboard/template_pipe/footer', $this->data);
     } 
 
+    public function homeTabs(){
+        
+        $this->data['title'] = 'Pipeline Dashboard';
+        $this->data['css']='';
+        $this->data['js']='';
+        
+        return view('pipelinedashboard/template_pipe/header', $this->data)
+                . view('pipelinedashboard/pages/hometab', $this->data)
+                . view('pipelinedashboard/template_pipe/footer', $this->data);
+    } 
+
     public function waterProgressDashboard(){
         $this->data['title'] = 'Pipeline Dashboard';
         $this->data['css']='';
