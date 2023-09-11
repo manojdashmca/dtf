@@ -316,45 +316,51 @@
                 <div class="container-fluid set_height">
                     <div class="row">
                         <div class="col-12 text-center">
+                            <?php 
+                                if($getDmaCityOnCityuser != NULL){
+                            ?>
                             <h5 class="text-info">REVENUE COLLECTION</h5>
-                            <h5 class="text-info">KEONJHAR,BARBIL</h5>
+                            <h5 class="text-info"><?= $getDmaCityOnCityuser->division ;?>, <?= $getDmaCityOnCityuser->city ;?></h5>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-3">
+                        <div class="col-6 mt-4">
+                            <div class="card">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><i class="ri-bill-line align-middle me-2"></i> NOS. BILL GENERATED <span class="text-info" style="float:right">2345678</span>
+                                    </li>
+                                    <li class="list-group-item"><i class="ri-file-copy-2-line align-middle me-2"></i>NOS. BILL DISTRIBUTED <span class="text-info" style="float:right">2345678</span>
+                                    </li>
+                                    <li class="list-group-item"><i class="ri-question-answer-line align-middle me-2"></i>INCENTIVE PAID TO JALSATHI <span class="text-info" style="float:right">2345678</span>
+                                    </li>
+                                    <li class="list-group-item"><i class="ri-secure-payment-line align-middle me-2"></i>TOTAL REVENUE COLLECTED <span class="text-info" style="float:right">2345678</span>
+                                    </li>
+                                    <li class="list-group-item"><i class="ri-secure-payment-line align-middle me-2"></i>REVENUE COLLECTED BY JALSATHI <span class="text-info" style="float:right">2345678</span>
+                                    </li>
+                                    <li class="list-group-item"><i class="ri-secure-payment-line align-middle me-2"></i>LAST UPDATED DATE <span class="text-info" style="float:right">2345678</span>
+                                    </li>
+                                </ul>
+                                <div class="edit-button mt-2 text-center">
+                                    <button type="button" class="btn btn-info " data-bs-toggle="modal" data-bs-target="#cityUserRvnC">Edit Now</button>
+
+                                    <button class="btn btn-primary">Add New</button>
+                                </div>
+
+                            </div>
+
+                        </div>
                         <div class="col-6">
-                            <div>
-                                <label for="placeholderInput" class="form-label">NOS. BILL GENERATED :</label>
-                                <input type="text" class="form-control" name="city_user_dft_complete_m_y" placeholder="0000" value="">
+                            <div class="card" style="height: 342px;">
+                                <img src="assets/images/rv.jpeg" alt="" style="height: 100%;">
                             </div>
                         </div>
-                        <div class="col-6">
-                            <div>
-                                <label for="placeholderInput" class="form-label">NOS. BILL DISTRIBUTED :</label>
-                                <input type="text" class="form-control" name="city_user_dft_complete_m_y" placeholder="0000" value="">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div>
-                                <label for="placeholderInput" class="form-label">INCENTIVE PAID TO JALSATHI :</label>
-                                <input type="text" class="form-control" name="city_user_dft_complete_m_y" placeholder="0000" value="">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div>
-                                <label for="placeholderInput" class="form-label">TOTAL REVENUE COLLECTED :</label>
-                                <input type="text" class="form-control" name="city_user_dft_complete_m_y" placeholder="0000" value="">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div>
-                                <label for="placeholderInput" class="form-label">REVENUE COLLECTED BY JALSATHI :</label>
-                                <input type="text" class="form-control" name="city_user_dft_complete_m_y" placeholder="0000" value="">
-                            </div>
-                        </div>
-                        <div class="col-12 mt-3 text-center">
-                            <button class="btn btn-info">Submit</button>
-                        </div>
-                    </div><!--end row-->
+                    </div>
+
+
+
                 </div>
             </div>
             <!-- End Page-content -->
@@ -384,6 +390,55 @@
     <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
         <i class="ri-arrow-up-line"></i>
     </button>
+
+    <!-- edit modal   -->
+    <!-- Default Modals -->
+    <div id="cityUserRvnC" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">REVENUE COLLECTION</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="fs-15">
+                        <!-- Overflowing text to show scroll behavior -->
+                    </h5>
+                    <form action="">
+                        <div class="row">
+                            <div class="col-12">
+                                <label for=" placeholderInput" class="form-label">NOS. BILL GENERATED :</label>
+                                <input type="text" class="form-control" name="rev_no_of_bill_generated" placeholder="0000" value="">
+                            </div>
+                            <div class="col-12">
+                                <label for=" placeholderInput" class="form-label">NOS. BILL DISTRIBUTED :</label>
+                                <input type="text" class="form-control" name="rev_nos_bill_distributed" placeholder="0000" value="">
+                            </div>
+                            <div class="col-12">
+                                <label for=" placeholderInput" class="form-label">INCENTIVE PAID TO JALSATHI :</label>
+                                <input type="text" class="form-control" name="rev_incentive_paid_to_jalsathi" placeholder="0000" value="">
+                            </div>
+                            <div class="col-12">
+                                <label for=" placeholderInput" class="form-label">TOTAL REVENUE COLLECTED :</label>
+                                <input type="text" class="form-control" name="rev_total_revenue_collected" placeholder="0000" value="">
+                            </div>
+                            <div class="col-12">
+                                <label for=" placeholderInput" class="form-label">REVENUE COLLECTED BY JALSATHI :</label>
+                                <input type="text" class="form-control" name="rev_revenue_collected_by_jalasathi" placeholder="0000" value="">
+                            </div>
+                            <div class="col-12 mt-3 text-center">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary ">Save Changes</button>
+                            </div>
+                        </div><!--end row-->
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- Edit Modal -->
+
+
     <!--end back-to-top-->
     <!-- JAVASCRIPT -->
     <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>

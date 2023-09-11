@@ -117,6 +117,11 @@
                          </ul>
                      </div>
                  </li>
+                 <li class="nav-item">
+                    <a class="nav-link menu-link" href="cityUserMaster" >
+                        <i class="ri-map-pin-user-fill"></i> <span data-key="t-components">City Users Master</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->
