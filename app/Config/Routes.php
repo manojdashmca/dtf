@@ -133,40 +133,34 @@ $routes->match(['get', 'post'], 'addDivision', 'PipelineController::addDivision'
 // Edit 
 $routes->match(['get', 'post'], 'getDivisionDetailsOnId', 'PipelineController::getDivisionDetailsOnId');
 $routes->match(['get', 'post'], 'editDivisionDataInId', 'PipelineController::editDivisionDataInId');
-
-
-
 // Dma Master 
 $routes->match(['get', 'post'], 'addnewdmainfo', 'PipelineController::InsertDmaData');
 $routes->match(['get', 'post'], 'getnrwDataWithDmaId', 'PipelineController::getnrwDataWithDmaId');
 $routes->match(['get', 'post'], 'getDmaDetailsOnId', 'PipelineController::getDmaDetailsOnId');
-
 $routes->match(['get', 'post'], 'getCitiesinDivision', 'pipeLineDashboardController::getCitiesinDivision');
-
 // nrw 
-
 $routes->match(['get', 'post'], 'getNrwProgressCitywise', 'PipelineController::getNrwProgressCitywise');
 $routes->match(['get', 'post'], 'getNrwProgressDivisionwise', 'PipelineController::getNrwProgressDivisionwise');
 $routes->match(['get', 'post'], 'dateBetweenNrwfromto', 'PipelineController::dateBetweenNrwfromto');
 $routes->match(['get', 'post'], 'updatenewdmainfo', 'PipelineController::updateDmaDataInId');
 
 // Login City Controller
-$routes->match(['get', 'post'], 'logincity', 'LoginCityController::home');
+$routes->match(['get', 'post'], 'logincity', 'LoginCityController::logincity');
 // $routes->match(['get', 'post'], 'dmadetails', 'LoginCityController::dmaDetailsHome');
 $routes->get('dmadetails', 'LoginCityController::dmaDetailsHome');
 $routes->get('editdmapage/(:any)', 'LoginCityController::editDmadetails/$1');
 $routes->post('updateDmaDetails/(:any)', 'LoginCityController::updateDmaZone/$1');
-
-
 $routes->match(['get', 'post'], 'cityJalasathi', 'LoginCityController::cityJalasathi');
 $routes->match(['get', 'post'], 'cityJalasathiAddnew', 'LoginCityController::cityJalasathiAddnew');
-
-
 $routes->get('cityLoginrevenuecoll', 'LoginCityController::cityUserRevenueCollection');
-
 $routes->get('cityLogingrevanceCust', 'LoginCityController::cityUsergrevanceCustection');
 $routes->get('citylogwqm', 'LoginCityController::citylogwqm');
 
+// City User Master
+$routes->match(['get', 'post'], 'cityUserMaster', 'LoginCityController::cityUserMasterData');
+$routes->match(['get', 'post'], 'addnewcityUser', 'LoginCityController::addnewcityUser');
+$routes->match(['get', 'post'], 'getCityUserData', 'LoginCityController::getCityUserData');
+$routes->get('logoutcity', 'LoginCityController::logoutCity');
 
 // $routes->match(['get', 'post'], 'getCityTableData', 'PipelineController::getCityTableData');
 

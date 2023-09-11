@@ -12,7 +12,13 @@ class CityLoginModel extends Model
         parent::__construct();
     }
 
-    public function getLoginDmadetails()
+    public function getUserdetailByCityUsername($username,$usercpass) {
+        $sql = "SELECT * FROM city_user WHERE (user_name='$username' AND user_email='$usercpass' or user_contact='$usercpass') AND division_id IS NOT NULL ";
+        $result = $this->db->query($sql);
+        return $result->getRow();
+    }
+
+    public function getLoginDmadetails($city_id)
     {
         $sql = "SELECT c.id AS city_id,d.division_name AS division_name, 
 		c.city_name AS city_name, 
@@ -22,7 +28,7 @@ class CityLoginModel extends Model
         sum(z.no_metered_house_connections) AS city_meter_connection,
         sum(z.no_house_holds) AS city_household,
         max(DATE_FORMAT(z.modification_date, '%d-%m-%Y')) AS last_nrw_update 
-         FROM zone_master z INNER JOIN divisions d ON d.id = z.division_id INNER JOIN pl_citys c ON c.id = z.city_id WHERE z.city_id = '7' GROUP BY z.city_id;";
+         FROM zone_master z INNER JOIN divisions d ON d.id = z.division_id INNER JOIN pl_citys c ON c.id = z.city_id WHERE z.city_id = '$city_id' GROUP BY z.city_id;";
         $result = $this->db->query($sql);
         $final_array = array();
         $return = $result->getRow();
@@ -85,6 +91,38 @@ class CityLoginModel extends Model
         $this->db->close();
     }
 
+    // cityUser Master 
+    public function checkDuplicateCityUser($cityuser_city,$user_name,$user_email)
+    {
+        $sql = "SELECT user_name from city_user WHERE city_id = '$cityuser_city' AND user_name='$user_name' AND user_email = '$user_email';";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        return $return;
+        $this->db->close();
+    }
 
+
+    public function insertNewCityUser($citymaster_division,$cityuser_city,$user_name,$user_email,$user_contact)    {
+        $sql = "INSERT INTO city_user(division_id,city_id,user_name,user_email,`user_contact`)VALUES('$citymaster_division','$cityuser_city','$user_name','$user_email','$user_contact')";
+        $result = $this->db->query($sql);
+
+        return $result;
+        $this->db->close();
+    }
+
+    public function getCityUserData(){
+        $sql = "SELECT cu.id AS id, cu.user_name AS user_name, c.city_name AS city_name, d.division_name AS division_name, cu.user_email AS user_email, cu.user_contact AS user_contact FROM `city_user` cu INNER JOIN divisions d ON cu.division_id = d.id INNER JOIN pl_citys c ON cu.city_id = c.id ORDER BY cu.id;";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        
+        return $return;
+    }
+
+    public function getDmaCityOnCityuser($division_id,$city_id){
+        $sql = "SELECT d.division_name AS division, c.city_name AS city FROM pl_citys c INNER JOIN divisions d ON d.id = c.division_id WHERE d.id = '$division_id' AND c.id = '$city_id' GROUP BY c.id;";
+        $result = $this->db->query($sql);
+        $return = $result->getRow();
+        return $return;
+    }
     
 }
