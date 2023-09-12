@@ -16,23 +16,24 @@ class LoginCityController extends WebController
     }
 
 
-    public function logincity() {
+    public function logincity()
+    {
 
-       
+
 
         if ($this->request->getMethod() == 'post') {
             $this->validateCaptcha();
             if (!$this->validate([
-                        'usernamecity' => "required",
-                        'passwordinputcity' => 'required',
-                    ])) {
+                'usernamecity' => "required",
+                'passwordinputcity' => 'required',
+            ])) {
                 $this->session->setFlashdata('message', setMessage('Missing Required Field', 'e'));
             } else {
                 $username = $this->request->getPost('usernamecity');
                 $password = $this->request->getPost('passwordinputcity');
-                $result = $this->CityLoginModel->getUserdetailByCityUsername($username,$password); 
+                $result = $this->CityLoginModel->getUserdetailByCityUsername($username, $password);
                 $remember = $this->request->getPost('remembercity');
-                
+
                 if (!empty($result)) {
                     // $encpassword = $this->encryptString($password);
                     // print_r($password);
@@ -49,25 +50,25 @@ class LoginCityController extends WebController
                             if ($remember == 'on') {
                                 setcookie("dftm-city-username", $username, time() + (3600 * 24 * 365));
                                 setcookie("dftm-city-password", $password, time() + (3600 * 24 * 365));
-                                
                             } else {
                                 setcookie("dftm-city-username", $username, time() - 3600);
                                 setcookie("dftm-city-password", $password, time() - 3600);
                             }
                             // $this->session->set('img', $imgpath);
                             $this->session->set('citylogin', true);
+                            $this->session->set('userlogid', $result->id);
                             $this->session->set('usernamecity', $result->user_name);
                             $this->session->set('usercityemail', $result->user_email);
                             $this->session->set('cityuser_division', $result->division_id);
                             $this->session->set('cityuser_city', $result->city_id);
-                            if($result->division_id != NULL && $result->city_id != NULL){
+                            if ($result->division_id != NULL && $result->city_id != NULL) {
                                 header("location:" . CUSTOMPATH . "dmadetails");
                                 exit;
                             }
                             // $this->session->set('userid', $result->id_user);
                             // $this->session->set('dob', $result->user_dob);
 
-                            
+
                             exit;
                         } else {
 
@@ -90,7 +91,8 @@ class LoginCityController extends WebController
         return view('logincity/index', $this->data);
     }
 
-    public function logoutCity() {
+    public function logoutCity()
+    {
         header('location:/logincity');
         exit;
     }
@@ -166,9 +168,11 @@ class LoginCityController extends WebController
         // $this->data['title'] = 'Pipeline Dashboard';
         $this->data['css'] = '';
         $this->data['js'] = '';
+
         $division_id = session()->get('cityuser_division');
         $city_id = session()->get('cityuser_city');
-        $this->data['getDmaCityOnCityuser'] = $this->CityLoginModel->getDmaCityOnCityuser($division_id,$city_id);
+        $this->data['getDmaCityOnCityuser'] = $this->CityLoginModel->getDmaCityOnCityuser($division_id, $city_id);
+        $this->data['getRevenueDataInCityDivision'] = $this->CityLoginModel->getRevenueDataInCityDivision($division_id, $city_id);
 
         return view('logincity/cityuserrevenuecollected', $this->data);
     }
@@ -244,7 +248,8 @@ class LoginCityController extends WebController
         return json_encode($cityuser);
     }
 
-    protected function validateCaptcha() {
+    protected function validateCaptcha()
+    {
         //echo "<pre>";
         //print_r($this->request->getPost());
         $captcha = $this->request->getPost('g-recaptcha-response');
@@ -259,7 +264,8 @@ class LoginCityController extends WebController
         }
     }
 
-    public function encryptString($string) {
+    public function encryptString($string)
+    {
         $return = '';
         if (!empty($string)) {
             $this->aesObj->setData($string);
@@ -267,5 +273,49 @@ class LoginCityController extends WebController
             $return = $token;
         }
         return $return;
+    }
+
+    public function addCityuserRevenueCollection()
+    {
+        extract($_POST);
+        $division_id = session()->get('cityuser_division');
+        $city_id = session()->get('cityuser_city');
+        $userlogid = session()->get('userlogid');
+        $insertrevenuecollection = $this->CityLoginModel->insertRevenueCollection($rev_no_of_bill_generated, $rev_nos_bill_distributed, $rev_incentive_paid_to_jalsathi, $rev_total_revenue_collected, $rev_revenue_collected_by_jalasathi, $division_id, $city_id, $userlogid);
+        if ($insertrevenuecollection) {
+            $res = array("res" => "success");
+        } else {
+            $res = array("res" => "failed");
+        }
+        echo json_encode($res);
+    }
+
+    public function getRevColCityOnId()
+    {
+        try {
+            extract($_POST);
+            $getrevenuecolc = $this->CityLoginModel->getRevColCityOnId($city_revenue_id);
+            return json_encode($getrevenuecolc);
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            return json_encode(['error' => 'An error occurred']);
+        }
+    }
+
+    public function editCityuserRevenueCollection()
+    {
+        extract($_POST);
+        $res = "";
+        if ($revenue_id) {
+            $updateDivisionTable = $this->CityLoginModel->editCityuserRevenueCollection($revenue_id, $rev_no_of_bill_generated, $rev_nos_bill_distributed, $rev_incentive_paid_to_jalsathi, $rev_total_revenue_collected, $rev_revenue_collected_by_jalasathi);
+            if ($updateDivisionTable) {
+                $res = array("res" => "success");
+            } else {
+                $res = array("res" => "failed");
+            }
+        } else {
+            $res = array("res" => "failed");
+        }
+        echo json_encode($res);
     }
 }

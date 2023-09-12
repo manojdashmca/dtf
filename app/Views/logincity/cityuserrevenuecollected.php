@@ -11,6 +11,8 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
     <!--datatable css-->
+    <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" />
     <!--datatable responsive css-->
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css" />
@@ -31,6 +33,7 @@
     <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+
     <style>
         @media only screen and (max-width: 1024px) {
             .set_height {
@@ -121,17 +124,15 @@
                                 <span class="d-flex align-items-center">
                                     <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
                                     <span class="text-start ms-xl-2">
-                                        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Test Admin</span>
-                                        <span class="d-none d-xl-block ms-1 fs-13 text-reset user-name-sub-text">Admin</span>
+                                        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text"><?= session()->get('usernamecity') ?></span>
+                                        <span class="d-none d-xl-block ms-1 fs-13 text-reset user-name-sub-text">City User</span>
                                     </span>
                                 </span>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                <h6 class="dropdown-header">Welcome Admin!</h6>
-                                <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
-                                <a class="dropdown-item" href="auth-lockscreen-basic.html"><i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a>
-                                <a class="dropdown-item" href="auth-logout-basic.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
+                                <h6 class="dropdown-header">Welcome City User!</h6>
+                                <a class="dropdown-item" href="logoutcity"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
                             </div>
                         </div>
                     </div>
@@ -316,11 +317,11 @@
                 <div class="container-fluid set_height">
                     <div class="row">
                         <div class="col-12 text-center">
-                            <?php 
-                                if($getDmaCityOnCityuser != NULL){
+                            <?php
+                            if ($getDmaCityOnCityuser != NULL) {
                             ?>
-                            <h5 class="text-info">REVENUE COLLECTION</h5>
-                            <h5 class="text-info"><?= $getDmaCityOnCityuser->division ;?>, <?= $getDmaCityOnCityuser->city ;?></h5>
+                                <h5 class="text-info">REVENUE COLLECTION</h5>
+                                <h5 class="text-info"><?= $getDmaCityOnCityuser->division; ?>, <?= $getDmaCityOnCityuser->city; ?></h5>
                             <?php
                             }
                             ?>
@@ -330,23 +331,55 @@
                         <div class="col-6 mt-4">
                             <div class="card">
                                 <ul class="list-group">
-                                    <li class="list-group-item"><i class="ri-bill-line align-middle me-2"></i> NOS. BILL GENERATED <span class="text-info" style="float:right">2345678</span>
+                                    <li class="list-group-item"><i class="ri-bill-line align-middle me-2"></i> NOS. BILL GENERATED
+                                        <span class="text-info" style="float:right"><?php if (isset($getRevenueDataInCityDivision->no_bill_generated)) {
+                                                                                        echo $getRevenueDataInCityDivision->no_bill_generated != null ? $getRevenueDataInCityDivision->no_bill_generated : '0000';
+                                                                                    } else {
+                                                                                        echo '0000';
+                                                                                    } ?></span>
                                     </li>
-                                    <li class="list-group-item"><i class="ri-file-copy-2-line align-middle me-2"></i>NOS. BILL DISTRIBUTED <span class="text-info" style="float:right">2345678</span>
+                                    <li class="list-group-item"><i class="ri-file-copy-2-line align-middle me-2"></i>NOS. BILL DISTRIBUTED
+                                        <span class="text-info" style="float:right"><?php if (isset($getRevenueDataInCityDivision->no_bill_distributed)) {
+                                                                                        echo $getRevenueDataInCityDivision->no_bill_distributed != null ? $getRevenueDataInCityDivision->no_bill_distributed : '0000';
+                                                                                    } else {
+                                                                                        echo '0000';
+                                                                                    } ?></span>
                                     </li>
-                                    <li class="list-group-item"><i class="ri-question-answer-line align-middle me-2"></i>INCENTIVE PAID TO JALSATHI <span class="text-info" style="float:right">2345678</span>
+                                    <li class="list-group-item"><i class="ri-question-answer-line align-middle me-2"></i>INCENTIVE PAID TO JALSATHI
+                                        <span class="text-info" style="float:right"><?php if (isset($getRevenueDataInCityDivision->incentive_paid_to_jalasathi)) {
+                                                                                        echo $getRevenueDataInCityDivision->incentive_paid_to_jalasathi != null ? $getRevenueDataInCityDivision->incentive_paid_to_jalasathi : '0000';
+                                                                                    } else {
+                                                                                        echo '0000';
+                                                                                    } ?></span>
                                     </li>
-                                    <li class="list-group-item"><i class="ri-secure-payment-line align-middle me-2"></i>TOTAL REVENUE COLLECTED <span class="text-info" style="float:right">2345678</span>
+                                    <li class="list-group-item"><i class="ri-secure-payment-line align-middle me-2"></i>TOTAL REVENUE COLLECTED
+                                        <span class="text-info" style="float:right"><?php if (isset($getRevenueDataInCityDivision->total_revenue_collected)) {
+                                                                                        echo $getRevenueDataInCityDivision->total_revenue_collected != null ? $getRevenueDataInCityDivision->total_revenue_collected : '0000';
+                                                                                    } else {
+                                                                                        echo '0000';
+                                                                                    } ?></span>
                                     </li>
-                                    <li class="list-group-item"><i class="ri-secure-payment-line align-middle me-2"></i>REVENUE COLLECTED BY JALSATHI <span class="text-info" style="float:right">2345678</span>
+                                    <li class="list-group-item"><i class="ri-water-flash-line align-middle me-2"></i>REVENUE COLLECTED BY JALSATHI
+                                        <span class="text-info" style="float:right"><?php if (isset($getRevenueDataInCityDivision->revenue_collected_by_jalasathi)) {
+                                                                                        echo $getRevenueDataInCityDivision->revenue_collected_by_jalasathi != null ? $getRevenueDataInCityDivision->revenue_collected_by_jalasathi : '0000';
+                                                                                    } else {
+                                                                                        echo '0000';
+                                                                                    } ?></span>
                                     </li>
-                                    <li class="list-group-item"><i class="ri-secure-payment-line align-middle me-2"></i>LAST UPDATED DATE <span class="text-info" style="float:right">2345678</span>
+                                    <li class="list-group-item"><i class="ri-calendar-line align-middle me-2"></i>LAST UPDATED DATE
+                                        <span class="text-info" style="float:right"><?php if (isset($getRevenueDataInCityDivision->last_update)) {
+                                                                                        echo $getRevenueDataInCityDivision->last_update != null ? $getRevenueDataInCityDivision->last_update : '00-00-0000';
+                                                                                    } else {
+                                                                                        echo '00-00-0000';
+                                                                                    } ?></span>
                                     </li>
                                 </ul>
                                 <div class="edit-button mt-2 text-center">
-                                    <button type="button" class="btn btn-info " data-bs-toggle="modal" data-bs-target="#cityUserRvnC">Edit Now</button>
-
-                                    <button class="btn btn-primary">Add New</button>
+                                    <?php if ($getRevenueDataInCityDivision) { ?>
+                                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#cityUserRvnC" onclick="editCityUserRevenue(<?php echo $getRevenueDataInCityDivision->id ?>)">Edit Now</button>
+                                    <?php } else { ?>
+                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cityUserRvnCAdd">Add New</button>
+                                    <?php } ?>
                                 </div>
 
                             </div>
@@ -390,21 +423,20 @@
     <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
         <i class="ri-arrow-up-line"></i>
     </button>
-
-    <!-- edit modal   -->
+    <!-- Add New modal   -->
     <!-- Default Modals -->
-    <div id="cityUserRvnC" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div id="cityUserRvnCAdd" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">REVENUE COLLECTION</h5>
+                    <h5 class="modal-title" id="myModalLabel">ADD REVENUE COLLECTION</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                 </div>
                 <div class="modal-body">
                     <h5 class="fs-15">
                         <!-- Overflowing text to show scroll behavior -->
                     </h5>
-                    <form action="">
+                    <form method="post" id="addCityuserRevenueCollection">
                         <div class="row">
                             <div class="col-12">
                                 <label for=" placeholderInput" class="form-label">NOS. BILL GENERATED :</label>
@@ -428,7 +460,55 @@
                             </div>
                             <div class="col-12 mt-3 text-center">
                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary ">Save Changes</button>
+                                <button type="submit" class="btn btn-primary ">Add New</button>
+                            </div>
+                        </div><!--end row-->
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- Add New Modal -->
+    <!-- edit modal   -->
+    <!-- Default Modals -->
+    <div id="cityUserRvnC" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel"> EDIT REVENUE COLLECTION</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="fs-15">
+                        <!-- Overflowing text to show scroll behavior -->
+                    </h5>
+                    <form method="post" id="editCityuserRevenueCollection">
+                        <div class="row">
+                            <input type="text" name="revenue_id" id="revenue_id">
+                            <div class="col-12">
+                                <label for=" placeholderInput" class="form-label">NOS. BILL GENERATED :</label>
+                                <input type="text" class="form-control" name="rev_no_of_bill_generated" id="rev_no_of_bill_generated" placeholder="0000" value="">
+                            </div>
+                            <div class="col-12">
+                                <label for=" placeholderInput" class="form-label">NOS. BILL DISTRIBUTED :</label>
+                                <input type="text" class="form-control" name="rev_nos_bill_distributed" id="rev_nos_bill_distributed" placeholder="0000" value="">
+                            </div>
+                            <div class="col-12">
+                                <label for=" placeholderInput" class="form-label">INCENTIVE PAID TO JALSATHI :</label>
+                                <input type="text" class="form-control" name="rev_incentive_paid_to_jalsathi" id="rev_incentive_paid_to_jalsathi" placeholder="0000" value="">
+                            </div>
+                            <div class="col-12">
+                                <label for=" placeholderInput" class="form-label">TOTAL REVENUE COLLECTED :</label>
+                                <input type="text" class="form-control" name="rev_total_revenue_collected" id="rev_total_revenue_collected" placeholder="0000" value="">
+                            </div>
+                            <div class="col-12">
+                                <label for=" placeholderInput" class="form-label">REVENUE COLLECTED BY JALSATHI :</label>
+                                <input type="text" class="form-control" name="rev_revenue_collected_by_jalasathi" id="rev_revenue_collected_by_jalasathi" placeholder="0000" value="">
+                            </div>
+                            <div class="col-12 mt-3 text-center">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary ">Save Changes</button>
                             </div>
                         </div><!--end row-->
                     </form>
@@ -458,6 +538,7 @@
 
     <!-- Table -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 
     <!--datatable js-->
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
@@ -472,7 +553,11 @@
 
     <script src="assets/js/pages/datatables.init.js"></script>
     <!-- Table -->
-
+    <?php
+    require_once __DIR__ . '/../uservalidation/city_revenue_collection.php';
+    ?>
+    <script src="assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <script src="assets/js/pages/sweetalerts.init.js"></script>
     <!-- Dashboard init -->
     <script src="assets/js/pages/dashboard-ecommerce.init.js"></script>
 
