@@ -18,7 +18,7 @@ class MasterdataModel extends Model {
     }
 
     public function getCityComponent($cityid) {
-        $sql = "SELECT cc_record_sl,chcb_id,cm_id_cm,component,component_breakup,round((contract_cost * component_breakup/100),2) as breakupcost,contract_cost "
+        $sql = "SELECT cc_record_sl,chcb_id,cm_id_cm,component,component_breakup,round((contract_cost * component_breakup/100),2) as breakupcost,contract_cost,component_scope "
                 . "from city_has_component_breakup "
                 . "join component_master_data on cm_id=cm_id_cm  "
                 . "JOIN cities_master on city_id=city_id_city "
