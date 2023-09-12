@@ -161,6 +161,9 @@ $routes->match(['get', 'post'], 'cityUserMaster', 'LoginCityController::cityUser
 $routes->match(['get', 'post'], 'addnewcityUser', 'LoginCityController::addnewcityUser');
 $routes->match(['get', 'post'], 'getCityUserData', 'LoginCityController::getCityUserData');
 $routes->get('logoutcity', 'LoginCityController::logoutCity');
+$routes->match(['get', 'post'], 'addCityuserRevenueCollection', 'LoginCityController::addCityuserRevenueCollection');
+$routes->match(['get', 'post'], 'getRevColCityOnId', 'LoginCityController::getRevColCityOnId');
+$routes->match(['get', 'post'], 'editCityuserRevenueCollection', 'LoginCityController::editCityuserRevenueCollection');
 
 // $routes->match(['get', 'post'], 'getCityTableData', 'PipelineController::getCityTableData');
 

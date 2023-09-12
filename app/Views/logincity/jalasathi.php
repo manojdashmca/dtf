@@ -10,8 +10,8 @@
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
-<!--datatable css-->
-<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" />
+    <!--datatable css-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" />
     <!--datatable responsive css-->
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
@@ -40,7 +40,7 @@
     </style>
 </head>
 
-    
+
 <body>
 
     <!-- Begin page -->
@@ -121,17 +121,15 @@
                                 <span class="d-flex align-items-center">
                                     <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
                                     <span class="text-start ms-xl-2">
-                                        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Test Admin</span>
-                                        <span class="d-none d-xl-block ms-1 fs-13 text-reset user-name-sub-text">Admin</span>
+                                        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text"><?= session()->get('usernamecity') ?></span>
+                                        <span class="d-none d-xl-block ms-1 fs-13 text-reset user-name-sub-text">City User</span>
                                     </span>
                                 </span>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                <h6 class="dropdown-header">Welcome Admin!</h6>
-                                <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
-                                <a class="dropdown-item" href="auth-lockscreen-basic.html"><i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a>
-                                <a class="dropdown-item" href="auth-logout-basic.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
+                                <h6 class="dropdown-header">Welcome City User!</h6>
+                                <a class="dropdown-item" href="logoutcity"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
                             </div>
                         </div>
                     </div>
@@ -324,136 +322,136 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-header">
-                                <span class="float-end"><a href="cityJalasathiAddnew" type="button" class="btn btn-outline-info btn-sm">Add New Jalasathi</a></span>
+                                    <span class="float-end"><a href="cityJalasathiAddnew" type="button" class="btn btn-outline-info btn-sm">Add New Jalasathi</a></span>
                                     <h5 class="card-title mb-0 text-info">JALASATHI DETAILS</h5>
                                 </div>
                                 <div class="card-body">
-                                   <div class="table-responsive">
-                                    <table id="buttons-datatables" class="display table table-bordered table-nowrap" style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th>SL NO</th>
-                                                <th>DIVISION</th>
-                                                <th>ULB NAME</th>
-                                                <th>WARD NO</th>
-                                                <th>NAME OF THE MSG/SHG</th>
-                                                <th>JALASATHI NAME</th>
-                                                <th>PAN NO</th>
-                                                <th>BANK ACCOUNT NO</th>
-                                                <th>IFSC CODE</th>
-                                                <th>BANK NAME AND BRANCH</th>
-                                                <th>COLLECTION BY JALASATHI(MPOS)</th>
-                                                <th>5% Incentive From water charges</th>
-                                                <th>No New Water Supply Connection</th>
-                                                <th>Total Amount of new Water Connection (*Rs 100/)</th>
-                                                <th>Total No of Water Quality Tests</th>
-                                                <th>Water Quality tests (Nos of test * Rs.20/)</th>
-                                                <th>Total Incentive of Jalasathi (Rs.)</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        
-                                            <?php 
-                                            $counter_js = 1;
-                                            foreach ($cityjalasathi as $jalasathi_city) : 
-                                           
-                                            ?>
-                                            <tr>
-                                                <td><?= $counter_js ?></td>
-                                                <td><?= $jalasathi_city->division_name ?></td>
-                                                <td><?= $jalasathi_city->city_name ?></td>
-                                                <td><?= $jalasathi_city->word_names ?></td>
-                                                <td><?= $jalasathi_city->msg_shg_name ?></td>
-                                                <td><?= $jalasathi_city->jalasathi_name ?></td>
-                                                <td><?= $jalasathi_city->pan_no ?></td>
-                                                <td><?= $jalasathi_city->bank_account_no ?></td>
-                                                <td><?= $jalasathi_city->ifsc_code ?></td>
-                                                <td><?= $jalasathi_city->bank_name_branch ?></td>
-                                                <td><?= $jalasathi_city->collection_by_jalasathi ?></td>
-                                                <td><?= $jalasathi_city->ibu_5p_incentive_from_water_charges ?></td>
-                                                <td><?= $jalasathi_city->ibu_no_new_water_supply_connection ?></td>
-                                                <td><?= $jalasathi_city->ibu_total_amt_of_new_water_con ?></td>
-                                                <td><?= $jalasathi_city->ibu_total_no_of_water_quality_testa ?></td>
-                                                <td><?= $jalasathi_city->ibu_water_quality_tests ?></td>
-                                                <td><?= $jalasathi_city->total_incentive_of_jalasathi ?></td>
-                                                
-                                            </tr>
-                                            <?php
-                                            $counter_js++;
-                                            endforeach; ?>
-                                    </table>
+                                    <div class="table-responsive">
+                                        <table id="buttons-datatables" class="display table table-bordered table-nowrap" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>SL NO</th>
+                                                    <th>DIVISION</th>
+                                                    <th>ULB NAME</th>
+                                                    <th>WARD NO</th>
+                                                    <th>NAME OF THE MSG/SHG</th>
+                                                    <th>JALASATHI NAME</th>
+                                                    <th>PAN NO</th>
+                                                    <th>BANK ACCOUNT NO</th>
+                                                    <th>IFSC CODE</th>
+                                                    <th>BANK NAME AND BRANCH</th>
+                                                    <th>COLLECTION BY JALASATHI(MPOS)</th>
+                                                    <th>5% Incentive From water charges</th>
+                                                    <th>No New Water Supply Connection</th>
+                                                    <th>Total Amount of new Water Connection (*Rs 100/)</th>
+                                                    <th>Total No of Water Quality Tests</th>
+                                                    <th>Water Quality tests (Nos of test * Rs.20/)</th>
+                                                    <th>Total Incentive of Jalasathi (Rs.)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <?php
+                                                $counter_js = 1;
+                                                foreach ($cityjalasathi as $jalasathi_city) :
+
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $counter_js ?></td>
+                                                        <td><?= $jalasathi_city->division_name ?></td>
+                                                        <td><?= $jalasathi_city->city_name ?></td>
+                                                        <td><?= $jalasathi_city->word_names ?></td>
+                                                        <td><?= $jalasathi_city->msg_shg_name ?></td>
+                                                        <td><?= $jalasathi_city->jalasathi_name ?></td>
+                                                        <td><?= $jalasathi_city->pan_no ?></td>
+                                                        <td><?= $jalasathi_city->bank_account_no ?></td>
+                                                        <td><?= $jalasathi_city->ifsc_code ?></td>
+                                                        <td><?= $jalasathi_city->bank_name_branch ?></td>
+                                                        <td><?= $jalasathi_city->collection_by_jalasathi ?></td>
+                                                        <td><?= $jalasathi_city->ibu_5p_incentive_from_water_charges ?></td>
+                                                        <td><?= $jalasathi_city->ibu_no_new_water_supply_connection ?></td>
+                                                        <td><?= $jalasathi_city->ibu_total_amt_of_new_water_con ?></td>
+                                                        <td><?= $jalasathi_city->ibu_total_no_of_water_quality_testa ?></td>
+                                                        <td><?= $jalasathi_city->ibu_water_quality_tests ?></td>
+                                                        <td><?= $jalasathi_city->total_incentive_of_jalasathi ?></td>
+
+                                                    </tr>
+                                                <?php
+                                                    $counter_js++;
+                                                endforeach; ?>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--end row-->
+                    </div>
+                </div>
+                <!-- End Page-content -->
+
+                <div>
+                    <button type="button" class="btn-success btn-rounded shadow-lg btn btn-icon layout-rightside-btn fs-22"><i class="ri-chat-smile-2-line"></i></button>
+                </div>
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>
+                                    document.write(new Date().getFullYear())
+                                </script> © dft.
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+                                    Design & Develop by dft
                                 </div>
                             </div>
                         </div>
-                    </div><!--end row-->
-                </div>
-            </div>
-            <!-- End Page-content -->
-
-            <div>
-                <button type="button" class="btn-success btn-rounded shadow-lg btn btn-icon layout-rightside-btn fs-22"><i class="ri-chat-smile-2-line"></i></button>
-            </div>
-
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <script>
-                                document.write(new Date().getFullYear())
-                            </script> © dft.
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="text-sm-end d-none d-sm-block">
-                                Design & Develop by dft
-                            </div>
-                        </div>
                     </div>
-                </div>
-            </footer>
+                </footer>
+            </div>
         </div>
-    </div>
-    <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
-        <i class="ri-arrow-up-line"></i>
-    </button>
-    <!--end back-to-top-->
-    <!-- JAVASCRIPT -->
-    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-    <script src="assets/js/plugins.js"></script>
+        <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
+            <i class="ri-arrow-up-line"></i>
+        </button>
+        <!--end back-to-top-->
+        <!-- JAVASCRIPT -->
+        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+        <script src="assets/js/plugins.js"></script>
 
-    <!-- apexcharts -->
-    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+        <!-- apexcharts -->
+        <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
 
-    <!-- Vector map-->
-    <script src="assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
-    <script src="assets/libs/jsvectormap/maps/world-merc.js"></script>
+        <!-- Vector map-->
+        <script src="assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
+        <script src="assets/libs/jsvectormap/maps/world-merc.js"></script>
 
-    <!--Swiper slider js-->
-    <script src="assets/libs/swiper/swiper-bundle.min.js"></script>
+        <!--Swiper slider js-->
+        <script src="assets/libs/swiper/swiper-bundle.min.js"></script>
 
-    <!-- Table -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <!-- Table -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-    <!--datatable js-->
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <!--datatable js-->
+        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 
-    <script src="assets/js/pages/datatables.init.js"></script>
-    <!-- Table -->
+        <script src="assets/js/pages/datatables.init.js"></script>
+        <!-- Table -->
 
-    <!-- Dashboard init -->
-    <script src="assets/js/pages/dashboard-ecommerce.init.js"></script>
+        <!-- Dashboard init -->
+        <script src="assets/js/pages/dashboard-ecommerce.init.js"></script>
 
-    <!-- App js -->
-    <script src="assets/js/app.js"></script>
+        <!-- App js -->
+        <script src="assets/js/app.js"></script>
 </body>
 
 </html>
