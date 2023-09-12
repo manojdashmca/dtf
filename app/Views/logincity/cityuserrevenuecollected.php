@@ -485,7 +485,7 @@
                     </h5>
                     <form method="post" id="editCityuserRevenueCollection">
                         <div class="row">
-                            <input type="text" name="revenue_id" id="revenue_id">
+                            <input type="hidden" name="revenue_id" id="revenue_id">
                             <div class="col-12">
                                 <label for=" placeholderInput" class="form-label">NOS. BILL GENERATED :</label>
                                 <input type="text" class="form-control" name="rev_no_of_bill_generated" id="rev_no_of_bill_generated" placeholder="0000" value="">
