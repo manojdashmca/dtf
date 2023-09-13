@@ -67,9 +67,9 @@
                     subtask += '<td class="fw-medium">' + subtasks[i].record_sl + '</td>';
                     subtask += '<td><a href="javascript:void();" class="fw-medium" data-bs-toggle="modal" data-bs-target="#progress-entry-modal">' + subtasks[i].subtask + '</a></td>';                    
                     subtask += '<td>' + subtasks[i].subtask_unit + '</td>';
+                    subtask += '<td>'+subtasks[i].subtask_qty+'</td>';
                     subtask += '<td></td>';
-                    subtask += '<td></td>';
-                    subtask += '<td>'+subtasks[i].subtask_status+'</td>';
+                    subtask += '<td>'+subtasks[i].status+'</td>';
                     subtask += '<td>' + subtasks[i].entered_progress + '</td>';
                     subtask += '</tr>';
                    }

@@ -118,7 +118,7 @@ class MasterdataModel extends Model {
     public function getCityComponentHasTaskHasSubtask($city, $component, $task) {
         $sql = "SELECT chchths_id,subtask_sl_no record_sl,"
                 . "subtask,sub_task_breakup,subtask_unit,subtask_qty,if(allowed_partial='1','Yes','No') allowedpartial,"
-                . "status,entered_progress "
+                . "status,entered_progress,subtask_qty "
                 . "FROM city_has_component_has_task_has_subtask chchths "
                 . "JOIN subtask_master_data on sm_id_sm=sm_id "
                 . "JOIN city_has_component_breakup chcb on chcb.city_id_city=chchths.city_id_city and chcb.cm_id_cm=chchths.cm_id_cm "
