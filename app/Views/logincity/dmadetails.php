@@ -1,8 +1,11 @@
+<?php if (!session()->get('usernamecity')) {
+    header('location:/logincity');
+    exit;
+}  ?>
 <!doctype html>
 <html lang="en" data-layout="horizontal" data-layout-style="" data-layout-position="fixed" data-topbar="light">
 
 <head>
-
     <meta charset="utf-8" />
     <title>Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,13 +13,10 @@
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
-
     <!-- jsvectormap css -->
     <link href="assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
-
     <!--Swiper slider css-->
     <link href="assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
-
     <!-- Layout config Js -->
     <script src="assets/js/layout.js"></script>
     <!-- Bootstrap Css -->
@@ -37,10 +37,8 @@
 </head>
 
 <body>
-
     <!-- Begin page -->
     <div id="layout-wrapper">
-
         <div class="top-tagbar">
             <div class="w-100">
                 <div class="row justify-content-between align-items-center">
@@ -279,7 +277,6 @@
                                                         <p class="text-muted mb-0">
                                                             <?= $logindmadetails[0]['dma_full_details'][0]['total_house_connection_complete'] ?>
                                                         </p>
-
                                                     </div>
                                                 </div>
                                                 <div class="progress animated-progress rounded-bottom rounded-0" style="height: 6px;">
@@ -367,9 +364,7 @@
                                 </div>
                             </div> <!-- end .h-100-->
                         </div> <!-- end col -->
-
                     </div>
-
                 </div>
                 <!-- container-fluid -->
             </div>
