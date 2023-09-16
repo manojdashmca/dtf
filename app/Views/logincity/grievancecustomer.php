@@ -1,8 +1,10 @@
+<?php if (!session()->get('usernamecity')) {
+    header('location:/logincity');
+    exit;
+}  ?>
 <!doctype html>
 <html lang="en" data-layout="horizontal" data-layout-style="" data-layout-position="fixed" data-topbar="light">
-
 <head>
-
     <meta charset="utf-8" />
     <title>CITY USER</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

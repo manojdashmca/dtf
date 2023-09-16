@@ -94,6 +94,7 @@ class LoginCityController extends WebController
     public function logoutCity()
     {
         header('location:/logincity');
+        session()->remove('usernamecity');
         exit;
     }
 
