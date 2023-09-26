@@ -159,7 +159,7 @@
                         </div>
                     </div>
 
-                </div><!-- /.modal-content -->
+                </div><!-- /.modal-content --> 
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
         <!-- ========== App Menu ========== -->
@@ -228,7 +228,104 @@
         <!-- Start right Content here -->
         <!-- ============================================================== -->
         <div class="main-content">
-            <div class="page-content">
+        <div class="page-content">
+                <div class="container-fluid set_height">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <?php
+                            if ($getDmaCityOnCityuser != NULL) {
+                            ?>
+                                <h5 class="text-info">REVENUE COLLECTION</h5>
+                                <h5 class="text-info"><?= $getDmaCityOnCityuser->division; ?>, <?= $getDmaCityOnCityuser->city; ?></h5>
+                            <?php
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-6 mt-4">
+                            <div class="card">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><i class="ri-bill-line align-middle me-2"></i> NOS OF SAMPLE TAKEN
+                                        <span class="text-info" style="float:right"><?php if (isset($getWqmInCityDivision->wqm_on_of_sample_taken)) {
+                                                                                        echo $getWqmInCityDivision->wqm_on_of_sample_taken != null ? $getWqmInCityDivision->wqm_on_of_sample_taken : '0000';
+                                                                                    } else {
+                                                                                        echo '0000';
+                                                                                    } ?></span>
+                                    </li>
+                                    <li class="list-group-item"><i class="ri-file-copy-2-line align-middle me-2"></i>SAMPLE COLLECTED AT WTP
+                                        <span class="text-info" style="float:right"><?php if (isset($getWqmInCityDivision->wqm_sample_collected_at_wtp)) {
+                                                                                        echo $getWqmInCityDivision->wqm_sample_collected_at_wtp != null ? $getWqmInCityDivision->wqm_sample_collected_at_wtp : '0000';
+                                                                                    } else {
+                                                                                        echo '0000';
+                                                                                    } ?></span>
+                                    </li>
+                                    <li class="list-group-item"><i class="ri-question-answer-line align-middle me-2"></i>SAMPLE COLLECTED AT STORAGE
+                                        <span class="text-info" style="float:right"><?php if (isset($getWqmInCityDivision->wqm_sample_collected_at_storage)) {
+                                                                                        echo $getWqmInCityDivision->wqm_sample_collected_at_storage != null ? $getWqmInCityDivision->wqm_sample_collected_at_storage : '0000';
+                                                                                    } else {
+                                                                                        echo '0000';
+                                                                                    } ?></span>
+                                    </li>
+                                    <li class="list-group-item"><i class="ri-secure-payment-line align-middle me-2"></i>RESOLVED AFTER TIME LIMIT
+                                        <span class="text-info" style="float:right"><?php if (isset($getWqmInCityDivision->wqm_resolved_after_time_limit)) {
+                                                                                        echo $getWqmInCityDivision->wqm_resolved_after_time_limit != null ? $getWqmInCityDivision->wqm_resolved_after_time_limit : '0000';
+                                                                                    } else {
+                                                                                        echo '0000';
+                                                                                    } ?></span>
+                                    </li>
+                                    <li class="list-group-item"><i class="ri-water-flash-line align-middle me-2"></i>SAMPLE COLLECTED FROM DISTRIBUTION NETWORK
+                                        <span class="text-info" style="float:right"><?php if (isset($getWqmInCityDivision->wqm_sample_collected_from_distribution_network)) {
+                                                                                        echo $getWqmInCityDivision->wqm_sample_collected_from_distribution_network != null ? $getWqmInCityDivision->wqm_sample_collected_from_distribution_network : '0000';
+                                                                                    } else {
+                                                                                        echo '0000';
+                                                                                    } ?></span>
+                                    </li>
+                                    <li class="list-group-item"><i class="ri-calendar-line align-middle me-2"></i>SAMPLE COLLECTED AT CONSUMER POINT
+                                        <span class="text-info" style="float:right"><?php if (isset($getWqmInCityDivision->wqm_sample_collected_at_consumer_point)) {
+                                                                                        echo $getWqmInCityDivision->wqm_sample_collected_at_consumer_point != null ? $getWqmInCityDivision->wqm_sample_collected_at_consumer_point : '0000';
+                                                                                    } else {
+                                                                                        echo '0000';
+                                                                                    } ?></span>
+                                    </li>
+                                    <li class="list-group-item"><i class="ri-calendar-line align-middle me-2"></i>NOS. OF PARAMETERS TESTED
+                                        <span class="text-info" style="float:right"><?php if (isset($getWqmInCityDivision->wqm_nos_of_parameters_tested)) {
+                                                                                        echo $getWqmInCityDivision->wqm_nos_of_parameters_tested != null ? $getWqmInCityDivision->wqm_nos_of_parameters_tested : '0000';
+                                                                                    } else {
+                                                                                        echo '0000';
+                                                                                    } ?></span>
+                                    </li>
+                                    <li class="list-group-item"><i class="ri-calendar-line align-middle me-2"></i>NOS OF SAMPLE FAILED
+                                        <span class="text-info" style="float:right"><?php if (isset($getWqmInCityDivision->wqm_nos_of_sample_failed)) {
+                                                                                        echo $getWqmInCityDivision->wqm_nos_of_sample_failed != null ? $getWqmInCityDivision->wqm_nos_of_sample_failed : '0000';
+                                                                                    } else {
+                                                                                        echo '0000';
+                                                                                    } ?></span>
+                                    </li>
+                                </ul>
+                                <div class="edit-button mt-2 text-center">
+                                    <?php if (isset($getWqmInCityDivision)) { ?>
+                                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#cityUserRvnC" onclick="editCityUserRevenue(<?php echo $getWqmInCityDivision->id ?>)">Edit Now</button>
+                                    <?php } else { ?>
+                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cityUserRvnCAdd">Add New</button>
+                                    <?php } ?>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-6">
+                            <div class="card" style="height: 342px;">
+                                <img src="assets/images/rv.jpeg" alt="" style="height: 100%;">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <!-- <div class="page-content">
                 <div class="container-fluid set_height">
                     <div class="row">
                         <div class="col-12 text-center">
@@ -288,10 +385,10 @@
                         <div class="col-12 mt-3 text-center">
                             <button class="btn btn-info">Submit</button>
                         </div>
-                    </div><!--end row-->
+                    </div>
                 </div>
-            </div>
-            <!-- End Page-content -->
+            </div> -->
+            
 
             <div>
                 <button type="button" class="btn-success btn-rounded shadow-lg btn btn-icon layout-rightside-btn fs-22"><i class="ri-chat-smile-2-line"></i></button>

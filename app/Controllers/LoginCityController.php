@@ -191,6 +191,9 @@ class LoginCityController extends WebController
         // $this->data['title'] = 'Pipeline Dashboard';
         $this->data['css'] = '';
         $this->data['js'] = '';
+        $division_id = session()->get('cityuser_division');
+        $city_id = session()->get('cityuser_city');
+        $this->data['getDmaCityOnCityuser'] = $this->CityLoginModel->getDmaCityOnCityuser($division_id, $city_id);
         return view('logincity/cityloginwqm', $this->data);
     }
 
