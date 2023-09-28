@@ -44,6 +44,10 @@
                             </thead>
                             <tbody>
                                 <?php 
+print_r("<pre>");
+                                print_r($financialdata);
+                                print_r("<pre/>");
+                                die;
                                 for($x=0;$x<count($financialdata);$x++){?>
                                 <tr>
                                     <td><?=str_pad(($x+1), 2, "0", STR_PAD_LEFT)?></td>
