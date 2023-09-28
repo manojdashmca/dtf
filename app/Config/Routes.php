@@ -77,6 +77,7 @@ $routes->match(['get', 'post'], 'get-city-component-task-subtask', 'MasterdataCo
 $routes->match(['get', 'post'], 'create-city', 'MasterdataController::createCity');
 
 
+
 $routes->post('cancel-booking', 'UserController::cancelbooking');
 $routes->post('reschedule-booking-s1', 'UserController::reschedulebookingcetting');
 
@@ -165,6 +166,7 @@ $routes->match(['get', 'post'], 'addCityuserRevenueCollection', 'LoginCityContro
 $routes->match(['get', 'post'], 'getRevColCityOnId', 'LoginCityController::getRevColCityOnId');
 $routes->match(['get', 'post'], 'editCityuserRevenueCollection', 'LoginCityController::editCityuserRevenueCollection');
 
+$routes->match(['put', 'post'], 'update-task-progress-entry', 'ProgressentryController::updateTaskProgressEntry');
 // $routes->match(['get', 'post'], 'getCityTableData', 'PipelineController::getCityTableData');
 
 //

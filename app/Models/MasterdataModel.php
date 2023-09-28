@@ -105,10 +105,22 @@ class MasterdataModel extends Model {
     }
 
     public function getCityHasComponent($cityid) {
-        $sql = "SELECT cm_id_cm,component "
+        /*$sql = "SELECT cm_id_cm,component "
                 . "from city_has_component_breakup "
                 . "join component_master_data on cm_id_cm=cm_id "
-                . "where city_id_city='$cityid' order by cc_record_sl asc";
+                . "where city_id_city='$cityid' order by cc_record_sl asc";*/
+        $sql = "select city_id, city_name,A.cm_id_cm,CMD.component,sum(CC.component_breakup),round(sum(A.entered_progress_percentage),2) component_progress_percentage,
+        round(sum(((A.entered_progress_percentage*CC.component_breakup)/100)),2) as overal_progress_percentage  from 
+        (SELECT city_id, city_name, contract_cost,CTS.cm_id_cm,
+        sum(task_breakup * ((sub_task_breakup*entered_progress)/100)/100) entered_progress_percentage
+        from cities_master CM
+        inner join city_has_component_has_task_has_subtask CTS on CM.city_id = CTS.city_id_city
+        inner join city_has_component_has_task CT on CM.city_id = CT.city_id_city and CT.cm_id_cm = CTS.cm_id_cm AND CT.tm_id_tm = CTS.tm_id_tm
+        where city_status=1 and city_id='$cityid'
+        group by city_id, city_name, contract_cost,CTS.cm_id_cm) A
+        inner join city_has_component_breakup CC on CC.city_id_city = A.city_id and CC.cm_id_cm = A.cm_id_cm
+        inner join component_master_data CMD on CC.cm_id_cm = CMD.cm_id
+        group by city_id, city_name, contract_cost,A.cm_id_cm,CMD.component";
 
         $result = $this->db->query($sql);
         $return = $result->getResult();

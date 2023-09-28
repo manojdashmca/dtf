@@ -21,7 +21,7 @@
     for($x=0;$x<count($financialdata);$x++){
        $cities[]= $financialdata[$x]->city_name;
        $contractcost[]= (int)$financialdata[$x]->contract_cost;
-       $achievedprogress[]= 0;
+       $achievedprogress[]= (int)$financialdata[$x]->achievedprogress;
     }
     ?>
     

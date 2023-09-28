@@ -10,6 +10,15 @@ class ProgressentryModel extends Model {
         parent::__construct();
     }
 
+    public function updateTaskProgressEntry($updateArray, $chchths_id)
+    {
+        $query = $this->db->table('city_has_component_has_task_has_subtask');
+        $query->where('chchths_id', $chchths_id);
+        $result = $query->update($updateArray);
+        return $result;
+        $this->db->close();
+    }
+
     
 
 }

@@ -122,7 +122,10 @@
                     <button type="button" class="btn-close" id="close-modal" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-
+					<input type="text" class="form-control" id="chchths_id" name="chchths_id" hidden />
+					<input type="text" class="form-control" id="cityid" name="cityid" hidden />
+					<input type="text" class="form-control" id="componentid" name="componentid" hidden />
+					<input type="text" class="form-control" id="taskid" name="taskid" hidden />
                     <div class="row">
                         <div class="form-group mb-3">
                             <label for="breakup-percent" class="form-label">Subtask Name <span class="text-danger">*</span></label>
@@ -159,7 +162,7 @@
                     <div class="row">
                         <div class="form-group col-6">
                             <label for="breakup-percent" class="form-label">User Entered Progress % <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="userentryprogress" name="userentryprogress" placeholder="">
+                            <input type="number" class="form-control" id="userentryprogress" name="userentryprogress" placeholder="" min=1 max=100>
                         </div>
                         <div class="form-group col-6">
                             <label for="breakup-percent" class="form-label">Entered By Qty/Distance <span class="text-danger">*</span></label>
@@ -180,7 +183,7 @@
                 <div class="modal-footer">
                     <div class="hstack gap-2 justify-content-end">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" id="createtask">Create City</button>
+                        <button type="button" class="btn btn-primary" id="updateprogress">Update Progress</button>
 
                     </div>
                 </div>
