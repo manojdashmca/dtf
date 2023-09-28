@@ -43,12 +43,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php for($x=0;$x<count($financialdata);$x++){?>
+                                <?php 
+                                for($x=0;$x<count($financialdata);$x++){?>
                                 <tr>
                                     <td><?=str_pad(($x+1), 2, "0", STR_PAD_LEFT)?></td>
-                                    <td><?= $financialdata[$x]->city_name?></td>
+                                    <td><?=$financialdata[$x]->city_name?></td>
                                     <td><?= number_format($financialdata[$x]->contract_cost,2)?></td>
-                                    <td><?php echo isset($financialdata[$x]->achievedprogress) ? number_format($financialdata[$x]->achievedprogress,2): 0 ; ?></td>
+                                    <td><?= number_format($financialdata[$x]->achievedprogress,2)?></td>
                                     <td><?= $financialdata[$x]->achievedprogress_percentage?></td>                                   
                                     
                                 </tr>
