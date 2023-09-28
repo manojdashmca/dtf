@@ -2,7 +2,7 @@
     header('location:/logincity');
     exit;
 }  ?>
-<!doctype html>
+<!doctype html> 
 <html lang="en" data-layout="horizontal" data-layout-style="" data-layout-position="fixed" data-topbar="light">
 
 <head>

@@ -20,11 +20,11 @@
     for($x=0;$x<count($financialdata);$x++){
        $cities[]= $financialdata[$x]->city_name;
        $contractcost[]= (int)$financialdata[$x]->contract_cost;
-       $achievedprogress_percentage[]= (int)$financialdata[$x]->achievedprogress_percentage;
+       $achievedprogress[]= (int)$financialdata[$x]->achievedprogress;
     }
     ?>
 
-    var chartColumnColors = getChartColorsArray("column_chart_datalabel"),
+    var chartColumnColors = getChartColorsArray("customer_impression_charts1"),
             chartColumnDatatalabelColors =
             (chartColumnColors &&
                     ((options = {
@@ -33,14 +33,15 @@
                         dataLabels: {
                             enabled: !0,
                             formatter: function (t) {
-                                return t + "%";
+                                return t ;
                             },
                             offsetY: -20,
                             style: {fontSize: "12px", colors: ["#adb5bd"]},
                         },
                         //series: [{name: "Progress", data: [2.5, 3.2, 5, 10.1, 4.2, 3.8, 3, 2.4, 4, 1.2, 3.5, 0.8, 18.7, 20.9]}],
                         series: [
-                            {name: "Achieved Progress", data: <?=json_encode($achievedprogress_percentage)?>},
+                            {name: "Contract Cost", data: <?=json_encode($contractcost)?>},
+                            {name: "Achieved Progress", data: <?=json_encode($achievedprogress)?>},
                         ],
                         colors: chartColumnDatatalabelColors,
                         grid: {borderColor: "#f1f1f1"},
@@ -59,6 +60,6 @@
                         },
                         
                     }),
-                            (chart = new ApexCharts(document.querySelector("#column_chart_datalabel"), options)).render()));
+                            (chart = new ApexCharts(document.querySelector("#customer_impression_charts1"), options)).render()));
 
 </script>

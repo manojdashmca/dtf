@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\WebModel;
 use App\Libraries;
 use App\Models\MasterdataModel;
+use App\Models\FinancialprogressModel;
 
 class PhysicalprogressController extends WebController {
 
@@ -15,11 +16,13 @@ class PhysicalprogressController extends WebController {
 
     public function index() {
         $masterdataModel = new MasterdataModel();
+        $fpModel = new FinancialprogressModel();
         $this->data['css'] = '';
         $this->data['js'] = 'chart';
         $city = $this->request->getVar('city');
         $this->data['city'] = $city;
         if (empty($city)) {
+            $this->data['financialdata']=$fpModel->financialprogressdata();
             $this->data['includefile'] = 'physicalprogresschart.php';
         } else {
             $this->data['cityheader'] = $masterdataModel->getCityHeader($city);

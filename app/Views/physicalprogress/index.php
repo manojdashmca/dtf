@@ -89,8 +89,8 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><?=$citycomponent[$a]->component_progress_percentage?></td>
+                                        <td><?=$citycomponent[$a]->overal_progress_percentage?></td>
 
                                     </tr>
                                     <?php }?>

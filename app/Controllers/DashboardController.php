@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\WebModel;
+use App\Models\FinancialprogressModel;
 use App\Libraries;
 
 class DashboardController extends WebController {
@@ -13,9 +14,12 @@ class DashboardController extends WebController {
     }
 
     public function index() {
+        $fpModel = new FinancialprogressModel();
         $this->data['title'] = 'Dashboard';
         $this->data['css']='dashboard';
         $this->data['js']='dashboard';
+        $this->data['includefile']='dashboard.php';
+        $this->data['financialdata']=$fpModel->financialprogressdata();
         $this->data['topdata']=array('budget'=>$this->webModel->getTotalContractCost(),'location'=>$this->webModel->getTotalCity(),'progress'=>$this->webModel->getAchievedProgress());
         return view('templates/header', $this->data)
                 . view('dashboard/index', $this->data)

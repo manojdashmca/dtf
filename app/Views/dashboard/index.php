@@ -104,9 +104,10 @@
 
 
                             <div class="card-body p-0 pb-2">
-                                <div class="w-100">
-                                    <div id="customer_impression_charts" data-colors='["--tb-dark", "--tb-primary", "--tb-secondary"]' class="apex-charts" dir="ltr"></div>
+                            <div class="card-body">
+                                    <div id="customer_impression_charts1" data-colors='["--tb-danger", "--tb-primary", "--tb-success"]' class="apex-charts" dir="ltr"></div>
                                 </div>
+                                
                             </div><!-- end card body -->
                         </div><!-- end card -->
                     </div><!-- end col -->

@@ -1,8 +1,4 @@
 <script type="text/javascript">
-
-
-
-
     function gettaskdata(cityid, componentid) {
         $("#taskdata").html('');
         var task = '<table class="table table-bordered dt-responsive nowrap table-striped align-middle mb-0">' +
@@ -63,9 +59,11 @@
                 var subtasks = jsonData.data;
                 subtask += '<tbody>';                
                 for (var i = 0; i < subtasks.length; i++) {
+                	var strigifydata = subtasks[i];
+                	console.log(strigifydata)
                     subtask += '<tr>';
                     subtask += '<td class="fw-medium">' + subtasks[i].record_sl + '</td>';
-                    subtask += '<td><a href="javascript:void();" class="fw-medium" data-bs-toggle="modal" data-bs-target="#progress-entry-modal">' + subtasks[i].subtask + '</a></td>';                    
+                    subtask += '<td><a href="javascript:void();" class="fw-medium" data-bs-toggle="modal" data-bs-target="#progress-entry-modal" onclick="fetchProgressEntryModalDetail(`' + subtasks[i].subtask + '`,`' + subtasks[i].subtask_unit + '`,`' + subtasks[i].subtask_qty + '`,`' + subtasks[i].sub_task_breakup + '`,`' + subtasks[i].status + '`,`' + subtasks[i].chchths_id + '`,`' + subtasks[i].entered_progress + '`,`' + cityid + '`,`' + componentid + '`,`' + taskid + '`)">' + subtasks[i].subtask + '</a></td>';                    
                     subtask += '<td>' + subtasks[i].subtask_unit + '</td>';
                     subtask += '<td>'+subtasks[i].subtask_qty+'</td>';
                     subtask += '<td></td>';
@@ -80,4 +78,50 @@
             }
         });
     }
+    function fetchProgressEntryModalDetail(subtask,subtask_unit,subtask_qty,sub_task_breakup,status, chchths_id, entered_progress,cityid, componentid,taskid) {
+    	/*$('#subtaskname').val(data.subtask);
+    	$('#units').val(data.subtask_unit);
+    	$('#quantity').val(data.subtask_qty);
+    	$('#breakup').val(data.sub_task_breakup);
+    	$('#pstatus').val(data.status);
+    	$('#entryqty').val();*/
+        $('#cityid').val(cityid);
+        $('#componentid').val(componentid);
+        $('#taskid').val(taskid);
+    	$('#subtaskname').val(subtask);
+    	$('#units').val(subtask_unit);
+    	$('#quantity').val(subtask_qty);
+    	$('#breakup').val(sub_task_breakup);
+    	$('#pstatus').val(status);
+    	$('#chchths_id').val(chchths_id);
+    	$('#userentryprogress').val(entered_progress);
+    	$('#entryqty').val();
+    	
+    }
+    $('#updateprogress').click(function(){
+        var chchths_id = $('#chchths_id').val();
+    	var userentryprogress = $('#userentryprogress').val();
+    	var allowpartial = $('#allowpartial').val();
+    	var entryqty = $('#entryqty').val();
+    	var cityid = $('#cityid').val();
+    	var componentid = $('#componentid').val();
+    	var taskid = $('#taskid').val();
+        if (userentryprogress <= 0 || userentryprogress > 100) {
+            alert("User Progress entry must be in between 1 to 100");
+            return;
+        }
+    	$.ajax({
+            type: "POST",
+            url: '<?= CUSTOMPATH ?>update-task-progress-entry',
+            data: {chchths_id: chchths_id, userentryprogress: userentryprogress, entryqty:entryqty, allowpartial:allowpartial},
+            success: function (responce) {
+                var data = JSON.parse(responce);
+                alert(data.message)
+                if (data.status == 'success') {
+                    $('#close-modal').click();
+                    getsubtaskdata(cityid, componentid,taskid);
+                }
+            }
+        });
+    })
 </script>
