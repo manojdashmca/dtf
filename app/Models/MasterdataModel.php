@@ -18,7 +18,7 @@ class MasterdataModel extends Model {
     }
 
     public function getCityComponent($cityid) {
-        $sql = "SELECT cc_record_sl,chcb_id,cm_id_cm,component,component_breakup,round((contract_cost * component_breakup/100),2) as breakupcost,contract_cost "
+        $sql = "SELECT cc_record_sl,chcb_id,cm_id_cm,component,component_breakup,round((contract_cost * component_breakup/100),2) as breakupcost,contract_cost,component_scope "
                 . "from city_has_component_breakup "
                 . "join component_master_data on cm_id=cm_id_cm  "
                 . "JOIN cities_master on city_id=city_id_city "
@@ -130,7 +130,7 @@ class MasterdataModel extends Model {
     public function getCityComponentHasTaskHasSubtask($city, $component, $task) {
         $sql = "SELECT chchths_id,subtask_sl_no record_sl,"
                 . "subtask,sub_task_breakup,subtask_unit,subtask_qty,if(allowed_partial='1','Yes','No') allowedpartial,"
-                . "status,entered_progress "
+                . "status,entered_progress,subtask_qty "
                 . "FROM city_has_component_has_task_has_subtask chchths "
                 . "JOIN subtask_master_data on sm_id_sm=sm_id "
                 . "JOIN city_has_component_breakup chcb on chcb.city_id_city=chchths.city_id_city and chcb.cm_id_cm=chchths.cm_id_cm "

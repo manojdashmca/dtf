@@ -65,7 +65,7 @@
                     subtask += '<td class="fw-medium">' + subtasks[i].record_sl + '</td>';
                     subtask += '<td><a href="javascript:void();" class="fw-medium" data-bs-toggle="modal" data-bs-target="#progress-entry-modal" onclick="fetchProgressEntryModalDetail(`' + subtasks[i].subtask + '`,`' + subtasks[i].subtask_unit + '`,`' + subtasks[i].subtask_qty + '`,`' + subtasks[i].sub_task_breakup + '`,`' + subtasks[i].status + '`,`' + subtasks[i].chchths_id + '`,`' + subtasks[i].entered_progress + '`,`' + cityid + '`,`' + componentid + '`,`' + taskid + '`)">' + subtasks[i].subtask + '</a></td>';                    
                     subtask += '<td>' + subtasks[i].subtask_unit + '</td>';
-                    subtask += '<td></td>';
+                    subtask += '<td>'+subtasks[i].subtask_qty+'</td>';
                     subtask += '<td></td>';
                     subtask += '<td>'+subtasks[i].status+'</td>';
                     subtask += '<td>' + subtasks[i].entered_progress + '</td>';

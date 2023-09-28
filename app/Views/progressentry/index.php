@@ -65,7 +65,7 @@
                                             <tr>
                                                 <td><?= str_pad(($x + 1), 2, "0", STR_PAD_LEFT) ?></td>
                                                 <td><?= $component[$x]->component ?></td>
-                                                <td></td>
+                                                <td><?=$component[$x]->component_scope?></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td><button class="btn btn-primary" onclick="gettaskdata(<?= $city ?>,<?= $component[$x]->cm_id_cm ?>);">Tasks>></button></td>
