@@ -21,7 +21,7 @@ class CityLoginModel extends Model
 
     public function getLoginDmadetails($city_id)
     {
-        $sql = "SELECT c.id AS city_id,d.division_name AS division_name, 
+        $sql = "SELECT c.id AS city_id,d.id AS division_id,d.division_name AS division_name, 
 		c.city_name AS city_name, 
         COUNT(z.id) AS no_of_dma,
         SUM(z.population) AS city_population,
@@ -37,6 +37,7 @@ class CityLoginModel extends Model
 
 
             $city_id = $return->city_id;
+            $division_id = $return->division_id;
             $division_name = $return->division_name;
             $city_name = $return->city_name;
             $total_dma = $return->no_of_dma;
@@ -47,6 +48,8 @@ class CityLoginModel extends Model
             $dma_last_update = $return->last_nrw_update;
 
             $dma_full_details[] = array(
+                'city_id' => $city_id,
+                'division_id' => $division_id,
                 'division_name' => $division_name,
                 'city_name' => $city_name,
                 'total_dma' => $total_dma,
