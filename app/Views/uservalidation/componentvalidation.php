@@ -36,6 +36,29 @@
             e.preventDefault();
             createComponent();
         });
+        $('#editcomponent').formValidation({
+            message: 'This value is not valid',
+            icon: {
+            },
+            fields: {               
+                
+                ecomponentbreakup: {
+                    validators: {
+                        notEmpty: {
+                            message: "Enter breakup percent"
+                        }, between: {
+                            min: 0,
+                            max: 100,
+                            message: "Max breakup 100%"
+                        }
+                    }
+                }
+            }
+        }).on('success.form.fv', function (e) {
+            // Prevent form submission
+            e.preventDefault();
+            updateComponent();
+        });
         $('#createnewcomponent').formValidation({
             message: 'This value is not valid',
             icon: {
@@ -103,6 +126,36 @@
 
             }
         });
+    }
+    
+    function updateComponent() {
+        $("#preloader1").show();
+        var echcbid = $("#echcbid").val();        
+        var componentbreakup = $("#ecomponentbreakup").val();
+        $.ajax({
+            type: "POST",
+            url: '<?= CUSTOMPATH ?>update-component-breakup',
+            data: {chcbid: echcbid, componentbreakup: componentbreakup},
+            success: function (data) {
+                var jsonData = JSON.parse(data);
+                if (jsonData.status == 'success') {
+                    alertify.success(jsonData.message);
+                    setTimeout(function () {
+                        location.reload();
+                    }, 3000);
+
+                } else {
+                    alertify.error(jsonData.message);
+                }
+
+            }
+        });
+    }
+
+    function editComponentData(component,breakup,chcbid) {
+        $("#ecitycomponent").val(component);
+        $("#ecomponentbreakup").val(breakup);
+        $("#echcbid").val(chcbid);
     }
 
 </script>

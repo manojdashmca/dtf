@@ -54,6 +54,25 @@ class MasterdataController extends WebController {
         }
     }
 
+    public function updateComponentkbreakup() {
+        if ($this->request->isAJAX()) {
+            $chcbid = trim($this->request->getPost('chcbid'));
+            $componentbreakup = trim($this->request->getPost('componentbreakup'));
+            $tabledata=$this->masterdataModel->getTableData('city_id_city,component_breakup','city_has_component_breakup','chcb_id='.$chcbid);
+            $breakupalreadyadded = $this->masterdataModel->getComponentBreakUpPercent($tabledata->city_id_city);
+            
+            if ((($breakupalreadyadded-$tabledata->component_breakup) + $componentbreakup) <= 100) {
+                $updarray = array('component_breakup' => $componentbreakup);
+                $this->webModel->updateRecordInTable($updarray, 'city_has_component_breakup', 'chcb_id', $chcbid);
+                $data = array('status' => 'success', 'message' => 'Component Breakup updated Successfully');
+            } else {
+                $data = array('status' => 'error', 'message' => 'Maximum Percentage Allocated');
+            }
+            echo json_encode($data);
+            exit;
+        }
+    }
+
     public function task() {
         $this->data['title'] = 'Task Master';
         $this->data['css'] = 'sweetalert,validation,alertify';
