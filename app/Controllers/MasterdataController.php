@@ -58,10 +58,10 @@ class MasterdataController extends WebController {
         if ($this->request->isAJAX()) {
             $chcbid = trim($this->request->getPost('chcbid'));
             $componentbreakup = trim($this->request->getPost('componentbreakup'));
-            $tabledata=$this->masterdataModel->getTableData('city_id_city,component_breakup','city_has_component_breakup','chcb_id='.$chcbid);
+            $tabledata = $this->masterdataModel->getTableData('city_id_city,component_breakup', 'city_has_component_breakup', 'chcb_id=' . $chcbid);
             $breakupalreadyadded = $this->masterdataModel->getComponentBreakUpPercent($tabledata->city_id_city);
-            
-            if ((($breakupalreadyadded-$tabledata->component_breakup) + $componentbreakup) <= 100) {
+
+            if ((($breakupalreadyadded - $tabledata->component_breakup) + $componentbreakup) <= 100) {
                 $updarray = array('component_breakup' => $componentbreakup);
                 $this->webModel->updateRecordInTable($updarray, 'city_has_component_breakup', 'chcb_id', $chcbid);
                 $data = array('status' => 'success', 'message' => 'Component Breakup updated Successfully');
@@ -239,7 +239,10 @@ class MasterdataController extends WebController {
             $contractcost = trim($this->request->getPost('contractcost'));
             #$headervalue = trim($this->request->getPost('headervalue'));
             $createarray = array('city_name' => $cityname, 'contract_cost' => $contractcost);
-            $this->webModel->createRecordInTable($createarray, 'cities_master');
+            $cityid = $this->webModel->createRecordInTable($createarray, 'cities_master');
+            $this->masterdataModel->createMockComponent($cityid);
+            $this->masterdataModel->createMockComponentTask($cityid);
+            $this->masterdataModel->createMockComponentTaskSubtask($cityid); 
             $data = array('status' => 'success', 'message' => 'City Added Successfully');
 
             echo json_encode($data);
