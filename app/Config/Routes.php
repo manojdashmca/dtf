@@ -75,6 +75,7 @@ $routes->match(['get', 'post'], 'get-city-component-task', 'MasterdataController
 $routes->match(['get', 'post'], 'get-city-component', 'MasterdataController::getCityHasComponent');
 $routes->match(['get', 'post'], 'get-city-component-task-subtask', 'MasterdataController::getCityHasComponentHasTaskHasSubtask');
 $routes->match(['get', 'post'], 'create-city', 'MasterdataController::createCity');
+$routes->match(['get', 'post'], 'update-city', 'MasterdataController::updateCity');
 
 
 

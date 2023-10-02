@@ -218,10 +218,24 @@ class MasterdataController extends WebController {
         if ($this->request->isAJAX()) {
             $cityname = trim($this->request->getPost('cityname'));
             $contractcost = trim($this->request->getPost('contractcost'));
-            $headervalue = trim($this->request->getPost('headervalue'));
+            #$headervalue = trim($this->request->getPost('headervalue'));
             $createarray = array('city_name' => $cityname, 'contract_cost' => $contractcost);
             $this->webModel->createRecordInTable($createarray, 'cities_master');
             $data = array('status' => 'success', 'message' => 'City Added Successfully');
+
+            echo json_encode($data);
+            exit;
+        }
+    }
+
+    public function updateCity() {
+        if ($this->request->isAJAX()) {
+            $cityname = trim($this->request->getPost('cityname'));
+            $contractcost = trim($this->request->getPost('contractcost'));
+            $cityid = trim($this->request->getPost('cityid'));
+            $updarray = array('city_name' => $cityname, 'contract_cost' => $contractcost);
+            $this->webModel->updateRecordInTable($updarray, 'cities_master', 'city_id', $cityid);
+            $data = array('status' => 'success', 'message' => 'City data updated Successfully');
 
             echo json_encode($data);
             exit;
