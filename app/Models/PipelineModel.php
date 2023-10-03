@@ -352,7 +352,7 @@ class PipelineModel extends Model
 
     public function getNrwProgressCitywiseData($cit_id)
     {
-        $sql = "SELECT round(avg(nrw),2) AS nrw_cn,MAX(DATE_FORMAT(modification_date, '%d-%m-%Y')) AS modification_date_sn FROM `vw_city_wise_nrw` WHERE city_id = '$cit_id' GROUP BY YEAR(modification_date),MONTH(modification_date) ORDER BY modification_date ASC;";
+        $sql = "SELECT round(avg(nrw),2) AS nrw_cn,MAX(DATE_FORMAT(modification_date, '%d-%m-%Y')) AS modification_date_sn FROM `vw_city_wise_nrws` WHERE city_id = '$cit_id' GROUP BY YEAR(modification_date),MONTH(modification_date) ORDER BY modification_date ASC;";
         $result = $this->db->query($sql);
         $return = $result->getResult();
         return $return;
@@ -362,7 +362,7 @@ class PipelineModel extends Model
 
     public function getNrwProgressDivisionwiseData($div_id)
     {
-        $sql = "SELECT round(avg(nrw),2) AS nrw_dn,MAX(DATE_FORMAT(modification_date, '%d-%m-%Y')) AS modification_date_dn FROM `vw_city_wise_nrw` WHERE division_id = '$div_id' GROUP BY YEAR(modification_date),MONTH(modification_date) ORDER BY modification_date ASC;";
+        $sql = "SELECT round(avg(nrw),2) AS nrw_dn,MAX(DATE_FORMAT(modification_date, '%d-%m-%Y')) AS modification_date_dn FROM `vw_city_wise_nrws` WHERE division_id = '$div_id' GROUP BY YEAR(modification_date),MONTH(modification_date) ORDER BY modification_date ASC;";
         $result = $this->db->query($sql);
         $return = $result->getResult();
         return $return;
@@ -374,7 +374,7 @@ class PipelineModel extends Model
     {
         $sql = "SELECT round(avg(nrw),2) AS nrw_dn,
         DATE_FORMAT(modification_date, '%d-%m-%Y') AS modification_date_dn 
-        FROM `vw_city_wise_nrw` 
+        FROM `vw_city_wise_nrws` 
         WHERE MONTH(modification_date) = '$nrw_monthly_date' AND DAY(modification_date) BETWEEN $nrw_weekly_date GROUP BY MONTH(modification_date) ORDER BY modification_date ASC;";
         $result = $this->db->query($sql);
         $return = $result->getResult();
