@@ -146,7 +146,7 @@ class Home extends WebController {
         $this->session->remove('username');
         $this->session->remove('useremail');
         $this->session->remove('userid');
-        header('location:/login');
+        header('location:/');
         exit;
     }
 
