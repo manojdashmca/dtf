@@ -47,7 +47,7 @@ class Home extends WebController {
                             $this->session->set('useremail', $result->user_email);
                             $this->session->set('userid', $result->id_user);
                             $this->session->set('dob', $result->user_dob);
-                            header("location:" . CUSTOMPATH . "dashboard");
+                            header("location:" . CUSTOMPATH . "pipe-dashboard");
                             exit;
                         } else {
 
