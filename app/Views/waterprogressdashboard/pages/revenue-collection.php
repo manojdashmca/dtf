@@ -242,7 +242,30 @@
                                         <div class="grid-chart-nrw">
                                             <form action="">
                                                 <div class="row">
-                                                    <div class="col-3">
+                                                    <div class="col-2">
+                                                    <div class="row">
+                                                            <label for="colFormLabelSm" class="col-sm-4 col-form-label col-form-label-sm">Year</label>
+                                                            <div class="col-sm-8">
+                                                                <select class="form-select form-select-sm  mb-3" aria-label=".form-select-sm example" id="select_dft_nrw_year">
+                                                                    <option value="">Select Year</option>
+                                                                    <option value="2022">2022</option>
+                                                                    <option value="2023">2023</option>
+                                                                    <option value="2024">2024</option>
+                                                                    <option value="2025">2025</option>
+                                                                    <option value="2026">2026</option>
+                                                                    <option value="2027">2027</option>
+                                                                    <option value="2028">2028</option>
+                                                                    <option value="2029">2029</option>
+                                                                    <option value="2030">2030</option>
+                                                                    <option value="2031">2031</option>
+                                                                    <option value="2032">2032</option>
+                                                                    <option value="2033">2033</option>
+                                                                </select>
+                                                            </div>
+                                                            <hr>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
                                                         <div class="row">
                                                             <label for="colFormLabelSm" class="col-sm-4 col-form-label col-form-label-sm">Monthly</label>
                                                             <div class="col-sm-8">
@@ -265,9 +288,9 @@
                                                             <hr>
                                                         </div>
                                                     </div>
-                                                    <div class="col-3">
+                                                    <div class="col-2">
                                                         <div class="row">
-                                                        <label for="colFormLabelSm" class="col-sm-4 col-form-label col-form-label-sm">Weekly</label>
+                                                            <label for="colFormLabelSm" class="col-sm-4 col-form-label col-form-label-sm">Weekly</label>
                                                             <div class="col-sm-8">
                                                                 <select class="form-select form-select-sm  mb-3" aria-label=".form-select-sm example" id="select_dft_nrw_weekly">
                                                                     <option value="">Select Week</option>
@@ -281,20 +304,32 @@
                                                             </div>
                                                             <hr>
                                                         </div>
-                                                        
                                                     </div>
                                                     <div class="col-1">
                                                         <button type="button" class="btn btn-soft-secondary btn-sm" onclick="getAllDistrict()">SEARCH</button>
-
                                                     </div>
+                                                    <?php 
+                                                        $currentDate = date('Y-m-d');
+                                                        $thisWeekStart = date('Y-m-d', strtotime("last sunday", strtotime($currentDate)));
+                                                        $thisWeekEnd = date('Y-m-d', strtotime("next saturday", strtotime($currentDate)));
+                                                        $lastWeekStart = date('Y-m-d', strtotime("last sunday", strtotime($thisWeekStart)));
+                                                        $lastWeekEnd = date('Y-m-d', strtotime("next saturday", strtotime($thisWeekStart)));
+
+                                                        $thisMonthStart = date('Y-m-01');
+                                                        $thisMonthEnd = date('Y-m-t');
+                                                        $thisweek = "'".$thisWeekStart."'" .' AND '. "'".$thisWeekEnd."'";
+                                                        $lastweek = "'".$lastWeekStart."'" .' AND '. "'".$lastWeekEnd."'";
+                                                        $thismonth = "'".$thisMonthStart."'" .' AND '. "'".$thisMonthEnd."'";
+
+                                                    ?>
                                                     <div class="col-2">
-                                                        <select class="form-select form-select-sm  mb-3" aria-label=".form-select-sm example">
-                                                            <option selected>Store Type</option>
-                                                            <option value="1">Today</option>
-                                                            <option value="2">This Week</option>
-                                                            <option value="3">Last Week</option>
-                                                            <option value="3">This Month</option>
-                                                            <option value="3">All</option>
+                                                        <select class="form-select form-select-sm  mb-3" aria-label=".form-select-sm example" id="store_type_filter">
+                                                            <option value="" selected>Store Type</option>
+                                                            <option value="today">Today</option>
+                                                            <option value="<?php echo $thisweek; ?>">This Week</option>
+                                                            <option value="<?php echo $lastweek; ?>">Last Week</option>
+                                                            <option value="<?php echo $thismonth; ?>">This Month</option>
+                                                            <option value="all">All</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-1">
