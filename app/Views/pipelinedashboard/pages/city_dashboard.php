@@ -81,7 +81,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-sm-12 mb-4" id="explore_division_city">
-            <a  href="revewnuecolected?id=1" class="btn btn-info btn-small">Explore Division</a>
+            <!-- <a  href="revewnuecolected?id=1" class="btn btn-info btn-small">Explore Division</a> -->
         </div>
     </div>
 </div>

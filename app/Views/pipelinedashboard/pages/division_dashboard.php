@@ -2071,7 +2071,7 @@
 
 								</div>
 								<div class="col-4">
-									<a href="revewnuecolected?id=1" class="btn btn-info btn-sm">Explore Division</a>
+									<!-- <a href="revewnuecolected?id=1" class="btn btn-info btn-sm">Explore Division</a> -->
 								</div>
 							</div>
 
@@ -2088,7 +2088,8 @@
 								<div class="col-sm-4 col-6">
 									<div class="map-box2">
 
-										<a href="dmaZoneDashboard" class="content">
+										<!-- <a href="dmaZoneDashboard" class="content"> -->
+										<a href="#" class="content">
 											<h3 id="h_no_dma"><?= $allstataedata[0]->total_dma ?></h3>
 											<p>Nos. of DMAs</p>
 										</a>
