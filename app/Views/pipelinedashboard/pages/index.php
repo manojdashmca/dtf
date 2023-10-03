@@ -2272,10 +2272,10 @@
 																</div>
 																<div class="row">
 																	<div class="col-md-12 text-center">
-																		<a href="revewnuecolected?id=<?= $getall[$x]['division_id'] ?>" class="explore-more" data-id='<?= $getall[$x]['division_id'] ?>' id="explink">Explore
+																		<!-- <a href="revewnuecolected?id=<?= $getall[$x]['division_id'] ?>" class="explore-more" data-id='<?= $getall[$x]['division_id'] ?>' id="explink">Explore
 																			Division
 
-																		</a>
+																		</a> -->
 																	</div>
 																</div>
 															</div>
