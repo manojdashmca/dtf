@@ -376,7 +376,9 @@ class PipelineController extends WebController {
         public function dateBetweenNrwfromto() {
             try {
                 extract($_POST);
-                $nrwcitywise = $this->pipelineModel->dateBetweenNrwfromtoData($nrw_monthly_date,$nrw_weekly_date); 
+                // print_r($storetypefilterdata);die;
+                $nrwcitywise = $this->pipelineModel->dateBetweenNrwfromtoData($nrw_monthly_date,$nrw_weekly_date,$storetypefilterdata); 
+                
                 return json_encode($nrwcitywise);
             } catch (Exception $e) {
                 error_log($e->getMessage());

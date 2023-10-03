@@ -370,16 +370,39 @@ class PipelineModel extends Model
         
     }
 
-    public function dateBetweenNrwfromtoData($nrw_monthly_date,$nrw_weekly_date)
+    public function dateBetweenNrwfromtoData($nrw_monthly_date,$nrw_weekly_date,$storeTypeFilterData)
     {
+        $currentDate = date('Y-m-d');
+        // print_r($storeTypeFilterData);die;
         $sql = "SELECT round(avg(nrw),2) AS nrw_dn,
         DATE_FORMAT(modification_date, '%d-%m-%Y') AS modification_date_dn 
-        FROM `vw_city_wise_nrws` 
-        WHERE MONTH(modification_date) = '$nrw_monthly_date' AND DAY(modification_date) BETWEEN $nrw_weekly_date GROUP BY MONTH(modification_date) ORDER BY modification_date ASC;";
+        FROM `vw_city_wise_nrws`";
+        if($storeTypeFilterData == "all"){
+            $sql .= "";
+        }else if($storeTypeFilterData == "today"){
+            $sql .= "WHERE DATE(modification_date) = '$currentDate' ";
+        }else if($storeTypeFilterData != ""){
+            $sql .= "WHERE modification_date BETWEEN $storeTypeFilterData ";
+        }else if(($nrw_monthly_date != "") && ($nrw_weekly_date != "")){
+            $sql .= "WHERE MONTH(modification_date) = '$nrw_monthly_date' AND DAY(modification_date) BETWEEN $nrw_weekly_date ";
+        }        
+        $sql .= "GROUP BY MONTH(modification_date) ORDER BY modification_date ASC;";
+        // print_r($sql);die;
+
+        
         $result = $this->db->query($sql);
         $return = $result->getResult();
         return $return;
         $this->db->close();
+
+        // $sql = "SELECT round(avg(nrw),2) AS nrw_dn,
+        // DATE_FORMAT(modification_date, '%d-%m-%Y') AS modification_date_dn 
+        // FROM `vw_city_wise_nrws`
+        // WHERE MONTH(modification_date) = '$nrw_monthly_date' AND DAY(modification_date) BETWEEN $nrw_weekly_date GROUP BY MONTH(modification_date) ORDER BY modification_date ASC;";
+        // $result = $this->db->query($sql);
+        // $return = $result->getResult();
+        // return $return;
+        // $this->db->close();
         
     }
 

@@ -1,16 +1,27 @@
 function getAllDistrict(){
 $(document).ready(function () {
-    var monthlydatenrwfilterValue = $("#select_dft_nrw_monthly").val() !== '' ? $("#select_dft_nrw_monthly").val() : "";
-    var weeklydatenrwfilterValue = $("#select_dft_nrw_weekly").val() !== '' ? $("#select_dft_nrw_weekly").val() : "";
-    console.log(monthlydatenrwfilterValue);
 
-    if(monthlydatenrwfilterValue == ""){
-        console.log("Please Select A Month");
+
+    var monthlydatenrwfilterValue = $("#select_dft_nrw_monthly").val() !== "" ? $("#select_dft_nrw_monthly").val() : "";
+    var weeklydatenrwfilterValue = $("#select_dft_nrw_weekly").val() !== "" ? $("#select_dft_nrw_weekly").val() : "";
+    var storeTypeFilter = $("#store_type_filter").val() !== "" ? $("#store_type_filter").val() : "";
+    
+    // $("#store_type_filter").on("change", function() {
+ 
+
+
+
+    if(monthlydatenrwfilterValue == "" && monthlydatenrwfilterValue == "" && storeTypeFilter == ""){
+        console.log("Please Select Any Select Option");
     }else if((weeklydatenrwfilterValue != "") && (monthlydatenrwfilterValue == "")){
         console.log("First select a Month Then Select A Week");
+    }else if((monthlydatenrwfilterValue != "") && (weeklydatenrwfilterValue == "")){
+        console.log("Select a Date Then Select A Week");
     }else{
-        $.post("dateBetweenNrwfromto", { nrw_monthly_date: monthlydatenrwfilterValue,nrw_weekly_date: weeklydatenrwfilterValue }, function (data_filter_nrw_weekly_monthly) {
+        $.post("dateBetweenNrwfromto", { nrw_monthly_date: monthlydatenrwfilterValue,nrw_weekly_date: weeklydatenrwfilterValue,storetypefilterdata: storeTypeFilter }, function (data_filter_nrw_weekly_monthly) {
             var nrw_progress_dma_divisionwise = JSON.parse(data_filter_nrw_weekly_monthly);
+            // console.log(storetypefilterdata);
+
             console.log(nrw_progress_dma_divisionwise);
             if (nrw_progress_dma_divisionwise) {
                 $("#inner_div_nrw_city_wise").empty();
