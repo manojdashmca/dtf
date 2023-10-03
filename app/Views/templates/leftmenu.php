@@ -32,96 +32,121 @@
 
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                 <li class="nav-item">
-                    <a href="pipe-dashboard" class="nav-link menu-link" > 
-                        <i class="ri-home-7-fill"></i> <span >Home</span> 
+                    <a href="pipe-dashboard" class="nav-link menu-link">
+                        <i class="ri-home-7-fill"></i> <span>Home</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/dashboard" class="nav-link menu-link"> <i class="bi bi-speedometer2"></i> <span data-key="t-dashboard">Dashboard</span> </a>
-                </li>
-<!--                <li class="nav-item">
-                    <a class="nav-link menu-link" href="/users-list">
-                        <i class="bi bi-people-fill"></i> <span data-key="t-widgets">Manage Users</span>
-                    </a>
-                </li>-->
-                <li class="nav-item">
-                    <a href="/physical-progress" class="nav-link menu-link" > 
-                        <i class="bi bi-journal-medical"></i> <span data-key="t-detached">Physical Progress(ULB)</span> 
+                    <a href="/dashboard" class="nav-link menu-link">
+                        <i class="bi bi-building"></i> <span data-key="t-detached">Construction</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/financial-progress" class="nav-link menu-link"> 
-                        <i class="bi bi-currency-dollar"></i> <span data-key="t-horizontal">Financial Progress</span> 
+                    <a href="#" class="nav-link menu-link">
+                        <i class="bi bi-house-heart-fill"></i> <span data-key="t-detached">House Connection</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/progress-entry" class="nav-link menu-link"> 
-                        <i class="bi bi-layout-text-sidebar-reverse"></i> <span data-key="t-hovered">Progress Entry</span> </a>
-                </li> 
+                    <a href="#" class="nav-link menu-link">
+                        <i class="bi bi-water"></i> <span data-key="t-detached">Jalsathi</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link menu-link">
+                        <i class="bi bi-cash-coin"></i> <span data-key="t-detached">Revenue Collection</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link menu-link">
+                        <i class="bi bi-list-columns-reverse"></i> <span data-key="t-detached">Grievance Redressal</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link menu-link">
+                        <i class="bx bx-droplet"></i> <span data-key="t-detached">Water Quality</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link menu-link">
+                        <i class="bx bx-receipt"></i> <span data-key="t-detached">Realtime Monitoring</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/progress-entry" class="nav-link menu-link">
+                        <i class="bi bi-layout-text-sidebar-reverse"></i> <span data-key="t-detached">Progress Entry</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarMasterData2" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMasterData2">
+                        <i class="bi bi-hdd-stack"></i> 
+                        <span data-key="t-advance-ui">Add City/DMA</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarMasterData2">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" data-key="t-sweet-alerts">Construction</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" data-key="t-sweet-alerts">DMA Information</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" data-key="t-sweet-alerts">Jalasathi</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" data-key="t-sweet-alerts">Revenue Collection</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" data-key="t-sweet-alerts">Grievance Redressal</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" data-key="t-sweet-alerts">Water Quality</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" data-key="t-sweet-alerts">Photogallery</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </li>
+
+
                 <li class="nav-item">
                     <a href="/project-clearance" class="nav-link menu-link" > 
                         <i class="bi bi-briefcase"></i> <span data-key="t-two-column">Project Clearance/Issues</span> 
                     </a>
                 </li>
-
                 <li class="nav-item">
-                    <a href="#" class="nav-link menu-link"> <i class="bi bi-images"></i> 
-                        <span data-key="t-contact">Photo Gallery</span> </a>
-                </li> 
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="/configuration" >
-                        <i class="bi bi-gear"></i> <span data-key="t-components">Configuration</span>
+                    <a href="#" class="nav-link menu-link">
+                        <i class="bi bi-receipt"></i> <span data-key="t-two-column">Report Generation</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarMasterData" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMasterData">
-                        <i class="bi bi-hdd-stack"></i> <span data-key="t-advance-ui">Master Data</span>
+                    <a href="#" class="nav-link menu-link">
+                        <i class="bi bi-people"></i> <span data-key="t-two-column">Review Meeting</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarMasterData">
+                </li>
+
+
+                
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarTables" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
+                        <i class="bx bx-droplet"></i> <span data-key="t-tables">Organiser</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarTables">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="component-master" class="nav-link" data-key="t-sweet-alerts">Component Master</a>
+                                <a href="/component-master" class="nav-link" data-key="t-basic-tables">Component Master</a>
                             </li>
                             <li class="nav-item">
-                                <a href="task-master" class="nav-link" data-key="t-nestable-list">Task Master</a>
+                                <a href="/task-master" class="nav-link" data-key="t-basic-tables">Task Master</a>
                             </li>
                             <li class="nav-item">
-                                <a href="sub-task-master" class="nav-link" data-key="t-scrollbar">Subtask Master</a>
+                                <a href="/sub-task-master" class="nav-link" data-key="t-grid-js">Subtask Master</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="report-header" class="nav-link" data-key="t-swiper-slider">Report Header</a>
-                            </li>                            
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#">
-                        <i class="bi bi-file-earmark-text"></i> <span data-key="t-documentation">Reports</span> 
-                    </a>
-                </li>
-                <li class="nav-item">
-                     <a class="nav-link menu-link" href="#sidebarTables" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
-                         <i class="bx bx-droplet"></i> <span data-key="t-tables">Master Pipeline</span>
-                     </a>
-                     <div class="collapse menu-dropdown" id="sidebarTables">
-                         <ul class="nav nav-sm flex-column">
-                             <li class="nav-item">
-                                 <a href="pipe-divisions-master" class="nav-link" data-key="t-basic-tables">Division</a>
-                             </li>
-                             <li class="nav-item">
-                                 <a href="cityTablePage" class="nav-link" data-key="t-basic-tables">Cities</a>
-                             </li>
-                             <li class="nav-item">
-                                 <a href="DmaInfoPage" class="nav-link" data-key="t-grid-js">DMA/Zone</a>
-                             </li>
-                         </ul>
-                     </div>
-                 </li>
-                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="cityUserMaster" >
-                        <i class="ri-map-pin-user-fill"></i> <span data-key="t-components">City Users Master</span>
-                    </a>
-                </li>
+                
             </ul>
         </div>
         <!-- Sidebar -->
