@@ -493,7 +493,7 @@
                                                 <div class="flex-grow-1">
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Nos. bill generated</p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="20000">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
@@ -526,7 +526,7 @@
                                                 <div class="flex-grow-1">
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Nos. bill distributed</p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="8000">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
@@ -560,7 +560,7 @@
                                                 <div class="flex-grow-1">
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Incentive paid to Jalsathi</p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="18000">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
@@ -593,7 +593,7 @@
                                                 <div class="flex-grow-1">
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Total revenue collected</p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="8042">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
@@ -628,7 +628,7 @@
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Revenue collected by Jalsathi
                                                     </p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="8042">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
@@ -662,7 +662,7 @@
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Incentive paid to Jalsathi
                                                     </p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="8042">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
@@ -703,7 +703,7 @@
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Total
                                                         Nos. of grievance Received</p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="20000">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
@@ -737,7 +737,7 @@
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Nos
                                                         of grievenced addressed</p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="8000">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
@@ -771,7 +771,7 @@
                                                 <div class="flex-grow-1">
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Resolved with in time limit </p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="18000">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
@@ -804,7 +804,7 @@
                                                 <div class="flex-grow-1">
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Resolved after time limit </p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="8042">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
@@ -838,7 +838,7 @@
                                                 <div class="flex-grow-1">
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Grievance via 24 X 7 Customer service</p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="8042">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
@@ -871,7 +871,7 @@
                                                 <div class="flex-grow-1">
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Grievance via Jalsathi</p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="8042">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
@@ -904,7 +904,7 @@
                                                 <div class="flex-grow-1">
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Grievance by direct visit/ physical</p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="8042">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
@@ -937,7 +937,7 @@
                                                 <div class="flex-grow-1">
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Grievance by direct visit/ physical</p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="8042">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
@@ -978,7 +978,7 @@
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Nos
                                                         of sample taken </p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="20000">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
@@ -1011,7 +1011,7 @@
                                                 <div class="flex-grow-1">
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Sample collected at WTP</p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="8000">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
@@ -1045,7 +1045,7 @@
                                                 <div class="flex-grow-1">
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Sample collected at storage</p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="18000">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
@@ -1078,7 +1078,7 @@
                                                 <div class="flex-grow-1">
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Resolved after time limit </p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="8042">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
@@ -1112,7 +1112,7 @@
                                                 <div class="flex-grow-1">
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Sample collected from <br />distribution network</p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="8042">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
@@ -1145,7 +1145,7 @@
                                                 <div class="flex-grow-1">
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Sample collected at consumer point</p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="8042">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
@@ -1179,7 +1179,7 @@
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Nos.
                                                         of Parameters tested</p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="8042">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
@@ -1213,7 +1213,7 @@
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Nos
                                                         of sample failed</p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="8042">0</span>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                                     </h4>
 
                                                 </div>
