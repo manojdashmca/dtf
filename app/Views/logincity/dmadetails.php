@@ -27,6 +27,8 @@
     <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
     <style>
         @media only screen and (max-width: 1024px) {
             blockquote.blockquote.custom-blockquote.blockquote-danger.rounded.mb-0 {
@@ -496,6 +498,68 @@
                                             <input type="text" class="form-control" name="z_nrw" id="z_nrw">
                                         </div>
                                     </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Pipe Length Scope: : <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="pls" id="pls">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Pipe Length Progress : <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="plp" id="plp">
+                                        </div>
+                                    </div>
+                                    <p>Valve Instalisation:</p>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Location Of The Valve: <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="lotv" id="lotv">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Type Of Valve(Manual/Automatic): <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="tov" id="tov">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Diameter Of The Valve: <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="dotv" id="dotv">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Pipeline To Be Laid: <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="ptbl" id="ptbl">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Pipeline Completed: <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="pc" id="pc">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Automation Works: <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="aw" id="aw">
+                                        </div>
+                                    </div>
+                                    <p>Storage Reservoirs:</p>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Capacity: <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="capacity" id="capacity">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <p class="text-muted">Completed (%): <span class="text-danger">*</span> :</p>
+                                            <input type="text" class="form-control" name="completed_per" id="completed_per">
+                                        </div>
+                                    </div>
 
 
                                 </div>
@@ -525,14 +589,12 @@
 
 
     <!-- JAVASCRIPT -->
+    <script src="assets/js/jquery.min.js"></script>
     <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/libs/simplebar/simplebar.min.js"></script>
     <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
     <script src="assets/js/plugins.js"></script>
-
-    <script src="assets/js/pipeline/dma-table.js"></script>
-    <script src="assets/libs/sweetalert2/sweetalert2.min.js"></script>
-    <script src="assets/js/pages/sweetalerts.init.js"></script>
+ 
 
     <!-- apexcharts -->
     <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
@@ -545,7 +607,14 @@
     <script src="assets/libs/swiper/swiper-bundle.min.js"></script>
 
     <!-- Dashboard init -->
-    <script src="assets/js/pages/dashboard-ecommerce.init.js"></script>
+    <script src="assets/js/pages/dashboard-ecommerce.init.js"></script> 
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="assets/js/pipeline/dma-table.js"></script>
+<script src="assets/libs/sweetalert2/sweetalert2.min.js"></script>
+<script src="assets/js/pages/sweetalerts.init.js"></script>
+
 
     <!-- App js -->
     <script src="assets/js/app.js"></script>
