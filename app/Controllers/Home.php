@@ -47,7 +47,7 @@ class Home extends WebController {
                             $this->session->set('useremail', $result->user_email);
                             $this->session->set('userid', $result->id_user);
                             $this->session->set('dob', $result->user_dob);
-                            header("location:" . CUSTOMPATH . "pipe-dashboard");
+                            header("location:" . CUSTOMPATH . "dashboard");
                             exit;
                         } else {
 
@@ -140,6 +140,12 @@ class Home extends WebController {
     }
 
     public function logout() {
+        $this->session->remove('img');
+        $this->session->remove('login');
+        $this->session->remove('usertype');
+        $this->session->remove('username');
+        $this->session->remove('useremail');
+        $this->session->remove('userid');
         header('location:/login');
         exit;
     }

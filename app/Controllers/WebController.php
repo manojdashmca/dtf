@@ -10,7 +10,7 @@ class WebController extends BaseController {
     public function __construct() {
         parent::__construct();
         $this->webModel = new WebModel();
-        $openmethods = array('deleteSystemLogs', 'deleteEmailAttachment', 'login', 'logout', 'forgotpassord', 'resetpassord');
+        $openmethods = array('pipeDashboard','deleteSystemLogs', 'deleteEmailAttachment', 'login', 'logout', 'forgotpassord', 'resetpassord');
         if (!in_array($this->method, $openmethods)) {
             if ($this->session->has('login')) {                
             } else {
