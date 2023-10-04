@@ -10,18 +10,17 @@ class WebController extends BaseController {
     public function __construct() {
         parent::__construct();
         $this->webModel = new WebModel();
-        $openmethods = array('pipeDashboard','deleteSystemLogs', 'deleteEmailAttachment', 'login', 'logout', 'forgotpassord', 'resetpassord');
+        $openmethods = array('pipeDashboard', 'deleteSystemLogs', 'deleteEmailAttachment', 'login', 'logout', 'forgotpassord', 'resetpassord');
         if (!in_array($this->method, $openmethods)) {
-            if ($this->session->has('login')) {                
+            if ($this->session->has('login')) {
+                
             } else {
                 header("location:/login");
                 exit;
             }
         }
-        
     }
 
-    
     //deleteing the logfile older than 7 days--- 
     public function deleteSystemLogs() {
         try {

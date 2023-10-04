@@ -1,3 +1,7 @@
+<?php
+(isset($_REQUEST['division']))?$linkdiv=$_REQUEST['division']:$linkdiv='';
+(isset($_REQUEST['city']))?$linkcity=$_REQUEST['city']:$linkcity='';
+?>
 <!-- ========== App Menu ========== -->
 <div class="app-menu navbar-menu">
     <!-- LOGO -->
@@ -47,7 +51,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link menu-link">
+                    <a href="#?pager=<?=$pagerid?>&division=<?=$linkdiv?>&city=<?=$linkcity?>&transactionid=<?= $session->get('trnid') ?>" class="nav-link menu-link">
                         <i class="bi bi-water"></i> <span data-key="t-detached">Jalsathi</span>
                     </a>
                 </li>
