@@ -36,7 +36,8 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->match(['get', 'post'], '/', 'Home::login');
+$routes->match(['get', 'post'], '/', 'pipeLineDashboardController::pipeDashboard');
+$routes->match(['get', 'post'], 'pipe-dashboard', 'pipeLineDashboardController::pipeDashboard');
 $routes->match(['get', 'post'], 'login', 'Home::login');
 $routes->get('logout', 'Home::logout');
 $routes->match(['get', 'post'], 'forgot-password', 'Home::forgotpassord');
