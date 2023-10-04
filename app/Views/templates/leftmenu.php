@@ -87,7 +87,7 @@
                                 <a href="#" class="nav-link" data-key="t-sweet-alerts">Construction</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link" data-key="t-sweet-alerts">DMA Information</a>
+                                <a href="/DmaInfoPage" class="nav-link" data-key="t-sweet-alerts">DMA Information</a>
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link" data-key="t-sweet-alerts">Jalasathi</a>
