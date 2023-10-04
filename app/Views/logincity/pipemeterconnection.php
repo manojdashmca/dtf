@@ -15,24 +15,37 @@
         </div>
     </div>
 
-        
-        <div class="row mb-3">
-            <div class="col-4">
-                <select name="division" id="divisions" class="form-control">
-                <option value="" class="text-danger">Select Division</option>
-										<?php for ($x = 0; $x < count($alldivisionname); $x++) { ?>
-											<option value='<?= $alldivisionname[$x]->id ?>' <?= ($city == $alldivisionname[$x]->id) ? 'selected="selected"' : '' ?>><?= $alldivisionname[$x]->division_name ?></option>
-										<?php } ?>   
+
+    <div class="row mb-3">
+        <div class="col-4">
+            <form name='fileter' id='filter' action='' method='get'>                            
+                <input type="hidden" name="pager" value="<?= $pagerid ?>"/>
+                <select onchange="this.form.submit();" name="division" id="divisions" class="form-control form-select">
+                    <option value="" class="text-danger">Select Division</option>
+                    <?php for ($x = 0; $x < count($alldivisionname); $x++) { ?>
+                        <option <?=($division==$alldivisionname[$x]->id)?'selected="selected"':''?> value='<?= $alldivisionname[$x]->id ?>' ><?= $alldivisionname[$x]->division_name ?></option>
+                    <?php } ?>   
                 </select>
-            </div>
-            <div class="col-4">
-            </div>
-            <div class="col-4">
-                <select name="city" id="citys" class="form-control">
-                    <option value="">Select City</option>
-                </select>
-            </div>
+                <input type="hidden" name="transactionid" value="<?= $session->get('trnid') ?>"/>
+            </form>
         </div>
+        <div class="col-4">
+            
+        </div>
+        <div class="col-4">
+            <form name='fileter1' id='filter1' action='' method='get'>                            
+                <input type="hidden" name="pager" value="<?= $pagerid ?>"/>
+                <input type="hidden" name="division" value="<?= $division ?>"/>
+                <select name='city' id='city' class='form-control  form-select' onchange="this.form.submit();">
+                    <option value="">Select City</option>
+                    <?php for ($x = 0; $x < count($citydropdown); $x++) { ?>
+                        <option value='<?= $citydropdown[$x]->id ?>' <?= ($city == $citydropdown[$x]->id) ? 'selected="selected"' : '' ?>><?= $citydropdown[$x]->city_name ?></option>
+                    <?php } ?>                                
+                </select>
+                <input type="hidden" name="transactionid" value="<?= $session->get('trnid') ?>"/>
+            </form>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-md-4">

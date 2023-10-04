@@ -7,28 +7,25 @@ use App\Models\PipelineModel;
 use App\Libraries;
 use App\Models\MasterdataModel;
 
-class LoginCityController extends WebController
-{
-    public function __construct()
-    {
+class LoginCityController extends WebController {
+
+    public function __construct() {
         parent::__construct();
         $this->CityLoginModel = new CityLoginModel();
         $this->pipelineModel = new PipelineModel();
         $this->masterdataModel = new MasterdataModel();
     }
 
-
-    public function logincity()
-    {
+    public function logincity() {
 
 
 
         if ($this->request->getMethod() == 'post') {
             $this->validateCaptcha();
             if (!$this->validate([
-                'usernamecity' => "required",
-                'passwordinputcity' => 'required',
-            ])) {
+                        'usernamecity' => "required",
+                        'passwordinputcity' => 'required',
+                    ])) {
                 $this->session->setFlashdata('message', setMessage('Missing Required Field', 'e'));
             } else {
                 $username = $this->request->getPost('usernamecity');
@@ -99,33 +96,32 @@ class LoginCityController extends WebController
         $this->data['js'] = 'sweetalert,validation,alertify';
         // $this->data['includefile'] = 'dmazonetable.php';
 
-        // $city = $this->request->getVar('city');
+        $division = $this->request->getVar('division');
         // $this->data['city'] = $city;
         // $this->data['component'] = array();
         // $this->data['alldivisionname']=$this->pipelineModel->getAllDivisionName();
         $city = $this->request->getVar('city');
         $this->data['city'] = $city;
-        $this->data['component'] = array();
-        $this->data['componentmaster'] = $this->masterdataModel->getcomponentMasterData();
-        if (!empty($city)) {
-            $this->data['component'] = $this->masterdataModel->getCityComponent($city);
+        $this->data['division'] = $division;
+        $citydropdown = [];
+        if (!empty($division)) {
+            $citydropdown = $this->pipelineModel->getCityOnDivision($division);
         }
+        $this->data['citydropdown'] = $citydropdown;
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
-        
+
         return view('templates/header', $this->data)
                 . view('logincity/pipemeterconnection', $this->data)
                 . view('templates/footer', $this->data);
     }
 
-    public function logoutCity()
-    {
+    public function logoutCity() {
         header('location:/logincity');
         session()->remove('usernamecity');
         exit;
     }
 
-    public function dmaDetailsHome()
-    {
+    public function dmaDetailsHome() {
         $this->data['title'] = 'Pipeline Dashboard';
         $this->data['css'] = '';
         $this->data['js'] = '';
@@ -135,8 +131,7 @@ class LoginCityController extends WebController
         return view('logincity/dmadetails', $this->data);
     }
 
-    public function editDmadetails($dma_id)
-    {
+    public function editDmadetails($dma_id) {
         $this->data['title'] = 'Pipeline Dashboard';
         $this->data['css'] = '';
         $this->data['js'] = '';
@@ -144,8 +139,7 @@ class LoginCityController extends WebController
         return view('logincity/editdmapage', $this->data);
     }
 
-    public function updateDmaZone($dma_id)
-    {
+    public function updateDmaZone($dma_id) {
         try {
 
             $dma_data = [
@@ -172,8 +166,7 @@ class LoginCityController extends WebController
         }
     }
 
-    public function cityJalasathi()
-    {
+    public function cityJalasathi() {
         $this->data['title'] = 'Pipeline Dashboard';
         $this->data['css'] = '';
         $this->data['js'] = '';
@@ -182,16 +175,14 @@ class LoginCityController extends WebController
         return view('logincity/jalasathi', $this->data);
     }
 
-    public function cityJalasathiAddnew()
-    {
+    public function cityJalasathiAddnew() {
         // $this->data['title'] = 'Pipeline Dashboard';
         $this->data['css'] = '';
         $this->data['js'] = '';
         return view('logincity/cityuserjalasathi', $this->data);
     }
 
-    public function cityUserRevenueCollection()
-    {
+    public function cityUserRevenueCollection() {
         // $this->data['title'] = 'Pipeline Dashboard';
         $this->data['css'] = '';
         $this->data['js'] = '';
@@ -204,16 +195,14 @@ class LoginCityController extends WebController
         return view('logincity/cityuserrevenuecollected', $this->data);
     }
 
-    public function cityUsergrevanceCustection()
-    {
+    public function cityUsergrevanceCustection() {
         // $this->data['title'] = 'Pipeline Dashboard';
         $this->data['css'] = '';
         $this->data['js'] = '';
         return view('logincity/grievancecustomer', $this->data);
     }
 
-    public function citylogwqm()
-    {
+    public function citylogwqm() {
         // $this->data['title'] = 'Pipeline Dashboard';
         $this->data['css'] = '';
         $this->data['js'] = '';
@@ -226,8 +215,7 @@ class LoginCityController extends WebController
     // City User Master
 
 
-    public function cityUserMasterData()
-    {
+    public function cityUserMasterData() {
         $this->data['title'] = 'Pipeline Dashboard';
         $this->data['css'] = 'sweetalert';
         $this->data['js'] = 'sweetalert,divisionmastertable';
@@ -237,12 +225,11 @@ class LoginCityController extends WebController
         $this->data['usernewname'] = '';
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
         return view('templates/header', $this->data)
-            . view('pipeline/cityusermaster', $this->data)
-            . view('templates/footer', $this->data);
+                . view('pipeline/cityusermaster', $this->data)
+                . view('templates/footer', $this->data);
     }
 
-    public function addnewcityUser()
-    {
+    public function addnewcityUser() {
         extract($_POST);
         $res = "";
         if ($citymaster_division == "") {
@@ -272,14 +259,12 @@ class LoginCityController extends WebController
         echo json_encode($res);
     }
 
-    public function getCityUserData()
-    {
+    public function getCityUserData() {
         $cityuser = $this->CityLoginModel->getCityUserData();
         return json_encode($cityuser);
     }
 
-    protected function validateCaptcha()
-    {
+    protected function validateCaptcha() {
         //echo "<pre>";
         //print_r($this->request->getPost());
         $captcha = $this->request->getPost('g-recaptcha-response');
@@ -294,8 +279,7 @@ class LoginCityController extends WebController
         }
     }
 
-    public function encryptString($string)
-    {
+    public function encryptString($string) {
         $return = '';
         if (!empty($string)) {
             $this->aesObj->setData($string);
@@ -305,8 +289,7 @@ class LoginCityController extends WebController
         return $return;
     }
 
-    public function addCityuserRevenueCollection()
-    {
+    public function addCityuserRevenueCollection() {
         extract($_POST);
         $division_id = session()->get('cityuser_division');
         $city_id = session()->get('cityuser_city');
@@ -320,8 +303,7 @@ class LoginCityController extends WebController
         echo json_encode($res);
     }
 
-    public function getRevColCityOnId()
-    {
+    public function getRevColCityOnId() {
         try {
             extract($_POST);
             $getrevenuecolc = $this->CityLoginModel->getRevColCityOnId($city_revenue_id);
@@ -332,8 +314,7 @@ class LoginCityController extends WebController
         }
     }
 
-    public function editCityuserRevenueCollection()
-    {
+    public function editCityuserRevenueCollection() {
         extract($_POST);
         $res = "";
         if ($revenue_id) {

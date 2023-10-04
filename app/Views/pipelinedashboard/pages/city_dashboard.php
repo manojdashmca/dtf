@@ -28,14 +28,14 @@
                 <div class="card-body">
                     <p>NO OF. CITIES</p>
                     <h4 id="cd_no_ct"><?= $getallcitiscdashboard->no_of_city ?></h4>
-                    
+
                 </div>
             </div>
         </div>
         <div class="col-lg-4 col-sm-12">
             <div class="card">
                 <div class="card-body">
-                <p>NO OF. DMA/ZONE</p>
+                    <p>NO OF. DMA/ZONE</p>
                     <h4 id="cd_no_dma"><?= $getallcitiscdashboard->no_of_dma ?></h4>
                 </div>
             </div>
