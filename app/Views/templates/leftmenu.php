@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link menu-link">
+                    <a href="getPipeMeterConnection" class="nav-link menu-link">
                         <i class="bi bi-house-heart-fill"></i> <span data-key="t-detached">House Connection</span>
                     </a>
                 </li>

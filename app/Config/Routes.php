@@ -159,6 +159,7 @@ $routes->match(['get', 'post'], 'cityJalasathiAddnew', 'LoginCityController::cit
 $routes->get('cityLoginrevenuecoll', 'LoginCityController::cityUserRevenueCollection');
 $routes->get('cityLogingrevanceCust', 'LoginCityController::cityUsergrevanceCustection');
 $routes->get('citylogwqm', 'LoginCityController::citylogwqm');
+$routes->match(['get', 'post'], 'getPipeMeterConnection', 'LoginCityController::getMeterPipeConnection');
 
 // City User Master
 $routes->match(['get', 'post'], 'cityUserMaster', 'LoginCityController::cityUserMasterData');
@@ -176,6 +177,11 @@ $routes->match(['put', 'post'], 'update-task-progress-entry', 'ProgressentryCont
 //
 //--------------------Autometic jobs--------
 $routes->get('/jobs/publish-email', 'WebController::sendPendingEmails');
+// get dam master table data 
+$routes->match(['get', 'post'], 'getDmamasterTable', 'PipelineController::getAllDmaMasterDataFunction');
+$routes->match(['get', 'post'], 'addDmaMaster', 'PipelineController::InsertDmaMaster');
+$routes->match(['get', 'post'], 'getDmaMasterDetailsOnId', 'PipelineController::getDmaMasterDetailsOnId');
+$routes->match(['get', 'post'], 'updatenewdmamasterinfo', 'PipelineController::updateDmamasterDataInId');
 
 
 //----------------------------------------

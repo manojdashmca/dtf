@@ -42,7 +42,9 @@ if (in_array('dashboard', $jsarray)) {
 <!-- Division Master Table -->
     <script src="assets/libs/prismjs/prism.js"></script>
     <script src="assets/libs/gridjs/gridjs.umd.js"></script>    
-    <script src="assets/js/pipeline/division-table.js"></script>    
+<?php
+}if (in_array('jqueryscript', $jsarray)){ ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <?php
 }
 

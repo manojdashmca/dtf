@@ -456,5 +456,80 @@ class PipelineModel extends Model
         $this->db->close();
     }
 
+
+// Dma Master
+    public function getAllDmaMasterData()
+    {
+        $sql = "SELECT * FROM dma_master;";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        return $return;
+    }
+
+    public function checkDuplicateDmaMaster($z_division_id,$z_citys,$dma_name)
+    {
+        $sql = "SELECT dma_name from dma_master WHERE division_id = '$z_division_id' AND city_id='$z_citys' AND dma_name = '$dma_name';";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        return $return;
+        $this->db->close();
+    }
     
+    public function insertDmaMasterTable($z_division_id,$z_citys,$dma_name,$dma_population,$commissioning_status,$dma_updated_date,$distribution_pipe_line_scope,$distribution_pipe_line_progress,$pumping_main_scope,$pumping_main_progress,$storage_resorvoir_scope,$storage_resorvoir_progress,$pumping_station_scope,$pumping_station_progress,$flowmeter_scope,$flowmeter_progress,$pressure_treansmitter_scope,$pressure_treansmitter_progress,$level_treansmitter_scope,$level_treansmitter_progress,$sluice_valve_scope,$sluice_valve_progress,$plc_scope,$plc_progress,$house_connection_scope,$house_connection_progress,$meter_connection_scope,$meter_connection_progress,$nrw_scope,$nrw_progress)
+    {
+        $sql = "INSERT INTO dma_master(division_id,city_id,dma_name,dma_population,commissioning_status,dma_updated_date,distribution_pipe_line_scope,distribution_pipe_line_progress,pumping_main_scope,pumping_main_progress,storage_resorvoir_scope,storage_resorvoir_progress,pumping_station_scope,pumping_station_progress,flowmeter_scope,flowmeter_progress,pressure_treansmitter_scope,pressure_treansmitter_progress,level_treansmitter_scope,level_treansmitter_progress,sluice_valve_scope,sluice_valve_progress,plc_scope,plc_progress,house_connection_scope,house_connection_progress,meter_connection_scope,meter_connection_progress,nrw_scope,nrw_progress,updated_by,updated_date)VALUES
+        ('$z_division_id','$z_citys','$dma_name','$dma_population','$commissioning_status','$dma_updated_date','$distribution_pipe_line_scope','$distribution_pipe_line_progress','$pumping_main_scope','$pumping_main_progress','$storage_resorvoir_scope','$storage_resorvoir_progress','$pumping_station_scope','$pumping_station_progress','$flowmeter_scope','$flowmeter_progress','$pressure_treansmitter_scope','$pressure_treansmitter_progress','$level_treansmitter_scope','$level_treansmitter_progress','$sluice_valve_scope','$sluice_valve_progress','$plc_scope','$plc_progress','$house_connection_scope','$house_connection_progress','$meter_connection_scope','$meter_connection_progress','$nrw_scope','$nrw_progress','1',NOW())";
+
+        // print_r($sql);die;
+        $result = $this->db->query($sql);
+
+        return $result;
+        $this->db->close();
+    }
+    public function getDmaMasterDetailsOnIdData($dma_editid)
+    {
+        $sql = "SELECT * FROM dma_master WHERE id = '$dma_editid';";
+        $result = $this->db->query($sql);
+        $return = $result->getRow();
+        return $return;
+        $this->db->close();
+    }
+
+    public function updateDmaMasterTable($old_dma_id, $z_division_id_u, $z_citys_d, $edit_dma_name,$edit_dma_population,$edit_commissioning_status,$edit_dma_updated_date,$edit_distribution_pipe_line_scope,$edit_distribution_pipe_line_progress,$edit_pumping_main_scope,$edit_pumping_main_progress,$edit_storage_resorvoir_scope,$edit_storage_resorvoir_progress,$edit_pumping_station_scope,$edit_pumping_station_progress,$edit_flowmeter_scope,$edit_flowmeter_progress,$edit_pressure_treansmitter_scope,$edit_pressure_treansmitter_progress,$edit_level_treansmitter_scope,$edit_level_treansmitter_progress,$edit_sluice_valve_scope,$edit_sluice_valve_progress,$edit_plc_scope,$edit_plc_progress,$edit_house_connection_scope,$edit_house_connection_progress,$edit_meter_connection_scope,$edit_meter_connection_progress,$edit_nrw_scope,$edit_nrw_progress)
+    {
+        $sql = "UPDATE dma_master SET division_id = '$z_division_id_u',city_id = '$z_citys_d',
+        dma_name = '$edit_dma_name',
+        dma_population = '$edit_dma_population',
+        commissioning_status = '$edit_commissioning_status',
+        dma_updated_date = '$edit_dma_updated_date',
+        distribution_pipe_line_scope = '$edit_distribution_pipe_line_scope',
+        distribution_pipe_line_progress = '$edit_distribution_pipe_line_progress',
+        pumping_main_scope = '$edit_pumping_main_scope',
+        pumping_main_progress = '$edit_pumping_main_progress',
+        storage_resorvoir_scope = '$edit_storage_resorvoir_scope',
+        storage_resorvoir_progress = '$edit_storage_resorvoir_progress',
+        pumping_station_scope = '$edit_pumping_station_scope',
+        pumping_station_progress = '$edit_pumping_station_progress',
+        flowmeter_scope = '$edit_flowmeter_scope',
+        flowmeter_progress = '$edit_flowmeter_progress',
+        pressure_treansmitter_scope = '$edit_pressure_treansmitter_scope',
+        pressure_treansmitter_progress = '$edit_pressure_treansmitter_progress',
+        level_treansmitter_scope = '$edit_level_treansmitter_scope',
+        level_treansmitter_progress = '$edit_level_treansmitter_progress',
+        sluice_valve_scope = '$edit_sluice_valve_scope',
+        sluice_valve_progress = '$edit_sluice_valve_progress',
+        plc_scope = '$edit_plc_scope',
+        plc_progress = '$edit_plc_progress',
+        house_connection_scope = '$edit_house_connection_scope',
+        house_connection_progress = '$edit_house_connection_progress',
+        meter_connection_scope = '$edit_meter_connection_scope',
+        meter_connection_progress = '$edit_meter_connection_progress',
+        nrw_scope = '$edit_nrw_scope',
+        nrw_progress = '$edit_nrw_progress',
+        updated_date = NOW() WHERE id='$old_dma_id';";
+        // print_r($sql);die;
+        $result = $this->db->query($sql);
+        return $result;
+        $this->db->close();
+    }
 }
