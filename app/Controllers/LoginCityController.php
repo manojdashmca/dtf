@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\CityLoginModel;
 use App\Models\PipelineModel;
 use App\Libraries;
+use App\Models\MasterdataModel;
 
 class LoginCityController extends WebController
 {
@@ -13,6 +14,7 @@ class LoginCityController extends WebController
         parent::__construct();
         $this->CityLoginModel = new CityLoginModel();
         $this->pipelineModel = new PipelineModel();
+        $this->masterdataModel = new MasterdataModel();
     }
 
 
@@ -89,6 +91,29 @@ class LoginCityController extends WebController
         }
 
         return view('logincity/index', $this->data);
+    }
+
+    public function getMeterPipeConnection() {
+        $this->data['title'] = 'DMA Master';
+        $this->data['css'] = 'sweetalert,validation,alertify';
+        $this->data['js'] = 'sweetalert,validation,alertify';
+        // $this->data['includefile'] = 'dmazonetable.php';
+
+        // $city = $this->request->getVar('city');
+        // $this->data['city'] = $city;
+        // $this->data['component'] = array();
+        // $this->data['alldivisionname']=$this->pipelineModel->getAllDivisionName();
+        $city = $this->request->getVar('city');
+        $this->data['city'] = $city;
+        $this->data['component'] = array();
+        $this->data['componentmaster'] = $this->masterdataModel->getcomponentMasterData();
+        if (!empty($city)) {
+            $this->data['component'] = $this->masterdataModel->getCityComponent($city);
+        }
+        
+        return view('templates/header', $this->data)
+                . view('logincity/pipemeterconnection', $this->data)
+                . view('templates/footer', $this->data);
     }
 
     public function logoutCity()
