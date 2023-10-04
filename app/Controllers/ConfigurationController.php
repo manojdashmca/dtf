@@ -11,15 +11,14 @@ class ConfigurationController extends WebController {
         parent::__construct();
         $this->webModel = new WebModel();
     }
-    
+
     public function index() {
         $this->data['title'] = 'City Configuration';
-        $this->data['css']='sweetalert,validation';
-        $this->data['js']='sweetalert,validation';
-        $this->data['includefile']='configvalidation.php';        
+        $this->data['css'] = 'sweetalert,validation,alertify';
+        $this->data['js'] = 'sweetalert,validation,alertify';
+        $this->data['includefile'] = 'configvalidation.php';
         return view('templates/header', $this->data)
                 . view('configuration/index', $this->data)
                 . view('templates/footer', $this->data);
     }
-
 }

@@ -54,6 +54,25 @@ class MasterdataController extends WebController {
         }
     }
 
+    public function updateComponentkbreakup() {
+        if ($this->request->isAJAX()) {
+            $chcbid = trim($this->request->getPost('chcbid'));
+            $componentbreakup = trim($this->request->getPost('componentbreakup'));
+            $tabledata = $this->masterdataModel->getTableData('city_id_city,component_breakup', 'city_has_component_breakup', 'chcb_id=' . $chcbid);
+            $breakupalreadyadded = $this->masterdataModel->getComponentBreakUpPercent($tabledata->city_id_city);
+
+            if ((($breakupalreadyadded - $tabledata->component_breakup) + $componentbreakup) <= 100) {
+                $updarray = array('component_breakup' => $componentbreakup);
+                $this->webModel->updateRecordInTable($updarray, 'city_has_component_breakup', 'chcb_id', $chcbid);
+                $data = array('status' => 'success', 'message' => 'Component Breakup updated Successfully');
+            } else {
+                $data = array('status' => 'error', 'message' => 'Maximum Percentage Allocated');
+            }
+            echo json_encode($data);
+            exit;
+        }
+    }
+
     public function task() {
         $this->data['title'] = 'Task Master';
         $this->data['css'] = 'sweetalert,validation,alertify';
@@ -218,10 +237,27 @@ class MasterdataController extends WebController {
         if ($this->request->isAJAX()) {
             $cityname = trim($this->request->getPost('cityname'));
             $contractcost = trim($this->request->getPost('contractcost'));
-            $headervalue = trim($this->request->getPost('headervalue'));
+            #$headervalue = trim($this->request->getPost('headervalue'));
             $createarray = array('city_name' => $cityname, 'contract_cost' => $contractcost);
-            $this->webModel->createRecordInTable($createarray, 'cities_master');
+            $cityid = $this->webModel->createRecordInTable($createarray, 'cities_master');
+            $this->masterdataModel->createMockComponent($cityid);
+            $this->masterdataModel->createMockComponentTask($cityid);
+            $this->masterdataModel->createMockComponentTaskSubtask($cityid); 
             $data = array('status' => 'success', 'message' => 'City Added Successfully');
+
+            echo json_encode($data);
+            exit;
+        }
+    }
+
+    public function updateCity() {
+        if ($this->request->isAJAX()) {
+            $cityname = trim($this->request->getPost('cityname'));
+            $contractcost = trim($this->request->getPost('contractcost'));
+            $cityid = trim($this->request->getPost('cityid'));
+            $updarray = array('city_name' => $cityname, 'contract_cost' => $contractcost);
+            $this->webModel->updateRecordInTable($updarray, 'cities_master', 'city_id', $cityid);
+            $data = array('status' => 'success', 'message' => 'City data updated Successfully');
 
             echo json_encode($data);
             exit;

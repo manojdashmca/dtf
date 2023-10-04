@@ -52,7 +52,7 @@
                                         <td><?=$citydropdown[$x]->contract_cost?></td>                                                                         
                                         <td>
                                             <div class="hstack gap-3 fs-15">
-                                                <a href="javascript:void(0);" class="link-primary"><i class="ri-pencil-fill"></i></a>
+                                                <a href="javascript:void(0);" class="link-primary" data-bs-toggle="modal" data-bs-target="#edit-city-modal" onclick="citycontract(<?=$citydropdown[$x]->city_id?>, '<?=$citydropdown[$x]->city_name?>', <?=$citydropdown[$x]->contract_cost?>);"><i class="ri-pencil-fill"></i></a>
                                                 <a href="javascript:void(0);" class="link-danger"><i class="ri-delete-bin-5-line"></i></a>
                                             </div>
                                         </td>
@@ -102,6 +102,42 @@
                     <div class="hstack gap-2 justify-content-end">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary" id="createtask">Create City</button>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- modal content -->
+    </div>
+</div>
+<div class="modal fade" id="edit-city-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form autocomplete="off" name="editcity" id="editcity">
+            <input type="hidden" name="ecityid" id="ecityid"/>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addTaskModalLabel">Edit City Data</h5>
+                    <button type="button" class="btn-close" id="close-modal" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                                        
+                    <div class="form-group mb-3">
+                        <label for="breakup-percent" class="form-label">City Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="ecityname" name="ecityname" placeholder="City Name">
+                    </div>
+                                        
+                    <div class="form-group mb-3">
+                        <label for="breakup-percent" class="form-label">Contract Cost <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="econtractcost" name="econtractcost" placeholder="min 1 max 10000000000">
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <div class="hstack gap-2 justify-content-end">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="createtask">Update City Data</button>
 
                     </div>
                 </div>

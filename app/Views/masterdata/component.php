@@ -76,7 +76,7 @@
                                         <td><?= $component[$x]->breakupcost ?></td>                                    
                                         <td>
                                             <div class="hstack gap-3 fs-15">
-                                                <a href="javascript:void(0);" class="link-primary"><i class="ri-pencil-fill"></i></a>
+                                                <a href="javascript:void(0);" class="link-primary" data-bs-toggle="modal" data-bs-target="#edit-component-modal" onclick="editComponentData('<?=$component[$x]->component?>',<?= $component[$x]->component_breakup ?>,<?=$component[$x]->chcb_id?>);"><i class="ri-pencil-fill"></i></a>
                                                 <a href="javascript:void(0);" class="link-danger"><i class="ri-delete-bin-5-line"></i></a>
                                             </div>
                                         </td>
@@ -186,3 +186,49 @@
     </div>
 </div>
 <!-- end modal -->
+
+<div class="modal fade" id="edit-component-modal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form autocomplete="off" name="editcomponent" id="editcomponent">
+            <input type="hidden" name="echcbid" id="echcbid"/>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addTaskModalLabel">Edit Component Breakup</h5>
+                    <button type="button" class="btn-close" id="close-modal" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div id="api-key-error-msg" class="alert alert-danger py-2 d-none"></div>                    
+                    <div class="form-group mb-3">
+                        <label for="Task-City" class="form-label">Select The City <span class="text-danger">*</span></label>
+                        <select disabled="true" name='taskcity' id='taskcity' class='form-control  form-select'>
+                            <option value="">Select City</option>
+                            <?php for ($x = 0; $x < count($citydropdown); $x++) { ?>
+                                <option value='<?= $citydropdown[$x]->city_id ?>' <?= ($city == $citydropdown[$x]->city_id) ? 'selected="selected"' : '' ?>><?= $citydropdown[$x]->city_name ?></option>
+                            <?php } ?>                                
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="Task-Component" class="form-label">City Component <span class="text-danger">*</span></label>
+                        <input disabled="true" type="text" name='ecitycomponent' id='ecitycomponent' class='form-control'/>
+                            
+                    </div>                    
+                    <div class="form-group mb-3">
+                        <label for="breakup-percent" class="form-label">Breakup Percent <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="ecomponentbreakup" name="ecomponentbreakup" placeholder="Task breakup min 0.0 max 100">
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <div class="hstack gap-2 justify-content-end">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="createtask">Create Component Breakup</button>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- modal content -->
+    </div>
+</div>

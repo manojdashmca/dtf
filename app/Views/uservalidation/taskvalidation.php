@@ -100,9 +100,9 @@
                 var jsonData = JSON.parse(data);
                 if (jsonData.status == 'success') {
                     alertify.success(jsonData.message);
-//                    setTimeout(function () {
-//                        location.reload();
-//                    }, 3000);
+                    setTimeout(function () {
+                        location.reload();
+                    }, 3000);
 
                 } else {
                     alertify.error(jsonData.message);
