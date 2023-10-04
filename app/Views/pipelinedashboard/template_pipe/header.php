@@ -7,7 +7,9 @@
     <title><?= $title ?> | Drink From Tap Mission</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/logo-single.png">
+
+    <link rel="shortcut icon" href="assets/images/logo-single.png">  
+
 
     <!-- jsvectormap css -->
     <link href="assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />

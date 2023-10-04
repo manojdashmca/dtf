@@ -22,6 +22,7 @@
        $contractcost[]= (int)$financialdata[$x]->contract_cost;
        $achievedprogress[]= (int)$financialdata[$x]->achievedprogress;
     }
+    
     ?>
 
     var chartColumnColors = getChartColorsArray("customer_impression_charts1"),
@@ -45,7 +46,7 @@
                         ],
                         colors: chartColumnDatatalabelColors,
                         grid: {borderColor: "#f1f1f1"},
-                        xaxis: {categories: ["Anandapur", "Barbil", "Biramitrapur", "Baripada", "Champua", "Joda", "Karanjia", "Keonjhar", "Rairangpur", "Rajgangpur", "Rourkela", "Sundargarh","Udala","Vyasanagar"]},
+                        xaxis: {categories: <?=json_encode($cities)?>},
                    
                         fill: {gradient: {shade: "light", type: "horizontal", shadeIntensity: 0.25, gradientToColors: void 0, inverseColors: !0, opacityFrom: 1, opacityTo: 1, stops: [50, 0, 100, 100]}},
                         yaxis: {

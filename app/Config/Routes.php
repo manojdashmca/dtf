@@ -65,6 +65,7 @@ $routes->match(['get', 'post'], 'check-email', 'Home::checkEmailExist');
 
 $routes->match(['get', 'post'], 'create-task-breakup', 'MasterdataController::createTaskbreakup');
 $routes->match(['get', 'post'], 'create-component-breakup', 'MasterdataController::createComponentkbreakup');
+$routes->match(['get', 'post'], 'update-component-breakup', 'MasterdataController::updateComponentkbreakup');
 $routes->match(['get', 'post'], 'create-new-component', 'MasterdataController::createNewComponent');
 $routes->match(['get', 'post'], 'create-new-task', 'MasterdataController::createNewTask');
 $routes->match(['get', 'post'], 'create-new-subtask', 'MasterdataController::createNewSubtask');
@@ -76,6 +77,7 @@ $routes->match(['get', 'post'], 'get-city-component-task', 'MasterdataController
 $routes->match(['get', 'post'], 'get-city-component', 'MasterdataController::getCityHasComponent');
 $routes->match(['get', 'post'], 'get-city-component-task-subtask', 'MasterdataController::getCityHasComponentHasTaskHasSubtask');
 $routes->match(['get', 'post'], 'create-city', 'MasterdataController::createCity');
+$routes->match(['get', 'post'], 'update-city', 'MasterdataController::updateCity');
 
 
 
