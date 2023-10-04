@@ -110,6 +110,7 @@ class LoginCityController extends WebController
         if (!empty($city)) {
             $this->data['component'] = $this->masterdataModel->getCityComponent($city);
         }
+        $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
         
         return view('templates/header', $this->data)
                 . view('logincity/pipemeterconnection', $this->data)
