@@ -33,7 +33,7 @@ class PipelineModel extends Model
     public function checkDuplicateCity($city_name)
     {
 
-        $sql = "SELECT city_name from pl_citys WHERE city_name = '$city_name';";
+        $sql = "SELECT city_name from cities_master WHERE city_name = '$city_name';";
         $result = $this->db->query($sql);
         $return = $result->getResult();
         return $return;
@@ -94,7 +94,7 @@ class PipelineModel extends Model
     public function getCityOnDivision($division_id)
     {
 
-        $sql = "SELECT id,city_name FROM pl_citys WHERE division_id='$division_id';";
+        $sql = "SELECT city_id,city_name FROM cities_master WHERE division_id='$division_id';";
         $result = $this->db->query($sql);
         $return = $result->getResult();
         return $return;
@@ -254,7 +254,7 @@ class PipelineModel extends Model
 
     public function getAllCities()
     {
-        $sql = "SELECT c.id,d.division_name,c.city_name FROM pl_citys c INNER JOIN divisions d ON c.division_id = d.id;";
+        $sql = "SELECT c.city_id,d.division_name,c.city_name FROM cities_master c INNER JOIN divisions d ON c.division_id = d.id;";
         $result = $this->db->query($sql);
         $return = $result->getResult();
         return $return;
@@ -262,7 +262,7 @@ class PipelineModel extends Model
 
     public function insertCityTable($division_id, $city_name)
     {
-        $sql = "INSERT INTO pl_citys(division_id,city_name)VALUES('$division_id','$city_name')";
+        $sql = "INSERT INTO cities_master(division_id,city_name,contract_cost,city_status,city_create_date)VALUES('$division_id','$city_name','0','1',NOW());";
         $result = $this->db->query($sql);
 
         return $result;
@@ -305,7 +305,7 @@ class PipelineModel extends Model
 
     public function getCityDetailsOnIdData($city_editid)
     {
-        $sql = "SELECT * FROM pl_citys WHERE id = '$city_editid';";
+        $sql = "SELECT * FROM cities_master WHERE city_id = '$city_editid';";
         $result = $this->db->query($sql);
         $return = $result->getRow();
         return $return;
@@ -433,7 +433,7 @@ class PipelineModel extends Model
 
     public function checkDuplicateCityEdit($division_id, $city_name)
     {
-        $sql = "SELECT * FROM pl_citys WHERE division_id = '$division_id' AND city_name = '$city_name';";
+        $sql = "SELECT * FROM cities_master WHERE division_id = '$division_id' AND city_name = '$city_name';";
         $result = $this->db->query($sql);
         $return = $result->getRow();
         return $return;
@@ -442,7 +442,7 @@ class PipelineModel extends Model
 
     public function updateCityTable($city_id,$division_id,$city_name)
     {
-        $sql = "UPDATE pl_citys SET division_id = '$division_id',city_name = '$city_name' WHERE id ='$city_id';";
+        $sql = "UPDATE cities_master SET division_id = '$division_id',city_name = '$city_name' WHERE city_id ='$city_id';";
         $result = $this->db->query($sql);
         return $result;
         $this->db->close();
@@ -450,7 +450,7 @@ class PipelineModel extends Model
 
     public function deleteCity($city_id)
     {
-        $sql = "DELETE FROM pl_citys WHERE id='$city_id';";
+        $sql = "DELETE FROM cities_master WHERE city_id='$city_id';";
         $result = $this->db->query($sql);
         return $result;
         $this->db->close();

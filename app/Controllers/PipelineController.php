@@ -112,11 +112,18 @@ class PipelineController extends WebController
 
     public function cityTablePage()
     {
-        $this->data['title'] = 'Pipeline Dashboard';
-        $this->data['css'] = '';
-        $this->data['js'] = '';
+        $this->data['title'] = 'DMA Master';
+        $this->data['css'] = 'dmatablegrid,sweetalert,validation,alertify';
+        $this->data['js'] = 'divisionmastertable,sweetalert,validation,alertify';
+        $this->data['includefile'] = 'citytable.php';
+
+        // $city = $this->request->getVar('city');
+        // $this->data['city'] = $city;
+        // $this->data['component'] = array();
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
-        return view('templates/city-home', $this->data);
+        return view('templates/header', $this->data)
+            . view('masterdata/citymaster', $this->data)
+            . view('templates/footer', $this->data);
     }
 
 
