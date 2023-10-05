@@ -108,6 +108,12 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link" data-key="t-sweet-alerts">Photogallery</a>
                             </li>
+                            <li class="nav-item">
+                                 <a href="pipe-divisions-master" class="nav-link" data-key="t-basic-tables">Division</a>
+                             </li>
+                             <li class="nav-item">
+                                 <a href="cityTablePage" class="nav-link" data-key="t-basic-tables">Cities</a>
+                             </li>
                             
                         </ul>
                     </div>
