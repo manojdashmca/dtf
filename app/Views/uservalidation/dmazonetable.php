@@ -187,7 +187,7 @@ $('#z_division_id_u').change(function () {
 
 });
 
-$(document).on("submit", "#adddmazonedatamastermaster", function () {
+$(document).on("submit", "#adddmazonedatamaster", function () {
     $.post("addDmaMaster", $(this).serialize(), function (data) {
         
         if (data.res == "enterDivision") {
