@@ -56,7 +56,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link menu-link">
+                    <a href="getAllrevenueCollection" class="nav-link menu-link">
                         <i class="bi bi-cash-coin"></i> <span data-key="t-detached">Revenue Collection</span>
                     </a>
                 </li>

@@ -161,6 +161,7 @@ $routes->get('cityLogingrevanceCust', 'LoginCityController::cityUsergrevanceCust
 $routes->get('citylogwqm', 'LoginCityController::citylogwqm');
 $routes->match(['get', 'post'], 'getPipeMeterConnection', 'LoginCityController::getMeterPipeConnection');
 $routes->match(['get', 'post'], 'getAlljalsathi', 'LoginCityController::getMasterJalsathi');
+$routes->match(['get', 'post'], 'getAllrevenueCollection', 'LoginCityController::getMasterRevenueCollection');
 
 // City User Master
 $routes->match(['get', 'post'], 'cityUserMaster', 'LoginCityController::cityUserMasterData');
