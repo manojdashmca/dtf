@@ -170,6 +170,63 @@ class LoginCityController extends WebController {
                 . view('templates/footer', $this->data);
     }
 
+    public function getAllGrievanceCustomer() {
+        $this->data['title'] = 'DMA Master';
+        $this->data['css'] = 'sweetalert,validation,alertify';
+        $this->data['js'] = 'sweetalert,validation,alertify';
+        // $this->data['includefile'] = 'dmazonetable.php';
+
+        $division = $this->request->getVar('division');
+        print_r($division);
+       
+        $city = $this->request->getVar('city');
+        print_r($city);
+        $this->data['city'] = $city;
+        $this->data['division'] = $division;
+        $citydropdown = [];
+        if (!empty($division)) {
+            $citydropdown = $this->pipelineModel->getCityOnDivision($division);
+        }
+        $this->data['citydropdown'] = $citydropdown;
+        $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
+
+        // print_r($division);
+        $this->data['alldmadata'] = $this->pipelineModel->getAllStatedataMaster($division,$city);
+
+        return view('templates/header', $this->data)
+                . view('logincity/getgrievancecustomerservice', $this->data)
+                . view('templates/footer', $this->data);
+    }
+
+    // get Water Quality Page 
+    public function getAllWaterQuality() {
+        $this->data['title'] = 'DMA Master';
+        $this->data['css'] = 'sweetalert,validation,alertify';
+        $this->data['js'] = 'sweetalert,validation,alertify';
+        // $this->data['includefile'] = 'dmazonetable.php';
+
+        $division = $this->request->getVar('division');
+        print_r($division);
+       
+        $city = $this->request->getVar('city');
+        print_r($city);
+        $this->data['city'] = $city;
+        $this->data['division'] = $division;
+        $citydropdown = [];
+        if (!empty($division)) {
+            $citydropdown = $this->pipelineModel->getCityOnDivision($division);
+        }
+        $this->data['citydropdown'] = $citydropdown;
+        $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
+
+        // print_r($division);
+        $this->data['alldmadata'] = $this->pipelineModel->getAllStatedataMaster($division,$city);
+
+        return view('templates/header', $this->data)
+                . view('logincity/getwaterquality', $this->data)
+                . view('templates/footer', $this->data);
+    }
+
     public function logoutCity() {
         header('location:/logincity');
         session()->remove('usernamecity');
