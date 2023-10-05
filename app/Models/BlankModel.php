@@ -31,7 +31,7 @@ class BlankModel extends Model {
     }
 
     public function getCityForDropdown($cityid = null) {
-        $sql = "SELECT city_id, city_name,contract_cost from cities_master where 1=1 ";
+        $sql = "SELECT city_id, city_name,contract_cost,division_name from cities_master join divisions on division_id=id where 1=1 ";
         if (!empty($cityid)) {
             $sql .= " AND city_id='$cityid'";
         } else {

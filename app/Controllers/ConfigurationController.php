@@ -17,6 +17,7 @@ class ConfigurationController extends WebController {
         $this->data['css'] = 'sweetalert,validation,alertify';
         $this->data['js'] = 'sweetalert,validation,alertify';
         $this->data['includefile'] = 'configvalidation.php';
+        $this->data['divisions']=$this->webModel->getTableMultyData('id,division_name','divisions','1=1');
         return view('templates/header', $this->data)
                 . view('configuration/index', $this->data)
                 . view('templates/footer', $this->data);

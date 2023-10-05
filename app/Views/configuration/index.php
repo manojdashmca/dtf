@@ -39,7 +39,8 @@
                             <thead>
                                 <tr>
                                     <th scope="col" width="10%">SL NO</th>
-                                    <th scope="col" width="40%">City</th>                                    
+                                    <th scope="col" width="40%">City Name</th> 
+                                    <th scope="col" width="40%">Division Name</th> 
                                     <th scope="col" width="45%">Contract Cost</th>                                    
                                     <th scope="col" width="5%"></th>
                                 </tr>
@@ -47,12 +48,13 @@
                             <tbody>
                                 <?php for ($x = 0; $x < count($citydropdown); $x++) { ?>
                                     <tr>
-                                        <td class="fw-medium"><?=str_pad(($x+1), 2, "0", STR_PAD_LEFT)?></td>
-                                        <td><?=$citydropdown[$x]->city_name?></td>
-                                        <td><?=$citydropdown[$x]->contract_cost?></td>                                                                         
+                                        <td class="fw-medium"><?= str_pad(($x + 1), 2, "0", STR_PAD_LEFT) ?></td>
+                                        <td><?= $citydropdown[$x]->city_name ?></td>
+                                        <td><?= $citydropdown[$x]->division_name ?></td>
+                                        <td><?= $citydropdown[$x]->contract_cost ?></td>                                                                         
                                         <td>
                                             <div class="hstack gap-3 fs-15">
-                                                <a href="javascript:void(0);" class="link-primary" data-bs-toggle="modal" data-bs-target="#edit-city-modal" onclick="citycontract(<?=$citydropdown[$x]->city_id?>, '<?=$citydropdown[$x]->city_name?>', <?=$citydropdown[$x]->contract_cost?>);"><i class="ri-pencil-fill"></i></a>
+                                                <a href="javascript:void(0);" class="link-primary" data-bs-toggle="modal" data-bs-target="#edit-city-modal" onclick="citycontract(<?= $citydropdown[$x]->city_id ?>, '<?= $citydropdown[$x]->city_name ?>', <?= $citydropdown[$x]->contract_cost ?>);"><i class="ri-pencil-fill"></i></a>
                                                 <a href="javascript:void(0);" class="link-danger"><i class="ri-delete-bin-5-line"></i></a>
                                             </div>
                                         </td>
@@ -84,13 +86,23 @@
                     <button type="button" class="btn-close" id="close-modal" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div class="form-group mb-3">
+                        <label for="breakup-percent" class="form-label">Division <span class="text-danger">*</span></label>
+                        <select class="form-control form-select" id="division" name="division">
+                            <option value="">Select Division</option>
+                            <?php foreach ($divisions as $division) {
+                                ?>
+                                <option value="<?= $division->id ?>"><?= $division->division_name ?></option>
+                                <?php }
+                            ?>
+                        </select>
+                    </div>
 
-                                        
                     <div class="form-group mb-3">
                         <label for="breakup-percent" class="form-label">City Name <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="cityname" name="cityname" placeholder="City Name">
                     </div>
-                                        
+
                     <div class="form-group mb-3">
                         <label for="breakup-percent" class="form-label">Contract Cost <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="contractcost" name="contractcost" placeholder="min 1 max 10000000000">
@@ -121,12 +133,12 @@
                 </div>
                 <div class="modal-body">
 
-                                        
+
                     <div class="form-group mb-3">
                         <label for="breakup-percent" class="form-label">City Name <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="ecityname" name="ecityname" placeholder="City Name">
                     </div>
-                                        
+
                     <div class="form-group mb-3">
                         <label for="breakup-percent" class="form-label">Contract Cost <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="econtractcost" name="econtractcost" placeholder="min 1 max 10000000000">

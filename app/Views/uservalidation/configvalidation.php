@@ -5,6 +5,13 @@
             icon: {
             },
             fields: {
+                division: {
+                    validators: {
+                        notEmpty: {
+                            message: "Select The division"
+                        }
+                    }
+                },
                 cityname: {
                     validators: {
                         notEmpty: {
@@ -67,10 +74,11 @@
     function createCity() {
         var cityname = $("#cityname").val();
         var contractcost = $("#contractcost").val();
+        var division = $("#division").val();
         $.ajax({
             type: "POST",
             url: '<?= CUSTOMPATH ?>create-city',
-            data: {cityname: cityname, contractcost: contractcost},
+            data: {cityname: cityname, contractcost: contractcost, division: division},
             success: function (data) {
                 var jsonData = JSON.parse(data);
                 if (jsonData.status == 'success') {

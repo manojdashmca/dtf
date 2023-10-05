@@ -1,6 +1,6 @@
 <?php
-(isset($_REQUEST['division']))?$linkdiv=$_REQUEST['division']:$linkdiv='';
-(isset($_REQUEST['city']))?$linkcity=$_REQUEST['city']:$linkcity='';
+(isset($_REQUEST['division'])) ? $linkdiv = $_REQUEST['division'] : $linkdiv = '';
+(isset($_REQUEST['city'])) ? $linkcity = $_REQUEST['city'] : $linkcity = '';
 ?>
 <!-- ========== App Menu ========== -->
 <div class="app-menu navbar-menu">
@@ -51,7 +51,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="getAlljalsathi?pager=<?=$pagerid?>&division=<?=$linkdiv?>&city=<?=$linkcity?>&transactionid=<?= $session->get('trnid') ?>" class="nav-link menu-link">
+                    <a href="getAlljalsathi?pager=<?= $pagerid ?>&division=<?= $linkdiv ?>&city=<?= $linkcity ?>&transactionid=<?= $session->get('trnid') ?>" class="nav-link menu-link">
                         <i class="bi bi-water"></i> <span data-key="t-detached">Jalsathi</span>
                     </a>
                 </li>
@@ -109,12 +109,12 @@
                                 <a href="#" class="nav-link" data-key="t-sweet-alerts">Photogallery</a>
                             </li>
                             <li class="nav-item">
-                                 <a href="pipe-divisions-master" class="nav-link" data-key="t-basic-tables">Division</a>
-                             </li>
-                             <li class="nav-item">
-                                 <a href="cityTablePage" class="nav-link" data-key="t-basic-tables">Cities</a>
-                             </li>
-                            
+                                <a href="pipe-divisions-master" class="nav-link" data-key="t-basic-tables">Division</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="cityTablePage" class="nav-link" data-key="t-basic-tables">Cities</a>
+                            </li>
+
                         </ul>
                     </div>
                 </li>
@@ -137,7 +137,7 @@
                 </li>
 
 
-                
+
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarTables" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
                         <i class="bx bx-droplet"></i> <span data-key="t-tables">Organiser</span>
@@ -156,7 +156,7 @@
                         </ul>
                     </div>
                 </li>
-                
+
             </ul>
         </div>
         <!-- Sidebar -->

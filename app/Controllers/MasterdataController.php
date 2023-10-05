@@ -237,8 +237,9 @@ class MasterdataController extends WebController {
         if ($this->request->isAJAX()) {
             $cityname = trim($this->request->getPost('cityname'));
             $contractcost = trim($this->request->getPost('contractcost'));
+            $division = trim($this->request->getPost('division'));
             #$headervalue = trim($this->request->getPost('headervalue'));
-            $createarray = array('city_name' => $cityname, 'contract_cost' => $contractcost);
+            $createarray = array('division_id'=>$division,'city_name' => $cityname, 'contract_cost' => $contractcost);
             $cityid = $this->webModel->createRecordInTable($createarray, 'cities_master');
             $this->masterdataModel->createMockComponent($cityid);
             $this->masterdataModel->createMockComponentTask($cityid);
