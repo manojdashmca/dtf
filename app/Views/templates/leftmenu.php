@@ -61,12 +61,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link menu-link">
+                    <a href="getAllGrievanceCustomer" class="nav-link menu-link">
                         <i class="bi bi-list-columns-reverse"></i> <span data-key="t-detached">Grievance Redressal</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link menu-link">
+                    <a href="getAllWaterQuality" class="nav-link menu-link">
                         <i class="bx bx-droplet"></i> <span data-key="t-detached">Water Quality</span>
                     </a>
                 </li>
