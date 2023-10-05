@@ -88,7 +88,7 @@
                     <div class="collapse menu-dropdown" id="sidebarMasterData2">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="#" class="nav-link" data-key="t-sweet-alerts">Construction</a>
+                                <a href="/configuration" class="nav-link" data-key="t-sweet-alerts">Construction</a>
                             </li>
                             <li class="nav-item">
                                 <a href="/DmaInfoPage" class="nav-link" data-key="t-sweet-alerts">DMA Information</a>
