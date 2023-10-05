@@ -51,7 +51,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#?pager=<?=$pagerid?>&division=<?=$linkdiv?>&city=<?=$linkcity?>&transactionid=<?= $session->get('trnid') ?>" class="nav-link menu-link">
+                    <a href="getAlljalsathi?pager=<?=$pagerid?>&division=<?=$linkdiv?>&city=<?=$linkcity?>&transactionid=<?= $session->get('trnid') ?>" class="nav-link menu-link">
                         <i class="bi bi-water"></i> <span data-key="t-detached">Jalsathi</span>
                     </a>
                 </li>

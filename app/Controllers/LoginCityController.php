@@ -97,9 +97,6 @@ class LoginCityController extends WebController {
         // $this->data['includefile'] = 'dmazonetable.php';
 
         $division = $this->request->getVar('division');
-        // $this->data['city'] = $city;
-        // $this->data['component'] = array();
-        // $this->data['alldivisionname']=$this->pipelineModel->getAllDivisionName();
         $city = $this->request->getVar('city');
         $this->data['city'] = $city;
         $this->data['division'] = $division;
@@ -110,8 +107,38 @@ class LoginCityController extends WebController {
         $this->data['citydropdown'] = $citydropdown;
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
 
+        // print_r($division);
+        $this->data['alldmadata'] = $this->pipelineModel->getAllStatedataMaster($division,$city);
+
         return view('templates/header', $this->data)
                 . view('logincity/pipemeterconnection', $this->data)
+                . view('templates/footer', $this->data);
+    }
+    public function getMasterJalsathi() {
+        $this->data['title'] = 'DMA Master';
+        $this->data['css'] = 'sweetalert,validation,alertify';
+        $this->data['js'] = 'sweetalert,validation,alertify';
+        // $this->data['includefile'] = 'dmazonetable.php';
+
+        $division = $this->request->getVar('division');
+        print_r($division);
+       
+        $city = $this->request->getVar('city');
+        print_r($city);
+        $this->data['city'] = $city;
+        $this->data['division'] = $division;
+        $citydropdown = [];
+        if (!empty($division)) {
+            $citydropdown = $this->pipelineModel->getCityOnDivision($division);
+        }
+        $this->data['citydropdown'] = $citydropdown;
+        $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
+
+        // print_r($division);
+        $this->data['alldmadata'] = $this->pipelineModel->getAllStatedataMaster($division,$city);
+
+        return view('templates/header', $this->data)
+                . view('logincity/jetjalasathi', $this->data)
                 . view('templates/footer', $this->data);
     }
 
