@@ -586,4 +586,68 @@ class PipelineModel extends Model
         return $result;
         $this->db->close();
     }
+
+    // 
+    // Revenue Colection Master
+    // 
+
+    public function getRevenueCollectionTable()
+    {
+        $sql = "SELECT * FROM revenue_collection_master;";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        return $return;
+    }
+    public function addRevenueCollectionMasterTable($z_division_id,$z_citys,$no_bill_generate,$no_bill_distributed,$incentive_paid_to_jalasathi,$total_revenue_collected,$revenue_collected_by_jalasathi,$revenue_collected_date)
+    {
+        $sql = "INSERT INTO revenue_collection_master(division_id,city_id,no_bill_generate,no_bill_distributed,incentive_paid_to_jalasathi,total_revenue_collected,revenue_collected_by_jalasathi,revenue_collected_date,created_by)VALUES('$z_division_id','$z_citys','$no_bill_generate','$no_bill_distributed','$incentive_paid_to_jalasathi','$total_revenue_collected','$revenue_collected_by_jalasathi','$revenue_collected_date',NOW());";
+        $result = $this->db->query($sql);
+
+        return $result;
+        $this->db->close();
+    }
+
+    // 
+    // Grievance And Customer Service
+    // 
+
+    public function getGrievanceAndCustomerServiceTable()
+    {
+        $sql = "SELECT * FROM grievance_customer_service_master;";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        return $return;
+    }
+
+    public function addGrievanceandCustomerServicTable($z_division_id,$z_citys,$total_no_grievance_received,$no_of_grievenced_address,$resolved_with_in_time_limit,$resolved_after_time_limit,$grievance_via_247_cus_service,$grievance_via_jalsathi,$grievance_by_direct_visit_physical,$grievance_collected_date)
+    {
+        $sql = "INSERT INTO grievance_customer_service_master(division_id,city_id,total_no_grievance_received,no_of_grievenced_address,resolved_with_in_time_limit,resolved_after_time_limit,grievance_via_247_cus_service,grievance_via_jalsathi,grievance_by_direct_visit_physical,grievance_collected_date,created_date)VALUES('$z_division_id','$z_citys','$total_no_grievance_received','$no_of_grievenced_address','$resolved_with_in_time_limit','$resolved_after_time_limit','$grievance_via_247_cus_service','$grievance_via_jalsathi','$grievance_by_direct_visit_physical','$grievance_collected_date',NOW());";
+        $result = $this->db->query($sql);
+
+        return $result;
+        $this->db->close();
+    }
+
+    // 
+    // Water Quality
+    // 
+
+    public function getWaterQualityTableTable()
+    {
+        $sql = "SELECT * FROM water_quality_master;";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        return $return;
+    }
+
+    public function addWaterQualityTable($z_division_id,$z_citys,$no_of_sample_taken,$sample_collected_at_wtp,$sample_collected_at_storage,$resolved_after_time_limit,$sample_collected_from_distribution_network,$sample_collected_at_consumer_point,$no_of_parameter_tested,$no_of_sample_failed,$sample_colected_date)
+    {
+        $sql = "INSERT INTO water_quality_master(division_id,city_id,no_of_sample_taken,sample_collected_at_wtp,sample_collected_at_storage,resolved_after_time_limit,sample_collected_from_distribution_network,sample_collected_at_consumer_point,no_of_parameter_tested,no_of_sample_failed,sample_colected_date,created_date)VALUES('$z_division_id','$z_citys','$no_of_sample_taken','$sample_collected_at_wtp','$sample_collected_at_storage','$resolved_after_time_limit','$sample_collected_from_distribution_network','$sample_collected_at_consumer_point','$no_of_parameter_tested','$no_of_sample_failed','$sample_colected_date',NOW());";
+        $result = $this->db->query($sql);
+
+        return $result;
+        $this->db->close();
+    }
+
+
 }

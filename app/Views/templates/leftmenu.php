@@ -97,13 +97,13 @@
                                 <a href="pageJalasathi" class="nav-link" data-key="t-sweet-alerts">Jalasathi</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link" data-key="t-sweet-alerts">Revenue Collection</a>
+                                <a href="/getRevenuePage" class="nav-link" data-key="t-sweet-alerts">Revenue Collection</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link" data-key="t-sweet-alerts">Grievance Redressal</a>
+                                <a href="/getGrievanceCustomerPage" class="nav-link" data-key="t-sweet-alerts">Grievance Redressal</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link" data-key="t-sweet-alerts">Water Quality</a>
+                                <a href="/waterQualityPage" class="nav-link" data-key="t-sweet-alerts">Water Quality</a>
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link" data-key="t-sweet-alerts">Photogallery</a>

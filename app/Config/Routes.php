@@ -190,6 +190,20 @@ $routes->match(['get', 'post'], 'updatenewdmamasterinfo', 'PipelineController::u
 $routes->match(['get', 'post'], 'pageJalasathi', 'PipelineController::getJalasathiMaster');
 $routes->match(['get', 'post'], 'addJalsathiMaster', 'PipelineController::addJalsathiMaster');
 
+// Revenue Collection Master 
+$routes->match(['get', 'post'], 'getRevenuePage', 'PipelineController::getRevenueCollectionPage');
+$routes->match(['get', 'post'], 'getRevenueCollection', 'PipelineController::getRevenueCollection');
+$routes->match(['get', 'post'], 'addRevenueCollectionMaster', 'PipelineController::addRevenueCollectionMaster');
+
+// Grievance and Customer Service
+$routes->match(['get', 'post'], 'getGrievanceCustomerPage', 'PipelineController::getGrievanceCustomerPage');
+$routes->match(['get', 'post'], 'getGrievanceCustomerServiceTable', 'PipelineController::getGrievanceCustomerServiceTable');
+$routes->match(['get', 'post'], 'addGrievanceCustomerServices', 'PipelineController::addGrievanceandCustomerServic');
+
+// Water Qality
+$routes->match(['get', 'post'], 'waterQualityPage', 'PipelineController::waterQualityPage');
+$routes->match(['get', 'post'], 'getWaterQualityTable', 'PipelineController::getWaterQualityTable');
+$routes->match(['get', 'post'], 'addWaterQualitys', 'PipelineController::addWaterQualitys');
 
 //----------------------------------------
 

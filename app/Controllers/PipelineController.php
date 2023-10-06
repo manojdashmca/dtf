@@ -664,4 +664,175 @@ class PipelineController extends WebController
         }
         echo json_encode($res);
     }
+
+    // Revenue Collection Master 
+
+    public function getRevenueCollection()
+    {
+        $allRevenueTabledata = $this->pipelineModel->getRevenueCollectionTable();
+        echo json_encode($allRevenueTabledata);
+    }
+   public function getRevenueCollectionPage()
+    {
+        $this->data['title'] = 'Revenue Collection Master';
+        $this->data['css'] = 'dmatablegrid,sweetalert,validation,alertify';
+        $this->data['js'] = 'divisionmastertable,sweetalert,validation,alertify';
+        $this->data['includefile'] = 'revenuecollectionjs.php';
+
+        // $city = $this->request->getVar('city');
+        // $this->data['city'] = $city;
+        // $this->data['component'] = array();
+        $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
+
+        return view('templates/header', $this->data)
+            . view('masterdata/revenue_collection', $this->data)
+            . view('templates/footer', $this->data);
+    }
+    public function addRevenueCollectionMaster()
+    {
+        extract($_POST);
+        $res = "";
+        if ($z_division_id == "") {
+            $res = array("res" => "enterDivision");
+        } elseif ($z_citys == "") {
+            $res = array("res" => "enterCity");
+        } elseif ($no_bill_generate == "") {
+            $res = array("res" => "no_bill_generate");
+        }else {
+            $no_bill_distributed = $no_bill_distributed != NULL ? $no_bill_distributed : "0";
+            $incentive_paid_to_jalasathi = $incentive_paid_to_jalasathi != NULL ? $incentive_paid_to_jalasathi : "0";
+            $total_revenue_collected = $total_revenue_collected != NULL ? $total_revenue_collected : "0";
+            $revenue_collected_by_jalasathi = $revenue_collected_by_jalasathi != NULL ? $revenue_collected_by_jalasathi : "0";
+            $revenue_collected_date = $revenue_collected_date != NULL ? $revenue_collected_date : "";
+            
+                $insertRevenueCollection = $this->pipelineModel->addRevenueCollectionMasterTable($z_division_id,$z_citys,$no_bill_generate,$no_bill_distributed,$incentive_paid_to_jalasathi,$total_revenue_collected,$revenue_collected_by_jalasathi,$revenue_collected_date);
+                if ($insertRevenueCollection) {
+                    $res = array("res" => "success");
+                } else {
+                    $res = array("res" => "failed");
+                }
+            
+        }
+        echo json_encode($res);
+    }
+
+    // 
+    // Grievance And Customer Service
+    // 
+
+    public function getGrievanceCustomerServiceTable()
+    {
+        $allRevenueTabledata = $this->pipelineModel->getGrievanceAndCustomerServiceTable();
+        echo json_encode($allRevenueTabledata);
+    }
+   public function getGrievanceCustomerPage()
+    {
+        $this->data['title'] = 'Revenue Collection Master';
+        $this->data['css'] = 'dmatablegrid,sweetalert,validation,alertify';
+        $this->data['js'] = 'divisionmastertable,sweetalert,validation,alertify';
+        $this->data['includefile'] = 'grievance_customer_servicejs.php';
+
+        // $city = $this->request->getVar('city');
+        // $this->data['city'] = $city;
+        // $this->data['component'] = array();
+        $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
+
+        return view('templates/header', $this->data)
+            . view('masterdata/grievance_redressal_master', $this->data)
+            . view('templates/footer', $this->data);
+    }
+    public function addGrievanceandCustomerServic()
+    {
+        extract($_POST);
+        $res = "";
+        if ($z_division_id == "") {
+            $res = array("res" => "enterDivision");
+        } elseif ($z_citys == "") {
+            $res = array("res" => "enterCity");
+        } elseif ($total_no_grievance_received == "") {
+            $res = array("res" => "total_no_grievance_received");
+        }else {
+            
+            $no_of_grievenced_address = $no_of_grievenced_address != NULL ? $no_of_grievenced_address : "0";
+            $resolved_with_in_time_limit = $resolved_with_in_time_limit != NULL ? $resolved_with_in_time_limit : "0";
+            $resolved_after_time_limit = $resolved_after_time_limit != NULL ? $resolved_after_time_limit : "0";
+            $grievance_via_247_cus_service = $grievance_via_247_cus_service != NULL ? $grievance_via_247_cus_service : "0";
+            $grievance_via_jalsathi = $grievance_via_jalsathi != NULL ? $grievance_via_jalsathi : "0";
+            $grievance_by_direct_visit_physical = $grievance_by_direct_visit_physical != NULL ? $grievance_by_direct_visit_physical : "0";
+            $grievance_collected_date = $grievance_collected_date != NULL ? $grievance_collected_date : "";
+
+            
+                $insertGrievanceCu = $this->pipelineModel->addGrievanceandCustomerServicTable($z_division_id,$z_citys,$total_no_grievance_received,$no_of_grievenced_address,$resolved_with_in_time_limit,$resolved_after_time_limit,$grievance_via_247_cus_service,$grievance_via_jalsathi,$grievance_by_direct_visit_physical,$grievance_collected_date);
+                if ($insertGrievanceCu) {
+                    $res = array("res" => "success");
+                } else {
+                    $res = array("res" => "failed");
+                }
+            
+        }
+        echo json_encode($res);
+    }
+
+    // 
+    // Water Quality
+    // 
+
+    public function getWaterQualityTable()
+    {
+        $allRevenueTabledata = $this->pipelineModel->getWaterQualityTableTable();
+        echo json_encode($allRevenueTabledata);
+    }
+   public function waterQualityPage()
+    {
+        $this->data['title'] = 'Revenue Collection Master';
+        $this->data['css'] = 'dmatablegrid,sweetalert,validation,alertify';
+        $this->data['js'] = 'divisionmastertable,sweetalert,validation,alertify';
+        $this->data['includefile'] = 'waterqualityjs.php';
+
+        // $city = $this->request->getVar('city');
+        // $this->data['city'] = $city;
+        // $this->data['component'] = array();
+        $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
+
+        return view('templates/header', $this->data)
+            . view('masterdata/waterqualitymaster', $this->data)
+            . view('templates/footer', $this->data);
+    }
+    public function addWaterQualitys()
+    {
+        extract($_POST);
+        $res = "";
+        if ($z_division_id == "") {
+            $res = array("res" => "enterDivision");
+        } elseif ($z_citys == "") {
+            $res = array("res" => "enterCity");
+        } elseif ($no_of_sample_taken == "") {
+            $res = array("res" => "no_of_sample_taken");
+        }else {
+            
+           
+            $no_of_sample_taken = $no_of_sample_taken != NULL ? $no_of_sample_taken: "0";
+            $sample_collected_at_wtp = $sample_collected_at_wtp != NULL ? $sample_collected_at_wtp: "0";
+            $sample_collected_at_storage = $sample_collected_at_storage != NULL ? $sample_collected_at_storage: "0";
+            $resolved_after_time_limit = $resolved_after_time_limit != NULL ? $resolved_after_time_limit: "0";
+            $sample_collected_from_distribution_network = $sample_collected_from_distribution_network != NULL ? $sample_collected_from_distribution_network: "0";
+            $sample_collected_at_consumer_point = $sample_collected_at_consumer_point != NULL ? $sample_collected_at_consumer_point: "0";
+            $no_of_parameter_tested = $no_of_parameter_tested != NULL ? $no_of_parameter_tested: "0";
+            $no_of_sample_failed = $no_of_sample_failed != NULL ? $no_of_sample_failed: "0";
+            $sample_colected_date = $sample_colected_date != NULL ? $sample_colected_date: "";
+
+
+
+            
+                $insertGrievanceCu = $this->pipelineModel->addWaterQualityTable($z_division_id,$z_citys,$no_of_sample_taken,$sample_collected_at_wtp,$sample_collected_at_storage,$resolved_after_time_limit,$sample_collected_from_distribution_network,$sample_collected_at_consumer_point,$no_of_parameter_tested,$no_of_sample_failed,$sample_colected_date);
+                if ($insertGrievanceCu) {
+                    $res = array("res" => "success");
+                } else {
+                    $res = array("res" => "failed");
+                }
+            
+        }
+        echo json_encode($res);
+    }
+
 }
