@@ -187,6 +187,9 @@ $routes->match(['get', 'post'], 'addDmaMaster', 'PipelineController::InsertDmaMa
 $routes->match(['get', 'post'], 'getDmaMasterDetailsOnId', 'PipelineController::getDmaMasterDetailsOnId');
 $routes->match(['get', 'post'], 'updatenewdmamasterinfo', 'PipelineController::updateDmamasterDataInId');
 
+$routes->match(['get', 'post'], 'pageJalasathi', 'PipelineController::getJalasathiMaster');
+$routes->match(['get', 'post'], 'addJalsathiMaster', 'PipelineController::addJalsathiMaster');
+
 
 //----------------------------------------
 

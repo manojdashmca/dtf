@@ -39,7 +39,7 @@
                 <select name='city' id='city' class='form-control  form-select' onchange="this.form.submit();">
                     <option value="">Select City</option>
                     <?php for ($x = 0; $x < count($citydropdown); $x++) { ?>
-                        <option value='<?= $citydropdown[$x]->id ?>' <?= ($city == $citydropdown[$x]->id) ? 'selected="selected"' : '' ?>><?= $citydropdown[$x]->city_name ?></option>
+                        <option value='<?= $citydropdown[$x]->city_id ?>' <?= ($city == $citydropdown[$x]->city_id) ? 'selected="selected"' : '' ?>><?= $citydropdown[$x]->city_name ?></option>
                     <?php } ?>
                 </select>
                 <input type="hidden" name="transactionid" value="<?= $session->get('trnid') ?>" />

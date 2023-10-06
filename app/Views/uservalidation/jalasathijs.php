@@ -1,164 +1,4 @@
 <script type="text/javascript">
-    window.onload = function () {
-    getAllDmaInfo();
-};
-
-
-function getAllDmaInfo() {
-    $(document).ready(function () {
-        $.getJSON('getDmamasterTable', function (data) {
-            console.log("data");
-            const outputArray = data.map(item => [
-                item.id,
-                item.dma_name,
-                item.dma_population,
-                item.commissioning_status,
-                item.dma_updated_date,
-                item.distribution_pipe_line_scope,
-                item.distribution_pipe_line_progress,
-                item.pumping_main_scope,
-                item.pumping_main_progress,
-                item.storage_resorvoir_scope,
-                item.storage_resorvoir_progress,
-                item.pumping_station_scope,
-                item.pumping_station_progress,
-                item.flowmeter_scope,
-                item.flowmeter_progress,
-                item.pressure_treansmitter_scope,
-                item.pressure_treansmitter_progress,
-                item.level_treansmitter_scope,
-                item.level_treansmitter_progress,
-                item.sluice_valve_scope,
-                item.sluice_valve_progress,
-                item.plc_scope,
-                item.plc_progress,
-                item.house_connection_scope,
-                item.house_connection_progress,
-                item.meter_connection_scope,
-                item.meter_connection_progress,
-                item.nrw_scope,
-                item.nrw_progress,
-                item.updated_by,
-                item.updated_date,
-            ]);
-            document.getElementById("table-gridjs-dma") && new gridjs.Grid({
-
-                columns: [{
-                    name: "ID",
-                    width: "80px",
-                    formatter: function (e) {
-                        return gridjs.html('<span class="fw-semibold">' + e + "</span>")
-                    }
-                }, {
-                    name: "dma name",
-                    width: "150px"
-                }, {
-                    name: "dma population",
-                    width: "150px"
-                }, {
-                    name: "commissioning status",
-                    width: "200px"
-                }, {
-                    name: "dma updated date",
-                    width: "200px"
-                }, {
-                    name: "distribution pipe line scope",
-                    width: "250px"
-                }, {
-                    name: "distribution pipe line progress",
-                    width: "250px"
-                }, {
-                    name: "pumping main scope",
-                    width: "200px"
-                }, {
-                    name: "pumping main progress",
-                    width: "200px"
-                }, {
-                    name: "storage resorvoir scope",
-                    width: "200px"
-                }, {
-                    name: "storage resorvoir progress",
-                    width: "250px"
-                }, {
-                    name: "pumping station scope",
-                    width: "200px"
-                }, {
-                    name: "pumping station progress",
-                    width: "250px"
-                }, {
-                    name: "flowmeter scope",
-                    width: "200px"
-                }, {
-                    name: "flowmeter progress",
-                    width: "200px"
-                }, {
-                    name: "pressure treansmitter scope",
-                    width: "250px"
-                }, {
-                    name: "pressure treansmitter progress",
-                    width: "250px"
-                }, {
-                    name: "level treansmitter scope",
-                    width: "200px"
-                }, {
-                    name: "level treansmitter progress",
-                    width: "250px"
-                }, {
-                    name: "sluice valve scope",
-                    width: "200px"
-                }, {
-                    name: "sluice valve progress",
-                    width: "200px"
-                }, {
-                    name: "plc scope",
-                    width: "200px"
-                }, {
-                    name: "plc progress",
-                    width: "200px"
-                }, {
-                    name: "house connection scope",
-                    width: "200px"
-                }, {
-                    name: "house connection progress",
-                    width: "200px"
-                }, {
-                    name: "meter connection scope",
-                    width: "200px"
-                }, {
-                    name: "meter connection progress",
-                    width: "200px"
-                }, {
-                    name: "nrw scope",
-                    width: "200px"
-                }, {
-                    name: "nrw progress",
-                    width: "200px"
-                }, {
-                    name: "updated by",
-                    width: "200px"
-                }, {
-                    name: "updated date",
-                    width: "200px"
-                }, {
-                    name: "Actions",
-                    width: "150px",
-                    formatter: function (e, row) {
-                        return gridjs.html(`
-                          <button data-bs-toggle="modal" data-bs-target="#editDmaZoneDetails" class="btn btn-info btn-sm" id="editIdDmaZone" data-id='${row.cells[0].data}' onclick='getEditDmaMasterDetails(${row.cells[0].data})'>Edit</button>
-                          <button class="btn btn-danger btn-sm" onclick="deleteRow(${row.cells[0].data})" disabled>Delete</button>
-                        `);
-                    }
-                }],
-                pagination: {
-                    limit: 5
-                },
-                sort: !0,
-                search: !0,
-                data: outputArray,
-            }).render(document.getElementById("table-gridjs-dma"));
-        });
-    });
-}
 
 //   Division DropDown
 $('#z_division_id').change(function () {
@@ -174,21 +14,22 @@ $('#z_division_id').change(function () {
 
 });
 
-$('#z_division_id_u').change(function () {
-    var dma_division_id = $(this).val();
-    $.post("getCitiesinDivision", { division_id: dma_division_id }, function (data) {
-        // console.log()
-        var division_dma_data = JSON.parse(data);
-        $('#z_citys_d').html('<option value="">Select City</option>');
-        $.each(division_dma_data, function (key, value) {
-            $('#z_citys_d').append('<option value="' + value.city_id + '">' + value.city_name + '</option>');
-        });
-    });
+// $('#z_division_id_u').change(function () {
+//     var dma_division_id = $(this).val();
+//     $.post("getCitiesinDivision", { division_id: dma_division_id }, function (data) {
+//         // console.log()
+//         var division_dma_data = JSON.parse(data);
+//         $('#z_citys_d').html('<option value="">Select City</option>');
+//         $.each(division_dma_data, function (key, value) {
+//             $('#z_citys_d').append('<option value="' + value.id + '">' + value.city_name + '</option>');
+//         });
+//     });
 
-});
+// });
 
-$(document).on("submit", "#adddmazonedatamaster", function () {
-    $.post("addDmaMaster", $(this).serialize(), function (data) {
+$(document).on("submit", "#addjalsathi", function () {
+   
+    $.post("addJalsathiMaster", $(this).serialize(), function (data) {
         
         if (data.res == "enterDivision") {
             Swal.fire(
@@ -202,176 +43,177 @@ $(document).on("submit", "#adddmazonedatamaster", function () {
                 'Please Enter City',
                 'error'
             )
-        } else if (data.res == "dma_name") {
+        } else if (data.res == "word_names") {
             Swal.fire(
-                'No Zone Name',
-                'Please Enter Zone Name',
+                'No Word Number',
+                'Please Enter Word Number',
                 'error'
             )
-        } else if (data.res == "dma_population") {
-            Swal.fire(
-                'No Dma Popula',
-                'Please Enter Population',
-                'error'
-            )
-        } else if (data.res == "commissioning_status") {
-            Swal.fire(
-                'Commissioning Status',
-                'Please Enter Commissioning Status',
-                'error'
-            )
-        } else if (data.res == "dma_updated_date") {
-            Swal.fire(
-                'Dma Updated Date',
-                'Please Enter Dma Updated Date',
-                'error'
-            )
-        } else if (data.res == "distribution_pipe_line_scope") {
-            Swal.fire(
-                'Distribution PipeLine Scope',
-                'Please Enter Distribution PipeLine Scope',
-                'error'
-            )
-        } else if (data.res == "distribution_pipe_line_progress") {
-            Swal.fire(
-                'Distribution Pipeline Progress',
-                'Please Enter Population',
-                'error'
-            )
-        } else if (data.res == "pumping_main_scope") {
-            Swal.fire(
-                'Pumping Main Scope',
-                'Please Enter Pumping Main Scope',
-                'error'
-            )
-        } else if (data.res == "pumping_main_progress") {
-            Swal.fire(
-                'Pumping Main Progress',
-                'Please Enter Pumping Main Progress',
-                'error'
-            )
-        } else if (data.res == "storage_resorvoir_scope") {
-            Swal.fire(
-                'Storage Resorvoir Scope',
-                'Please Enter Storage Resorvoir Scope',
-                'error'
-            )
-        } else if (data.res == "storage_resorvoir_progress") {
-            Swal.fire(
-                'Storage Resorvoir Progress',
-                'Please Enter Storage Resorvoir Progress',
-                'error'
-            )
-        } else if (data.res == "pumping_station_scope") {
-            Swal.fire(
-                'Pumping Station Scope',
-                'Please Enter Pumping Station Scope',
-                'error'
-            )
-        } else if (data.res == "pumping_station_progress") {
-            Swal.fire(
-                'Pumping Station Progress',
-                'Please Enter Pumping Station Progress',
-                'error'
-            )
-        } else if (data.res == "flowmeter_scope") {
-            Swal.fire(
-                'Flowmeter Scope',
-                'Please Enter Flowmeter Scope',
-                'error'
-            )
-        } else if (data.res == "flowmeter_progress") {
-            Swal.fire(
-                'Flowmeter Progress',
-                'Please Enter Flowmeter Progress',
-                'error'
-            )
-        } else if (data.res == "pressure_treansmitter_scope") {
-            Swal.fire(
-                'Pressure Treansmitter Scope',
-                'Please Enter Pressure Treansmitter Scope',
-                'error'
-            )
-        } else if (data.res == "pressure_treansmitter_progress") {
-            Swal.fire(
-                'Pressure Treansmitter Progress',
-                'Please Enter Pressure Treansmitter Progress',
-                'error'
-            )
-        } else if (data.res == "level_treansmitter_scope") {
-            Swal.fire(
-                'Level Treansmitter Scope',
-                'Please Enter Level Treansmitter Scope',
-                'error'
-            )
-        } else if (data.res == "level_treansmitter_progress") {
-            Swal.fire(
-                'Level Treansmitter Progress',
-                'Please Enter Level Treansmitter Progress',
-                'error'
-            )
-        } else if (data.res == "sluice_valve_scope") {
-            Swal.fire(
-                'Sluice Valve Scope',
-                'Please Enter Sluice Valve Scope',
-                'error'
-            )
-        } else if (data.res == "sluice_valve_progress") {
-            Swal.fire(
-                'Sluice Valve Progress',
-                'Please Enter Sluice Valve Progress',
-                'error'
-            )
-        } else if (data.res == "plc_scope") {
-            Swal.fire(
-                'PLC Scope',
-                'Please Enter PLC Scope',
-                'error'
-            )
-        } else if (data.res == "plc_progress") {
-            Swal.fire(
-                'PLC Progress',
-                'Please Enter PLC Progress',
-                'error'
-            )
-        }  else if (data.res == "house_connection_scope") {
-            Swal.fire(
-                'House Connection Scope',
-                'Please Enter House Connection Scope',
-                'error'
-            )
-        }else if (data.res == "house_connection_progress") {
-            Swal.fire(
-                'House Connection Progress',
-                'Please Enter House Connection Progress',
-                'error'
-            )
-        }else if (data.res == "meter_connection_scope") {
-            Swal.fire(
-                'Meter Connection Scope',
-                'Please Enter Meter Connection Scope',
-                'error'
-            )
-        }else if (data.res == "meter_connection_progress") {
-            Swal.fire(
-                'Meter Connection Progress',
-                'Please Enter Meter Connection Progress',
-                'error'
-            )
-        }else if (data.res == "nrw_scope") {
-            Swal.fire(
-                'NRW Scope',
-                'Please Enter NRW Scope',
-                'error'
-            )
-        }else if (data.res == "nrw_progress") {
-            Swal.fire(
-                'NRW Progress',
-                'Please Enter NRW Progress',
-                'error'
-            )
-        }
-        else if (data.res == "exist") {
+        } 
+        //else if (data.res == "dma_population") {
+        //     Swal.fire(
+        //         'No Dma Popula',
+        //         'Please Enter Population',
+        //         'error'
+        //     )
+        // } else if (data.res == "commissioning_status") {
+        //     Swal.fire(
+        //         'Commissioning Status',
+        //         'Please Enter Commissioning Status',
+        //         'error'
+        //     )
+        // } else if (data.res == "dma_updated_date") {
+        //     Swal.fire(
+        //         'Dma Updated Date',
+        //         'Please Enter Dma Updated Date',
+        //         'error'
+        //     )
+        // } else if (data.res == "distribution_pipe_line_scope") {
+        //     Swal.fire(
+        //         'Distribution PipeLine Scope',
+        //         'Please Enter Distribution PipeLine Scope',
+        //         'error'
+        //     )
+        // } else if (data.res == "distribution_pipe_line_progress") {
+        //     Swal.fire(
+        //         'Distribution Pipeline Progress',
+        //         'Please Enter Population',
+        //         'error'
+        //     )
+        // } else if (data.res == "pumping_main_scope") {
+        //     Swal.fire(
+        //         'Pumping Main Scope',
+        //         'Please Enter Pumping Main Scope',
+        //         'error'
+        //     )
+        // } else if (data.res == "pumping_main_progress") {
+        //     Swal.fire(
+        //         'Pumping Main Progress',
+        //         'Please Enter Pumping Main Progress',
+        //         'error'
+        //     )
+        // } else if (data.res == "storage_resorvoir_scope") {
+        //     Swal.fire(
+        //         'Storage Resorvoir Scope',
+        //         'Please Enter Storage Resorvoir Scope',
+        //         'error'
+        //     )
+        // } else if (data.res == "storage_resorvoir_progress") {
+        //     Swal.fire(
+        //         'Storage Resorvoir Progress',
+        //         'Please Enter Storage Resorvoir Progress',
+        //         'error'
+        //     )
+        // } else if (data.res == "pumping_station_scope") {
+        //     Swal.fire(
+        //         'Pumping Station Scope',
+        //         'Please Enter Pumping Station Scope',
+        //         'error'
+        //     )
+        // } else if (data.res == "pumping_station_progress") {
+        //     Swal.fire(
+        //         'Pumping Station Progress',
+        //         'Please Enter Pumping Station Progress',
+        //         'error'
+        //     )
+        // } else if (data.res == "flowmeter_scope") {
+        //     Swal.fire(
+        //         'Flowmeter Scope',
+        //         'Please Enter Flowmeter Scope',
+        //         'error'
+        //     )
+        // } else if (data.res == "flowmeter_progress") {
+        //     Swal.fire(
+        //         'Flowmeter Progress',
+        //         'Please Enter Flowmeter Progress',
+        //         'error'
+        //     )
+        // } else if (data.res == "pressure_treansmitter_scope") {
+        //     Swal.fire(
+        //         'Pressure Treansmitter Scope',
+        //         'Please Enter Pressure Treansmitter Scope',
+        //         'error'
+        //     )
+        // } else if (data.res == "pressure_treansmitter_progress") {
+        //     Swal.fire(
+        //         'Pressure Treansmitter Progress',
+        //         'Please Enter Pressure Treansmitter Progress',
+        //         'error'
+        //     )
+        // } else if (data.res == "level_treansmitter_scope") {
+        //     Swal.fire(
+        //         'Level Treansmitter Scope',
+        //         'Please Enter Level Treansmitter Scope',
+        //         'error'
+        //     )
+        // } else if (data.res == "level_treansmitter_progress") {
+        //     Swal.fire(
+        //         'Level Treansmitter Progress',
+        //         'Please Enter Level Treansmitter Progress',
+        //         'error'
+        //     )
+        // } else if (data.res == "sluice_valve_scope") {
+        //     Swal.fire(
+        //         'Sluice Valve Scope',
+        //         'Please Enter Sluice Valve Scope',
+        //         'error'
+        //     )
+        // } else if (data.res == "sluice_valve_progress") {
+        //     Swal.fire(
+        //         'Sluice Valve Progress',
+        //         'Please Enter Sluice Valve Progress',
+        //         'error'
+        //     )
+        // } else if (data.res == "plc_scope") {
+        //     Swal.fire(
+        //         'PLC Scope',
+        //         'Please Enter PLC Scope',
+        //         'error'
+        //     )
+        // } else if (data.res == "plc_progress") {
+        //     Swal.fire(
+        //         'PLC Progress',
+        //         'Please Enter PLC Progress',
+        //         'error'
+        //     )
+        // }  else if (data.res == "house_connection_scope") {
+        //     Swal.fire(
+        //         'House Connection Scope',
+        //         'Please Enter House Connection Scope',
+        //         'error'
+        //     )
+        // }else if (data.res == "house_connection_progress") {
+        //     Swal.fire(
+        //         'House Connection Progress',
+        //         'Please Enter House Connection Progress',
+        //         'error'
+        //     )
+        // }else if (data.res == "meter_connection_scope") {
+        //     Swal.fire(
+        //         'Meter Connection Scope',
+        //         'Please Enter Meter Connection Scope',
+        //         'error'
+        //     )
+        // }else if (data.res == "meter_connection_progress") {
+        //     Swal.fire(
+        //         'Meter Connection Progress',
+        //         'Please Enter Meter Connection Progress',
+        //         'error'
+        //     )
+        // }else if (data.res == "nrw_scope") {
+        //     Swal.fire(
+        //         'NRW Scope',
+        //         'Please Enter NRW Scope',
+        //         'error'
+        //     )
+        // }else if (data.res == "nrw_progress") {
+        //     Swal.fire(
+        //         'NRW Progress',
+        //         'Please Enter NRW Progress',
+        //         'error'
+        //     )
+        // }else
+         if (data.res == "exist") {
             Swal.fire(
                 'Already Exist',
                 data.dma_name + '<br>Already Exist',

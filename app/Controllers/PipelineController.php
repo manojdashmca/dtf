@@ -563,4 +563,105 @@ class PipelineController extends WebController
         }
         echo json_encode($res);
     }
+
+    public function getJalasathiMaster()
+    {
+        $this->data['title'] = 'DMA Master';
+        $this->data['css'] = 'dmatablegrid,sweetalert,validation,alertify,dashboard,datatable';
+        $this->data['js'] = 'divisionmastertable,sweetalert,validation,alertify,dashboard,datatable';
+        $this->data['includefile'] = 'jalasathijs.php';
+        // $this->data['css'] = 'sweetalert';
+        // $this->data['js'] = 'jqueryscript,sweetalert,divisionmastertable';
+        // $city = $this->request->getVar('city');
+        // $this->data['city'] = $city;
+        // $this->data['component'] = array();
+        $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
+        $this->data['cityjalasathi'] = $this->pipelineModel->getCityJalasathi();
+        return view('templates/header', $this->data)
+            . view('masterdata/jalasathimaster', $this->data)
+            . view('templates/footer', $this->data);
+    }
+
+    public function addJalsathiMaster()
+    {
+        extract($_POST);
+        $res = "";
+        if ($z_division_id == "") {
+            $res = array("res" => "enterDivision");
+        } elseif ($z_citys == "") {
+            $res = array("res" => "enterCity");
+        } elseif ($word_names == "") {
+            $res = array("res" => "word_names");
+        }
+        //  elseif ($dma_population == "") {
+        //     $res = array("res" => "dma_population");
+        // } elseif ($commissioning_status == "") {
+        //     $res = array("res" => "commissioning_status");
+        // } elseif ($dma_updated_date == "") {
+        //     $res = array("res" => "dma_updated_date");
+        // } elseif ($distribution_pipe_line_scope == "") {
+        //     $res = array("res" => "distribution_pipe_line_scope");
+        // } elseif ($distribution_pipe_line_progress == "") {
+        //     $res = array("res" => "distribution_pipe_line_progress");
+        // } elseif ($pumping_main_scope == "") {
+        //     $res = array("res" => "pumping_main_scope");
+        // } elseif ($pumping_main_progress == "") {
+        //     $res = array("res" => "pumping_main_progress");
+        // } elseif ($storage_resorvoir_scope == "") {
+        //     $res = array("res" => "storage_resorvoir_scope");
+        // } elseif ($storage_resorvoir_progress == "") {
+        //     $res = array("res" => "storage_resorvoir_progress");
+        // } elseif ($pumping_station_scope == "") {
+        //     $res = array("res" => "pumping_station_scope");
+        // } elseif ($pumping_station_progress == "") {
+        //     $res = array("res" => "pumping_station_progress");
+        // } elseif ($flowmeter_scope == "") {
+        //     $res = array("res" => "flowmeter_scope");
+        // } elseif ($flowmeter_progress == "") {
+        //     $res = array("res" => "flowmeter_progress");
+        // } elseif ($pressure_treansmitter_scope == "") {
+        //     $res = array("res" => "pressure_treansmitter_scope");
+        // } elseif ($pressure_treansmitter_progress == "") {
+        //     $res = array("res" => "pressure_treansmitter_progress");
+        // } elseif ($level_treansmitter_scope == "") {
+        //     $res = array("res" => "level_treansmitter_scope");
+        // } elseif ($level_treansmitter_progress == "") {
+        //     $res = array("res" => "level_treansmitter_progress");
+        // } elseif ($sluice_valve_scope == "") {
+        //     $res = array("res" => "sluice_valve_scope");
+        // } elseif ($sluice_valve_progress == "") {
+        //     $res = array("res" => "sluice_valve_progress");
+        // } elseif ($plc_scope == "") {
+        //     $res = array("res" => "plc_scope");
+        // } elseif ($plc_progress == "") {
+        //     $res = array("res" => "plc_progress");
+        // } elseif ($house_connection_scope == "") {
+        //     $res = array("res" => "house_connection_scope");
+        // } elseif ($house_connection_progress == "") {
+        //     $res = array("res" => "house_connection_progress");
+        // } elseif ($meter_connection_scope == "") {
+        //     $res = array("res" => "meter_connection_scope");
+        // } elseif ($meter_connection_progress == "") {
+        //     $res = array("res" => "meter_connection_progress");
+        // } elseif ($nrw_scope == "") {
+        //     $res = array("res" => "nrw_scope");
+        // } elseif ($nrw_progress == "") {
+        //     $res = array("res" => "nrw_progress");
+        // } 
+        else {
+            $checkDuplicatejalsathi = array();
+            $checkDuplicatejalsathi = $this->pipelineModel->checkDuplicateJalsathi($z_division_id, $z_citys, $word_names);
+            if (!empty($checkDuplicatejalsathi)) {
+                $res = array("res" => "exist", "word_names" => $word_names);
+            } else {
+                $insertCityTable = $this->pipelineModel->insertJalsathiTable($z_division_id,$z_citys,$word_names,$jal_msg_shg_name,$jal_jalasathi_name,$jal_pan_no,$jal_bank_account_no,$jal_ifsc_code,$jal_bank_name_branch,$jal_collection_by_jalasathi,$jal_ibu_5p_incentive_from_water_charges,$jal_ibu_no_new_water_supply_connection,$jal_ibu_total_amt_of_new_water_con,$jal_ibu_total_no_of_water_quality_testa,$jal_ibu_water_quality_tests,$jal_total_incentive_of_jalasathi);
+                if ($insertCityTable) {
+                    $res = array("res" => "success", "word_names" => $word_names);
+                } else {
+                    $res = array("res" => "failed", "word_names" => $word_names);
+                }
+            }
+        }
+        echo json_encode($res);
+    }
 }
