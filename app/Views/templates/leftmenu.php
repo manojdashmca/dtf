@@ -94,7 +94,7 @@
                                 <a href="/DmaInfoPage" class="nav-link" data-key="t-sweet-alerts">DMA Information</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link" data-key="t-sweet-alerts">Jalasathi</a>
+                                <a href="pageJalasathi" class="nav-link" data-key="t-sweet-alerts">Jalasathi</a>
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link" data-key="t-sweet-alerts">Revenue Collection</a>

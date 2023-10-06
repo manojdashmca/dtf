@@ -558,4 +558,32 @@ class PipelineModel extends Model
         $return = $result->getResult();
         return $return;
     }
+
+    public function getCityJalasathi()
+    {
+        $sql = "SELECT d.division_name AS division_name,c.city_name AS city_name,j.word_names,j.msg_shg_name,j.jalasathi_name,j.pan_no,j.bank_account_no,j.ifsc_code,j.bank_name_branch,j.collection_by_jalasathi,j.ibu_5p_incentive_from_water_charges,j.ibu_no_new_water_supply_connection,j.ibu_total_amt_of_new_water_con,j.ibu_total_no_of_water_quality_testa,j.ibu_water_quality_tests,j.total_incentive_of_jalasathi,j.persentage_of_tds,j.current_tds,j.net_payable FROM `jalsathi_word` j INNER JOIN divisions d ON j.division_id = d.id INNER JOIN pl_citys c ON j.jalsathi_ulb_city_id = c.id ORDER BY j.id;";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        return $return;
+    }
+
+    public function checkDuplicateJalsathi($z_division_id, $z_citys, $word_names)
+    {
+        $sql = "SELECT word_names from jalsathi_word WHERE division_id = '$z_division_id' AND jalsathi_ulb_city_id='$z_citys' AND word_names = '$word_names';";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        return $return;
+        $this->db->close();
+    }
+
+    public function insertJalsathiTable($z_division_id,$z_citys,$word_names,$jal_msg_shg_name,$jal_jalasathi_name,$jal_pan_no,$jal_bank_account_no,$jal_ifsc_code,$jal_bank_name_branch,$jal_collection_by_jalasathi,$jal_ibu_5p_incentive_from_water_charges,$jal_ibu_no_new_water_supply_connection,$jal_ibu_total_amt_of_new_water_con,$jal_ibu_total_no_of_water_quality_testa,$jal_ibu_water_quality_tests,$jal_total_incentive_of_jalasathi)
+    {
+        $sql = "INSERT INTO jalsathi_word(division_id,jalsathi_ulb_city_id,word_names,msg_shg_name,jalasathi_name,pan_no,bank_account_no,ifsc_code,bank_name_branch,collection_by_jalasathi,ibu_5p_incentive_from_water_charges,ibu_no_new_water_supply_connection,ibu_total_amt_of_new_water_con,ibu_total_no_of_water_quality_testa,ibu_water_quality_tests,total_incentive_of_jalasathi)VALUES
+        ('$z_division_id','$z_citys','$word_names','$jal_msg_shg_name','$jal_jalasathi_name','$jal_pan_no','$jal_bank_account_no','$jal_ifsc_code','$jal_bank_name_branch','$jal_collection_by_jalasathi','$jal_ibu_5p_incentive_from_water_charges','$jal_ibu_no_new_water_supply_connection','$jal_ibu_total_amt_of_new_water_con','$jal_ibu_total_no_of_water_quality_testa','$jal_ibu_water_quality_tests','$jal_total_incentive_of_jalasathi')";
+
+        $result = $this->db->query($sql);
+
+        return $result;
+        $this->db->close();
+    }
 }
