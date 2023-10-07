@@ -161,7 +161,7 @@ class LoginCityController extends WebController {
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
 
         // print_r($division);
-        $this->data['alldmadata'] = $this->pipelineModel->getAllStatedataMaster($division,$city);
+        $this->data['allrevenuecollectionfilter'] = $this->pipelineModel->getRevenueFilter($division,$city);
 
         return view('templates/header', $this->data)
                 . view('logincity/getrevenuecollection', $this->data)
@@ -189,7 +189,7 @@ class LoginCityController extends WebController {
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
 
         // print_r($division);
-        $this->data['alldmadata'] = $this->pipelineModel->getAllStatedataMaster($division,$city);
+        $this->data['filtergrievance'] = $this->pipelineModel->getFilterGrievance($division,$city);
 
         return view('templates/header', $this->data)
                 . view('logincity/getgrievancecustomerservice', $this->data)

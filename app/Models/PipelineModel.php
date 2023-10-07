@@ -571,7 +571,49 @@ class PipelineModel extends Model
          }else if($city != "" && $division != ""){
             $sql .= "WHERE jalsathi_ulb_city_id = '$city';";
          }
-        
+        $result = $this->db->query($sql);
+        $return = $result->getRow();
+        return $return;
+        // $this->db->close();
+    }
+    public function getRevenueFilter($division,$city)
+    {
+        $sql = "SELECT SUM(no_bill_generate) AS total_bill_generate,
+        SUM(no_bill_distributed) AS total_bill_distributed,
+        SUM(no_bill_distributed) AS total_bill_distributed,
+        SUM(incentive_paid_to_jalasathi) AS total_incentive_paid_to_jalasathi,
+        SUM(total_revenue_collected) AS total_revenue_collected,
+        SUM(revenue_collected_by_jalasathi)AS total_revenue_collected_by_jalasathi,
+        MAX(revenue_collected_date)AS last_revenue_collected_date
+        FROM `revenue_collection_master` ";
+        if($division && $city == ""){
+            $sql .= "WHERE division_id = '$division';";
+            
+         }else if($city != "" && $division != ""){
+            $sql .= "WHERE city_id = '$city';";
+         }
+        $result = $this->db->query($sql);
+        $return = $result->getRow();
+        return $return;
+        // $this->db->close();
+    }
+
+    public function getFilterGrievance($division,$city)
+    {
+        $sql = "SELECT SUM(no_bill_generate) AS total_bill_generate,
+        SUM(no_bill_distributed) AS total_bill_distributed,
+        SUM(no_bill_distributed) AS total_bill_distributed,
+        SUM(incentive_paid_to_jalasathi) AS total_incentive_paid_to_jalasathi,
+        SUM(total_revenue_collected) AS total_revenue_collected,
+        SUM(revenue_collected_by_jalasathi)AS total_revenue_collected_by_jalasathi,
+        MAX(revenue_collected_date)AS last_revenue_collected_date
+        FROM `revenue_collection_master` ";
+        if($division && $city == ""){
+            $sql .= "WHERE division_id = '$division';";
+            
+         }else if($city != "" && $division != ""){
+            $sql .= "WHERE city_id = '$city';";
+         }
         $result = $this->db->query($sql);
         $return = $result->getRow();
         return $return;

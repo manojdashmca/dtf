@@ -143,57 +143,71 @@
 
                                                 <div class="col-xl-12">
                                                     <div class="mb-3">
-                                                        <label for="cleave-date" class="form-label">Word Number: <span class="text-danger">*</span> </label>
+                                                        <label for="cleave-date" class="form-label">WORD NUMBER: <span class="text-danger">*</span> </label>
                                                         <input type="text" class="form-control" name="word_names" id="word_names">
                                                     </div>
                                                 </div><!-- end col -->
                                                 <div class="col-xl-6">
                                                     <div class="mb-3">
-                                                        <label for="cleave-date" class="form-label">Name of the MSG/SHG<span class="text-danger">*</span> </label>
+                                                        <label for="cleave-date" class="form-label">NAME OF THE MSG/SHG<span class="text-danger">*</span> </label>
                                                         <input type="text" class="form-control" name="jal_msg_shg_name" id="jal_msg_shg_name">
                                                     </div>
                                                 </div><!-- end col -->
                                                 <div class="col-xl-6">
                                                     <div class="mb-3">
-                                                        <label for="cleave-date" class="form-label">Name of the Jalasathi <span class="text-danger">*</span> </label>
+                                                        <label for="cleave-date" class="form-label">NAME OF THE JALASATHI <span class="text-danger">*</span> </label>
                                                         <input type="text" class="form-control" name="jal_jalasathi_name" id="jal_jalasathi_name">
                                                     </div>
                                                 </div><!-- end col -->
-                                                <div class="col-xl-6">
+                                                <!-- <div class="col-xl-6">
                                                     <div class="mb-3">
                                                         <label for="cleave-date" class="form-label">PAN No <span class="text-danger">*</span> </label>
                                                         <input type="text" class="form-control" name="jal_pan_no" id="jal_pan_no">
                                                     </div>
-                                                </div><!-- end col -->
+                                                </div>
                                                 <div class="col-xl-6">
                                                     <div class="mb-3">
                                                         <label for="cleave-date" class="form-label">Bank Account No <span class="text-danger">*</span> </label>
                                                         <input type="text" class="form-control" name="jal_bank_account_no" id="jal_bank_account_no">
                                                     </div>
-                                                </div><!-- end col -->
+                                                </div>
                                                 <div class="col-xl-6">
                                                     <div class="mb-3">
                                                         <label for="cleave-date" class="form-label">IFSC Code <span class="text-danger">*</span> </label>
                                                         <input type="text" class="form-control" name="jal_ifsc_code" id="jal_ifsc_code">
                                                     </div>
-                                                </div><!-- end col -->
+                                                </div>
                                                 <div class="col-xl-6">
                                                     <div class="mb-3">
                                                         <label for="cleave-date" class="form-label">Bank Name and Branch<span class="text-danger">*</span> </label>
                                                         <input type="text" class="form-control" name="jal_bank_name_branch" id="jal_bank_name_branch">
                                                     </div>
-                                                </div><!-- end col -->
+                                                </div> -->
                                                 <div class="col-xl-6">
                                                     <div class="mb-3">
-                                                        <label for="cleave-date" class="form-label">Collection by Jalasathi (Mpos) <span class="text-danger">*</span> </label>
+                                                        <label for="cleave-date" class="form-label">REVENUE COLLECTED BY JALSATHI <span class="text-danger">*</span> </label>
                                                         <input type="text" class="form-control" name="jal_collection_by_jalasathi" id="jal_collection_by_jalasathi">
                                                     </div>
-                                                </div><!-- end col -->
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">INCENTIVE PAID TO JALSATHI <span class="text-danger">*</span> </label>
+                                                        <input type="text" class="form-control" name="jal_ibu_total_no_of_water_quality_testa" id="jal_ibu_total_no_of_water_quality_testa">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6">
+                                                    <div class="mb-3">
+                                                        <label for="cleave-date" class="form-label">NOS. OF TEST CONDUCTED BY JALSATHI <span class="text-danger">*</span> </label>
+                                                        <input type="text" class="form-control" name="jal_total_incentive_of_jalasathi" id="jal_total_incentive_of_jalasathi">
+                                                    </div>
+                                                </div>
+
+
                                                 
                                             </div><!-- end row -->
                                         </div>
                                         <div class="border mt-3 border-dashed border-primary"></div>
-                                        <div class="mt-4">
+                                        <!-- <div class="mt-4">
                                             <h6 class="mb-3 fs-14 form-label">INCENTIVE BREAK UP</h6>
                                             <div class="row">
                                                 <div class="col-lg-6">
@@ -227,16 +241,16 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="border mt-3 border-dashed border-primary"></div>
-                                        <div class="row">
+                                        </div> -->
+                                        <!-- <div class="border mt-3 border-dashed border-primary"></div> -->
+                                        <!-- <div class="row">
                                         <div class="col-xl-6">
                                                     <div class="mb-3">
                                                         <label for="cleave-date" class="form-label">Total Incentive of Jalasathi (Rs.) <span class="text-danger">*</span> </label>
                                                         <input type="text" class="form-control" name="jal_total_incentive_of_jalasathi" id="jal_total_incentive_of_jalasathi">
                                                     </div>
-                                                </div><!-- end col -->
-                                        </div>
+                                                </div>
+                                        </div> -->
                                     </div><!-- end card-body -->
                                 </div><!-- end card -->
                             </div>

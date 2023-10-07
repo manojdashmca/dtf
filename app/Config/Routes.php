@@ -119,6 +119,8 @@ $routes->match(['get', 'post'], 'cityTablePage', 'PipelineController::cityTableP
 $routes->match(['get', 'post'], 'addnewcity', 'PipelineController::addNewCity');
 $routes->match(['get', 'post'], 'getDmaInfo', 'PipelineController::getDmaInfo');
 $routes->match(['get', 'post'], 'DmaInfoPage', 'PipelineController::getDmaInfoPage');
+$routes->match(['get', 'post'], 'addNewdma', 'PipelineController::addNewDmaMaster');
+
 // edit 
 $routes->match(['get', 'post'], 'getCityDetailsOnId', 'PipelineController::getCityDetailsOnId');
 $routes->match(['get', 'post'], 'editCityDataInId', 'PipelineController::editCityDataInId');

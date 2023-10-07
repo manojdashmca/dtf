@@ -202,6 +202,19 @@ class PipelineController extends WebController
         $allDmainfo = $this->pipelineModel->getAllDmainfo();
         echo json_encode($allDmainfo);
     }
+    public function addNewDmaMaster()
+    {
+        $this->data['title'] = 'DMA Master';
+        $this->data['css'] = 'dmatablegrid,sweetalert,validation,alertify';
+        $this->data['js'] = 'divisionmastertable,sweetalert,validation,alertify';
+        $this->data['includefile'] = 'dmazonetable.php';
+       
+        $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
+        $this->data['allDmamaster'] = $this->pipelineModel->getAllDmaMasterData();
+        return view('templates/header', $this->data)
+            . view('masterdata/dmazone', $this->data)
+            . view('templates/footer', $this->data);
+    }
 
     public function getDmaInfoPage()
     {
@@ -234,8 +247,7 @@ class PipelineController extends WebController
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
         $this->data['allDmamaster'] = $this->pipelineModel->getAllDmaMasterData();
         return view('templates/header', $this->data)
-            // . view('masterdata/dmazone2', $this->data)
-            . view('masterdata/dmazone', $this->data)
+            . view('masterdata/dmazone2', $this->data)
             . view('templates/footer', $this->data);
     }
 

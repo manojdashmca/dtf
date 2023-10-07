@@ -319,7 +319,7 @@
                     <div class="row">
                         <div class="col-12 text-center">
                             <h5 class="text-info">INCENTIVE DETAILS OF JALASATHIS OF WATCO</h5>
-                            <h5 class="text-info">KEONJHAR,BARBIL</h5>
+                            <!-- <h5 class="text-info">KEONJHAR,BARBIL</h5> -->
                         </div>
                     </div>
                     <div class="row">
