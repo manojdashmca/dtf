@@ -223,13 +223,42 @@ class PipelineController extends WebController
         $this->data['js'] = 'divisionmastertable,sweetalert,validation,alertify';
         $this->data['includefile'] = 'dmazonetable.php';
 
-        // $city = $this->request->getVar('city');
-        // $this->data['city'] = $city;
-        // $this->data['component'] = array();
+        // -------------------------
+        $division_dtl = $this->request->getVar('division_dtl'); 
+        $this->data['division_dtl'] = $division_dtl;
+      
+        $city_dtl = $this->request->getVar('city_dtl');
+        $this->data['city_dtl'] = $city_dtl;
+        $dmacitydropdown = [];
+        if (!empty($division_dtl)) {
+            $dmacitydropdown = $this->pipelineModel->getCityOnDivision($division_dtl);
+        }
+        $this->data['dmacitydropdown'] = $dmacitydropdown;
+
+        $dmadatadtl = [];
+        if (!empty($city_dtl)) {
+            $dmadatadtl = $this->pipelineModel->getDmaonCityDetails($division_dtl,$city_dtl);
+        }
+        $this->data['dmaoncity'] = $dmadatadtl;
+
+        $dma_dtl = $this->request->getVar('dma_dtl');
+        $this->data['dma_dtl'] = $dma_dtl;
+        // print_r($dma_dtl);
+
+        $dma_info = [];
+        if(!empty($dma_dtl)){
+            $dma_info = $this->pipelineModel->getDmainfoOnDmaid($dma_dtl);
+        }
+        $this->data['getdmainfoonid'] = $dma_info;
+
+        // --------------------------
+        
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
+        $this->data['allDmamaster'] = $this->pipelineModel->getAllDmaMasterData();
+
 
         return view('templates/header', $this->data)
-            . view('masterdata/dmazone', $this->data)
+            . view('masterdata/dmazone2', $this->data)
             . view('templates/footer', $this->data);
     }
 
