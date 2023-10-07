@@ -116,10 +116,6 @@ class PipelineController extends WebController
         $this->data['css'] = 'dmatablegrid,sweetalert,validation,alertify';
         $this->data['js'] = 'divisionmastertable,sweetalert,validation,alertify';
         $this->data['includefile'] = 'citytable.php';
-
-        // $city = $this->request->getVar('city');
-        // $this->data['city'] = $city;
-        // $this->data['component'] = array();
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
         return view('templates/header', $this->data)
             . view('masterdata/citymaster', $this->data)
@@ -207,23 +203,12 @@ class PipelineController extends WebController
         echo json_encode($allDmainfo);
     }
 
-    // public function getDmaInfoPage(){
-    //     $this->data['title'] = 'Pipeline Dashboard';
-    //     $this->data['css']='';
-    //     $this->data['js']='';
-    //     $this->data['alldivisionname']=$this->pipelineModel->getAllDivisionName();
-    //     return view('templates/dma-home', $this->data);
-    // }
-    // dmazone
-
     public function getDmaInfoPage()
     {
         $this->data['title'] = 'DMA Master';
         $this->data['css'] = 'dmatablegrid,sweetalert,validation,alertify';
         $this->data['js'] = 'divisionmastertable,sweetalert,validation,alertify';
         $this->data['includefile'] = 'dmazonetable.php';
-
-        // -------------------------
         $division_dtl = $this->request->getVar('division_dtl'); 
         $this->data['division_dtl'] = $division_dtl;
       
@@ -234,31 +219,23 @@ class PipelineController extends WebController
             $dmacitydropdown = $this->pipelineModel->getCityOnDivision($division_dtl);
         }
         $this->data['dmacitydropdown'] = $dmacitydropdown;
-
         $dmadatadtl = [];
         if (!empty($city_dtl)) {
             $dmadatadtl = $this->pipelineModel->getDmaonCityDetails($division_dtl,$city_dtl);
         }
         $this->data['dmaoncity'] = $dmadatadtl;
-
         $dma_dtl = $this->request->getVar('dma_dtl');
         $this->data['dma_dtl'] = $dma_dtl;
-        // print_r($dma_dtl);
-
         $dma_info = [];
         if(!empty($dma_dtl)){
             $dma_info = $this->pipelineModel->getDmainfoOnDmaid($dma_dtl);
         }
         $this->data['getdmainfoonid'] = $dma_info;
-
-        // --------------------------
-        
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
         $this->data['allDmamaster'] = $this->pipelineModel->getAllDmaMasterData();
-
-
         return view('templates/header', $this->data)
-            . view('masterdata/dmazone2', $this->data)
+            // . view('masterdata/dmazone2', $this->data)
+            . view('masterdata/dmazone', $this->data)
             . view('templates/footer', $this->data);
     }
 
@@ -599,11 +576,6 @@ class PipelineController extends WebController
         $this->data['css'] = 'dmatablegrid,sweetalert,validation,alertify,dashboard,datatable';
         $this->data['js'] = 'divisionmastertable,sweetalert,validation,alertify,dashboard,datatable';
         $this->data['includefile'] = 'jalasathijs.php';
-        // $this->data['css'] = 'sweetalert';
-        // $this->data['js'] = 'jqueryscript,sweetalert,divisionmastertable';
-        // $city = $this->request->getVar('city');
-        // $this->data['city'] = $city;
-        // $this->data['component'] = array();
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
         $this->data['cityjalasathi'] = $this->pipelineModel->getCityJalasathi();
         return view('templates/header', $this->data)
@@ -622,61 +594,7 @@ class PipelineController extends WebController
         } elseif ($word_names == "") {
             $res = array("res" => "word_names");
         }
-        //  elseif ($dma_population == "") {
-        //     $res = array("res" => "dma_population");
-        // } elseif ($commissioning_status == "") {
-        //     $res = array("res" => "commissioning_status");
-        // } elseif ($dma_updated_date == "") {
-        //     $res = array("res" => "dma_updated_date");
-        // } elseif ($distribution_pipe_line_scope == "") {
-        //     $res = array("res" => "distribution_pipe_line_scope");
-        // } elseif ($distribution_pipe_line_progress == "") {
-        //     $res = array("res" => "distribution_pipe_line_progress");
-        // } elseif ($pumping_main_scope == "") {
-        //     $res = array("res" => "pumping_main_scope");
-        // } elseif ($pumping_main_progress == "") {
-        //     $res = array("res" => "pumping_main_progress");
-        // } elseif ($storage_resorvoir_scope == "") {
-        //     $res = array("res" => "storage_resorvoir_scope");
-        // } elseif ($storage_resorvoir_progress == "") {
-        //     $res = array("res" => "storage_resorvoir_progress");
-        // } elseif ($pumping_station_scope == "") {
-        //     $res = array("res" => "pumping_station_scope");
-        // } elseif ($pumping_station_progress == "") {
-        //     $res = array("res" => "pumping_station_progress");
-        // } elseif ($flowmeter_scope == "") {
-        //     $res = array("res" => "flowmeter_scope");
-        // } elseif ($flowmeter_progress == "") {
-        //     $res = array("res" => "flowmeter_progress");
-        // } elseif ($pressure_treansmitter_scope == "") {
-        //     $res = array("res" => "pressure_treansmitter_scope");
-        // } elseif ($pressure_treansmitter_progress == "") {
-        //     $res = array("res" => "pressure_treansmitter_progress");
-        // } elseif ($level_treansmitter_scope == "") {
-        //     $res = array("res" => "level_treansmitter_scope");
-        // } elseif ($level_treansmitter_progress == "") {
-        //     $res = array("res" => "level_treansmitter_progress");
-        // } elseif ($sluice_valve_scope == "") {
-        //     $res = array("res" => "sluice_valve_scope");
-        // } elseif ($sluice_valve_progress == "") {
-        //     $res = array("res" => "sluice_valve_progress");
-        // } elseif ($plc_scope == "") {
-        //     $res = array("res" => "plc_scope");
-        // } elseif ($plc_progress == "") {
-        //     $res = array("res" => "plc_progress");
-        // } elseif ($house_connection_scope == "") {
-        //     $res = array("res" => "house_connection_scope");
-        // } elseif ($house_connection_progress == "") {
-        //     $res = array("res" => "house_connection_progress");
-        // } elseif ($meter_connection_scope == "") {
-        //     $res = array("res" => "meter_connection_scope");
-        // } elseif ($meter_connection_progress == "") {
-        //     $res = array("res" => "meter_connection_progress");
-        // } elseif ($nrw_scope == "") {
-        //     $res = array("res" => "nrw_scope");
-        // } elseif ($nrw_progress == "") {
-        //     $res = array("res" => "nrw_progress");
-        // } 
+        
         else {
             $checkDuplicatejalsathi = array();
             $checkDuplicatejalsathi = $this->pipelineModel->checkDuplicateJalsathi($z_division_id, $z_citys, $word_names);
@@ -693,9 +611,6 @@ class PipelineController extends WebController
         }
         echo json_encode($res);
     }
-
-    // Revenue Collection Master 
-
     public function getRevenueCollection()
     {
         $allRevenueTabledata = $this->pipelineModel->getRevenueCollectionTable();
@@ -708,9 +623,6 @@ class PipelineController extends WebController
         $this->data['js'] = 'divisionmastertable,sweetalert,validation,alertify';
         $this->data['includefile'] = 'revenuecollectionjs.php';
 
-        // $city = $this->request->getVar('city');
-        // $this->data['city'] = $city;
-        // $this->data['component'] = array();
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
 
         return view('templates/header', $this->data)

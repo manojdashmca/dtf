@@ -558,10 +558,29 @@ class PipelineModel extends Model
         $return = $result->getResult();
         return $return;
     }
+    public function getJalsathiOnDivisionAndCity($division,$city)
+    {
+        $sql = "SELECT COUNT(id) AS no_of_jalasathi,
+        SUM(collection_by_jalasathi) AS revenue_collected_by_jalasathi,
+        SUM(total_incentive_of_jalasathi)AS incentive_paid_to_jalsathi,
+        SUM(ibu_water_quality_tests)AS no_of_test_conducted_by_jalasathi
+        FROM `jalsathi_word`";
+        if($division && $city == ""){
+            $sql .= "WHERE division_id = '$division';";
+            
+         }else if($city != "" && $division != ""){
+            $sql .= "WHERE jalsathi_ulb_city_id = '$city';";
+         }
+        
+        $result = $this->db->query($sql);
+        $return = $result->getRow();
+        return $return;
+        // $this->db->close();
+    }
 
     public function getCityJalasathi()
     {
-        $sql = "SELECT d.division_name AS division_name,c.city_name AS city_name,j.word_names,j.msg_shg_name,j.jalasathi_name,j.pan_no,j.bank_account_no,j.ifsc_code,j.bank_name_branch,j.collection_by_jalasathi,j.ibu_5p_incentive_from_water_charges,j.ibu_no_new_water_supply_connection,j.ibu_total_amt_of_new_water_con,j.ibu_total_no_of_water_quality_testa,j.ibu_water_quality_tests,j.total_incentive_of_jalasathi,j.persentage_of_tds,j.current_tds,j.net_payable FROM `jalsathi_word` j INNER JOIN divisions d ON j.division_id = d.id INNER JOIN pl_citys c ON j.jalsathi_ulb_city_id = c.id ORDER BY j.id;";
+        $sql = "SELECT d.division_name AS division_name,c.city_name AS city_name,j.word_names,j.msg_shg_name,j.jalasathi_name,j.pan_no,j.bank_account_no,j.ifsc_code,j.bank_name_branch,j.collection_by_jalasathi,j.ibu_5p_incentive_from_water_charges,j.ibu_no_new_water_supply_connection,j.ibu_total_amt_of_new_water_con,j.ibu_total_no_of_water_quality_testa,j.ibu_water_quality_tests,j.total_incentive_of_jalasathi,j.persentage_of_tds,j.current_tds,j.net_payable FROM `jalsathi_word` j INNER JOIN divisions d ON j.division_id = d.id INNER JOIN cities_master c ON j.jalsathi_ulb_city_id = c.city_id ORDER BY j.id;";
         $result = $this->db->query($sql);
         $return = $result->getResult();
         return $return;
