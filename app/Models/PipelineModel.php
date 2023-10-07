@@ -649,5 +649,25 @@ class PipelineModel extends Model
         $this->db->close();
     }
 
+    public function getDmaonCityDetails($division_id,$city_id)
+    {
+
+        $sql = "SELECT id,dma_name FROM dma_master WHERE division_id='$division_id' AND city_id = '$city_id';";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        return $return;
+        $this->db->close();
+    }
+
+    public function getDmainfoOnDmaid($dma)
+    {
+        
+        $sql = "SELECT * FROM dma_master WHERE id = '$dma';";
+         
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        return $return;
+    }
+
 
 }
