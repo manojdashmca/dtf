@@ -2114,23 +2114,23 @@
 								<div class="col-sm-4 col-6">
 									<div class="map-box2">
 										<a href="#" class="content">
-											<h3 id="h_household"><?= $allstataedata[0]->total_no_house_holds ?></h3>
-											<p>Nos. of Households</p>
+											<h3 id="h_household"><?= $allstataedata[0]->house_connection_scope ?></h3>
+											<p>Nos. of House Connection Scope</p>
 										</a>
 									</div>
 								</div>
 								<div class="col-sm-4 col-6">
 									<div class="map-box2">
 										<a href="#" class="content">
-											<h3 id="h_h_complete"><?= $allstataedata[0]->total_no_house_coction ?></h3>
-											<p>House connection Completed</p>
+											<h3 id="h_h_complete"><?= $allstataedata[0]->house_connection_progress ?></h3>
+											<p>House Connection Completed</p>
 										</a>
 									</div>
 								</div>
 								<div class="col-sm-4 col-6">
 									<div class="map-box2">
 										<a href="nos-of-meter-connection-completed.html" class="content">
-											<h3 id="h_m_complete"><?= $allstataedata[0]->total_no_metered_house_connections ?></h3>
+											<h3 id="h_m_complete"><?= $allstataedata[0]->meter_connection_progress ?></h3>
 											<p>Nos. of Meter connection Completed</p>
 										</a>
 									</div>
