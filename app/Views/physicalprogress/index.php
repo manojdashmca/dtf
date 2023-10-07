@@ -41,7 +41,7 @@
                 </div>
                 <?php if (!empty($city)) { ?>
 
-                    <div class="card-body">                
+<!--                    <div class="card-body">                
                         <div class="table-responsive">
                             <table class="table table-bordered dt-responsive nowrap table-striped align-middle mb-0">
                                 <thead>
@@ -64,7 +64,7 @@
                             </table>
                         </div>
 
-                    </div><!-- end card-body -->
+                    </div>-->
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered dt-responsive nowrap table-striped align-middle mb-0">
