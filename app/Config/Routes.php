@@ -105,7 +105,7 @@ $routes->match(['get', 'post'], 'reviewmetting', 'pipeLineDashboardController::r
 $routes->match(['get', 'post'], 'rtm', 'pipeLineDashboardController::getRtm');
 
 $routes->match(['get', 'post'], 'getPipeMeterConDivision', 'pipeLineDashboardController::getPipeMeterConDivision');
-$routes->match(['get', 'post'], 'getCitiesinDivision', 'pipeLineDashboardController::getCitiesinDivision');
+// $routes->match(['get', 'post'], 'getCitiesinDivision', 'pipeLineDashboardController::getCitiesinDivision');
 $routes->match(['get', 'post'], 'getPipeMeterConCityes', 'pipeLineDashboardController::getPipeMeterConCityes');
 $routes->match(['get', 'post'], 'getJalsathiConCity', 'pipeLineDashboardController::getJalsathiConCity');
 $routes->match(['get', 'post'], 'getJalsathiConDivision', 'pipeLineDashboardController::getJalsathiConDivision');

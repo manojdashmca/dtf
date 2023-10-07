@@ -121,10 +121,8 @@ class LoginCityController extends WebController {
         // $this->data['includefile'] = 'dmazonetable.php';
 
         $division = $this->request->getVar('division');
-        print_r($division);
        
         $city = $this->request->getVar('city');
-        print_r($city);
         $this->data['city'] = $city;
         $this->data['division'] = $division;
         $citydropdown = [];
@@ -135,7 +133,7 @@ class LoginCityController extends WebController {
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
 
         // print_r($division);
-        $this->data['alldmadata'] = $this->pipelineModel->getAllStatedataMaster($division,$city);
+        $this->data['allJalasathifilter'] = $this->pipelineModel->getJalsathiOnDivisionAndCity($division,$city);
 
         return view('templates/header', $this->data)
                 . view('logincity/getjalasathi', $this->data)
