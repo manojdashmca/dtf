@@ -73,9 +73,9 @@
 
                                         <th data-ordering="false">SR No.</th>
                                         <th data-ordering="false">Component</th>
-                                        <th data-ordering="false">Status</th>
+<!--                                        <th data-ordering="false">Status</th>
                                         <th data-ordering="false">Scope Qty</th>
-                                        <th data-ordering="false">Progress Qty</th>
+                                        <th data-ordering="false">Progress Qty</th>-->
                                         <th>Component Completion %</th>
                                         <th>Overall Progress %</th>                                    
                                     </tr>
@@ -86,9 +86,9 @@
                                         <td class="fw-medium"><?= str_pad(($a + 1), 2, "0", STR_PAD_LEFT) ?></td>
                                         
                                         <td><?=$citycomponent[$a]->component?></td>
+<!--                                        <td></td>
                                         <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td></td>-->
                                         <td><?=$citycomponent[$a]->component_progress_percentage?></td>
                                         <td><?=$citycomponent[$a]->overal_progress_percentage?></td>
 
