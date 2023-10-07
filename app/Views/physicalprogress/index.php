@@ -81,7 +81,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php for($a=0;$a<count($citycomponent);$a++){?>
+                                    <?php
+                                    $totalprogress=0;
+                                    for($a=0;$a<count($citycomponent);$a++){
+                                        $totalprogress+=$citycomponent[$a]->overal_progress_percentage;?>
                                     <tr>
                                         <td class="fw-medium"><?= str_pad(($a + 1), 2, "0", STR_PAD_LEFT) ?></td>
                                         
@@ -96,6 +99,10 @@
                                     <?php }?>
 
                                 </tbody>
+                                <tfoot>
+                                <th colspan="3">Overall Progress</th>
+                                <th><?=$totalprogress;?></th>
+                                </tfoot>
                             </table>
                         </div>
                     </div>
