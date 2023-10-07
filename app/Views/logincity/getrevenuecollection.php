@@ -56,8 +56,7 @@
                                                 <div class="flex-grow-1">
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Nos. bill generated</p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
-                                                    </h4>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><?= isset($allrevenuecollectionfilter->total_bill_generate) ? $allrevenuecollectionfilter->total_bill_generate : '0' ;?></h4>
 
                                                 </div>
                                                 <div class="avatar-sm flex-shrink-0">
@@ -89,8 +88,7 @@
                                                 <div class="flex-grow-1">
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Nos. bill distributed</p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
-                                                    </h4>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><?= isset($allrevenuecollectionfilter->total_bill_distributed) ? $allrevenuecollectionfilter->total_bill_distributed : '0' ;?></h4>
 
                                                 </div>
                                                 <div class="avatar-sm flex-shrink-0">
@@ -123,8 +121,7 @@
                                                 <div class="flex-grow-1">
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Incentive paid to Jalsathi</p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
-                                                    </h4>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><?= isset($allrevenuecollectionfilter->total_incentive_paid_to_jalasathi) ? $allrevenuecollectionfilter->total_incentive_paid_to_jalasathi : '0' ;?></h4>
 
                                                 </div>
                                                 <div class="avatar-sm flex-shrink-0">
@@ -156,8 +153,7 @@
                                                 <div class="flex-grow-1">
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Total revenue collected</p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
-                                                    </h4>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><?= isset($allrevenuecollectionfilter->total_revenue_collected) ? $allrevenuecollectionfilter->total_revenue_collected : '0' ;?></h4>
 
                                                 </div>
                                                 <div class="avatar-sm flex-shrink-0">
@@ -191,8 +187,7 @@
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Revenue collected by Jalsathi
                                                     </p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
-                                                    </h4>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><?= isset($allrevenuecollectionfilter->total_revenue_collected_by_jalasathi) ? $allrevenuecollectionfilter->total_revenue_collected_by_jalasathi : '0' ;?></h4>
 
                                                 </div>
                                                 <div class="avatar-sm flex-shrink-0">
@@ -216,7 +211,7 @@
                                 </div> <!-- end .h-100-->
 
                             </div>
-                            <div class="col-md-4">
+                            <!-- <div class="col-md-4">
                                 <div class="h-100">
                                     <div class="card card-animate">
                                         <div class="card-body">
@@ -225,8 +220,7 @@
                                                     <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
                                                         Incentive paid to Jalsathi
                                                     </p>
-                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
-                                                    </h4>
+                                                    <h4 class="fs-22 fw-semibold mb-3"></h4>
 
                                                 </div>
                                                 <div class="avatar-sm flex-shrink-0">
@@ -235,7 +229,7 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                        </div><!-- end card body -->
+                                        </div>
                                         <div class="animation-effect-6 text-success opacity-25 fs-18">
                                             <i class=" bx bxs-droplet-half"></i>
                                         </div>
@@ -245,11 +239,11 @@
                                         <div class="animation-effect-3 text-success opacity-25 fs-18">
                                             <i class=" bx bxs-droplet-half"></i>
                                         </div>
-                                    </div><!-- end card -->
+                                    </div>
 
-                                </div> <!-- end .h-100-->
+                                </div> 
 
-                            </div>
+                            </div> -->
                         </div>
 
 </div>
