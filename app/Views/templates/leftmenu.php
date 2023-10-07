@@ -153,6 +153,9 @@
                             <li class="nav-item">
                                 <a href="/sub-task-master" class="nav-link" data-key="t-grid-js">Subtask Master</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="/addNewdma" class="nav-link" data-key="t-grid-js">Add New Dma/Zone</a>
+                            </li>
                         </ul>
                     </div>
                 </li>

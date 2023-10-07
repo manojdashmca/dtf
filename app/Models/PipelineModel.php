@@ -598,6 +598,28 @@ class PipelineModel extends Model
         // $this->db->close();
     }
 
+    public function getFilterGrievance($division,$city)
+    {
+        $sql = "SELECT SUM(no_bill_generate) AS total_bill_generate,
+        SUM(no_bill_distributed) AS total_bill_distributed,
+        SUM(no_bill_distributed) AS total_bill_distributed,
+        SUM(incentive_paid_to_jalasathi) AS total_incentive_paid_to_jalasathi,
+        SUM(total_revenue_collected) AS total_revenue_collected,
+        SUM(revenue_collected_by_jalasathi)AS total_revenue_collected_by_jalasathi,
+        MAX(revenue_collected_date)AS last_revenue_collected_date
+        FROM `revenue_collection_master` ";
+        if($division && $city == ""){
+            $sql .= "WHERE division_id = '$division';";
+            
+         }else if($city != "" && $division != ""){
+            $sql .= "WHERE city_id = '$city';";
+         }
+        $result = $this->db->query($sql);
+        $return = $result->getRow();
+        return $return;
+        // $this->db->close();
+    }
+
     public function getCityJalasathi()
     {
         $sql = "SELECT d.division_name AS division_name,c.city_name AS city_name,j.word_names,j.msg_shg_name,j.jalasathi_name,j.pan_no,j.bank_account_no,j.ifsc_code,j.bank_name_branch,j.collection_by_jalasathi,j.ibu_5p_incentive_from_water_charges,j.ibu_no_new_water_supply_connection,j.ibu_total_amt_of_new_water_con,j.ibu_total_no_of_water_quality_testa,j.ibu_water_quality_tests,j.total_incentive_of_jalasathi,j.persentage_of_tds,j.current_tds,j.net_payable FROM `jalsathi_word` j INNER JOIN divisions d ON j.division_id = d.id INNER JOIN cities_master c ON j.jalsathi_ulb_city_id = c.city_id ORDER BY j.id;";
