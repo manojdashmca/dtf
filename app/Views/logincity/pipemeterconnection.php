@@ -117,6 +117,8 @@
 
         </div> <!-- end col -->
         <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
             <div class="h-100">
                 <div class="card card-animate">
                     <div class="card-body">
