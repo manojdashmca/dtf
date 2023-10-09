@@ -535,27 +535,47 @@ class PipelineModel extends Model
 
     public function getAllStatedataMaster($division,$city)
     {
-        
-        $sql = "SELECT SUM(z.population) AS total_no_population, 
-        SUM(z.no_house_holds) AS total_no_house_holds, 
-        SUM(z.no_house_coction) AS total_no_house_coction, 
-        SUM(z.no_house_connection_replaced) AS total_no_house_connection_replaced, 
-        SUM(z.no_metered_house_connections) AS total_no_metered_house_connections, 
-        COUNT(DISTINCT(z.division_id)) AS total_division, 
-        COUNT(DISTINCT(z.city_id)) AS total_cities, 
-        COUNT(DISTINCT(z.id)) AS total_dma,
-        (SELECT COUNT(id) FROM `jalsathi_word`) as total_jalasathi,
-        ROUND(AVG(nrw), 2) AS nrw_average_value,
-        (SELECT SUM(population) FROM zone_master WHERE no_house_holds = no_house_coction AND no_house_holds = no_metered_house_connections) AS beneficiary_population 
-         FROM zone_master z ";
+        $sql="SELECT SUM(dm.dma_population) AS dma_population,
+        SUM(dm.house_connection_scope) AS house_connection_scope,
+        SUM(dm.house_connection_progress) AS house_connection_progress,
+        SUM(dm.meter_connection_scope) AS meter_connection_scope,
+        SUM(dm.meter_connection_progress) AS meter_connection_progress,
+        COUNT(DISTINCT(dm.city_id)) AS total_cities 
+        FROM dma_master dm ";
          if($division && $city == ""){
-            $sql .= "WHERE z.division_id = '$division';";
+            $sql .= "WHERE dm.division_id = '$division';";
             
          }else if($city != "" && $division != ""){
-            $sql .= "WHERE z.city_id = '$city';";
+            $sql .= "WHERE dm.city_id = '$city';";
          }
+        
+        // COUNT(DISTINCT(dm.city_id)) AS total_cities, 
+        
+
+        // "
+        // $sql = "SELECT SUM(z.population) AS total_no_population, 
+        // SUM(z.no_house_holds) AS total_no_house_holds, 
+        // SUM(z.no_house_coction) AS total_no_house_coction, 
+        // SUM(z.no_house_connection_replaced) AS total_no_house_connection_replaced, 
+        // SUM(z.no_metered_house_connections) AS total_no_metered_house_connections, 
+        // COUNT(DISTINCT(z.division_id)) AS total_division, 
+        // COUNT(DISTINCT(z.city_id)) AS total_cities, 
+        // COUNT(DISTINCT(z.id)) AS total_dma,
+        // (SELECT COUNT(id) FROM `jalsathi_word`) as total_jalasathi,
+        // ROUND(AVG(nrw), 2) AS nrw_average_value,
+        // (SELECT SUM(population) FROM zone_master WHERE no_house_holds = no_house_coction AND no_house_holds = no_metered_house_connections) AS beneficiary_population 
+        //  FROM zone_master z ";
+        //  if($division && $city == ""){
+        //     $sql .= "WHERE z.division_id = '$division';";
+            
+        //  }else if($city != "" && $division != ""){
+        //     $sql .= "WHERE z.city_id = '$city';";
+        //  }
+
         $result = $this->db->query($sql);
         $return = $result->getResult();
+        print_r($return);
+
         return $return;
     }
     public function getJalsathiOnDivisionAndCity($division,$city)

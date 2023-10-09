@@ -50,7 +50,7 @@
     <div class="row">
         <?php 
             // if(isset($alldmadata)){
-            //     print_r($alldmadata[0]->total_no_population);die;
+            //     print_r($alldmadata[0]->total_no_population);die; 
             // }
         ?>
         <div class="col-md-4">
@@ -92,7 +92,7 @@
                         <div class="d-flex justify-content-between">
                             <div class="flex-grow-1">
                                 <p class="text-uppercase fw-medium text-muted text-truncate fs-13">Population</p>
-                                <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdpopulation"><?= isset($alldmadata[0]->total_no_population) ? $alldmadata[0]->total_no_population : '0';?></span></h4>
+                                <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdpopulation"><?= isset($alldmadata[0]->dma_population) ? $alldmadata[0]->dma_population : '0';?></span></h4>
 
                             </div>
                             <div class="avatar-sm flex-shrink-0">
@@ -125,8 +125,8 @@
                         <div class="d-flex justify-content-between">
                             <div class="flex-grow-1">
                                 <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
-                                    Total Household</p>
-                                <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdhousehold"><?= isset($alldmadata[0]->total_no_house_holds) ? $alldmadata[0]->total_no_house_holds : '0';?></span></h4>
+                                    House Connection Scope</p>
+                                <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdhousehold"><?= isset($alldmadata[0]->house_connection_scope) ? $alldmadata[0]->house_connection_scope : '0';?></span></h4>
 
                             </div>
                             <div class="avatar-sm flex-shrink-0">
@@ -157,7 +157,7 @@
                         <div class="d-flex justify-content-between">
                             <div class="flex-grow-1">
                                 <p class="text-uppercase fw-medium text-muted text-truncate fs-13">House Connnection Completed</p>
-                                <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdhousecomplete"><?= isset($alldmadata[0]->total_no_house_connection_replaced) ? $alldmadata[0]->total_no_house_connection_replaced : '0';?></span></h4>
+                                <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdhousecomplete"><?= isset($alldmadata[0]->house_connection_progress) ? $alldmadata[0]->house_connection_progress : '0';?></span></h4>
 
                             </div>
                             <div class="avatar-sm flex-shrink-0">
@@ -181,7 +181,40 @@
             </div> <!-- end .h-100-->
 
         </div>
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+            <div class="h-100">
+                <div class="card card-animate">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div class="flex-grow-1">
+                                <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
+                                    Meter Connection Scope</p>
+                                <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdhousehold"><?= isset($alldmadata[0]->meter_connection_scope) ? $alldmadata[0]->meter_connection_scope : '0';?></span></h4>
 
+                            </div>
+                            <div class="avatar-sm flex-shrink-0">
+                                <span class="avatar-title blue-bg rounded fs-3">
+                                    <i class="bx bx-water"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div><!-- end card body -->
+                    <div class="animation-effect-6 text-success opacity-25 fs-18">
+                        <i class=" bx bxs-droplet-half"></i>
+                    </div>
+                    <div class="animation-effect-4 text-success opacity-25 fs-18">
+                        <i class=" bx bxs-droplet-half"></i>
+                    </div>
+                    <div class="animation-effect-3 text-success opacity-25 fs-18">
+                        <i class=" bx bxs-droplet-half"></i>
+                    </div>
+                </div><!-- end card -->
+
+            </div> <!-- end .h-100-->
+
+        </div> <!-- end col -->
         <div class="col-md-4">
             <div class="h-100">
                 <div class="card card-animate">
@@ -189,7 +222,7 @@
                         <div class="d-flex justify-content-between">
                             <div class="flex-grow-1">
                                 <p class="text-uppercase fw-medium text-muted text-truncate fs-13">Meter Connnection Completed </p>
-                                <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdmetercomplete"><?= isset($alldmadata[0]->total_no_metered_house_connections) ? $alldmadata[0]->total_no_metered_house_connections : '0';?></span></h4>
+                                <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdmetercomplete"><?= isset($alldmadata[0]->meter_connection_progress) ? $alldmadata[0]->meter_connection_progress : '0';?></span></h4>
 
                             </div>
                             <div class="avatar-sm flex-shrink-0">
