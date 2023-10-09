@@ -439,4 +439,19 @@ class LoginCityController extends WebController {
         }
         echo json_encode($res);
     }
+    public function filterNrwProgress() {
+        extract($_POST);
+        $res = "";
+        if ($revenue_id) {
+            $updateDivisionTable = $this->CityLoginModel->filterNrwprogress();
+            if ($updateDivisionTable) {
+                $res = array("res" => "success");
+            } else {
+                $res = array("res" => "failed");
+            }
+        } else {
+            $res = array("res" => "failed");
+        }
+        echo json_encode($res);
+    }
 }
