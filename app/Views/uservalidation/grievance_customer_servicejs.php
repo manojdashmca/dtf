@@ -10,14 +10,14 @@ function getGrievanceCustomerServicef() {
             console.log("data");
             const outputArray = data.map(item => [
                 item.id,
-                item.total_no_grievance_received,
-                item.no_of_grievenced_address,
+                item.grievance_name,
+                item.grivance_customer_name,
+                item.grivance_status,
+                item.register_date,
+                item.grivance_status,
                 item.resolved_with_in_time_limit,
                 item.resolved_after_time_limit,
-                item.grievance_via_247_cus_service,
-                item.grievance_via_jalsathi,
-                item.grievance_by_direct_visit_physical,
-                item.grievance_collected_date,
+                item.created_date,
             ]);
             document.getElementById("table-gridjs-gcs") && new gridjs.Grid({
 
@@ -28,28 +28,28 @@ function getGrievanceCustomerServicef() {
                         return gridjs.html('<span class="fw-semibold">' + e + "</span>")
                     }
                 }, {
-                    name: "TOTAL NOS. OF GRIEVANCE RECEIVED",
+                    name: "Grievance Name",
                     width: "250px"
                 }, {
-                    name: "NOS OF GRIEVENCED ADDRESSED",
+                    name: "Customer Name",
                     width: "250px"
                 }, {
-                    name: "RESOLVED WITH IN TIME LIMIT",
+                    name: "Grivance Via",
                     width: "300px"
                 }, {
-                    name: "RESOLVED AFTER TIME LIMIT",
+                    name: "Register Date",
                     width: "300px"
                 }, {
-                    name: "GRIEVANCE VIA 24 X 7 CUSTOMER SERVICE",
+                    name: "Grievance Status",
                     width: "250px"
                 },{
-                    name: "GRIEVANCE VIA JALSATHI",
+                    name: "Resolved With In Time Limit",
                     width: "300px"
                 }, {
-                    name: "GRIEVANCE BY DIRECT VISIT/ PHYSICAL",
+                    name: "Resolved After Time Limit",
                     width: "300px"
                 },{
-                    name: "COLLECTED DATE",
+                    name: "Created Date",
                     width: "300px"
                 }, {
                     name: "Actions",
@@ -102,7 +102,7 @@ $('#z_division_id_u').change(function () {
 $(document).on("submit", "#addgriveancecustomer", function () {
     $.post("addGrievanceCustomerServices", $(this).serialize(), function (data) {
         
-        if (data.res == "enterDivision") {
+        if (data.res == "enterDivision") { 
             Swal.fire(
                 'No Division',
                 'Please select a Division',
@@ -114,10 +114,10 @@ $(document).on("submit", "#addgriveancecustomer", function () {
                 'Please Enter City',
                 'error'
             )
-        } else if (data.res == "total_no_grievance_received") {
+        } else if (data.res == "grievance_name") {
             Swal.fire(
-                'No Grievance Received',
-                'Please Enter Total Number of Grievance Received',
+                'No Grievance Name',
+                'Please Enter a Grievance Name',
                 'error'
             )
         } else if (data.res == "exist") {

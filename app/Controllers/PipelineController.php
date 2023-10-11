@@ -702,20 +702,19 @@ class PipelineController extends WebController
             $res = array("res" => "enterDivision");
         } elseif ($z_citys == "") {
             $res = array("res" => "enterCity");
-        } elseif ($total_no_grievance_received == "") {
-            $res = array("res" => "total_no_grievance_received");
+        } elseif ($grievance_name == "") {
+            $res = array("res" => "grievance_name");
         }else {
             
-            $no_of_grievenced_address = $no_of_grievenced_address != NULL ? $no_of_grievenced_address : "0";
+            $grievance_name = $grievance_name != NULL ? $grievance_name : "";
+            $grivance_customer_name = $grivance_customer_name != NULL ? $grivance_customer_name : "";
+            $grivance_via = $grivance_via != NULL ? $grivance_via : "0";
+            $register_date = $register_date != NULL ? $register_date : "";
+            $grivance_status = $grivance_status != NULL ? $grivance_status : "0";
             $resolved_with_in_time_limit = $resolved_with_in_time_limit != NULL ? $resolved_with_in_time_limit : "0";
-            $resolved_after_time_limit = $resolved_after_time_limit != NULL ? $resolved_after_time_limit : "0";
-            $grievance_via_247_cus_service = $grievance_via_247_cus_service != NULL ? $grievance_via_247_cus_service : "0";
-            $grievance_via_jalsathi = $grievance_via_jalsathi != NULL ? $grievance_via_jalsathi : "0";
-            $grievance_by_direct_visit_physical = $grievance_by_direct_visit_physical != NULL ? $grievance_by_direct_visit_physical : "0";
-            $grievance_collected_date = $grievance_collected_date != NULL ? $grievance_collected_date : "";
+            $resolved_after_time_limit = $resolved_after_time_limit != NULL ? $resolved_after_time_limit : "";
 
-            
-                $insertGrievanceCu = $this->pipelineModel->addGrievanceandCustomerServicTable($z_division_id,$z_citys,$total_no_grievance_received,$no_of_grievenced_address,$resolved_with_in_time_limit,$resolved_after_time_limit,$grievance_via_247_cus_service,$grievance_via_jalsathi,$grievance_by_direct_visit_physical,$grievance_collected_date);
+                $insertGrievanceCu = $this->pipelineModel->addGrievanceandCustomerServicTable($z_division_id,$z_citys,$grievance_name,$grivance_customer_name,$grivance_via,$register_date,$grivance_status,$resolved_with_in_time_limit,$resolved_after_time_limit);
                 if ($insertGrievanceCu) {
                     $res = array("res" => "success");
                 } else {
