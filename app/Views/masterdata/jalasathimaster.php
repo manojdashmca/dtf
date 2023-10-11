@@ -40,16 +40,16 @@
                                     <th>WARD NO</th>
                                     <th>NAME OF THE MSG/SHG</th>
                                     <th>JALASATHI NAME</th>
-                                    <th>PAN NO</th>
+                                    <!-- <th>PAN NO</th>
                                     <th>BANK ACCOUNT NO</th>
                                     <th>IFSC CODE</th>
-                                    <th>BANK NAME AND BRANCH</th>
+                                    <th>BANK NAME AND BRANCH</th> -->
                                     <th>COLLECTION BY JALASATHI(MPOS)</th>
-                                    <th>5% Incentive From water charges</th>
-                                    <th>No New Water Supply Connection</th>
-                                    <th>Total Amount of new Water Connection (*Rs 100/)</th>
+                                    <!-- <th>5% Incentive From water charges</th> -->
+                                    <!-- <th>No New Water Supply Connection</th>
+                                    <th>Total Amount of new Water Connection (*Rs 100/)</th> -->
                                     <th>Total No of Water Quality Tests</th>
-                                    <th>Water Quality tests (Nos of test * Rs.20/)</th>
+                                    <!-- <th>Water Quality tests (Nos of test * Rs.20/)</th> -->
                                     <th>Total Incentive of Jalasathi (Rs.)</th>
                                 </tr>
                             </thead>
@@ -67,16 +67,9 @@
                                         <td><?= $jalasathi_city->word_names ?></td>
                                         <td><?= $jalasathi_city->msg_shg_name ?></td>
                                         <td><?= $jalasathi_city->jalasathi_name ?></td>
-                                        <td><?= $jalasathi_city->pan_no ?></td>
-                                        <td><?= $jalasathi_city->bank_account_no ?></td>
-                                        <td><?= $jalasathi_city->ifsc_code ?></td>
-                                        <td><?= $jalasathi_city->bank_name_branch ?></td>
+                                        
                                         <td><?= $jalasathi_city->collection_by_jalasathi ?></td>
-                                        <td><?= $jalasathi_city->ibu_5p_incentive_from_water_charges ?></td>
-                                        <td><?= $jalasathi_city->ibu_no_new_water_supply_connection ?></td>
-                                        <td><?= $jalasathi_city->ibu_total_amt_of_new_water_con ?></td>
                                         <td><?= $jalasathi_city->ibu_total_no_of_water_quality_testa ?></td>
-                                        <td><?= $jalasathi_city->ibu_water_quality_tests ?></td>
                                         <td><?= $jalasathi_city->total_incentive_of_jalasathi ?></td>
 
                                     </tr>
