@@ -83,55 +83,111 @@
                                                         </select>
                                                     </div>
                                                 </div><!-- end col -->
-
                                                 <div class="col-xl-12">
+                                                    <div class="mb-3">
+                                                        <label for="cleave-date" class="form-label">Grievance Name<span class="text-danger">*</span> </label>
+                                                        <input type="text" class="form-control" name="grievance_name" id="grievance_name" required>
+                                                    </div>
+                                                </div><!-- end col -->
+                                                <div class="col-xl-12">
+                                                    <div class="mb-3">
+                                                        <label for="cleave-date" class="form-label">Customer Name<span class="text-danger">*</span> </label>
+                                                        <input type="text" class="form-control" name="grivance_customer_name" id="grivance_customer_name" required>
+                                                    </div>
+                                                </div><!-- end col -->
+                                                <div class="col-xl-6 col-sm-12">
+                                                    <div class="mb-3">
+                                                        <label for="cleave-date" class="form-label">Grivance Via<span class="text-danger">*</span> </label>
+                                                        <select name="grivance_via" id="grivance_via" class="form-control" required>
+                                                        <option >Select Grivance Via</option>
+                                                            <option value="24x7 Customer Service">24 X 7 CUSTOMER SERVICE</option>
+                                                            <option value="Jalsathi">JALSATHI</option>
+                                                            <option value="Direct Visit / Physical">DIRECT VISIT/ PHYSICAL</option>
+                                                        </select>
+                                                    </div>
+                                                </div><!-- end col -->
+                                                <div class="col-xl-6 col-sm-12">
+                                                    <div class="mb-3">
+                                                        <label for="cleave-date" class="form-label">Register Date<span class="text-danger">*</span> </label>
+                                                        <input type="date" class="form-control" name="register_date" id="register_date" required>
+                                                    </div>
+                                                </div><!-- end col -->
+                                                <div class="col-xl-6 col-sm-12">
+                                                    <div class="mb-3">
+                                                        <label for="cleave-date" class="form-label">Grievance Status<span class="text-danger">*</span> </label>
+                                                        <select name="grivance_status" id="grivance_status" class="form-control" required>
+                                                        <option>Select Status</option>
+                                                            <option value="1">Complete</option>
+                                                            <option value="0">Pending</option>
+                                                        </select>
+                                                    </div>
+                                                </div><!-- end col -->
+
+
+                                                <div class="col-xl-6 col-sm-12">
+                                                    <div class="mb-3">
+                                                        <label for="cleave-date" class="form-label">Resolved With In Time Limit<span class="text-danger">*</span> </label>
+                                                        <input type="text" class="form-control" name="resolved_with_in_time_limit" id="resolved_with_in_time_limit">
+                                                    </div>
+                                                </div><!-- end col -->
+
+                                                <div class="col-xl-6 col-sm-12">
+                                                    <div class="mb-3">
+                                                        <label for="cleave-date" class="form-label">Resolved After Time Limit<span class="text-danger">*</span> </label>
+                                                        <input type="text" class="form-control" name="resolved_after_time_limit" id="resolved_after_time_limit">
+                                                    </div>
+                                                </div><!-- end col -->
+
+
+
+                                                <!-- <div class="col-xl-12">
                                                     <div class="mb-3">
                                                         <label for="cleave-date" class="form-label">TOTAL NOS. OF GRIEVANCE RECEIVED <span class="text-danger">*</span> </label>
                                                         <input type="text" class="form-control" name="total_no_grievance_received" id="total_no_grievance_received">
                                                     </div>
-                                                </div><!-- end col -->
+                                                </div>
                                                 <div class="col-xl-6">
                                                     <div class="mb-3">
                                                         <label for="cleave-date" class="form-label">NOS OF GRIEVENCED ADDRESSED<span class="text-danger">*</span> </label>
                                                         <input type="text" class="form-control" name="no_of_grievenced_address" id="no_of_grievenced_address">
                                                     </div>
-                                                </div><!-- end col -->
+                                                </div>
                                                 <div class="col-xl-6">
                                                     <div class="mb-3">
                                                         <label for="cleave-date" class="form-label">RESOLVED WITH IN TIME LIMIT <span class="text-danger">*</span> </label>
                                                         <input type="text" class="form-control" name="resolved_with_in_time_limit" id="resolved_with_in_time_limit">
                                                     </div>
-                                                </div><!-- end col -->
+                                                </div>
                                                 <div class="col-xl-6">
                                                     <div class="mb-3">
                                                         <label for="cleave-date" class="form-label">RESOLVED AFTER TIME LIMIT <span class="text-danger">*</span> </label>
                                                         <input type="text" class="form-control" name="resolved_after_time_limit" id="resolved_after_time_limit">
                                                     </div>
-                                                </div><!-- end col -->
+                                                </div>
                                                 <div class="col-xl-6">
                                                     <div class="mb-3">
                                                         <label for="cleave-date" class="form-label">GRIEVANCE VIA 24 X 7 CUSTOMER SERVICE <span class="text-danger">*</span> </label>
                                                         <input type="text" class="form-control" name="grievance_via_247_cus_service" id="grievance_via_247_cus_service">
                                                     </div>
-                                                </div><!-- end col -->
+                                                </div>
                                                 <div class="col-xl-6">
                                                     <div class="mb-3">
                                                         <label for="cleave-date" class="form-label">GRIEVANCE VIA JALSATHI <span class="text-danger">*</span> </label>
                                                         <input type="text" class="form-control" name="grievance_via_jalsathi" id="grievance_via_jalsathi">
                                                     </div>
-                                                </div><!-- end col -->
+                                                </div>
                                                 <div class="col-xl-6">
                                                     <div class="mb-3">
                                                         <label for="cleave-date" class="form-label">GRIEVANCE BY DIRECT VISIT/ PHYSICAL <span class="text-danger">*</span> </label>
                                                         <input type="text" class="form-control" name="grievance_by_direct_visit_physical" id="grievance_by_direct_visit_physical">
                                                     </div>
-                                                </div><!-- end col -->
+                                                </div>
                                                 <div class="col-xl-6">
                                                     <div class="mb-3">
                                                         <label for="cleave-date" class="form-label">COLLECTED DATE <span class="text-danger">*</span> </label>
                                                         <input type="date" class="form-control" name="grievance_collected_date" id="grievance_collected_date">
                                                     </div>
-                                                </div><!-- end col -->
+                                                </div> -->
                                             </div><!-- end row -->
                                         </div>
                                     </div><!-- end card-body -->

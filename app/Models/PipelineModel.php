@@ -612,7 +612,46 @@ class PipelineModel extends Model
         $result = $this->db->query($sql);
         $return = $result->getRow();
         return $return;
-        // $this->db->close();
+        $this->db->close();
+    }
+
+    public function getGrivanceFilter($division,$city,$grivance_year,$dataArray)
+    {
+         if($dataArray != "0"){
+            if(($dataArray['grivance_month'] != "0") && ($dataArray['filter_grievance_week'] != "0")) {
+                $grivance_month_week = "AND MONTH(register_date) = '$dataArray[grivance_month]' AND DAY(register_date) BETWEEN $dataArray[filter_grievance_week]";
+             }else{
+                $grivance_month_week ="";
+             }
+         }else{
+            $grivance_month_week ="";
+         }
+        $sql = "SELECT
+        COUNT(*) AS total_no_of_grievance_received,
+        SUM(CASE WHEN grivance_via = 'Jalsathi' THEN 1 ELSE 0 END) AS count_grivance_via_jalsathi,
+        SUM(CASE WHEN grivance_via = '24x7 Customer Service' THEN 1 ELSE 0 END) AS count_grivance_via_customerservice,
+        SUM(CASE WHEN grivance_via = 'Direct Visit / Physical' THEN 1 ELSE 0 END) AS count_grivance_via_visit,
+        SUM(CASE WHEN grivance_status = '0' THEN 1 ELSE 0 END) AS count_pending_griveance,
+        SUM(CASE WHEN grivance_status = '1' THEN 1 ELSE 0 END) AS count_complete_griveance
+    FROM
+        grievance_customer_service_master ";
+
+        if ($grivance_year != "0") { 
+            $grivance_yesrd = " AND YEAR(register_date) = '$grivance_year'";
+        } else {
+            $grivance_yesrd = ""; 
+        }
+
+        if ($division && $city == "") {
+            $sql .= "WHERE division_id = '$division' $grivance_yesrd $grivance_month_week ;"; 
+        } else if ($city != "" && $division != "") {
+            $sql .= "WHERE city_id = '$city' $grivance_yesrd $grivance_month_week ;"; 
+        }
+
+        $result = $this->db->query($sql);
+        $return = $result->getRow();
+        return $return;
+        $this->db->close();
     }
 
     public function getCityJalasathi()
@@ -675,9 +714,9 @@ class PipelineModel extends Model
         return $return;
     }
 
-    public function addGrievanceandCustomerServicTable($z_division_id,$z_citys,$total_no_grievance_received,$no_of_grievenced_address,$resolved_with_in_time_limit,$resolved_after_time_limit,$grievance_via_247_cus_service,$grievance_via_jalsathi,$grievance_by_direct_visit_physical,$grievance_collected_date)
+    public function addGrievanceandCustomerServicTable($z_division_id,$z_citys,$grievance_name,$grivance_customer_name,$grivance_via,$register_date,$grivance_status,$resolved_with_in_time_limit,$resolved_after_time_limit)
     {
-        $sql = "INSERT INTO grievance_customer_service_master(division_id,city_id,total_no_grievance_received,no_of_grievenced_address,resolved_with_in_time_limit,resolved_after_time_limit,grievance_via_247_cus_service,grievance_via_jalsathi,grievance_by_direct_visit_physical,grievance_collected_date,created_date)VALUES('$z_division_id','$z_citys','$total_no_grievance_received','$no_of_grievenced_address','$resolved_with_in_time_limit','$resolved_after_time_limit','$grievance_via_247_cus_service','$grievance_via_jalsathi','$grievance_by_direct_visit_physical','$grievance_collected_date',NOW());";
+        $sql = "INSERT INTO grievance_customer_service_master(division_id,city_id,grievance_name,grivance_customer_name,grivance_via,register_date,grivance_status,resolved_with_in_time_limit,resolved_after_time_limit,created_date)VALUES('$z_division_id','$z_citys','$grievance_name','$grivance_customer_name','$grivance_via','$register_date','$grivance_status','$resolved_with_in_time_limit','$resolved_after_time_limit',NOW());";
         $result = $this->db->query($sql);
 
         return $result;
