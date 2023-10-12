@@ -43,7 +43,7 @@
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sliderProgressdata" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sliderProgressdata">
                         <i class="bi bi-hdd-stack"></i> 
-                        <span data-key="t-advance-ui">Progress Data</span>
+                        <span data-key="t-advance-ui">Progress Update</span>
                     </a>
                     <div class="collapse menu-dropdown" id="sliderProgressdata">
                         <ul class="nav nav-sm flex-column">
@@ -52,7 +52,7 @@
                                 <a href="/dashboard" class="nav-link" data-key="t-sweet-alerts">Construction</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/getPipeMeterConnection" class="nav-link" data-key="t-sweet-alerts">House Connection</a>
+                                <a href="/getPipeMeterConnection" class="nav-link active" data-key="t-sweet-alerts">House Connection</a>
                             </li>
                             <li class="nav-item">
                                 <a href="getAlljalsathi?pager=<?= $pagerid ?>&division=<?= $linkdiv ?>&city=<?= $linkcity ?>&transactionid=<?= $session->get('trnid') ?>" class="nav-link" data-key="t-sweet-alerts">Jalsathi</a>
