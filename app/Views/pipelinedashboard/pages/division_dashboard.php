@@ -2077,14 +2077,14 @@
 
 							<div class="row">
 
-								<div class="col-sm-4 col-6">
+								<!--<div class="col-sm-4 col-6">
 									<div class="map-box2">
 										<a href="#" class="content">
-											<h3 id="h_no_city"><?= $allstataedata[0]->total_cities ?></h3>
+											<h3 id="h_no_city"><?= //$allstataedata[0]->total_cities ?></h3>
 											<p>Nos. of City</p>
 										</a>
 									</div>
-								</div>
+								</div>-->
 								<div class="col-sm-4 col-6">
 									<div class="map-box2">
 

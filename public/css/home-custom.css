@@ -282,7 +282,7 @@ section.map-section .nav-tabs .nav-link.active {
     text-align: center;
     padding: 10px;
     background: #eff5ff;
-    height: 90px;
+    /* height: 90px; */
     position: relative;
     box-shadow: 0 0 8px #00000036;
     text-decoration: none;
