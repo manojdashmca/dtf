@@ -207,6 +207,9 @@ $routes->match(['get', 'post'], 'waterQualityPage', 'PipelineController::waterQu
 $routes->match(['get', 'post'], 'getWaterQualityTable', 'PipelineController::getWaterQualityTable');
 $routes->match(['get', 'post'], 'addWaterQualitys', 'PipelineController::addWaterQualitys');
 
+// Dma View 
+$routes->match(['get', 'post'], 'getDmaView', 'PipelineController::getDmaView');
+
 //----------------------------------------
 
 /*

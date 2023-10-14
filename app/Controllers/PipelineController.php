@@ -787,4 +787,16 @@ class PipelineController extends WebController
         echo json_encode($res);
     }
 
+    public function getDmaView()
+    {
+        try {
+            extract($_POST);
+            $dmaeditdata = $this->pipelineModel->getDmainfoOnDmaid($dma_view_id);
+            return json_encode($dmaeditdata);
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            return json_encode(['error' => 'An error occurred']);
+        }
+    }
+
 }
