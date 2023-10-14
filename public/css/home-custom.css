@@ -91,12 +91,11 @@ html {
 section.map-section {
     width: 100%;
     float: left;
-    /* background: url(../images/rmc-bg.png); */
+    background: linear-gradient(175deg, #e0ebf5, white);
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 60px 0;
+    padding: 0 0 60px;
     min-height: 80vh;
-    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -239,8 +238,21 @@ section.map-section .nav-tabs .nav-link.active {
     margin-bottom: 6px;
     color: #fff;
 }
-.map-con .content  h6 {
-    margin-bottom: 0;
+.map-box2 .content {
+    width: 100%;
+    border: 1px solid #eff5ff;
+    float: right;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    background: #eff5ff;
+    /* height: 90px; */
+    position: relative;
+    box-shadow: 0 0 8px #00000036;
+    text-decoration: none;
+    color: #4c4c4c;
+    text-align: left;
+    min-height: 142px;
 }
 .explore-more {
     display: inline-block;
@@ -270,9 +282,14 @@ section.map-section .nav-tabs .nav-link.active {
 
 
 .map-box2 {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     display: inline-block;
     width: 100%;
+}
+.icon-1 {
+    position: absolute;
+    right: 6px;
+    top: 6px;
 }
 .map-box2 .content {
     width: 100%;
@@ -281,18 +298,25 @@ section.map-section .nav-tabs .nav-link.active {
     border-radius: 10px;
     text-align: center;
     padding: 10px;
-    background: #eff5ff;
-    height: 90px;
+    background: #fffaf2;
+    /* height: 90px; */
     position: relative;
-    box-shadow: 0 0 8px #00000036;
+    box-shadow: 0 0 3px #00000036;
     text-decoration: none;
     color: #4c4c4c;
+    text-align: left;
 }
 .map-box2 .content h3 {
-    font-size: 30px;
+    font-size: 26px;
     color: #1b4485;
     margin-bottom: 2px;
     font-weight: 600;
+    font-weight: 700;
+}
+.map-box2 .content h5 {
+    font-size: 13px;
+    margin-bottom: 0;
+    color: #000;
 }
 .map-box2 .content p {
     margin-bottom: 0;
@@ -315,7 +339,9 @@ section.map-section .nav-tabs .nav-link.active {
     padding: 10px;
     position: relative;
 }
-
+.map-box2 .content h4 {
+    font-size: 16px!important;
+}
 
 .datainfo h6 {
     font-weight: 400!important;
