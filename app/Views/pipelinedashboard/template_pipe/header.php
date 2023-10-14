@@ -141,7 +141,10 @@
                             </div>
                         </a>
                     </div>
-                    <div class="drink-from-tap">
+                    <div class="pull-right ">
+                      <a href="/login" class="btn btn-info btn-sm">Login</a>
+                    </div>
+                    <div class="drink-from-tap">                        
                         <a href="#">
                             <img src="images/drink-from-tap.png" alt="" title="">
                         </a>

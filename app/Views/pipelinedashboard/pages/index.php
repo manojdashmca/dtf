@@ -2,9 +2,9 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-1"></div>
-			<div class="col-lg-11"><a href="/login" class="btn btn-info btn-sm">Login</a>
-			<!-- <a href="logincity" class="btn btn-info ml-1 btn-sm text-white">CITY USER</a> -->
-		</div>
+			<div class="col-lg-11">
+				<!-- <a href="logincity" class="btn btn-info ml-1 btn-sm text-white">CITY USER</a> -->
+			</div>
 		</div>
 		<div class="row">
 
@@ -2057,9 +2057,11 @@
 
 
 							<div class="row mb-2">
-								<div class="col-6 text-info">
-									<h4>STATE : <span>ODISHA</span></h4>
+								<div class="col-6 ">
+									<!--<h4>STATE : <span class="text-info"> ODISHA</span></h4>-->
+									<h4>TOTAL CITY: <span class="text-info">16</span></h4>
 								</div>
+
 								<div class="col-6">
 									<div>
 										<label for="" style="font-size: 20px;" class="text-info"><b>DIVISION</b> : </label>
@@ -2075,102 +2077,103 @@
 
 								</div>
 							</div>
-
 							<div class="row">
-								<div class="col-sm-4 col-6" id="h_no_division">
-									<div class="map-box2">
-										<a href="division-dashboard" class="content">
-											<h3><?php echo $allstataedata[0]->total_division; ?></h3>
-											<p>No. of Division</p>
-										</a>
-									</div>
-								</div>
-								<div class="col-sm-4 col-6">
-									<div class="map-box2">
-										<a href="#" class="content">
-											<h3 id="h_no_city"><?= $allstataedata[0]->total_cities ?></h3>
-											<p>Nos. of City</p>
-										</a>
-									</div>
-								</div>
-								<div class="col-sm-4 col-6">
-									<div class="map-box2">
+								<div class="col-md-8">
+									<div class="row">
 
-										<a href="#" class="content">
-											<h3 id="h_no_dma"><?= $allstataedata[0]->total_dma ?></h3>
-											<p>Nos. of DMAs</p>
-										</a>
+										<div class="col-6">
+											<div class="map-box2">
+												<a href="#" class="content">
+													<h4>DMA with DFT</h4>
+													<h3>40%</h3>
+													<div class="progress d-inline-block w-100">
+														<div class="progress-bar progress-bar-striped progress-bar-animated  h-100" style="width:40%;"></div>
+													</div>
+													<h5>Total DMA: <span id="h_no_dma"><?= $allstataedata[0]->total_dma ?></span></h5>
+													<h5>DMA With DFT : <soan>157</soan></h5>	
+												</a>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="map-box2">
+												<a href="#" class="content">
+													<p>Avg. NRW</p>
+													<h3 id="h_no_nrw"><?= $allstataedata[0]->nrw_average_value ?>%</h3>
+													<div class="progress d-inline-block w-100">
+														<div class="progress-bar progress-bar-striped progress-bar-animated h-100" style="width:8.11%;"></div>
+													</div>
+												</a>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="map-box2">
+												<a href="#" class="content">
+													<h4>Population with DFT</h4>
+													<h3>40%</h3>
+													<div class="progress d-inline-block w-100">
+														<div class="progress-bar progress-bar-striped progress-bar-animated  h-100" style="width:40%;"></div>
+													</div>
+													<h5>Total Population: <span id="h_population"><?= $allstataedata[0]->total_no_population ?></span></h5>
+													<h5>Population With DFT : <span id="h_be_population"><?= $allstataedata[0]->beneficiary_population ?></span></h5>	
+												</a>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="map-box2">
+												<a href="#" class="content">
+													<h4>Connection Achieved</h4>
+													<h3>40%</h3>
+													<div class="progress d-inline-block w-100">
+														<div class="progress-bar progress-bar-striped progress-bar-animated  h-100" style="width:40%;"></div>
+													</div>
+													<h5>House Connection Target: <span id="h_household"><?= $allstataedata[0]->house_connection_scope ?></span></h5>
+													<h5>Connection Achieved : <span id="h_h_complete"><?= $allstataedata[0]->house_connection_progress ?></span></h5>	
+												</a>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="map-box2">
+												<a href="#" class="content">
+													<h4>Metered</h4>
+													<h3>40%</h3>
+													<div class="progress d-inline-block w-100">
+														<div class="progress-bar progress-bar-striped progress-bar-animated  h-100" style="width:40%;"></div>
+													</div>
+													<h5>Metered:<span id="h_m_complete"><?= $allstataedata[0]->meter_connection_progress ?></span></h5>	
+												</a>
+											</div>
+										</div>
+
+										<div class="col-6">
+											<div class="map-box2">
+												<a href="#" class="content">
+													<h3 id="h_jalasathi"><?= $allstataedata[0]->total_jalasathi ?></h3>
+													<p>Nos. of Jalsathi</p>
+												</a>
+											</div>
+										</div>
+										<div class="col-sm-4 col-6 construction_progress2">
+											<div class="map-box2">
+												<a href="#" class="content bg-info text-white">
+													<h3 id="">45%</h3>
+													<p>Construction Progress</p>
+												</a>
+											</div>
+										</div>
 									</div>
 								</div>
-								<div class="col-sm-4 col-6">
-									<div class="map-box2">
-										<a href="#" class="content">
-											<h3 id="h_no_nrw"><?= $allstataedata[0]->nrw_average_value ?></h3>
-											<p>Avg. NRW</p>
-										</a>
-									</div>
-								</div>
-								<div class="col-sm-4 col-6">
-									<div class="map-box2">
-										<a href="#" class="content">
-											<h3 id="h_population"><?= $allstataedata[0]->total_no_population ?></h3>
-											<p>Population</p>
-										</a>
-									</div>
-								</div>
-								<div class="col-sm-4 col-6">
-									<div class="map-box2">
-										<a href="#" class="content">
-											<h3 id="h_be_population"><?= $allstataedata[0]->beneficiary_population ?></h3>
-											<p>Beneficiary Population</p>
-										</a>
-									</div>
-								</div>
-								<div class="col-sm-4 col-6">
-									<div class="map-box2">
-										<a href="#" class="content">
-											<h3 id="h_household"><?= $allstataedata[0]->house_connection_scope ?></h3>
-											<p>Nos. of House Connection Scope</p>
-										</a>
-									</div>
-								</div>
-								<div class="col-sm-4 col-6">
-									<div class="map-box2">
-										<a href="#" class="content">
-											<h3 id="h_h_complete"><?= $allstataedata[0]->house_connection_progress ?></h3>
-											<p>House connection Completed</p>
-										</a>
-									</div>
-								</div>
-								<div class="col-sm-4 col-6">
-									<div class="map-box2">
-										<a href="nos-of-meter-connection-completed.html" class="content">
-											<h3 id="h_m_complete"><?= $allstataedata[0]->meter_connection_progress ?></h3>
-											<p>Nos. of Meter connection Completed</p>
-										</a>
-									</div>
-								</div>
-								<div class="col-sm-4 col-6">
-									<div class="map-box2">
-										<a href="#" class="content">
-											<h3 id="h_jalasathi"><?= $allstataedata[0]->total_jalasathi ?></h3>
-											<p>Nos. of Jalsathi</p>
-										</a>
-									</div>
-								</div>
-								<div class="col-sm-4 col-6 construction_progress2">
-									<div class="map-box2">
-										<a href="#" class="content bg-info text-white">
-											<h3 id="">45%</h3>
-											<p>Construction Progress</p>
-										</a>
+								<div class="col-md-4">
+									<div class="map-right-image">
+
 									</div>
 								</div>
 							</div>
 
+
+
 						</div>
 
-						<?php for ($x = 0; $x < count($getall); $x++) { ?> 
+						<?php for ($x = 0; $x < count($getall); $x++) { ?>
 							<div class="carousel-item">
 								<div class="statistics-sec">
 									<h3>DIVISION: <span><?= $getall[$x]['division_name']; ?></span></h3>
@@ -2321,7 +2324,7 @@
 																</div>
 																<div class="row">
 																	<div class="col-md-12 text-center">
-																		
+
 																	</div>
 																</div>
 															</div>
