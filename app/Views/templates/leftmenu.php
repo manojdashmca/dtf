@@ -77,28 +77,20 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarTables" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
-                        <i class="bx bx-droplet"></i> <span data-key="t-tables">Organiser</span>
+                    <a class="nav-link menu-link" href="#sliderProgressdataentry" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sliderProgressdataentry">
+                        <i class="bi bi-hdd-stack"></i> 
+                        <span data-key="t-advance-ui">Progress Entry</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarTables">
+                    <div class="collapse menu-dropdown" id="sliderProgressdataentry">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="/configuration" class="nav-link" data-key="t-sweet-alerts">Construction</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/component-master" class="nav-link" data-key="t-basic-tables">Component Master</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/task-master" class="nav-link" data-key="t-basic-tables">Task Master</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/sub-task-master" class="nav-link" data-key="t-grid-js">Subtask Master</a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="/progress-entry" class="nav-link" data-key="t-grid-js">Progress Entry</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/addNewdma" class="nav-link" data-key="t-grid-js">Add New Dma/Zone</a>
+                                <a href="/addNewdma" class="nav-link" data-key="t-grid-js">Dma/Zone</a>
                             </li>
                             <li class="nav-item">
                                 <a href="pageJalasathi" class="nav-link" data-key="t-sweet-alerts">Jalasathi</a>
@@ -112,23 +104,12 @@
                             <li class="nav-item">
                                 <a href="/waterQualityPage" class="nav-link" data-key="t-sweet-alerts">Water Quality</a>
                             </li>
-                            
-                            <li class="nav-item">
-                                <a href="pipe-divisions-master" class="nav-link" data-key="t-basic-tables">Division</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="cityTablePage" class="nav-link" data-key="t-basic-tables">Cities</a>
-                            </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link" data-key="t-sweet-alerts">Photogallery</a>
                             </li>
+                           
                         </ul>
                     </div>
-                </li>
-                <li class="nav-item">
-                    <a href="/project-clearance" class="nav-link menu-link" > 
-                        <i class="bi bi-briefcase"></i> <span data-key="t-two-column">Project Clearance/Issues</span> 
-                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link menu-link">
@@ -140,6 +121,41 @@
                         <i class="bi bi-people"></i> <span data-key="t-two-column">Review Meeting</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarTables" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
+                        <i class="bx bx-droplet"></i> <span data-key="t-tables">Organiser</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarTables">
+                        <ul class="nav nav-sm flex-column">
+                            
+                            <li class="nav-item">
+                                <a href="/component-master" class="nav-link" data-key="t-basic-tables">Component Master</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/task-master" class="nav-link" data-key="t-basic-tables">Task Master</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/sub-task-master" class="nav-link" data-key="t-grid-js">Subtask Master</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a href="/addNewdma" class="nav-link" data-key="t-grid-js">Add New Dma/Zone</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pipe-divisions-master" class="nav-link" data-key="t-basic-tables">Division</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="cityTablePage" class="nav-link" data-key="t-basic-tables">Cities</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="/project-clearance" class="nav-link menu-link" > 
+                        <i class="bi bi-briefcase"></i> <span data-key="t-two-column">Project Clearance/Issues</span> 
+                    </a>
+                </li>
+                
             </ul>
         </div>
         <!-- Sidebar -->
