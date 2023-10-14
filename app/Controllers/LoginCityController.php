@@ -134,6 +134,42 @@ class LoginCityController extends WebController {
 
         $this->data['allJalasathifilter'] = $this->pipelineModel->getJalsathiOnDivisionAndCity($division,$city);
 
+        $division = $this->request->getVar('division');       
+        $city = $this->request->getVar('city');
+        $grivance_year = $this->request->getVar('filter_grievance_year');
+        $grivance_month = $this->request->getVar('filter_grievance_month');
+        $grivance_week = $this->request->getVar('filter_grievance_week');
+
+        if((!empty($grivance_month)) && (empty($grivance_year))){
+            echo '<script>alert("Please Select a Year First")</script>'; 
+        }
+
+        $this->data['city'] = $city;
+        $this->data['division'] = $division;
+        $this->data['filter_grievance_year'] = $grivance_year;
+        $this->data['filter_grievance_month'] = $grivance_month;
+        $this->data['filter_grievance_week'] = $grivance_week;
+
+        $dataArray = array(
+            "grivance_month" => isset($grivance_month) ? $grivance_month : '0',
+            "filter_grievance_week" => isset($grivance_week) ? $grivance_week : '0'
+        );
+
+        // $citydropdown = [];
+        // if (!empty($division)) {
+        //     $citydropdown = $this->pipelineModel->getCityOnDivision($division);
+        // }
+        // $this->data['citydropdown'] = $citydropdown;
+        // $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
+
+
+        if(!empty($grivance_year)){
+            
+            $this->data['filtergrievance'] = $this->pipelineModel->getGrivanceFilter($division,$city,$grivance_year,$dataArray);
+        }else{
+            $this->data['filtergrievance'] = $this->pipelineModel->getGrivanceFilter($division,$city,$grivance_year = "0",$dataArray = "0");
+        }
+
         return view('templates/header', $this->data)
                 . view('logincity/getjalasathi', $this->data)
                 . view('templates/footer', $this->data);
