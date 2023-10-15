@@ -1,4 +1,35 @@
+<style>
+.map-right-image {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 3px #00000036;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+.map-right-image img {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.header-bottom-img {
+    margin-top: -1px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 30px;
+}
+.map-right-image.d-flex.h-100 {
+    height: 93%!important;
+}
+.map-box2 .content .progress.d-inline-block.w-100 {
+    height: 10px;
+}
+</style>
+
 <section id="carouselExampleIndicators" class="map-section carousel slide" data-ride="carousel">
+	<div class="header-bottom-img">
+		<img src="images/header-botom.png" alt="" class="w-100">
+	</div>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-1"></div>
@@ -8,7 +39,7 @@
 		</div>
 		<div class="row">
 
-			<div class="col-md-5">
+			<div class="col-md-4">
 				<div class="left-map carousel-indicators" data-aos="fade-in">
 					<!--<select class="form-control">
 								<option>Select RMC Center </option>
@@ -2045,29 +2076,31 @@
 								c-0.089,0.212-0.106,0.441-0.106,0.741v5.155h-1.553V-15.149z"></path>
 						</g>
 					</svg>
+					<div class="back-btn construction_progress1" style="position: absolute; bottom:82px; right:0; left: unset;">
+		<a href="pipe-dashboard" class="btn btn-primary p-0 avatar-sm rounded-circle" data-bs-toggle="tooltip" data-bs-title="Back to Dashboard" style="height: 5rem;
+    width: 7rem;font-size: smaller;">
+			<div class="avatar-title rounded-circle">
+				<i>Construction <br> Progress <br> 45%</i>
+			</div>
+		</a>
+	</div>
 				</div>
 			</div>
-			<div class="col-md-7">
+			<div class="col-md-8">
 
 				<div class="map-right" data-aos="fade-in">
 					<div class="carousel-inner">
 						<div class="carousel-item active">
-
-
-
-
 							<div class="row mb-2">
-								<div class="col-6 ">
+								<div class="col-md-6">
 									<!--<h4>STATE : <span class="text-info"> ODISHA</span></h4>-->
 									<h4>TOTAL CITY: <span class="text-info">16</span></h4>
 								</div>
 
-								<div class="col-6">
-									<div>
-										<label for="" style="font-size: 20px;" class="text-info"><b>DIVISION</b> : </label>
-
+								<div class="col-md-6">
+									<div class="float-right d-flex" style="align-items: center;">
+										<h4 for="" style="margin-bottom:0; margin-right: 7px;" class=" h-100">DIVISION: </h4>
 										<select name='divisions_home_all' id='divisions_home_all' class="form-control" style="max-width: 200px;display: inline-block;">
-
 											<option value="">Select Division</option>
 											<?php foreach ($alldivisionname as $option_all) : ?>
 												<option value="<?= $option_all->id ?>"><?= $option_all->division_name ?></option>
@@ -2081,9 +2114,12 @@
 								<div class="col-md-8">
 									<div class="row">
 
-										<div class="col-6">
+										<div class="col-6 map-box-col">
 											<div class="map-box2">
 												<a href="#" class="content">
+													<div class="icon-1">
+														<img src="images/icon/DMAwithDFT.png" alt="">
+													</div>
 													<h4>DMA with DFT</h4>
 													<h3>40%</h3>
 													<div class="progress d-inline-block w-100">
@@ -2094,10 +2130,13 @@
 												</a>
 											</div>
 										</div>
-										<div class="col-6">
+										<div class="col-6 map-box-col">
 											<div class="map-box2">
-												<a href="#" class="content">
-													<p>Avg. NRW</p>
+												<a href="#" class="content" style="background:#e2fff2;">
+													<div class="icon-1">
+														<img src="images/icon/nrw.png" alt="">
+													</div>
+													<h4>Avg. NRW</h4>
 													<h3 id="h_no_nrw"><?= $allstataedata[0]->nrw_average_value ?>%</h3>
 													<div class="progress d-inline-block w-100">
 														<div class="progress-bar progress-bar-striped progress-bar-animated h-100" style="width:8.11%;"></div>
@@ -2105,9 +2144,12 @@
 												</a>
 											</div>
 										</div>
-										<div class="col-6">
+										<div class="col-6 map-box-col">
 											<div class="map-box2">
-												<a href="#" class="content">
+												<a href="#" class="content" style="background:#fff7e9;">
+												<div class="icon-1">
+														<img src="images/icon/population.png" alt="">
+													</div>
 													<h4>Population with DFT</h4>
 													<h3>40%</h3>
 													<div class="progress d-inline-block w-100">
@@ -2118,10 +2160,13 @@
 												</a>
 											</div>
 										</div>
-										<div class="col-6">
+										<div class="col-6 map-box-col">
 											<div class="map-box2">
-												<a href="#" class="content">
-													<h4>Connection Achieved</h4>
+												<a href="#" class="content" style="background:#fff2f4;">
+												<div class="icon-1">
+														<img src="images/icon/pipe-connection.png" alt="">
+													</div>
+													<h4>House Connection Achieved</h4>
 													<h3>40%</h3>
 													<div class="progress d-inline-block w-100">
 														<div class="progress-bar progress-bar-striped progress-bar-animated  h-100" style="width:40%;"></div>
@@ -2131,9 +2176,12 @@
 												</a>
 											</div>
 										</div>
-										<div class="col-6">
+										<div class="col-6 map-box-col">
 											<div class="map-box2">
-												<a href="#" class="content">
+												<a href="#" class="content" style="background:#f2e8ff;">
+													<div class="icon-1">
+														<img src="images/icon/metered.png" alt="">
+													</div>
 													<h4>Metered</h4>
 													<h3>40%</h3>
 													<div class="progress d-inline-block w-100">
@@ -2144,11 +2192,15 @@
 											</div>
 										</div>
 
-										<div class="col-6">
+										<div class="col-6 map-box-col">
 											<div class="map-box2">
-												<a href="#" class="content">
+												<a href="#" class="content" style="background:#dcf3ff;">
+												<div class="icon-1">
+														<img src="images/icon/jalsathi.png" alt="">
+													</div>
+													<h4>Nos. of Jalsathi</h4>
 													<h3 id="h_jalasathi"><?= $allstataedata[0]->total_jalasathi ?></h3>
-													<p>Nos. of Jalsathi</p>
+													
 												</a>
 											</div>
 										</div>
@@ -2163,8 +2215,8 @@
 									</div>
 								</div>
 								<div class="col-md-4">
-									<div class="map-right-image">
-
+									<div class="map-right-image d-flex h-100">
+										<img src="images/right-image.png" alt="" class="w-100 h-100 object-fit-cover">
 									</div>
 								</div>
 							</div>
@@ -2190,7 +2242,6 @@
 									</div>
 									<div class="col-sm-3 col-6">
 										<div class="map-box2">
-
 											<div class="content">
 												<h3><?= $getall[$x]['division_population']; ?></h3>
 												<p>Total No. of Population</p>
@@ -2348,15 +2399,6 @@
 		</div>
 	</div>
 
-	<div class="back-btn construction_progress1" style="position: absolute;
-    bottom: 234px;
-    left: 390px;">
-		<a href="pipe-dashboard" class="btn btn-primary p-0 avatar-sm rounded-circle" data-bs-toggle="tooltip" data-bs-title="Back to Dashboard" style="height: 5rem;
-    width: 7rem;font-size: smaller;">
-			<div class="avatar-title rounded-circle">
-				<i>Construction <br> Progress <br> 45%</i>
-			</div>
-		</a>
-	</div>
+
 
 </section>
