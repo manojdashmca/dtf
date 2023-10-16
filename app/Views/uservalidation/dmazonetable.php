@@ -13,32 +13,7 @@ function getAllDmaInfo() {
                 item.dma_name,
                 item.dma_population,
                 item.commissioning_status,
-                item.dma_updated_date,
-                item.distribution_pipe_line_scope,
-                item.distribution_pipe_line_progress,
-                item.pumping_main_scope,
-                item.pumping_main_progress,
-                item.storage_resorvoir_scope,
-                item.storage_resorvoir_progress,
-                item.pumping_station_scope,
-                item.pumping_station_progress,
-                item.flowmeter_scope,
-                item.flowmeter_progress,
-                item.pressure_treansmitter_scope,
-                item.pressure_treansmitter_progress,
-                item.level_treansmitter_scope,
-                item.level_treansmitter_progress,
-                item.sluice_valve_scope,
-                item.sluice_valve_progress,
-                item.plc_scope,
-                item.plc_progress,
-                item.house_connection_scope,
-                item.house_connection_progress,
-                item.meter_connection_scope,
-                item.meter_connection_progress,
-                item.nrw_scope,
-                item.nrw_progress,
-                item.updated_by,
+               
                 item.updated_date,
             ]);
             document.getElementById("table-gridjs-dma") && new gridjs.Grid({
@@ -57,94 +32,17 @@ function getAllDmaInfo() {
                     width: "150px"
                 }, {
                     name: "commissioning status",
-                    width: "200px"
-                }, {
-                    name: "dma updated date",
-                    width: "200px"
-                }, {
-                    name: "distribution pipe line scope",
-                    width: "250px"
-                }, {
-                    name: "distribution pipe line progress",
-                    width: "250px"
-                }, {
-                    name: "pumping main scope",
-                    width: "200px"
-                }, {
-                    name: "pumping main progress",
-                    width: "200px"
-                }, {
-                    name: "storage resorvoir scope",
-                    width: "200px"
-                }, {
-                    name: "storage resorvoir progress",
-                    width: "250px"
-                }, {
-                    name: "pumping station scope",
-                    width: "200px"
-                }, {
-                    name: "pumping station progress",
-                    width: "250px"
-                }, {
-                    name: "flowmeter scope",
-                    width: "200px"
-                }, {
-                    name: "flowmeter progress",
-                    width: "200px"
-                }, {
-                    name: "pressure treansmitter scope",
-                    width: "250px"
-                }, {
-                    name: "pressure treansmitter progress",
-                    width: "250px"
-                }, {
-                    name: "level treansmitter scope",
-                    width: "200px"
-                }, {
-                    name: "level treansmitter progress",
-                    width: "250px"
-                }, {
-                    name: "sluice valve scope",
-                    width: "200px"
-                }, {
-                    name: "sluice valve progress",
-                    width: "200px"
-                }, {
-                    name: "plc scope",
-                    width: "200px"
-                }, {
-                    name: "plc progress",
-                    width: "200px"
-                }, {
-                    name: "house connection scope",
-                    width: "200px"
-                }, {
-                    name: "house connection progress",
-                    width: "200px"
-                }, {
-                    name: "meter connection scope",
-                    width: "200px"
-                }, {
-                    name: "meter connection progress",
-                    width: "200px"
-                }, {
-                    name: "nrw scope",
-                    width: "200px"
-                }, {
-                    name: "nrw progress",
-                    width: "200px"
-                }, {
-                    name: "updated by",
-                    width: "200px"
+                    width: "100px"
                 }, {
                     name: "updated date",
-                    width: "200px"
+                    width: "100px"
                 }, {
                     name: "Actions",
                     width: "150px",
                     formatter: function (e, row) {
                         return gridjs.html(`
                           <button data-bs-toggle="modal" data-bs-target="#editDmaZoneDetails" class="btn btn-info btn-sm" id="editIdDmaZone" data-id='${row.cells[0].data}' onclick='getEditDmaMasterDetails(${row.cells[0].data})'>Edit</button>
+                          <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#viewDmaDmaDetails" id="" onclick="dmaViewInId(${row.cells[0].data})">View</button>
                           <button class="btn btn-danger btn-sm" onclick="deleteRow(${row.cells[0].data})" disabled>Delete</button>
                         `);
                     }
@@ -744,6 +642,91 @@ function refreshDiv() {
     window.location.reload()
 }
 
+
+function dmaViewInId(dma_view_id) {
+    var dma_view_id = dma_view_id !== null ? dma_view_id : 0;
+    // $("#z_citys_d").empty();
+    if (dma_view_id) {
+        $.post("getDmaView", { dma_view_id: dma_view_id }, function (getDmaView) {
+
+            var getDmaViewFull = JSON.parse(getDmaView);
+            // console.log(getDmaViewFull);
+            // console.log(getDmaViewFull[0]['house_connection_scope']);
+
+
+            let old_dma_id = getDmaViewFull.id;
+
+            let view_dma_dma_division_id = getDmaViewFull[0]['division_id'] !== null ? getDmaViewFull[0]['division_id'] : "";
+            let view_dma_dma_city_id = getDmaViewFull[0]['city_id'] !== null ? getDmaViewFull[0]['city_id'] : "";
+
+            let view_dma_dma_name =getDmaViewFull[0]['dma_name'] !== null ?getDmaViewFull[0]['dma_name'] : "";
+            let view_dma_dma_population =getDmaViewFull[0]['dma_population'] != null ?getDmaViewFull[0]['dma_population'] : "0";
+            let view_dma_commissioning_status =getDmaViewFull[0]['commissioning_status'] != null ?getDmaViewFull[0]['commissioning_status'] : "0";
+            let view_dma_dma_updated_date =getDmaViewFull[0]['dma_updated_date'] != null ?getDmaViewFull[0]['dma_updated_date'] : "0";
+            let view_dma_distribution_pipe_line_scope =getDmaViewFull[0]['distribution_pipe_line_scope'] != null ?getDmaViewFull[0]['distribution_pipe_line_scope'] : "0";
+            let view_dma_distribution_pipe_line_progress =getDmaViewFull[0]['distribution_pipe_line_progress'] != null ?getDmaViewFull[0]['distribution_pipe_line_progress'] : "0";
+            let view_dma_pumping_main_scope =getDmaViewFull[0]['pumping_main_scope'] != null ?getDmaViewFull[0]['pumping_main_scope'] : "0";
+            let view_dma_pumping_main_progress =getDmaViewFull[0]['pumping_main_progress'] != null ?getDmaViewFull[0]['pumping_main_progress'] : "0";
+            let view_dma_storage_resorvoir_scope =getDmaViewFull[0]['storage_resorvoir_scope'] != null ?getDmaViewFull[0]['storage_resorvoir_scope'] : "0";
+            let view_dma_storage_resorvoir_progress =getDmaViewFull[0]['storage_resorvoir_progress'] != null ?getDmaViewFull[0]['storage_resorvoir_progress'] : "0";
+            let view_dma_pumping_station_scope =getDmaViewFull[0]['pumping_station_scope'] != null ?getDmaViewFull[0]['pumping_station_scope'] : "0";
+            let view_dma_pumping_station_progress =getDmaViewFull[0]['pumping_station_progress'] != null ?getDmaViewFull[0]['pumping_station_progress'] : "0";
+            let view_dma_flowmeter_scope =getDmaViewFull[0]['flowmeter_scope'] != null ?getDmaViewFull[0]['flowmeter_scope'] : "0";
+            let view_dma_flowmeter_progress =getDmaViewFull[0]['flowmeter_progress'] != null ?getDmaViewFull[0]['flowmeter_progress'] : "0";
+            let view_dma_pressure_treansmitter_scope =getDmaViewFull[0]['pressure_treansmitter_scope'] != null ?getDmaViewFull[0]['pressure_treansmitter_scope'] : "0";
+            let view_dma_pressure_treansmitter_progress =getDmaViewFull[0]['pressure_treansmitter_progress'] != null ?getDmaViewFull[0]['pressure_treansmitter_progress'] : "0";
+            let view_dma_level_treansmitter_scope =getDmaViewFull[0]['level_treansmitter_scope'] != null ?getDmaViewFull[0]['level_treansmitter_scope'] : "0";
+            let view_dma_level_treansmitter_progress =getDmaViewFull[0]['level_treansmitter_progress'] != null ?getDmaViewFull[0]['level_treansmitter_progress'] : "0";
+            let view_dma_sluice_valve_scope =getDmaViewFull[0]['sluice_valve_scope'] != null ?getDmaViewFull[0]['sluice_valve_scope'] : "0";
+            let view_dma_sluice_valve_progress =getDmaViewFull[0]['sluice_valve_progress'] != null ?getDmaViewFull[0]['sluice_valve_progress'] : "0";
+            let view_dma_plc_scope =getDmaViewFull[0]['plc_scope'] != null ?getDmaViewFull[0]['plc_scope'] : "0";
+            let view_dma_plc_progress =getDmaViewFull[0]['plc_progress'] != null ?getDmaViewFull[0]['plc_progress'] : "0";
+            let view_dma_house_connection_scope =getDmaViewFull[0]['house_connection_scope'] != null ? getDmaViewFull[0]['house_connection_scope'] : "0";
+            let view_dma_house_connection_progress =getDmaViewFull[0]['house_connection_progress'] != null ?getDmaViewFull[0]['house_connection_progress'] : "0";
+            let view_dma_meter_connection_scope =getDmaViewFull[0]['meter_connection_scope'] != null ?getDmaViewFull[0]['meter_connection_scope'] : "0";
+            let view_dma_meter_connection_progress =getDmaViewFull[0]['meter_connection_progress'] != null ?getDmaViewFull[0]['meter_connection_progress'] : "0";
+            let view_dma_nrw_scope =getDmaViewFull[0]['nrw_scope'] != null ?getDmaViewFull[0]['nrw_scope'] : "0";
+            let view_dma_nrw_progress =getDmaViewFull[0]['nrw_progress'] != null ?getDmaViewFull[0]['nrw_progress'] : "0";
+            
+            // let edit_dma_modification_date = getEditDataFull.modification_date !== null ? getEditDataFull.modification_date'] : "";
+            // old_dma_id
+            // $('#view_dma_meter_connection_scope').html(view_dma_meter_connection_scope);
+
+            // $('#old_dma_id').val(old_dma_id);
+            $('#view_dma_name').html(view_dma_dma_name);
+            $('#view_dma_dma_population').html(view_dma_dma_population);
+            $('#view_dma_commissioning_status').html(view_dma_commissioning_status);
+            // $('#view_dma_dma_updated_date').html(view_dma_dma_updated_date);
+            $('#view_dma_distribution_pipe_line_scope').html(view_dma_distribution_pipe_line_scope);
+            $('#view_dma_distribution_pipe_line_progress').html(view_dma_distribution_pipe_line_progress);
+            $('#view_dma_pumping_main_scope').html(view_dma_pumping_main_scope);
+            $('#view_dma_pumping_main_progress').html(view_dma_pumping_main_progress);
+            $('#view_dma_storage_resorvoir_scope').html(view_dma_storage_resorvoir_scope);
+            $('#view_dma_storage_resorvoir_progress').html(view_dma_storage_resorvoir_progress);
+            $('#view_dma_pumping_station_scope').html(view_dma_pumping_station_scope);
+            $('#view_dma_pumping_station_progress').html(view_dma_pumping_station_progress);
+            $('#view_dma_flowmeter_scope').html(view_dma_flowmeter_scope);
+            $('#view_dma_flowmeter_progress').html(view_dma_flowmeter_progress);
+            $('#view_dma_pressure_treansmitter_scope').html(view_dma_pressure_treansmitter_scope);
+            $('#view_dma_pressure_treansmitter_progress').html(view_dma_pressure_treansmitter_progress);
+            $('#view_dma_level_treansmitter_scope').html(view_dma_level_treansmitter_scope);
+            $('#view_dma_level_treansmitter_progress').html(view_dma_level_treansmitter_progress);
+            $('#view_dma_sluice_htmlve_scope').html(view_dma_sluice_htmlve_scope);
+            $('#view_dma_sluice_htmlve_progress').html(view_dma_sluice_htmlve_progress);
+            $('#view_dma_plc_scope').html(view_dma_plc_scope);
+            $('#view_dma_plc_progress').html(view_dma_plc_progress);
+            $('#view_dma_house_connection_scope').html(view_dma_house_connection_scope);
+            $('#view_dma_house_connection_progress').html(view_dma_house_connection_progress);
+            $('#view_dma_meter_connection_scope').html(view_dma_meter_connection_scope);
+            console.log(view_dma_dma_name);
+
+            $('#view_dma_meter_connection_progress').html(view_dma_meter_connection_progress);
+            $('#view_dma_nrw_scope').html(view_dma_nrw_scope);
+            $('#view_dma_nrw_progress').html(view_dma_nrw_progress);
+            // $('#gg').html(view_dma_house_connection_scope);
+        });
+    }
+}
 
 
 </script>
