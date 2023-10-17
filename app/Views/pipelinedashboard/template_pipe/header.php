@@ -69,16 +69,6 @@
   content: attr(data-progress);
 }
 
-@media screen and (max-width: 1180px) {
-  .construction_progress1 {
-    display: none;
-  }
-}
-@media screen and (min-width: 1180px) {
-  .construction_progress2 {
-    display: none;
-  }
-}
 
 
 
@@ -220,13 +210,95 @@
     width: 100%;
     border-radius: 0%;
 }
+.construction-progress h5 {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #2c5da7;
+    padding: 5px 13px;
+    border-radius: 6px;
+}
+.construction-progress h5 span.text-info {
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 19px;
+}
+@media screen and (max-width: 1200px) {
+  .construction_progress1 {
+    font-size: 12px;
+    bottom: 0!important;
+}
+.construction_progress1 a.btn.btn-primary.p-0.avatar-sm {
+    width: 81px!important;
+    height: 48px!important;
+    line-height: 11px;
+}
+}
+
+@media(max-width:768px){
+.btn-one {
+    padding-left: 28px;
+    padding-right: 28px;
+    line-height: 35px;
+}
+.header-bottom-img {
+    margin-top: -4px!important;
+}
+.drink-from-tap {
+    width: 65px;
+    height: 65px;
+}
+.drink-from-tap img {
+    max-width: 40px;
+}
+.logo img {
+    margin-right: 6px;
+    max-width: 48px;
+}
+.logo a h1 {
+    font-size: 12px;
+    max-width: 112px;
+}
+.logo a  p {
+    font-size: 10px;
+}
+.btn-one .round {
+    width: 37px;
+    height: 40px;
+}
+}
+@media(max-width:576px){
+  .header-bottom-img {
+    margin-top: -7px!important;
+}
+.logo img {
+    max-width: 47px!important;
+}
+.drink-from-tap {
+    width: 50px;
+    height: 50px;
+}
+.drink-from-tap img {
+    max-width: 32px;
+}
+.btn-one {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.map-right h4 {
+    font-size: 13px!important;
+}
+}
+@media(max-width:420px){
+  .header-bottom-img {
+    margin-top: -9px!important;
+}
+}
 
     </style>
 </head>
 
 <body>
-
-
     <header>
         <div class="container-fluid">
             <div class="row">
