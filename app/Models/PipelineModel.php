@@ -76,8 +76,10 @@ class PipelineModel extends Model
         COUNT(DISTINCT(z.id)) AS total_dma,
         (SELECT COUNT(id) FROM `jalsathi_word`) as total_jalasathi,
         ROUND(AVG(nrw_progress), 2) AS nrw_average_value,
+        (SELECT count(id) FROM dma_master WHERE house_connection_scope = house_connection_progress AND meter_connection_scope = meter_connection_progress) / count(id) * 100 AS dft_with_dma_persentage,
+        (SELECT count(id) FROM dma_master WHERE house_connection_scope = house_connection_progress AND meter_connection_scope = meter_connection_progress) AS dft_with_dma,
         (SELECT SUM(dma_population) FROM dma_master WHERE house_connection_scope = house_connection_progress AND meter_connection_scope = meter_connection_progress) AS beneficiary_population 
-         FROM dma_master z;";
+FROM dma_master z;";
         $result = $this->db->query($sql);
         $return = $result->getResult();
         return $return;
@@ -105,27 +107,29 @@ class PipelineModel extends Model
     {
         $district_query = "SELECT d.id AS division_id, 
         d.division_name, 
-        SUM(z.population) AS division_population,
-        sum(z.no_house_coction) AS division_house_connection, 
-        sum(z.no_metered_house_connections) AS division_meter_connection,
-        sum(z.no_house_holds) AS division_household,
+        SUM(z.dma_population) AS division_population,
+        sum(z.house_connection_progress) AS division_house_connection, 
+        sum(z.meter_connection_progress) AS division_meter_connection,
+        sum(z.house_connection_scope) AS house_connection_scope,
+        sum(z.meter_connection_scope) AS meter_connection_scope,
         (SELECT count(id) FROM `jalsathi_word` 
-        WHERE division_id = d.id) division_jalasathi FROM divisions d INNER JOIN zone_master z ON d.id = z.division_id GROUP BY division_id;";
+        WHERE division_id = d.id) division_jalasathi FROM divisions d INNER JOIN dma_master z ON d.id = z.division_id GROUP BY division_id;";
         $division_result = $this->db->query($district_query);
         $finddata = array();
         $division_data = $division_result->getResult();
 
         foreach ($division_data as $division_row) {
             $d_id = $division_row->division_id;
-            $city_query = "SELECT c.id AS city_id, c.city_name, SUM(z.population) AS city_population,
-            sum(z.no_house_coction) AS city_house_connection, 
-            sum(z.no_metered_house_connections) AS city_meter_connection,
-            sum(z.no_house_holds) AS city_household,
+            $city_query = "SELECT c.city_id AS city_id, c.city_name, SUM(z.dma_population) AS city_population,
+            sum(z.house_connection_progress) AS city_house_connection, 
+            sum(z.meter_connection_progress) AS city_meter_connection,
+            sum(z.house_connection_scope) AS city_house_connection_scope,
+            sum(z.meter_connection_scope) AS city_meter_connection_scope,
             count(z.id) AS city_no_of_dma,
             (select division_name FROM divisions WHERE id = '$d_id') AS city_division_name,
-            (SUM(no_house_coction) / SUM(no_house_holds) * 100) AS house_connection_percentage,
-            (SUM(no_metered_house_connections) / SUM(no_house_holds) * 100) AS metered_connections_percentage 
-            FROM pl_citys c INNER JOIN zone_master z ON c.id = z.city_id WHERE c.division_id = '$d_id' GROUP BY c.id;";
+            (SUM(house_connection_progress) / SUM(house_connection_scope) * 100) AS house_connection_percentage,
+            (SUM(meter_connection_progress) / SUM(meter_connection_scope) * 100) AS metered_connections_percentage 
+            FROM cities_master c INNER JOIN dma_master z ON c.city_id = z.city_id WHERE c.division_id = '$d_id' GROUP BY c.city_id;";
             $city_result = $this->db->query($city_query);
             $city_data = $city_result->getResult();
 
@@ -136,7 +140,8 @@ class PipelineModel extends Model
                     'city_name' => $city_row->city_name,
                     'city_house_connection' => $city_row->city_house_connection,
                     'city_meter_connection' => $city_row->city_meter_connection,
-                    'city_household' => $city_row->city_household,
+                    'city_house_scope' => $city_row->city_house_connection_scope,
+                    'city_meter_scope' => $city_row->city_meter_connection_scope,
                     'city_no_of_dma' => $city_row->city_no_of_dma,
                     'city_division_name' => $city_row->city_division_name,
                     'house_connection_percentage' => $city_row->house_connection_percentage,
@@ -149,7 +154,8 @@ class PipelineModel extends Model
                 'division_id' => $division_row->division_id,
                 'division_name' => $division_row->division_name,
                 'division_population' => $division_row->division_population,
-                'division_household' => $division_row->division_household,
+                'division_house_connection_scope' => $division_row->house_connection_scope,
+                'division_meter_connection_scope' => $division_row->meter_connection_scope,
                 'division_meter_connection' => $division_row->division_meter_connection,
                 'division_house_connection' => $division_row->division_house_connection,
                 'division_jalasathi' => $division_row->division_jalasathi,
@@ -216,19 +222,19 @@ class PipelineModel extends Model
 
     public function getHomeAllStatedata($h_div_id)
     {
-        $sql = "SELECT SUM(z.population) AS total_no_population,
+        $sql = "SELECT SUM(z.dma_population) AS total_no_population,
         (SELECT district_image FROM divisions WHERE id = '$h_div_id') AS division_district_image, 
-        SUM(z.no_house_holds) AS total_no_house_holds, 
-        SUM(z.no_house_coction) AS total_no_house_coction, 
-        SUM(z.no_house_connection_replaced) AS total_no_house_connection_replaced, 
-        SUM(z.no_metered_house_connections) AS total_no_metered_house_connections, 
+        SUM(z.house_connection_scope) AS house_connection_scope, 
+        SUM(z.house_connection_progress) AS house_connection_progress, 
+        SUM(z.meter_connection_scope) AS total_meter_connection_scope,
+        SUM(z.meter_connection_progress) AS total_meter_connection_progress, 
         COUNT(DISTINCT(z.division_id)) AS total_division, 
         COUNT(DISTINCT(z.city_id)) AS total_cities, 
         COUNT(DISTINCT(z.id)) AS total_dma,
         (SELECT COUNT(id) FROM `jalsathi_word` WHERE division_id = '$h_div_id') as total_jalasathi,
-        ROUND(AVG(nrw), 2) AS nrw_average_value,
-        (SELECT SUM(population) FROM zone_master WHERE division_id = '$h_div_id' AND no_house_holds = no_house_coction AND no_house_holds = no_metered_house_connections) AS beneficiary_population 
-        FROM zone_master z WHERE z.division_id = '$h_div_id';";
+        ROUND(AVG(nrw_progress), 2) AS nrw_average_value,
+        (SELECT SUM(dma_population) FROM dma_master WHERE division_id = '$h_div_id' AND house_connection_scope = house_connection_progress AND meter_connection_scope = meter_connection_progress) AS beneficiary_population 
+        FROM dma_master z WHERE z.division_id = '$h_div_id';";
         $result = $this->db->query($sql);
         $return = $result->getResult();
         return $return;
