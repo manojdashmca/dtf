@@ -25,7 +25,7 @@ class pipeLineDashboardController extends WebController {
         $this->data['js']='';
         $this->data['alldivisionname']=$this->pipelineModel->getAllDivisionName();
         $this->data['allstataedata']=$this->pipelineModel->getAllStatedata();
-        $this->data['allcitydata']=$this->pipelineModel->getAllCityDetails();
+        // $this->data['allcitydata']=$this->pipelineModel->getAllCityDetails();
         $this->data['getall'] = $this->pipelineModel->getAll();
 
 
@@ -42,7 +42,7 @@ class pipeLineDashboardController extends WebController {
         $this->data['js']='';
         $this->data['alldivisionname']=$this->pipelineModel->getAllDivisionName();
         $this->data['allstataedata']=$this->pipelineModel->getAllStatedata();
-        $this->data['allcitydata']=$this->pipelineModel->getAllCityDetails();
+        // $this->data['allcitydata']=$this->pipelineModel->getAllCityDetails();
         $this->data['getall'] = $this->pipelineModel->getAll();
 
 

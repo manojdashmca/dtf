@@ -136,7 +136,7 @@
 
                                                 <div class="col-xl-12">
                                                     <div class="mb-3">
-                                                        <label for="cleave-date" class="form-label">WORD NUMBER: <span class="text-danger">*</span> </label>
+                                                        <label for="cleave-date" class="form-label">WARD NUMBER: <span class="text-danger">*</span> </label>
                                                         <input type="text" class="form-control" name="word_names" id="word_names">
                                                     </div>
                                                 </div><!-- end col -->
