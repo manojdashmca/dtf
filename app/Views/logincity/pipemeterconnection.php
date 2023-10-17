@@ -63,23 +63,15 @@
                                     No of City</p>
                                 <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcd"><?= isset($alldmadata[0]->total_cities) ? $alldmadata[0]->total_cities : '0';?></span></h4>
 
-                            </div>
+                            </div>  
                             <div class="avatar-sm flex-shrink-0">
                                 <span class="avatar-title blue-bg rounded fs-3">
-                                    <i class="bx bx-water"></i>
+                                    <i class="bx bxs-city"></i>
                                 </span>
                             </div>
                         </div>
                     </div><!-- end card body -->
-                    <div class="animation-effect-6 text-success opacity-25 fs-18">
-                        <i class=" bx bxs-droplet-half"></i>
-                    </div>
-                    <div class="animation-effect-4 text-success opacity-25 fs-18">
-                        <i class=" bx bxs-droplet-half"></i>
-                    </div>
-                    <div class="animation-effect-3 text-success opacity-25 fs-18">
-                        <i class=" bx bxs-droplet-half"></i>
-                    </div>
+                    
                 </div><!-- end card -->
 
             </div> <!-- end .h-100-->
@@ -97,20 +89,11 @@
                             </div>
                             <div class="avatar-sm flex-shrink-0">
                                 <span class="avatar-title blue-bg rounded fs-3">
-                                    <i class="bx bx-water"></i>
+                                    <i class="bx bx-male-female"></i>
                                 </span>
                             </div>
                         </div>
                     </div><!-- end card body -->
-                    <div class="animation-effect-6 text-success opacity-25 fs-18">
-                        <i class=" bx bxs-droplet-half"></i>
-                    </div>
-                    <div class="animation-effect-4 text-success opacity-25 fs-18">
-                        <i class=" bx bxs-droplet-half"></i>
-                    </div>
-                    <div class="animation-effect-3 text-success opacity-25 fs-18">
-                        <i class=" bx bxs-droplet-half"></i>
-                    </div>
                 </div><!-- end card -->
 
             </div> <!-- end .h-100-->
@@ -131,20 +114,12 @@
                             </div>
                             <div class="avatar-sm flex-shrink-0">
                                 <span class="avatar-title blue-bg rounded fs-3">
-                                    <i class="bx bx-water"></i>
+                                    <i class="bx bxl-kubernetes"></i>
                                 </span>
                             </div>
                         </div>
                     </div><!-- end card body -->
-                    <div class="animation-effect-6 text-success opacity-25 fs-18">
-                        <i class=" bx bxs-droplet-half"></i>
-                    </div>
-                    <div class="animation-effect-4 text-success opacity-25 fs-18">
-                        <i class=" bx bxs-droplet-half"></i>
-                    </div>
-                    <div class="animation-effect-3 text-success opacity-25 fs-18">
-                        <i class=" bx bxs-droplet-half"></i>
-                    </div>
+                   
                 </div><!-- end card -->
 
             </div> <!-- end .h-100-->
@@ -167,15 +142,7 @@
                             </div>
                         </div>
                     </div><!-- end card body -->
-                    <div class="animation-effect-6 text-success opacity-25 fs-18">
-                        <i class=" bx bxs-droplet-half"></i>
-                    </div>
-                    <div class="animation-effect-4 text-success opacity-25 fs-18">
-                        <i class=" bx bxs-droplet-half"></i>
-                    </div>
-                    <div class="animation-effect-3 text-success opacity-25 fs-18">
-                        <i class=" bx bxs-droplet-half"></i>
-                    </div>
+                   
                 </div><!-- end card -->
 
             </div> <!-- end .h-100-->
@@ -248,7 +215,7 @@
         </div>
 
     </div>
-
+                
 </div>
 
 <!-- container-fluid -->
