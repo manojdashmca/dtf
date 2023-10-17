@@ -2121,12 +2121,12 @@
 														<img src="images/icon/DMAwithDFT.png" alt="">
 													</div>
 													<h4>DMA with DFT</h4>
-													<h3>40%</h3>
+													<h3><?= isset($allstataedata[0]->dft_with_dma_persentage) ? round($allstataedata[0]->dft_with_dma_persentage) : '0' ?>%</h3>
 													<div class="progress d-inline-block w-100">
-														<div class="progress-bar progress-bar-striped progress-bar-animated  h-100" style="width:40%;"></div>
+														<div class="progress-bar progress-bar-striped progress-bar-animated  h-100" style="width:<?= isset($allstataedata[0]->dft_with_dma_persentage) ? round($allstataedata[0]->dft_with_dma_persentage) : '0' ?>%;"></div>
 													</div>
 													<h5>Total DMA: <span id="h_no_dma"><?= $allstataedata[0]->total_dma ?></span></h5>
-													<h5>DMA With DFT : <soan>157</soan></h5>	
+													<h5>DMA With DFT : <span id="dma_with_dft"><?= $allstataedata[0]->dft_with_dma ?></span></h5>	
 												</a>
 											</div>
 										</div>
@@ -2151,9 +2151,9 @@
 														<img src="images/icon/population.png" alt="">
 													</div>
 													<h4>Population with DFT</h4>
-													<h3>40%</h3>
+													<h3><?= isset($allstataedata[0]->beneficiary_population) ? round($allstataedata[0]->beneficiary_population / $allstataedata[0]->total_no_population * 100) : '0' ?>%</h3>
 													<div class="progress d-inline-block w-100">
-														<div class="progress-bar progress-bar-striped progress-bar-animated  h-100" style="width:40%;"></div>
+														<div class="progress-bar progress-bar-striped progress-bar-animated  h-100" style="width:<?= isset($allstataedata[0]->beneficiary_population) ? round($allstataedata[0]->beneficiary_population / $allstataedata[0]->total_no_population * 100) : '0' ?>%;"></div>
 													</div>
 													<h5>Total Population: <span id="h_population"><?= $allstataedata[0]->total_no_population ?></span></h5>
 													<h5>Population With DFT : <span id="h_be_population"><?= $allstataedata[0]->beneficiary_population ?></span></h5>	
@@ -2167,9 +2167,9 @@
 														<img src="images/icon/pipe-connection.png" alt="">
 													</div>
 													<h4>House Connection Achieved</h4>
-													<h3>40%</h3>
+													<h3><?= isset($allstataedata[0]->house_connection_progress) ? round($allstataedata[0]->house_connection_progress / $allstataedata[0]->house_connection_scope * 100) : '0' ?>%</h3>
 													<div class="progress d-inline-block w-100">
-														<div class="progress-bar progress-bar-striped progress-bar-animated  h-100" style="width:40%;"></div>
+														<div class="progress-bar progress-bar-striped progress-bar-animated  h-100" style="width:<?= isset($allstataedata[0]->house_connection_progress) ? round($allstataedata[0]->house_connection_progress / $allstataedata[0]->house_connection_scope * 100) : '0' ?>%;"></div>
 													</div>
 													<h5>House Connection Target: <span id="h_household"><?= $allstataedata[0]->house_connection_scope ?></span></h5>
 													<h5>Connection Achieved : <span id="h_h_complete"><?= $allstataedata[0]->house_connection_progress ?></span></h5>	
@@ -2225,7 +2225,12 @@
 
 						</div>
 
-						<?php for ($x = 0; $x < count($getall); $x++) { ?>
+						<?php
+						// print_r('<pre>');
+						// print_r($getall);
+						// print_r('</pre>');
+						
+						for ($x = 0; $x < count($getall); $x++) { ?>
 							<div class="carousel-item">
 								<div class="statistics-sec">
 									<h3>DIVISION: <span><?= $getall[$x]['division_name']; ?></span></h3>
@@ -2304,8 +2309,8 @@
 																			<div class="col-md-6">
 																				<h6>Population : </h6>
 																				<p><?= $cdata[$y1]['city_population']; ?></p>
-																				<h6>Total Household</h6>
-																				<p><?= $cdata[$y1]['city_household']; ?></p>
+																				<h6>House Connection Scope</h6>
+																				<p><?= $cdata[$y1]['city_house_scope']; ?></p>
 																				<h6>House Connnection Completed</h6>
 																				<p><?= $cdata[$y1]['city_house_connection']; ?> <span class="text-danger">(<?= round($cdata[$y1]['house_connection_percentage']); ?>%)</span>
 																				</p>
@@ -2351,8 +2356,8 @@
 																			<div class="col-md-6">
 																				<h6>Population : </h6>
 																				<p><?= $cdata[$y1]['city_population']; ?></p>
-																				<h6>Total Household</h6>
-																				<p><?= $cdata[$y1]['city_household']; ?></p>
+																				<h6>House Connection Scope</h6>
+																				<p><?= $cdata[$y1]['city_house_scope']; ?></p>
 																				<h6>House Connnection Completed</h6>
 																				<p><?= $cdata[$y1]['city_house_connection']; ?> <span class="text-danger">(<?= round($cdata[$y1]['house_connection_percentage']); ?>%)</span>
 																				</p>

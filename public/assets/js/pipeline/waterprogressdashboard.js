@@ -117,7 +117,7 @@ $(document).ready(function () {
         var division_id = $(this).val();
         $.post("getHomePipeMeterConDivision", { div_id: division_id }, function (data) {
             var h_dp_dv = JSON.parse(data);
-            
+            console.log(h_dp_dv);
             if (h_dp_dv != null) {
                 $('#h_no_division').hide();
                 $('#h_no_city').text(h_dp_dv[0]['total_cities'] !== null ? h_dp_dv[0]['total_cities'] : 0);
@@ -126,10 +126,13 @@ $(document).ready(function () {
                 $('#h_population').text(h_dp_dv[0]['total_no_population'] !== null ? h_dp_dv[0]['total_no_population'] : 0);
                 $('#h_be_population').text(h_dp_dv[0]['beneficiary_population'] !== null ? h_dp_dv[0]['beneficiary_population'] : 0);
 
-                $('#h_household').text(h_dp_dv[0]['total_no_house_holds'] !== null ? h_dp_dv[0]['total_no_house_holds'] : 0);
-                $('#h_h_complete').text(h_dp_dv[0]['total_no_house_coction'] !== null ? h_dp_dv[0]['total_no_house_coction'] : 0);
-                $('#h_m_complete').text(h_dp_dv[0]['total_no_metered_house_connections'] !== null ? h_dp_dv[0]['total_no_metered_house_connections'] : 0);
+                $('#h_household').text(h_dp_dv[0]['house_connection_scope'] !== null ? h_dp_dv[0]['house_connection_scope'] : 0);
+                $('#h_h_complete').text(h_dp_dv[0]['house_connection_progress'] !== null ? h_dp_dv[0]['house_connection_progress'] : 0);
+                $('#h_m_complete').text(h_dp_dv[0]['total_meter_connection_progress'] !== null ? h_dp_dv[0]['total_meter_connection_progress'] : 0);
                 $('#h_jalasathi').text(h_dp_dv[0]['total_jalasathi'] !== null ? h_dp_dv[0]['total_jalasathi'] : 0);
+
+                $("#dma_with_dft").css("height", dma_meterd_complete_bar);
+
                 if (h_dp_dv[0]['division_district_image'] != null) {
                     var division_district_image = 'images/Map/' + h_dp_dv[0]['division_district_image'];
                 } else {
