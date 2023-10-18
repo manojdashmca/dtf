@@ -28,6 +28,15 @@ function getGrievanceCustomerServicef() {
                         return gridjs.html('<span class="fw-semibold">' + e + "</span>")
                     }
                 }, {
+                    name: "Actions",
+                    width: "150px",
+                    formatter: function (e, row) {
+                        return gridjs.html(`
+                          <button data-bs-toggle="modal" data-bs-target="#editDmaZoneDetails" class="btn btn-info btn-sm" id="editIdDmaZone" data-id='${row.cells[0].data}' onclick='getEditDmaMasterDetails(${row.cells[0].data})' disabled>Edit</button>
+                          <button class="btn btn-danger btn-sm" onclick="deleteRow(${row.cells[0].data})" disabled>Delete</button>
+                        `);
+                    }
+                },{
                     name: "Grievance Name",
                     width: "250px"
                 }, {
@@ -51,15 +60,6 @@ function getGrievanceCustomerServicef() {
                 },{
                     name: "Created Date",
                     width: "300px"
-                }, {
-                    name: "Actions",
-                    width: "150px",
-                    formatter: function (e, row) {
-                        return gridjs.html(`
-                          <button data-bs-toggle="modal" data-bs-target="#editDmaZoneDetails" class="btn btn-info btn-sm" id="editIdDmaZone" data-id='${row.cells[0].data}' onclick='getEditDmaMasterDetails(${row.cells[0].data})' disabled>Edit</button>
-                          <button class="btn btn-danger btn-sm" onclick="deleteRow(${row.cells[0].data})" disabled>Delete</button>
-                        `);
-                    }
                 }],
                 pagination: {
                     limit: 5

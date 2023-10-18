@@ -84,28 +84,28 @@
                     <div class="collapse menu-dropdown" id="sliderProgressdataentry">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="/configuration" class="nav-link" data-key="t-sweet-alerts">Construction</a>
+                                <a href="/configuration" class="nav-link">Construction</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/progress-entry" class="nav-link" data-key="t-grid-js">Progress Entry</a>
+                                <a href="/progress-entry" class="nav-link">Progress Entry</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/addNewdma" class="nav-link" data-key="t-grid-js">Dma/Zone</a>
+                                <a href="/addNewdma" class="nav-link">Dma/Zone</a>
                             </li>
                             <li class="nav-item">
-                                <a href="pageJalasathi" class="nav-link" data-key="t-sweet-alerts">Jalasathi</a>
+                                <a href="pageJalasathi" class="nav-link">Jalasathi</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/getRevenuePage" class="nav-link" data-key="t-sweet-alerts">Revenue Collection</a>
+                                <a href="/getRevenuePage" class="nav-link">Revenue Collection</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/getGrievanceCustomerPage" class="nav-link" data-key="t-sweet-alerts">Grievance Redressal</a>
+                                <a href="/getGrievanceCustomerPage" class="nav-link">Grievance Redressal</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/waterQualityPage" class="nav-link" data-key="t-sweet-alerts">Water Quality</a>
+                                <a href="/waterQualityPage" class="nav-link">Water Quality</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link" data-key="t-sweet-alerts">Photogallery</a>
+                                <a href="#" class="nav-link">Photogallery</a>
                             </li>
                            
                         </ul>

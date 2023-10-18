@@ -25,33 +25,33 @@ function getRevenueCollection() {
                     formatter: function (e) {
                         return gridjs.html('<span class="fw-semibold">' + e + "</span>")
                     }
-                }, {
-                    name: "NOS. BILL GENERATED",
-                    width: "150px"
-                }, {
-                    name: "NOS. BILL DISTRIBUTED",
-                    width: "150px"
-                }, {
-                    name: "INCENTIVE PAID TO JALSATHI",
-                    width: "200px"
-                }, {
-                    name: "TOTAL REVENUE COLLECTED",
-                    width: "200px"
-                }, {
-                    name: "REVENUE COLLECTED BY JALSATHI",
-                    width: "250px"
                 },{
-                    name: "UPDATED DATE",
-                    width: "200px"
-                }, {
                     name: "Actions",
-                    width: "150px",
+                    width: "100px",
                     formatter: function (e, row) {
                         return gridjs.html(`
                           <button data-bs-toggle="modal" data-bs-target="#editDmaZoneDetails" class="btn btn-info btn-sm" id="editIdDmaZone" data-id='${row.cells[0].data}' onclick='getEditDmaMasterDetails(${row.cells[0].data})' disabled>Edit</button>
                           <button class="btn btn-danger btn-sm" onclick="deleteRow(${row.cells[0].data})" disabled>Delete</button>
                         `);
                     }
+                }, {
+                    name: "NOS. BILL GENERATED",
+                    width: "250px"
+                }, {
+                    name: "NOS. BILL DISTRIBUTED",
+                    width: "250px"
+                }, {
+                    name: "INCENTIVE PAID TO JALSATHI",
+                    width: "250px"
+                }, {
+                    name: "TOTAL REVENUE COLLECTED",
+                    width: "250px"
+                }, {
+                    name: "REVENUE COLLECTED BY JALSATHI",
+                    width: "250px"
+                },{
+                    name: "UPDATED DATE",
+                    width: "250px"
                 }],
                 pagination: {
                     limit: 5
