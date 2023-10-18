@@ -110,7 +110,7 @@ section.map-section  .left-map {
 }
 section.map-section  .carousel-indicators {
     position: relative;
-    min-height: 90%;
+    /* min-height: 90%; */
     padding-bottom: 57px;
 }
 .left-map {
@@ -168,7 +168,7 @@ section.map-section  .carousel-indicators {
     padding-bottom: 8px;
 }
 
-section.map-section nav {
+/* section.map-section nav {
     background: #1e5ba5;
     color: #fff;
     border-radius: 10px 10px 0 0;
@@ -188,7 +188,64 @@ section.map-section  .nav-tabs .nav-link:hover{
 }
 section.map-section .nav-tabs .nav-link.active {
     color: #000!important;
+} */
+/**/
+.map-tab-con .tab-content {
+    background: #fff;
+    color: #444444;
+    overflow: hidden;
+    border-radius: 0 30px 30px 30px;
+    padding: 15px;
+    box-shadow: 0 3px 3px #e0ecff;
+    margin-bottom: 30px;
 }
+.map-tab-con .nav.nav-tabs {
+    border: none;
+}
+.map-tab-con .nav-link {
+    padding: 13px 34px;
+    position: relative;
+    font-size: 16px;
+    background: #1e5ca5!important;
+    border-radius: 30px 30px 0 0!important;
+    border-color: #2c5da7!important;
+    color: #fff;
+}
+.map-tab-con .nav-link:before, .map-tab-con .nav-link:after {
+    content: '';
+    width: 33px;
+    height: 39px;
+    bottom: -1px;
+    position: absolute;
+    left: -30px;
+    background: url(../images/tab-curv-left.png);
+    background-repeat: no-repeat;
+    background-position: bottom left;
+}
+.map-tab-con .nav-link:after {
+    left: unset;
+    right: -30px;
+    background: url(../images/tab-curv.png);
+    bottom: -2px;
+    background-repeat: no-repeat;
+}
+.map-tab-con .nav.nav-tabs li:first-child .nav-link:before {
+    display: none;
+}
+.map-tab-con .nav-link.active {
+    background: #fff!important;
+    border-color: #fff!important;
+    z-index: 1;
+    box-shadow: 0 -3px 3px #e3edfd;
+}
+.map-tab-con .nav-link.active:before {
+    background: url(../images/tab-curv-left-white.png);
+    bottom: -2px;
+}
+.map-tab-con .nav-link.active:after {
+    background: url(../images/tab-curv-white.png) no-repeat;
+}
+/**/
 .map-right .statistics-sec h3 a {
     background: repeating-linear-gradient(89deg, #348c59, #1b7397);
     color: #fff;
@@ -334,9 +391,8 @@ section.map-section .nav-tabs .nav-link.active {
 }
 .tab-content>.tab-pane {
     background: #fff!important;
-    border: 1px solid #ddd;
     border-top-color: #fff;
-    padding: 10px;
+    /* padding: 10px; */
     position: relative;
 }
 .map-box2 .content h4 {
