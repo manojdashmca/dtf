@@ -14,6 +14,111 @@
             </div>
         </div>
     </div>
+    <form method="post" id="addgriveancecustomer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <!-- <h4 class="card-title mb-0">Examples</h4> <input type="text" class="form-control" name="z_population" id="z_population"> -->
+                        </div><!-- end card header -->
+
+                        <div class="card-body">
+                            <div>
+                                <!-- <h5 class="fs-14 mb-3 form-label">Date Formatting</h5> -->
+                                <div class="row">
+                                    <div class="col-xl-6">
+                                        <div class="mb-3">
+                                            <label for="cleave-date" class="form-label">Select Division <span class="text-danger">*</span> </label>
+                                            <select class="form-control" name="z_division_id" id="z_division_id">
+                                                <option value="">Select Division</option>
+                                                <?php for ($x = 0; $x < count($alldivisionname); $x++) { ?>
+                                                    <option value='<?= $alldivisionname[$x]->id ?>' <?= ($city == $alldivisionname[$x]->id) ? 'selected="selected"' : '' ?>><?= $alldivisionname[$x]->division_name ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+
+                                    </div><!-- end col -->
+
+                                    <div class="col-xl-6">
+                                        <div class="mb-3">
+                                            <label for="cleave-date" class="form-label">Select City <span class="text-danger">*</span> </label>
+                                            <select class="form-control" name="z_citys" id="z_citys">
+                                                <option value="">Select City</option>
+                                            </select>
+                                        </div>
+                                    </div><!-- end col -->
+                                    <div class="col-xl-12">
+                                        <div class="mb-3">
+                                            <label for="cleave-date" class="form-label">Grievance Name<span class="text-danger">*</span> </label>
+                                            <input type="text" class="form-control" name="grievance_name" id="grievance_name" required>
+                                        </div>
+                                    </div><!-- end col -->
+                                    <div class="col-xl-12">
+                                        <div class="mb-3">
+                                            <label for="cleave-date" class="form-label">Customer Name<span class="text-danger">*</span> </label>
+                                            <input type="text" class="form-control" name="grivance_customer_name" id="grivance_customer_name" required>
+                                        </div>
+                                    </div><!-- end col -->
+                                    <div class="col-xl-6 col-sm-12">
+                                        <div class="mb-3">
+                                            <label for="cleave-date" class="form-label">Grivance Via<span class="text-danger">*</span> </label>
+                                            <select name="grivance_via" id="grivance_via" class="form-control" required>
+                                                <option>Select Grivance Via</option>
+                                                <option value="24x7 Customer Service">24 X 7 CUSTOMER SERVICE</option>
+                                                <option value="Jalsathi">JALSATHI</option>
+                                                <option value="Direct Visit / Physical">DIRECT VISIT/ PHYSICAL</option>
+                                            </select>
+                                        </div>
+                                    </div><!-- end col -->
+                                    <div class="col-xl-6 col-sm-12">
+                                        <div class="mb-3">
+                                            <label for="cleave-date" class="form-label">Register Date<span class="text-danger">*</span> </label>
+                                            <input type="date" class="form-control" name="register_date" id="register_date" required>
+                                        </div>
+                                    </div><!-- end col -->
+                                    <div class="col-xl-6 col-sm-12">
+                                        <div class="mb-3">
+                                            <label for="cleave-date" class="form-label">Grievance Status<span class="text-danger">*</span> </label>
+                                            <select name="grivance_status" id="grivance_status" class="form-control" required>
+                                                <option>Select Status</option>
+                                                <option value="1">Complete</option>
+                                                <option value="0">Pending</option>
+                                            </select>
+                                        </div>
+                                    </div><!-- end col -->
+
+
+                                    <div class="col-xl-6 col-sm-12">
+                                        <div class="mb-3">
+                                            <label for="cleave-date" class="form-label">Resolved With In Time Limit<span class="text-danger">*</span> </label>
+                                            <input type="text" class="form-control" name="resolved_with_in_time_limit" id="resolved_with_in_time_limit">
+                                        </div>
+                                    </div><!-- end col -->
+
+                                    <div class="col-xl-6 col-sm-12">
+                                        <div class="mb-3">
+                                            <label for="cleave-date" class="form-label">Resolved After Time Limit<span class="text-danger">*</span> </label>
+                                            <input type="text" class="form-control" name="resolved_after_time_limit" id="resolved_after_time_limit">
+                                        </div>
+                                    </div><!-- end col -->
+
+                                    <div class="mt-4">
+                                        <div class="hstack gap-2 justify-content-center">
+                                            <button type="reset" class="btn btn-info">Reset</button>
+                                            <button type="submit" class="btn btn-success">Submit</button>
+                                        </div>
+                                    </div>
+                                </div><!-- end row -->
+                            </div>
+                        </div><!-- end card-body -->
+                    </div><!-- end card -->
+                </div>
+            </div>
+        </div>
+
+
+    </form>
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -22,7 +127,7 @@
                 </div><!-- end card header -->
 
                 <div class="card-body">
-                    <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModalGrievance" style="float:right;"><i class="ri-add-line align-bottom me-1"></i> Add</button>
+                    <!-- <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModalGrievance" style="float:right;"><i class="ri-add-line align-bottom me-1"></i> Add</button> -->
                     <div id="table-gridjs-gcs"></div>
                 </div><!-- end card-body -->
             </div><!-- end card -->
@@ -99,7 +204,7 @@
                                                     <div class="mb-3">
                                                         <label for="cleave-date" class="form-label">Grivance Via<span class="text-danger">*</span> </label>
                                                         <select name="grivance_via" id="grivance_via" class="form-control" required>
-                                                        <option >Select Grivance Via</option>
+                                                            <option>Select Grivance Via</option>
                                                             <option value="24x7 Customer Service">24 X 7 CUSTOMER SERVICE</option>
                                                             <option value="Jalsathi">JALSATHI</option>
                                                             <option value="Direct Visit / Physical">DIRECT VISIT/ PHYSICAL</option>
@@ -116,7 +221,7 @@
                                                     <div class="mb-3">
                                                         <label for="cleave-date" class="form-label">Grievance Status<span class="text-danger">*</span> </label>
                                                         <select name="grivance_status" id="grivance_status" class="form-control" required>
-                                                        <option>Select Status</option>
+                                                            <option>Select Status</option>
                                                             <option value="1">Complete</option>
                                                             <option value="0">Pending</option>
                                                         </select>
