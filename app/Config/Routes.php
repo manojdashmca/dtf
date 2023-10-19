@@ -176,10 +176,10 @@ $routes->match(['get', 'post'], 'editCityuserRevenueCollection', 'LoginCityContr
 
 $routes->match(['put', 'post'], 'update-task-progress-entry', 'ProgressentryController::updateTaskProgressEntry');
 // $routes->match(['get', 'post'], 'getCityTableData', 'PipelineController::getCityTableData');
-$routes->match('get', 'manage-app-user', 'UserController::listAppUser');
-$routes->match('post', 'add-app-user', 'UserController::addAppUser');
-$routes->match('post', 'update-app-user', 'UserController::updateAppUser');
-$routes->match('post', 'get-app-user-data/(:any)', 'UserController::getAppUserData/$1');
+$routes->get('manage-app-user', 'UserController::listAppUser');
+$routes->post('add-app-user', 'UserController::addAppUser');
+$routes->post('update-app-user', 'UserController::updateAppUser');
+$routes->post('get-app-user-data/(:any)', 'UserController::getAppUserData/$1');
 
 //
 //
