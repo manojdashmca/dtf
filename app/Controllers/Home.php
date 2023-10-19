@@ -41,6 +41,8 @@ class Home extends WebController {
                                 setcookie("dftm-username", $username, time() - 3600);
                                 setcookie("dftm-password", $password, time() - 3600);
                             }
+                            $user_cities = isset($result->city_id_city) ? $result->city_id_city : "sadmin";
+                            $this->session->set('usercities', $user_cities);
                             $this->session->set('img', $imgpath);
                             $this->session->set('login', true);
                             $this->session->set('username', $result->user_name);

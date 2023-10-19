@@ -590,8 +590,14 @@ class PipelineController extends WebController
         $this->data['includefile'] = 'jalasathijs.php';
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
         $this->data['cityjalasathi'] = $this->pipelineModel->getCityJalasathi();
+        $city_id = session()->get('usercities');
+        // print_r($city_id);die;
+        if(is_numeric($city_id)){
+            $this->data['sessiondivision'] = $this->pipelineModel->getDivisionCities($city_id);
+        }
+        
         return view('templates/header', $this->data)
-            . view('masterdata/jalasathimaster', $this->data)
+            . view('masterdata/jalasathimaster', $this->data) 
             . view('templates/footer', $this->data);
     }
 
@@ -613,7 +619,9 @@ class PipelineController extends WebController
             if (!empty($checkDuplicatejalsathi)) {
                 $res = array("res" => "exist", "word_names" => $word_names);
             } else {
-                $insertCityTable = $this->pipelineModel->insertJalsathiTable($z_division_id,$z_citys,$word_names,$jal_msg_shg_name,$jal_jalasathi_name,$jal_pan_no,$jal_bank_account_no,$jal_ifsc_code,$jal_bank_name_branch,$jal_collection_by_jalasathi,$jal_ibu_5p_incentive_from_water_charges,$jal_ibu_no_new_water_supply_connection,$jal_ibu_total_amt_of_new_water_con,$jal_ibu_total_no_of_water_quality_testa,$jal_ibu_water_quality_tests,$jal_total_incentive_of_jalasathi);
+                
+
+                $insertCityTable = $this->pipelineModel->insertJalsathiTable($z_division_id,$z_citys,$word_names,$jal_msg_shg_name,$jal_collection_by_jalasathi,$jal_ibu_total_no_of_water_quality_testa,$jal_total_incentive_of_jalasathi);
                 if ($insertCityTable) {
                     $res = array("res" => "success", "word_names" => $word_names);
                 } else {
