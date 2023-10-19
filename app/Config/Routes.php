@@ -53,7 +53,7 @@ $routes->get('component-master', 'MasterdataController::component');
 $routes->get('task-master', 'MasterdataController::task');
 $routes->get('sub-task-master', 'MasterdataController::subtask');
 $routes->get('report-header', 'MasterdataController::reportheader');
-$routes->match(['get', 'post'],'user-profile', 'UserController::userprofile');
+$routes->match(['get', 'post'], 'user-profile', 'UserController::userprofile');
 
 //-----------stop commandline---
 $routes->cli('login', 'Home::commandlineblocked');
@@ -78,8 +78,6 @@ $routes->match(['get', 'post'], 'get-city-component', 'MasterdataController::get
 $routes->match(['get', 'post'], 'get-city-component-task-subtask', 'MasterdataController::getCityHasComponentHasTaskHasSubtask');
 $routes->match(['get', 'post'], 'create-city', 'MasterdataController::createCity');
 $routes->match(['get', 'post'], 'update-city', 'MasterdataController::updateCity');
-
-
 
 $routes->post('cancel-booking', 'UserController::cancelbooking');
 $routes->post('reschedule-booking-s1', 'UserController::reschedulebookingcetting');
@@ -178,6 +176,10 @@ $routes->match(['get', 'post'], 'editCityuserRevenueCollection', 'LoginCityContr
 
 $routes->match(['put', 'post'], 'update-task-progress-entry', 'ProgressentryController::updateTaskProgressEntry');
 // $routes->match(['get', 'post'], 'getCityTableData', 'PipelineController::getCityTableData');
+$routes->match('get', 'manage-app-user', 'UserController::listAppUser');
+$routes->match('post', 'add-app-user', 'UserController::addAppUser');
+$routes->match('post', 'update-app-user', 'UserController::updateAppUser');
+$routes->match('post', 'get-app-user-data/(:any)', 'UserController::getAppUserData/$1');
 
 //
 //

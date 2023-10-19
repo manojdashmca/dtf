@@ -127,7 +127,9 @@
                     </a>
                     <div class="collapse menu-dropdown" id="sidebarTables">
                         <ul class="nav nav-sm flex-column">
-                            
+                            <li class="nav-item">
+                                <a href="/manage-app-user" class="nav-link" data-key="t-basic-tables">Manage App User</a>
+                            </li>
                             <li class="nav-item">
                                 <a href="/component-master" class="nav-link" data-key="t-basic-tables">Component Master</a>
                             </li>

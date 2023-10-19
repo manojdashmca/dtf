@@ -10,12 +10,24 @@ class UserController extends WebController {
         parent::__construct();
     }
 
-    public function index() {
+    public function listAppUser() {
         $this->data['css'] = 'datatable';
         $this->data['js'] = 'datatable';
         return view('templates/header', $this->data)
                 . view('users/index', $this->data)
                 . view('templates/footer', $this->data);
+    }
+
+    public function addAppUser() {
+        
+    }
+
+    public function updateAppUser() {
+        
+    }
+
+    public function getAppUserData($userid) {
+        
     }
 
     public function userprofile() {
