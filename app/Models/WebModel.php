@@ -56,4 +56,10 @@ class WebModel extends Model {
         $result = $this->db->query($sql);
         return $result->getResult();
     }
+
+    public function getAllUser() {
+        $sql = "Select a.*,b.city_name from users a left join cities_master b on a.city_id_city=b.city_id where user_status in(1,2)";
+        $result = $this->db->query($sql);
+        return $result->getResult();
+    }
 }

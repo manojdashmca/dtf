@@ -11,8 +11,10 @@ class UserController extends WebController {
     }
 
     public function listAppUser() {
+        $this->data['title'] = 'App User';
         $this->data['css'] = 'datatable';
         $this->data['js'] = 'datatable';
+        $this->data['userlist'] = $this->webModel->getAllUser();
         return view('templates/header', $this->data)
                 . view('users/index', $this->data)
                 . view('templates/footer', $this->data);
