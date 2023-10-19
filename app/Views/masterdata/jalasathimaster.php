@@ -18,7 +18,13 @@
     <div class="row">
         <div class="col-12 text-center">
             <h5 class="text-info">INCENTIVE DETAILS OF JALASATHIS OF WATCO</h5>
-            <!-- <h5 class="text-info">KEONJHAR,BARBIL</h5> -->
+            <h5 class="text-info"><?php
+                                    if (isset($sessiondivision)) {
+                                        echo $sessiondivision[0]->division_name . ',' . $sessiondivision[0]->city_name;
+                                    }
+
+
+                                    ?></h5>
         </div>
     </div>
 
@@ -35,26 +41,37 @@
                             <div>
                                 <!-- <h5 class="fs-14 mb-3 form-label">Date Formatting</h5> -->
                                 <div class="row">
-                                    <div class="col-xl-6">
-                                        <div class="mb-3">
-                                            <label for="cleave-date" class="form-label">Select Division <span class="text-danger">*</span> </label>
-                                            <select class="form-control" name="z_division_id" id="z_division_id">
-                                                <option value="">Select Division</option>
-                                                <?php for ($x = 0; $x < count($alldivisionname); $x++) { ?>
-                                                    <option value='<?= $alldivisionname[$x]->id ?>' <?= ($city == $alldivisionname[$x]->id) ? 'selected="selected"' : '' ?>><?= $alldivisionname[$x]->division_name ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div><!-- end col -->
-                                    <div class="col-xl-6">
-                                        <div class="mb-3">
-                                            <label for="cleave-date" class="form-label">Select City <span class="text-danger">*</span> </label>
-                                            <select class="form-control" name="z_citys" id="z_citys">
-                                                <option value="">Select City</option>
-                                            </select>
-                                        </div>
-                                    </div><!-- end col -->
+                                    <?php
+                                    if (isset($sessiondivision)) {
+                                    ?>
+                                        <input type="hidden" name="z_division_id" id="z_division_id" value="<?php echo $sessiondivision[0]->division_id; ?>">
+                                        <input type="hidden" name="z_citys" id="z_citys" value="<?php echo $sessiondivision[0]->city_id; ?>">
+                                    <?php
 
+                                    } else {
+                                    ?>
+                                        <div class="col-xl-6">
+                                            <div class="mb-3">
+                                                <label for="cleave-date" class="form-label">Select Division <span class="text-danger">*</span> </label>
+                                                <select class="form-control" name="z_division_id" id="z_division_id">
+                                                    <option value="">Select Division</option>
+                                                    <?php for ($x = 0; $x < count($alldivisionname); $x++) { ?>
+                                                        <option value='<?= $alldivisionname[$x]->id ?>' <?= ($city == $alldivisionname[$x]->id) ? 'selected="selected"' : '' ?>><?= $alldivisionname[$x]->division_name ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div><!-- end col -->
+                                        <div class="col-xl-6">
+                                            <div class="mb-3">
+                                                <label for="cleave-date" class="form-label">Select City <span class="text-danger">*</span> </label>
+                                                <select class="form-control" name="z_citys" id="z_citys">
+                                                    <option value="">Select City</option>
+                                                </select>
+                                            </div>
+                                        </div><!-- end col -->
+                                    <?php
+                                    }
+                                    ?>
                                     <div class="col-xl-12">
                                         <div class="mb-3">
                                             <label for="cleave-date" class="form-label">WARD NUMBER: <span class="text-danger">*</span> </label>
@@ -130,8 +147,7 @@
                                 <tr>
                                     <th>SL NO</th>
                                     <th>ACTION</th>
-                                    <th>DIVISION</th>
-                                    <th>ULB NAME</th>
+
                                     <th>WARD NO</th>
                                     <th>NAME OF THE MSG/SHG</th>
                                     <!-- <th>JALASATHI NAME</th> -->
@@ -158,11 +174,10 @@
                                     <tr>
                                         <td><?= $counter_js ?></td>
                                         <td>
-                          <button data-bs-toggle="modal" data-bs-target="#editDmaZoneDetails" class="btn btn-info btn-sm" id="editIdDmaZone" disabled>Edit</button>
-                          <button class="btn btn-danger btn-sm" disabled>Delete</button>
-                    </td>
-                                        <td><?= $jalasathi_city->division_name ?></td>
-                                        <td><?= $jalasathi_city->city_name ?></td>
+                                            <button data-bs-toggle="modal" data-bs-target="#editDmaZoneDetails" class="btn btn-info btn-sm" id="editIdDmaZone" disabled>Edit</button>
+                                            <button class="btn btn-danger btn-sm" disabled>Delete</button>
+                                        </td>
+
                                         <td><?= $jalasathi_city->word_names ?></td>
                                         <td><?= $jalasathi_city->msg_shg_name ?></td>
 

@@ -677,13 +677,12 @@ FROM dma_master z;";
         $this->db->close();
     }
 
-    public function insertJalsathiTable($z_division_id,$z_citys,$word_names,$jal_msg_shg_name,$jal_jalasathi_name,$jal_pan_no,$jal_bank_account_no,$jal_ifsc_code,$jal_bank_name_branch,$jal_collection_by_jalasathi,$jal_ibu_5p_incentive_from_water_charges,$jal_ibu_no_new_water_supply_connection,$jal_ibu_total_amt_of_new_water_con,$jal_ibu_total_no_of_water_quality_testa,$jal_ibu_water_quality_tests,$jal_total_incentive_of_jalasathi)
+    public function insertJalsathiTable($z_division_id,$z_citys,$word_names,$jal_msg_shg_name,$jal_collection_by_jalasathi,$jal_ibu_total_no_of_water_quality_testa,$jal_total_incentive_of_jalasathi)
     {
-        $sql = "INSERT INTO jalsathi_word(division_id,jalsathi_ulb_city_id,word_names,msg_shg_name,jalasathi_name,pan_no,bank_account_no,ifsc_code,bank_name_branch,collection_by_jalasathi,ibu_5p_incentive_from_water_charges,ibu_no_new_water_supply_connection,ibu_total_amt_of_new_water_con,ibu_total_no_of_water_quality_testa,ibu_water_quality_tests,total_incentive_of_jalasathi)VALUES
-        ('$z_division_id','$z_citys','$word_names','$jal_msg_shg_name','$jal_jalasathi_name','$jal_pan_no','$jal_bank_account_no','$jal_ifsc_code','$jal_bank_name_branch','$jal_collection_by_jalasathi','$jal_ibu_5p_incentive_from_water_charges','$jal_ibu_no_new_water_supply_connection','$jal_ibu_total_amt_of_new_water_con','$jal_ibu_total_no_of_water_quality_testa','$jal_ibu_water_quality_tests','$jal_total_incentive_of_jalasathi')";
-
+        $sql = "INSERT INTO jalsathi_word(division_id,jalsathi_ulb_city_id,word_names,msg_shg_name,collection_by_jalasathi,ibu_total_no_of_water_quality_testa,total_incentive_of_jalasathi,modification_date)VALUES
+        ('$z_division_id','$z_citys','$word_names','$jal_msg_shg_name','$jal_collection_by_jalasathi','$jal_ibu_total_no_of_water_quality_testa','$jal_total_incentive_of_jalasathi',NOW());";
+        // print_r($sql);die;
         $result = $this->db->query($sql);
-
         return $result;
         $this->db->close();
     }
@@ -762,9 +761,15 @@ FROM dma_master z;";
 
     public function getDmainfoOnDmaid($dma)
     {
-        
         $sql = "SELECT * FROM dma_master WHERE id = '$dma';";
-         
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        return $return;
+    }
+
+    public function getDivisionCities($city_id)
+    {
+        $sql = "SELECT c.city_id AS city_id,c.city_name AS city_name,d.id AS division_id,d.division_name AS division_name FROM divisions d INNER JOIN cities_master c ON d.id = c.division_id WHERE city_id = '$city_id';";
         $result = $this->db->query($sql);
         $return = $result->getResult();
         return $return;

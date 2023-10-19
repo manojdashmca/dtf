@@ -50,183 +50,21 @@ $(document).on("submit", "#addjalsathi", function () {
                 'error'
             )
         } 
-        //else if (data.res == "dma_population") {
-        //     Swal.fire(
-        //         'No Dma Popula',
-        //         'Please Enter Population',
-        //         'error'
-        //     )
-        // } else if (data.res == "commissioning_status") {
-        //     Swal.fire(
-        //         'Commissioning Status',
-        //         'Please Enter Commissioning Status',
-        //         'error'
-        //     )
-        // } else if (data.res == "dma_updated_date") {
-        //     Swal.fire(
-        //         'Dma Updated Date',
-        //         'Please Enter Dma Updated Date',
-        //         'error'
-        //     )
-        // } else if (data.res == "distribution_pipe_line_scope") {
-        //     Swal.fire(
-        //         'Distribution PipeLine Scope',
-        //         'Please Enter Distribution PipeLine Scope',
-        //         'error'
-        //     )
-        // } else if (data.res == "distribution_pipe_line_progress") {
-        //     Swal.fire(
-        //         'Distribution Pipeline Progress',
-        //         'Please Enter Population',
-        //         'error'
-        //     )
-        // } else if (data.res == "pumping_main_scope") {
-        //     Swal.fire(
-        //         'Pumping Main Scope',
-        //         'Please Enter Pumping Main Scope',
-        //         'error'
-        //     )
-        // } else if (data.res == "pumping_main_progress") {
-        //     Swal.fire(
-        //         'Pumping Main Progress',
-        //         'Please Enter Pumping Main Progress',
-        //         'error'
-        //     )
-        // } else if (data.res == "storage_resorvoir_scope") {
-        //     Swal.fire(
-        //         'Storage Resorvoir Scope',
-        //         'Please Enter Storage Resorvoir Scope',
-        //         'error'
-        //     )
-        // } else if (data.res == "storage_resorvoir_progress") {
-        //     Swal.fire(
-        //         'Storage Resorvoir Progress',
-        //         'Please Enter Storage Resorvoir Progress',
-        //         'error'
-        //     )
-        // } else if (data.res == "pumping_station_scope") {
-        //     Swal.fire(
-        //         'Pumping Station Scope',
-        //         'Please Enter Pumping Station Scope',
-        //         'error'
-        //     )
-        // } else if (data.res == "pumping_station_progress") {
-        //     Swal.fire(
-        //         'Pumping Station Progress',
-        //         'Please Enter Pumping Station Progress',
-        //         'error'
-        //     )
-        // } else if (data.res == "flowmeter_scope") {
-        //     Swal.fire(
-        //         'Flowmeter Scope',
-        //         'Please Enter Flowmeter Scope',
-        //         'error'
-        //     )
-        // } else if (data.res == "flowmeter_progress") {
-        //     Swal.fire(
-        //         'Flowmeter Progress',
-        //         'Please Enter Flowmeter Progress',
-        //         'error'
-        //     )
-        // } else if (data.res == "pressure_treansmitter_scope") {
-        //     Swal.fire(
-        //         'Pressure Treansmitter Scope',
-        //         'Please Enter Pressure Treansmitter Scope',
-        //         'error'
-        //     )
-        // } else if (data.res == "pressure_treansmitter_progress") {
-        //     Swal.fire(
-        //         'Pressure Treansmitter Progress',
-        //         'Please Enter Pressure Treansmitter Progress',
-        //         'error'
-        //     )
-        // } else if (data.res == "level_treansmitter_scope") {
-        //     Swal.fire(
-        //         'Level Treansmitter Scope',
-        //         'Please Enter Level Treansmitter Scope',
-        //         'error'
-        //     )
-        // } else if (data.res == "level_treansmitter_progress") {
-        //     Swal.fire(
-        //         'Level Treansmitter Progress',
-        //         'Please Enter Level Treansmitter Progress',
-        //         'error'
-        //     )
-        // } else if (data.res == "sluice_valve_scope") {
-        //     Swal.fire(
-        //         'Sluice Valve Scope',
-        //         'Please Enter Sluice Valve Scope',
-        //         'error'
-        //     )
-        // } else if (data.res == "sluice_valve_progress") {
-        //     Swal.fire(
-        //         'Sluice Valve Progress',
-        //         'Please Enter Sluice Valve Progress',
-        //         'error'
-        //     )
-        // } else if (data.res == "plc_scope") {
-        //     Swal.fire(
-        //         'PLC Scope',
-        //         'Please Enter PLC Scope',
-        //         'error'
-        //     )
-        // } else if (data.res == "plc_progress") {
-        //     Swal.fire(
-        //         'PLC Progress',
-        //         'Please Enter PLC Progress',
-        //         'error'
-        //     )
-        // }  else if (data.res == "house_connection_scope") {
-        //     Swal.fire(
-        //         'House Connection Scope',
-        //         'Please Enter House Connection Scope',
-        //         'error'
-        //     )
-        // }else if (data.res == "house_connection_progress") {
-        //     Swal.fire(
-        //         'House Connection Progress',
-        //         'Please Enter House Connection Progress',
-        //         'error'
-        //     )
-        // }else if (data.res == "meter_connection_scope") {
-        //     Swal.fire(
-        //         'Meter Connection Scope',
-        //         'Please Enter Meter Connection Scope',
-        //         'error'
-        //     )
-        // }else if (data.res == "meter_connection_progress") {
-        //     Swal.fire(
-        //         'Meter Connection Progress',
-        //         'Please Enter Meter Connection Progress',
-        //         'error'
-        //     )
-        // }else if (data.res == "nrw_scope") {
-        //     Swal.fire(
-        //         'NRW Scope',
-        //         'Please Enter NRW Scope',
-        //         'error'
-        //     )
-        // }else if (data.res == "nrw_progress") {
-        //     Swal.fire(
-        //         'NRW Progress',
-        //         'Please Enter NRW Progress',
-        //         'error'
-        //     )
-        // }else
+        
          if (data.res == "exist") {
             Swal.fire(
                 'Already Exist',
-                data.dma_name + '<br>Already Exist',
+                '<br>Already Exist',
                 'error'
             )
         }
         else if (data.res == "success") {
             Swal.fire(
                 'Success',
-                data.dma_name + '<br>Successfully Added',
+                '<br>Successfully Added',
                 'success'
             )
-            $('#adddmazonedatamaster')[0].reset();
+            $('#addjalsathi')[0].reset();
             refreshDiv();
 
         }
