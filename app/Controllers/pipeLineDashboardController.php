@@ -27,8 +27,9 @@ class pipeLineDashboardController extends WebController {
         $this->data['allstataedata']=$this->pipelineModel->getAllStatedata();
         // $this->data['allcitydata']=$this->pipelineModel->getAllCityDetails();
         $this->data['getall'] = $this->pipelineModel->getAll();
-
-
+        $loginmenu = session()->get('loginheadermenu');
+        $this->data['loginlinkdashboard'] = ($loginmenu == 'buttondashboard') ? '/dashboard' : '/login';
+        $this->data['headerloginbutton'] = ($loginmenu == 'buttondashboard') ? 'Dashboard' : 'Login';
         return view('pipelinedashboard/template_pipe/header', $this->data)
                 . view('pipelinedashboard/pages/index', $this->data)
                 . view('pipelinedashboard/template_pipe/footer', $this->data);

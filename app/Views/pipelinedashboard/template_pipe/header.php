@@ -314,9 +314,9 @@
                     </div>
                     <div class="float-right d-flex top-right">
                       <div class="btns-box">
-                            <a class="btn-one" href="/login">
+                            <a class="btn-one" href="<?= $loginlinkdashboard ; ?>">
                                 <div class="round"></div>
-                                <span class="txt">Login</span>
+                                <span class="txt"><?= $headerloginbutton ; ?></span>
                             </a>
                         </div>
                       <div class="drink-from-tap">                        
