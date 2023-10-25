@@ -50,6 +50,7 @@ class Home extends WebController {
                             $this->session->set('userid', $result->id_user);
                             $this->session->set('city', $result->city_id_city);
                             $this->session->set('usertype', $result->user_type);
+                            $this->session->set('loginheadermenu', 'buttondashboard');  // Header Login Menu Butten Name Change
                             header("location:" . CUSTOMPATH . "dashboard");
                             exit;
                         } else {
@@ -149,6 +150,7 @@ class Home extends WebController {
         $this->session->remove('username');
         $this->session->remove('useremail');
         $this->session->remove('userid');
+        $this->session->remove('loginheadermenu');
         header('location:/');
         exit;
     }
