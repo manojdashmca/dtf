@@ -15,6 +15,7 @@ class UserController extends WebController {
         $this->data['css'] = 'datatable';
         $this->data['js'] = 'datatable';
         $this->data['userlist'] = $this->webModel->getAllUser();
+        $this->data['activemenu']=array('amenuactive'=>'or','divshow'=> 'or','aliactive'=> 'orappuser');
         return view('templates/header', $this->data)
                 . view('users/index', $this->data)
                 . view('templates/footer', $this->data);
