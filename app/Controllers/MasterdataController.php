@@ -26,6 +26,7 @@ class MasterdataController extends WebController {
         if (!empty($city)) {
             $this->data['component'] = $this->masterdataModel->getCityComponent($city);
         }
+        $this->data['activemenu']=array('amenuactive'=>'or','divshow'=> 'or','aliactive'=> 'orcomponentmaster');
         return view('templates/header', $this->data)
                 . view('masterdata/component', $this->data)
                 . view('templates/footer', $this->data);
@@ -86,6 +87,7 @@ class MasterdataController extends WebController {
             $this->data['task'] = $this->masterdataModel->getCityComponentTask($city);
             $this->data['component'] = $this->masterdataModel->getCityComponent($city);
         }
+        $this->data['activemenu']=array('amenuactive'=>'or','divshow'=> 'or','aliactive'=> 'ortask');
         $this->data['taskmaster'] = $this->masterdataModel->getAllTask();
         return view('templates/header', $this->data)
                 . view('masterdata/task', $this->data)
@@ -131,6 +133,7 @@ class MasterdataController extends WebController {
             $this->data['component'] = $this->masterdataModel->getCityComponent($city);
         }
         $this->data['subtaskmaster'] = $this->masterdataModel->getsubtaskMasterData();
+        $this->data['activemenu']=array('amenuactive'=>'or','divshow'=> 'or','aliactive'=> 'orsubtask');
         return view('templates/header', $this->data)
                 . view('masterdata/subtask', $this->data)
                 . view('templates/footer', $this->data);

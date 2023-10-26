@@ -21,6 +21,7 @@ class DashboardController extends WebController {
         $this->data['includefile']='dashboard.php';
         $this->data['financialdata']=$fpModel->financialprogressdata();
         $this->data['topdata']=array('budget'=>$this->webModel->getTotalContractCost(),'location'=>$this->webModel->getTotalCity(),'progress'=>$this->webModel->getAchievedProgress());
+        $this->data['activemenu']=array('amenuactive'=>'pu','divshow'=> 'pu','aliactive'=> 'puconstruction');
         return view('templates/header', $this->data)
                 . view('dashboard/index', $this->data)
                 . view('templates/footer', $this->data);

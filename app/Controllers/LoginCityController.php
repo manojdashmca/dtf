@@ -109,6 +109,7 @@ class LoginCityController extends WebController {
 
         // print_r($division);
         $this->data['alldmadata'] = $this->pipelineModel->getAllStatedataMaster($division,$city);
+        $this->data['activemenu']=array('amenuactive'=>'pu','divshow'=> 'pu','aliactive'=> 'puvwhouseconnection');
 
         return view('templates/header', $this->data)
                 . view('logincity/pipemeterconnection', $this->data)
@@ -133,6 +134,7 @@ class LoginCityController extends WebController {
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
 
         $this->data['allJalasathifilter'] = $this->pipelineModel->getJalsathiOnDivisionAndCity($division,$city);
+        $this->data['activemenu']=array('amenuactive'=>'pu','divshow'=> 'pu','aliactive'=> 'puvwjalsathi');
 
         $division = $this->request->getVar('division');       
         $city = $this->request->getVar('city');
@@ -193,7 +195,7 @@ class LoginCityController extends WebController {
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
 
         $this->data['allrevenuecollectionfilter'] = $this->pipelineModel->getRevenueFilter($division,$city);
-
+        $this->data['activemenu']=array('amenuactive'=>'pu','divshow'=> 'pu','aliactive'=> 'puvwrevenuecollection');
         return view('templates/header', $this->data)
                 . view('logincity/getrevenuecollection', $this->data)
                 . view('templates/footer', $this->data);
@@ -240,7 +242,7 @@ class LoginCityController extends WebController {
             $this->data['filtergrievance'] = $this->pipelineModel->getGrivanceFilter($division,$city,$grivance_year = "0",$dataArray = "0");
         }
         
-
+        $this->data['activemenu']=array('amenuactive'=>'pu','divshow'=> 'pu','aliactive'=> 'puvwgrievancered');
         return view('templates/header', $this->data)
                 . view('logincity/getgrievancecustomerservice', $this->data)
                 . view('templates/footer', $this->data);
@@ -264,7 +266,7 @@ class LoginCityController extends WebController {
         $this->data['citydropdown'] = $citydropdown;
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
         $this->data['alldmadata'] = $this->pipelineModel->getAllStatedataMaster($division,$city);
-
+        $this->data['activemenu']=array('amenuactive'=>'pu','divshow'=> 'pu','aliactive'=> 'puvwwaterqualty');
         return view('templates/header', $this->data)
                 . view('logincity/getwaterquality', $this->data)
                 . view('templates/footer', $this->data);

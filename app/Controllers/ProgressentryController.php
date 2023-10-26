@@ -24,6 +24,7 @@ class ProgressentryController extends WebController {
         if (!empty($city)) {
             $this->data['component'] = $this->masterdataModel->getCityComponent($city);
         }
+        $this->data['activemenu']=array('amenuactive'=>'pe','divshow'=> 'pe','aliactive'=> 'peprogressentry');
         return view('templates/header', $this->data)
                 . view('progressentry/index', $this->data)
                 . view('templates/footer', $this->data);

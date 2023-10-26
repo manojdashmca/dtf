@@ -14,12 +14,12 @@ class PipelineController extends WebController
     }
 
 
-    public function dashboard()
+    public function dashboard() 
     {
         $this->data['title'] = 'Pipeline Dashboard';
         $this->data['css'] = '';
         $this->data['js'] = '';
-        $this->data['usernewname'] = 'chhitaranjan';
+        $this->data['usernewname'] = '';
         return view('templates/header', $this->data)
             . view('pipeline/index', $this->data)
             . view('templates/footer', $this->data);
@@ -32,7 +32,8 @@ class PipelineController extends WebController
         $this->data['js'] = 'jqueryscript,sweetalert,divisionmastertable';
         $this->data['jspagination'] = 'divisionmastertable';
         $this->data['includefile'] = 'divisiontable.php';
-        $this->data['usernewname'] = 'chhitaranjan';
+        $this->data['usernewname'] = '';
+        $this->data['activemenu']=array('amenuactive'=>'or','divshow'=> 'or','aliactive'=> 'ordivisionmaster');
         return view('templates/header', $this->data)
             . view('pipeline/division-home', $this->data)
             . view('templates/footer', $this->data);
@@ -117,6 +118,7 @@ class PipelineController extends WebController
         $this->data['js'] = 'divisionmastertable,sweetalert,validation,alertify';
         $this->data['includefile'] = 'citytable.php';
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
+        $this->data['activemenu']=array('amenuactive'=>'or','divshow'=> 'or','aliactive'=> 'orcitytable');
         return view('templates/header', $this->data)
             . view('masterdata/citymaster', $this->data)
             . view('templates/footer', $this->data);
@@ -208,9 +210,10 @@ class PipelineController extends WebController
         $this->data['css'] = 'dmatablegrid,sweetalert,validation,alertify';
         $this->data['js'] = 'divisionmastertable,sweetalert,validation,alertify';
         $this->data['includefile'] = 'dmazonetable.php';
-       
+        $this->data['activemenu']=array('amenuactive'=>'pe','divshow'=> 'pe','aliactive'=> 'peadddmamaster');
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
         $this->data['allDmamaster'] = $this->pipelineModel->getAllDmaMasterData();
+        $this->data['activemenu']=array('amenuactive'=>'or','divshow'=> 'or','aliactive'=> 'oraddnewdmamaster');
         return view('templates/header', $this->data)
             . view('masterdata/dmazone', $this->data)
             . view('templates/footer', $this->data);
@@ -246,6 +249,7 @@ class PipelineController extends WebController
         $this->data['getdmainfoonid'] = $dma_info;
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
         $this->data['allDmamaster'] = $this->pipelineModel->getAllDmaMasterData();
+        $this->data['activemenu']=array('amenuactive'=>'pu','divshow'=> 'pu','aliactive'=> 'puvwdmainfo');
         return view('templates/header', $this->data)
             . view('masterdata/dmazone2', $this->data)
             . view('templates/footer', $this->data);
@@ -644,7 +648,7 @@ class PipelineController extends WebController
         $this->data['includefile'] = 'revenuecollectionjs.php';
 
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
-
+        $this->data['activemenu']=array('amenuactive'=>'pe','divshow'=> 'pe','aliactive'=> 'perevenuecollection');
         return view('templates/header', $this->data)
             . view('masterdata/revenue_collection', $this->data)
             . view('templates/footer', $this->data);
@@ -697,7 +701,7 @@ class PipelineController extends WebController
         // $this->data['city'] = $city;
         // $this->data['component'] = array();
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
-
+        $this->data['activemenu']=array('amenuactive'=>'pe','divshow'=> 'pe','aliactive'=> 'pegrivencecus');
         return view('templates/header', $this->data)
             . view('masterdata/grievance_redressal_master', $this->data)
             . view('templates/footer', $this->data);
@@ -753,7 +757,7 @@ class PipelineController extends WebController
         // $this->data['city'] = $city;
         // $this->data['component'] = array();
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
-
+        $this->data['activemenu']=array('amenuactive'=>'pe','divshow'=> 'pe','aliactive'=> 'pewaterquality');
         return view('templates/header', $this->data)
             . view('masterdata/waterqualitymaster', $this->data)
             . view('templates/footer', $this->data);
