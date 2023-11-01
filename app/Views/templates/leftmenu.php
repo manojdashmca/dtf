@@ -1,6 +1,7 @@
 <?php
 (isset($_REQUEST['division'])) ? $linkdiv = $_REQUEST['division'] : $linkdiv = '';
 (isset($_REQUEST['city'])) ? $linkcity = $_REQUEST['city'] : $linkcity = '';
+$usertypelogin = (isset($_SESSION['usertype'])) ? $_SESSION['usertype'] :'';
 ?>
 <!-- ========== App Menu ========== -->
 <div class="app-menu navbar-menu">
@@ -121,6 +122,7 @@
                         <i class="bi bi-people"></i> <span data-key="t-two-column">Review Meeting</span>
                     </a>
                 </li>
+                <?php if($usertypelogin == '1'){ ?>
                 <li class="nav-item">
                     <a class="nav-link menu-link <?= isset($activemenu['amenuactive']) ? ($activemenu['amenuactive'] == 'or' ? 'active' : '') : ''; ?>" href="#sidebarTables" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
                         <i class="bx bx-droplet"></i> <span data-key="t-tables">Organiser</span>
@@ -157,6 +159,7 @@
                         <i class="bi bi-briefcase"></i> <span data-key="t-two-column">Project Clearance/Issues</span> 
                     </a>
                 </li>
+                <?php } ?>
                 
             </ul>
         </div>
