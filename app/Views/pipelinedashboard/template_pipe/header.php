@@ -304,7 +304,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="/">
                             <img src="images/cropped-watco-logo.png" alt="">
                             <div class="logo-caption">
                                 <h1>Water Corporation of Odisha</h1>
