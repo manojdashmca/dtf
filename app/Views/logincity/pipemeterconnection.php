@@ -46,7 +46,7 @@
             </form>
         </div>
     </div>
-
+.
     <div class="row">
         <?php 
             // if(isset($alldmadata)){
@@ -59,33 +59,15 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div class="flex-grow-1">
-                                <p class="text-uppercase fw-medium text-muted text-truncate fs-13" id="pmcondashheading">
-                                    No of City</p>
-                                <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcd"><?= isset($alldmadata[0]->total_cities) ? $alldmadata[0]->total_cities : '0';?></span></h4>
-
-                            </div>  
-                            <div class="avatar-sm flex-shrink-0">
-                                <span class="avatar-title blue-bg rounded fs-3">
-                                    <i class="bx bxs-city"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div><!-- end card body -->
-                    
-                </div><!-- end card -->
-
-            </div> <!-- end .h-100-->
-
-        </div> <!-- end col -->
-        <div class="col-md-4">
-            <div class="h-100">
-                <div class="card card-animate">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <div class="flex-grow-1">
-                                <p class="text-uppercase fw-medium text-muted text-truncate fs-13">Population</p>
-                                <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdpopulation"><?= isset($alldmadata[0]->dma_population) ? $alldmadata[0]->dma_population : '0';?></span></h4>
-
+                                <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
+                                Population with DFT</p>
+                                <h4 class="fs-22 fw-semibold mb-3">60%</h4>
+                                <div class="progress d-inline-block w-100">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated  h-100" style="width:60%;">
+                                    </div>
+                                </div>
+                                <h5>No of city: <span class="" id="hmcd"><?= isset($alldmadata[0]->total_cities) ? $alldmadata[0]->total_cities : '0';?></span> </h5>
+                                <h5>Population With DFT :  <span class="" id="hmcdpopulation"><?= isset($alldmadata[0]->dma_population) ? $alldmadata[0]->dma_population : '0';?></span></h5>
                             </div>
                             <div class="avatar-sm flex-shrink-0">
                                 <span class="avatar-title blue-bg rounded fs-3">
@@ -94,13 +76,13 @@
                             </div>
                         </div>
                     </div><!-- end card body -->
+                   
                 </div><!-- end card -->
 
             </div> <!-- end .h-100-->
+        </div> <!-- end col -->       
 
-        </div> <!-- end col -->
-        <div class="col-md-4">
-        </div>
+
         <div class="col-md-4">
             <div class="h-100">
                 <div class="card card-animate">
@@ -108,13 +90,18 @@
                         <div class="d-flex justify-content-between">
                             <div class="flex-grow-1">
                                 <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
-                                    House Connection Scope</p>
-                                <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdhousehold"><?= isset($alldmadata[0]->house_connection_scope) ? $alldmadata[0]->house_connection_scope : '0';?></span></h4>
-
+                                House Connection Achieved</p>
+                                <h4 class="fs-22 fw-semibold mb-3">87%</h4>
+                                <div class="progress d-inline-block w-100">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated  h-100" style="width:87%;">
+                                    </div>
+                                </div>
+                                <h5>House Connection Target: <span class="" id="hmcdhousehold"><?= isset($alldmadata[0]->house_connection_scope) ? $alldmadata[0]->house_connection_scope : '0';?></span> </h5>
+                                <h5>Connection Achieved : <span class="" id="hmcdhousecomplete"><?= isset($alldmadata[0]->house_connection_progress) ? $alldmadata[0]->house_connection_progress : '0';?></span></h5>
                             </div>
                             <div class="avatar-sm flex-shrink-0">
                                 <span class="avatar-title blue-bg rounded fs-3">
-                                    <i class="bx bxl-kubernetes"></i>
+                                    <i class="bx bx-home-alt"></i>
                                 </span>
                             </div>
                         </div>
@@ -123,21 +110,27 @@
                 </div><!-- end card -->
 
             </div> <!-- end .h-100-->
-
         </div> <!-- end col -->
+        
         <div class="col-md-4">
             <div class="h-100">
                 <div class="card card-animate">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div class="flex-grow-1">
-                                <p class="text-uppercase fw-medium text-muted text-truncate fs-13">House Connnection Completed</p>
-                                <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdhousecomplete"><?= isset($alldmadata[0]->house_connection_progress) ? $alldmadata[0]->house_connection_progress : '0';?></span></h4>
-
+                                <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
+                                Metered</p>
+                                <h4 class="fs-22 fw-semibold mb-3">40%</h4>
+                                <div class="progress d-inline-block w-100">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated  h-100" style="width:40%;">
+                                    </div>
+                                </div>
+                                <h5>Meter Connection Scope: <span class="" id="hmcdhousehold"><?= isset($alldmadata[0]->meter_connection_scope) ? $alldmadata[0]->meter_connection_scope : '0';?></span> </h5>
+                                <h5>Metered : <span class="" id="hmcdmetercomplete"><?= isset($alldmadata[0]->meter_connection_progress) ? $alldmadata[0]->meter_connection_progress : '0';?></span></h5>
                             </div>
                             <div class="avatar-sm flex-shrink-0">
                                 <span class="avatar-title blue-bg rounded fs-3">
-                                    <i class="bx bx-water"></i>
+                                    <i class=" bx bx-tachometer"></i>
                                 </span>
                             </div>
                         </div>
@@ -146,73 +139,7 @@
                 </div><!-- end card -->
 
             </div> <!-- end .h-100-->
-
-        </div>
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-4">
-            <div class="h-100">
-                <div class="card card-animate">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <div class="flex-grow-1">
-                                <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
-                                    Meter Connection Scope</p>
-                                <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdhousehold"><?= isset($alldmadata[0]->meter_connection_scope) ? $alldmadata[0]->meter_connection_scope : '0';?></span></h4>
-
-                            </div>
-                            <div class="avatar-sm flex-shrink-0">
-                                <span class="avatar-title blue-bg rounded fs-3">
-                                    <i class="bx bx-water"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div><!-- end card body -->
-                    <div class="animation-effect-6 text-success opacity-25 fs-18">
-                        <i class=" bx bxs-droplet-half"></i>
-                    </div>
-                    <div class="animation-effect-4 text-success opacity-25 fs-18">
-                        <i class=" bx bxs-droplet-half"></i>
-                    </div>
-                    <div class="animation-effect-3 text-success opacity-25 fs-18">
-                        <i class=" bx bxs-droplet-half"></i>
-                    </div>
-                </div><!-- end card -->
-
-            </div> <!-- end .h-100-->
-
         </div> <!-- end col -->
-        <div class="col-md-4">
-            <div class="h-100">
-                <div class="card card-animate">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <div class="flex-grow-1">
-                                <p class="text-uppercase fw-medium text-muted text-truncate fs-13">Meter Connnection Completed </p>
-                                <h4 class="fs-22 fw-semibold mb-3"><span class="" id="hmcdmetercomplete"><?= isset($alldmadata[0]->meter_connection_progress) ? $alldmadata[0]->meter_connection_progress : '0';?></span></h4>
-
-                            </div>
-                            <div class="avatar-sm flex-shrink-0">
-                                <span class="avatar-title blue-bg rounded fs-3">
-                                    <i class="bx bx-water"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div><!-- end card body -->
-                    <div class="animation-effect-6 text-success opacity-25 fs-18">
-                        <i class=" bx bxs-droplet-half"></i>
-                    </div>
-                    <div class="animation-effect-4 text-success opacity-25 fs-18">
-                        <i class=" bx bxs-droplet-half"></i>
-                    </div>
-                    <div class="animation-effect-3 text-success opacity-25 fs-18">
-                        <i class=" bx bxs-droplet-half"></i>
-                    </div>
-                </div><!-- end card -->
-
-            </div> <!-- end .h-100-->
-
-        </div>
 
     </div>
                 

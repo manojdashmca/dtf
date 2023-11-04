@@ -124,4 +124,29 @@ span.logo-lg img {
 .navbar-menu .navbar-nav .nav-sm .nav-link {
     color: #ffffffcf;
 }
+
+.page-content {
+    background: #e7e8ee;
+    min-height: 100vh;
+}
+.sidebar-background {
+    opacity: 1;
+    background: #1c2226;
+}
+.card.card-animate h5 {
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+.card.card-animate p {
+    font-size: 15px!important;
+    font-weight: 600;
+    color: #000!important;
+    margin-bottom: 5px;
+}
+.card.card-animate h4 {
+    font-size: 26px!important;
+    margin-bottom: 0!important;
+    font-weight: 800!important;
+    color: #000;
+}
 /*Custom Csss MKM End*/
