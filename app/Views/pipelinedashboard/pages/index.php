@@ -2174,14 +2174,14 @@
                             <div class="row mb-2">
                                 <div class="col-md-12">
                                     <!--<h4>STATE : <span class="text-info"> ODISHA</span></h4>-->
-                                    <h4 class="float-left" id = "dashboard_total_city" >TOTAL CITY: <span class="text-info">16</span></h4>
+                                    <h4 class="float-left" id = "dashboard_total_city" >TOTAL CITIES: <span class="text-info">16</span></h4>
 
                                     <div class="float-right d-flex" style="align-items: center;">
                                         <h4 for="" style="margin-bottom:0; margin-right: 7px;" class=" h-100">CITIES:
                                         </h4>
                                         <select name='city_dropdown' id='city_dropdown' class="form-control form-control-sm"
                                              style="max-width: 200px;display: inline-block;">
-                                            <option value="">Select Cities</option>
+                                            <option readonly>Select Cities</option>
                                             <?php foreach ($getallcitiesdropdown as $option_all) : ?>
                                             <option value="<?= $option_all->city_id ?>"><?= $option_all->city_name ?>
                                             </option>
@@ -2292,7 +2292,7 @@
                                                         <div class="progress-bar progress-bar-striped progress-bar-animated  h-100" id="total_meter_connection_persentage_bar" 
                                                             style="width:<?= isset($allstataedata[0]->meter_connection_progress) ? round($allstataedata[0]->meter_connection_progress / $allstataedata[0]->meter_connection_scope * 100) : '0' ?>%"></div>
                                                     </div>
-                                                    <h5>Metered Connection Target:<span
+                                                    <h5>Metered Connection Target : <span
                                                             id="total_meter_connection_scope"><?= $allstataedata[0]->meter_connection_scope ?></span>
                                                     </h5>
 													<h5>Connection Achieved : <span
