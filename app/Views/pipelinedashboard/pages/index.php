@@ -2159,7 +2159,9 @@
                     </svg>
 
                     <div class="construction-progress">
-                        <h5><img src="images/icon/progress.png" alt=""> Construction Progress: <span class="text-info">45%</span></h5>
+						<a href="/dashboard">
+                        	<h5><img src="images/icon/progress.png" alt=""> Construction Progress: <span class="text-info">45%</span></h5>
+						</a>
                     </div>
 
                 </div>
