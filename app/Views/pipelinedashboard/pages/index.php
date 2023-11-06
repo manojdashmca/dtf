@@ -2174,16 +2174,16 @@
                             <div class="row mb-2">
                                 <div class="col-md-12">
                                     <!--<h4>STATE : <span class="text-info"> ODISHA</span></h4>-->
-                                    <h4 class="float-left">TOTAL CITY: <span class="text-info">16</span></h4>
+                                    <h4 class="float-left" id = "dashboard_total_city" >TOTAL CITY: <span class="text-info">16</span></h4>
 
                                     <div class="float-right d-flex" style="align-items: center;">
-                                        <h4 for="" style="margin-bottom:0; margin-right: 7px;" class=" h-100">DIVISION:
+                                        <h4 for="" style="margin-bottom:0; margin-right: 7px;" class=" h-100">CITIES:
                                         </h4>
-                                        <select name='divisions_home_all' id='divisions_home_all' class="form-control"
-                                            style="max-width: 200px;display: inline-block;">
-                                            <option value="">Select Division</option>
-                                            <?php foreach ($alldivisionname as $option_all) : ?>
-                                            <option value="<?= $option_all->id ?>"><?= $option_all->division_name ?>
+                                        <select name='city_dropdown' id='city_dropdown' class="form-control form-control-sm"
+                                             style="max-width: 200px;display: inline-block;">
+                                            <option value="">Select Cities</option>
+                                            <?php foreach ($getallcitiesdropdown as $option_all) : ?>
+                                            <option value="<?= $option_all->city_id ?>"><?= $option_all->city_name ?>
                                             </option>
                                             <?php endforeach; ?>
                                         </select>
@@ -2202,18 +2202,18 @@
                                                         <img src="images/icon/DMAwithDFT.png" alt="">
                                                     </div>
                                                     <h4>DMA with DFT</h4>
-                                                    <h3><?= isset($allstataedata[0]->dft_with_dma_persentage) ? round($allstataedata[0]->dft_with_dma_persentage) : '0' ?>%
+                                                    <h3 id="dma_dft_persentage"><?= isset($allstataedata[0]->dft_with_dma_persentage) ? round($allstataedata[0]->dft_with_dma_persentage) : '0' ?>%
                                                     </h3>
                                                     <div class="progress d-inline-block w-100">
-                                                        <div class="progress-bar progress-bar-striped progress-bar-animated  h-100"
+                                                        <div class="progress-bar progress-bar-striped progress-bar-animated  h-100" id="dma_dft_persentage_bar" 
                                                             style="width:<?= isset($allstataedata[0]->dft_with_dma_persentage) ? round($allstataedata[0]->dft_with_dma_persentage) : '0' ?>%;">
                                                         </div>
                                                     </div>
                                                     <h5>Total DMA: <span
-                                                            id="h_no_dma"><?= $allstataedata[0]->total_dma ?></span>
+                                                            id="total_dma_ds"><?= $allstataedata[0]->total_dma ?></span>
                                                     </h5>
                                                     <h5>DMA With DFT : <span
-                                                            id="dma_with_dft"><?= $allstataedata[0]->dft_with_dma ?></span>
+														id="total_dma_with_dft_ds"><?= $allstataedata[0]->dft_with_dma ?></span>
                                                     </h5>
                                                 </a>
                                             </div>
@@ -2225,10 +2225,10 @@
                                                         <img src="images/icon/nrw.png" alt="">
                                                     </div>
                                                     <h4>Avg. NRW</h4>
-                                                    <h3 id="h_no_nrw"><?= $allstataedata[0]->nrw_average_value ?>%</h3>
+                                                    <h3 id="nrw_average_value_dsb"><?= $allstataedata[0]->nrw_average_value ?>%</h3>
                                                     <div class="progress d-inline-block w-100">
-                                                        <div class="progress-bar progress-bar-striped progress-bar-animated h-100"
-                                                            style="width:8.11%;"></div>
+                                                        <div class="progress-bar progress-bar-striped progress-bar-animated h-100" id="nrw_average_value_dsb_bar" 
+                                                            style="width:<?=  isset($allstataedata[0]->nrw_average_value) ? $allstataedata[0]->nrw_average_value : '0' ?>%"></div>
                                                     </div>
                                                 </a>
                                             </div>
@@ -2240,18 +2240,18 @@
                                                         <img src="images/icon/population.png" alt="">
                                                     </div>
                                                     <h4>Population with DFT</h4>
-                                                    <h3><?= isset($allstataedata[0]->beneficiary_population) ? round($allstataedata[0]->beneficiary_population / $allstataedata[0]->total_no_population * 100) : '0' ?>%
+                                                    <h3 id="total_population_persentage"><?= isset($allstataedata[0]->beneficiary_population) ? round($allstataedata[0]->beneficiary_population / $allstataedata[0]->total_no_population * 100) : '0' ?>%
                                                     </h3>
                                                     <div class="progress d-inline-block w-100">
-                                                        <div class="progress-bar progress-bar-striped progress-bar-animated  h-100"
+                                                        <div class="progress-bar progress-bar-striped progress-bar-animated  h-100" id ="total_population_persentage_bar" 
                                                             style="width:<?= isset($allstataedata[0]->beneficiary_population) ? round($allstataedata[0]->beneficiary_population / $allstataedata[0]->total_no_population * 100) : '0' ?>%;">
                                                         </div>
                                                     </div>
                                                     <h5>Total Population: <span
-                                                            id="h_population"><?= $allstataedata[0]->total_no_population ?></span>
+                                                            id="total_population_ds"><?= $allstataedata[0]->total_no_population ?></span>
                                                     </h5>
                                                     <h5>Population With DFT : <span
-                                                            id="h_be_population"><?= $allstataedata[0]->beneficiary_population ?></span>
+														id="benefit_population_ds"><?= $allstataedata[0]->beneficiary_population ?></span>
                                                     </h5>
                                                 </a>
                                             </div>
@@ -2263,36 +2263,40 @@
                                                         <img src="images/icon/pipe-connection.png" alt="">
                                                     </div>
                                                     <h4>House Connection Achieved</h4>
-                                                    <h3><?= isset($allstataedata[0]->house_connection_progress) ? round($allstataedata[0]->house_connection_progress / $allstataedata[0]->house_connection_scope * 100) : '0' ?>%
+                                                    <h3 id="total_house_connection_persentage"><?= isset($allstataedata[0]->house_connection_progress) ? round($allstataedata[0]->house_connection_progress / $allstataedata[0]->house_connection_scope * 100) : '0' ?>%
                                                     </h3>
                                                     <div class="progress d-inline-block w-100">
-                                                        <div class="progress-bar progress-bar-striped progress-bar-animated  h-100"
+                                                        <div class="progress-bar progress-bar-striped progress-bar-animated  h-100" id="total_house_connection_persentage_bar" 
                                                             style="width:<?= isset($allstataedata[0]->house_connection_progress) ? round($allstataedata[0]->house_connection_progress / $allstataedata[0]->house_connection_scope * 100) : '0' ?>%;">
                                                         </div>
                                                     </div>
                                                     <h5>House Connection Target: <span
-                                                            id="h_household"><?= $allstataedata[0]->house_connection_scope ?></span>
+                                                            id="total_house_connection_scope"><?= $allstataedata[0]->house_connection_scope ?></span>
                                                     </h5>
                                                     <h5>Connection Achieved : <span
-                                                            id="h_h_complete"><?= $allstataedata[0]->house_connection_progress ?></span>
+                                                            id="total_house_connection_progress"><?= $allstataedata[0]->house_connection_progress ?></span>
                                                     </h5>
                                                 </a>
                                             </div>
                                         </div>
                                         <div class="col-6 map-box-col">
+											
                                             <div class="map-box2">
                                                 <a href="#" class="content" style="background:#f2e8ff;">
                                                     <div class="icon-1">
                                                         <img src="images/icon/metered.png" alt="">
                                                     </div>
                                                     <h4>Metered</h4>
-                                                    <h3>40%</h3>
+                                                    <h3 id="total_meter_connection_persentage"><?= isset($allstataedata[0]->meter_connection_progress) ? round($allstataedata[0]->meter_connection_progress / $allstataedata[0]->meter_connection_scope * 100) : '0' ?>%</h3>
                                                     <div class="progress d-inline-block w-100">
-                                                        <div class="progress-bar progress-bar-striped progress-bar-animated  h-100"
-                                                            style="width:40%;"></div>
+                                                        <div class="progress-bar progress-bar-striped progress-bar-animated  h-100" id="total_meter_connection_persentage_bar" 
+                                                            style="width:<?= isset($allstataedata[0]->meter_connection_progress) ? round($allstataedata[0]->meter_connection_progress / $allstataedata[0]->meter_connection_scope * 100) : '0' ?>%"></div>
                                                     </div>
-                                                    <h5>Metered:<span
-                                                            id="h_m_complete"><?= $allstataedata[0]->meter_connection_progress ?></span>
+                                                    <h5>Metered Connection Target:<span
+                                                            id="total_meter_connection_scope"><?= $allstataedata[0]->meter_connection_scope ?></span>
+                                                    </h5>
+													<h5>Connection Achieved : <span
+                                                            id="total_meter_connection_progress"><?= $allstataedata[0]->meter_connection_progress ?></span>
                                                     </h5>
                                                 </a>
                                             </div>
