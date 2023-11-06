@@ -11,7 +11,7 @@ class WebController extends BaseController {
         parent::__construct();
         $this->webModel = new WebModel();
         //-------Add the open methods here
-        $openmethods = array('getHomePipeMeterConDivision','pipeDashboard', 'deleteSystemLogs', 'deleteEmailAttachment', 'login', 'logout', 'forgotpassord', 'resetpassord','divisionDishboard');
+        $openmethods = array('getHomePipeMeterConDivision','pipeDashboard', 'deleteSystemLogs', 'deleteEmailAttachment', 'login', 'logout', 'forgotpassord', 'resetpassord','divisionDishboard', 'getCitydropdownDashboard');
         
         if (!in_array($this->method, $openmethods)) {
             if ($this->session->has('login')) {
