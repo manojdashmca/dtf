@@ -466,7 +466,7 @@ FROM dma_master z;";
 // Dma Master
     public function getAllDmaMasterData()
     {
-        $sql = "SELECT * FROM dma_master;";
+        $sql = "SELECT * FROM dma_master ORDER BY id DESC;";
         $result = $this->db->query($sql);
         $return = $result->getResult();
         return $return;
