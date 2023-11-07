@@ -33,7 +33,7 @@ class PipelineController extends WebController
         $this->data['jspagination'] = 'divisionmastertable';
         $this->data['includefile'] = 'divisiontable.php';
         $this->data['usernewname'] = '';
-        $this->data['activemenu']=array('amenuactive'=>'or','divshow'=> 'or','aliactive'=> 'ordivisionmaster');
+        $this->data['activemenu'] = array('amenuactive' => 'or', 'divshow' => 'or', 'aliactive' => 'ordivisionmaster');
         return view('templates/header', $this->data)
             . view('pipeline/division-home', $this->data)
             . view('templates/footer', $this->data);
@@ -118,7 +118,7 @@ class PipelineController extends WebController
         $this->data['js'] = 'divisionmastertable,sweetalert,validation,alertify';
         $this->data['includefile'] = 'citytable.php';
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
-        $this->data['activemenu']=array('amenuactive'=>'or','divshow'=> 'or','aliactive'=> 'orcitytable');
+        $this->data['activemenu'] = array('amenuactive' => 'or', 'divshow' => 'or', 'aliactive' => 'orcitytable');
         return view('templates/header', $this->data)
             . view('masterdata/citymaster', $this->data)
             . view('templates/footer', $this->data);
@@ -210,10 +210,10 @@ class PipelineController extends WebController
         $this->data['css'] = 'dmatablegrid,sweetalert,validation,alertify';
         $this->data['js'] = 'divisionmastertable,sweetalert,validation,alertify';
         $this->data['includefile'] = 'dmazonetable.php';
-        $this->data['activemenu']=array('amenuactive'=>'pe','divshow'=> 'pe','aliactive'=> 'peadddmamaster');
+        $this->data['activemenu'] = array('amenuactive' => 'pe', 'divshow' => 'pe', 'aliactive' => 'peadddmamaster');
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
         $this->data['allDmamaster'] = $this->pipelineModel->getAllDmaMasterData();
-        $this->data['activemenu']=array('amenuactive'=>'or','divshow'=> 'or','aliactive'=> 'oraddnewdmamaster');
+        $this->data['activemenu'] = array('amenuactive' => 'or', 'divshow' => 'or', 'aliactive' => 'oraddnewdmamaster');
         return view('templates/header', $this->data)
             . view('masterdata/dmazone', $this->data)
             . view('templates/footer', $this->data);
@@ -225,9 +225,11 @@ class PipelineController extends WebController
         $this->data['css'] = 'dmatablegrid,sweetalert,validation,alertify';
         $this->data['js'] = 'divisionmastertable,sweetalert,validation,alertify';
         $this->data['includefile'] = 'dmazonetable.php';
-        $division_dtl = $this->request->getVar('division_dtl'); 
+
+
+        $division_dtl = $this->request->getVar('division_dtl');
         $this->data['division_dtl'] = $division_dtl;
-      
+
         $city_dtl = $this->request->getVar('city_dtl');
         $this->data['city_dtl'] = $city_dtl;
         $dmacitydropdown = [];
@@ -235,21 +237,35 @@ class PipelineController extends WebController
             $dmacitydropdown = $this->pipelineModel->getCityOnDivision($division_dtl);
         }
         $this->data['dmacitydropdown'] = $dmacitydropdown;
-        $dmadatadtl = [];
-        if (!empty($city_dtl)) {
-            $dmadatadtl = $this->pipelineModel->getDmaonCityDetails($division_dtl,$city_dtl);
+
+        $s_city_id = session()->get('usercities');
+        if (is_numeric($s_city_id)) {
+            $dma_city = $this->pipelineModel->getDivisionCities($s_city_id);
+            // print_r($dma_city[0]['']);die;
+            $this->data['sessiondivision'] = $this->pipelineModel->getDivisionCities($s_city_id);
+            // $dmadatadtl = [];
+            $dmadatadtl = $this->pipelineModel->getDmaonCityDetails($dma_city[0]->division_id,$dma_city[0]->city_id);
+            // print_r($dmadatadtl);die;
+        } else {
+            $dmadatadtl = [];
+            if (!empty($city_dtl)) {
+                $dmadatadtl = $this->pipelineModel->getDmaonCityDetails($division_dtl, $city_dtl);
+            }
         }
+
+
+
         $this->data['dmaoncity'] = $dmadatadtl;
         $dma_dtl = $this->request->getVar('dma_dtl');
         $this->data['dma_dtl'] = $dma_dtl;
         $dma_info = [];
-        if(!empty($dma_dtl)){
+        if (!empty($dma_dtl)) {
             $dma_info = $this->pipelineModel->getDmainfoOnDmaid($dma_dtl);
         }
         $this->data['getdmainfoonid'] = $dma_info;
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
         $this->data['allDmamaster'] = $this->pipelineModel->getAllDmaMasterData();
-        $this->data['activemenu']=array('amenuactive'=>'pu','divshow'=> 'pu','aliactive'=> 'puvwdmainfo');
+        $this->data['activemenu'] = array('amenuactive' => 'pu', 'divshow' => 'pu', 'aliactive' => 'puvwdmainfo');
         return view('templates/header', $this->data)
             . view('masterdata/dmazone2', $this->data)
             . view('templates/footer', $this->data);
@@ -575,13 +591,12 @@ class PipelineController extends WebController
             $res = array("res" => "nrw_progress");
         } else {
 
-                $updateDivisionTable = $this->pipelineModel->updateDmaMasterTable($old_dma_id, $z_division_id_u, $z_citys_d, $edit_dma_name,$edit_dma_population,$edit_commissioning_status,$edit_dma_updated_date,$edit_distribution_pipe_line_scope,$edit_distribution_pipe_line_progress,$edit_pumping_main_scope,$edit_pumping_main_progress,$edit_storage_resorvoir_scope,$edit_storage_resorvoir_progress,$edit_pumping_station_scope,$edit_pumping_station_progress,$edit_flowmeter_scope,$edit_flowmeter_progress,$edit_pressure_treansmitter_scope,$edit_pressure_treansmitter_progress,$edit_level_treansmitter_scope,$edit_level_treansmitter_progress,$edit_sluice_valve_scope,$edit_sluice_valve_progress,$edit_plc_scope,$edit_plc_progress,$edit_house_connection_scope,$edit_house_connection_progress,$edit_meter_connection_scope,$edit_meter_connection_progress,$edit_nrw_scope,$edit_nrw_progress);
-                if ($updateDivisionTable) {
-                    $res = array("res" => "success", "dma_name" => $edit_dma_name);
-                } else {
-                    $res = array("res" => "failed", "dma_name" => $edit_dma_name);
-                }
-            
+            $updateDivisionTable = $this->pipelineModel->updateDmaMasterTable($old_dma_id, $z_division_id_u, $z_citys_d, $edit_dma_name, $edit_dma_population, $edit_commissioning_status, $edit_dma_updated_date, $edit_distribution_pipe_line_scope, $edit_distribution_pipe_line_progress, $edit_pumping_main_scope, $edit_pumping_main_progress, $edit_storage_resorvoir_scope, $edit_storage_resorvoir_progress, $edit_pumping_station_scope, $edit_pumping_station_progress, $edit_flowmeter_scope, $edit_flowmeter_progress, $edit_pressure_treansmitter_scope, $edit_pressure_treansmitter_progress, $edit_level_treansmitter_scope, $edit_level_treansmitter_progress, $edit_sluice_valve_scope, $edit_sluice_valve_progress, $edit_plc_scope, $edit_plc_progress, $edit_house_connection_scope, $edit_house_connection_progress, $edit_meter_connection_scope, $edit_meter_connection_progress, $edit_nrw_scope, $edit_nrw_progress);
+            if ($updateDivisionTable) {
+                $res = array("res" => "success", "dma_name" => $edit_dma_name);
+            } else {
+                $res = array("res" => "failed", "dma_name" => $edit_dma_name);
+            }
         }
         echo json_encode($res);
     }
@@ -595,12 +610,12 @@ class PipelineController extends WebController
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
         $this->data['cityjalasathi'] = $this->pipelineModel->getCityJalasathi();
         $city_id = session()->get('usercities');
-        if(is_numeric($city_id)){
+        if (is_numeric($city_id)) {
             $this->data['sessiondivision'] = $this->pipelineModel->getDivisionCities($city_id);
         }
-        
+
         return view('templates/header', $this->data)
-            . view('masterdata/jalasathimaster', $this->data) 
+            . view('masterdata/jalasathimaster', $this->data)
             . view('templates/footer', $this->data);
     }
 
@@ -614,17 +629,15 @@ class PipelineController extends WebController
             $res = array("res" => "enterCity");
         } elseif ($word_names == "") {
             $res = array("res" => "word_names");
-        }
-        
-        else {
+        } else {
             $checkDuplicatejalsathi = array();
             $checkDuplicatejalsathi = $this->pipelineModel->checkDuplicateJalsathi($z_division_id, $z_citys, $word_names);
             if (!empty($checkDuplicatejalsathi)) {
                 $res = array("res" => "exist", "word_names" => $word_names);
             } else {
-                
 
-                $insertCityTable = $this->pipelineModel->insertJalsathiTable($z_division_id,$z_citys,$word_names,$jal_msg_shg_name,$jal_collection_by_jalasathi,$jal_ibu_total_no_of_water_quality_testa,$jal_total_incentive_of_jalasathi);
+
+                $insertCityTable = $this->pipelineModel->insertJalsathiTable($z_division_id, $z_citys, $word_names, $jal_msg_shg_name, $jal_collection_by_jalasathi, $jal_ibu_total_no_of_water_quality_testa, $jal_total_incentive_of_jalasathi);
                 if ($insertCityTable) {
                     $res = array("res" => "success", "word_names" => $word_names);
                 } else {
@@ -639,7 +652,7 @@ class PipelineController extends WebController
         $allRevenueTabledata = $this->pipelineModel->getRevenueCollectionTable();
         echo json_encode($allRevenueTabledata);
     }
-   public function getRevenueCollectionPage()
+    public function getRevenueCollectionPage()
     {
         $this->data['title'] = 'Revenue Collection Master';
         $this->data['css'] = 'dmatablegrid,sweetalert,validation,alertify';
@@ -647,7 +660,7 @@ class PipelineController extends WebController
         $this->data['includefile'] = 'revenuecollectionjs.php';
 
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
-        $this->data['activemenu']=array('amenuactive'=>'pe','divshow'=> 'pe','aliactive'=> 'perevenuecollection');
+        $this->data['activemenu'] = array('amenuactive' => 'pe', 'divshow' => 'pe', 'aliactive' => 'perevenuecollection');
         return view('templates/header', $this->data)
             . view('masterdata/revenue_collection', $this->data)
             . view('templates/footer', $this->data);
@@ -662,20 +675,19 @@ class PipelineController extends WebController
             $res = array("res" => "enterCity");
         } elseif ($no_bill_generate == "") {
             $res = array("res" => "no_bill_generate");
-        }else {
+        } else {
             $no_bill_distributed = $no_bill_distributed != NULL ? $no_bill_distributed : "0";
             $incentive_paid_to_jalasathi = $incentive_paid_to_jalasathi != NULL ? $incentive_paid_to_jalasathi : "0";
             $total_revenue_collected = $total_revenue_collected != NULL ? $total_revenue_collected : "0";
             $revenue_collected_by_jalasathi = $revenue_collected_by_jalasathi != NULL ? $revenue_collected_by_jalasathi : "0";
             $revenue_collected_date = $revenue_collected_date != NULL ? $revenue_collected_date : "";
-            
-                $insertRevenueCollection = $this->pipelineModel->addRevenueCollectionMasterTable($z_division_id,$z_citys,$no_bill_generate,$no_bill_distributed,$incentive_paid_to_jalasathi,$total_revenue_collected,$revenue_collected_by_jalasathi,$revenue_collected_date);
-                if ($insertRevenueCollection) {
-                    $res = array("res" => "success");
-                } else {
-                    $res = array("res" => "failed");
-                }
-            
+
+            $insertRevenueCollection = $this->pipelineModel->addRevenueCollectionMasterTable($z_division_id, $z_citys, $no_bill_generate, $no_bill_distributed, $incentive_paid_to_jalasathi, $total_revenue_collected, $revenue_collected_by_jalasathi, $revenue_collected_date);
+            if ($insertRevenueCollection) {
+                $res = array("res" => "success");
+            } else {
+                $res = array("res" => "failed");
+            }
         }
         echo json_encode($res);
     }
@@ -689,7 +701,7 @@ class PipelineController extends WebController
         $allRevenueTabledata = $this->pipelineModel->getGrievanceAndCustomerServiceTable();
         echo json_encode($allRevenueTabledata);
     }
-   public function getGrievanceCustomerPage()
+    public function getGrievanceCustomerPage()
     {
         $this->data['title'] = 'Revenue Collection Master';
         $this->data['css'] = 'dmatablegrid,sweetalert,validation,alertify';
@@ -700,7 +712,7 @@ class PipelineController extends WebController
         // $this->data['city'] = $city;
         // $this->data['component'] = array();
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
-        $this->data['activemenu']=array('amenuactive'=>'pe','divshow'=> 'pe','aliactive'=> 'pegrivencecus');
+        $this->data['activemenu'] = array('amenuactive' => 'pe', 'divshow' => 'pe', 'aliactive' => 'pegrivencecus');
         return view('templates/header', $this->data)
             . view('masterdata/grievance_redressal_master', $this->data)
             . view('templates/footer', $this->data);
@@ -715,8 +727,8 @@ class PipelineController extends WebController
             $res = array("res" => "enterCity");
         } elseif ($grievance_name == "") {
             $res = array("res" => "grievance_name");
-        }else {
-            
+        } else {
+
             $grievance_name = $grievance_name != NULL ? $grievance_name : "";
             $grivance_customer_name = $grivance_customer_name != NULL ? $grivance_customer_name : "";
             $grivance_via = $grivance_via != NULL ? $grivance_via : "0";
@@ -725,13 +737,12 @@ class PipelineController extends WebController
             $resolved_with_in_time_limit = $resolved_with_in_time_limit != NULL ? $resolved_with_in_time_limit : "0";
             $resolved_after_time_limit = $resolved_after_time_limit != NULL ? $resolved_after_time_limit : "";
 
-                $insertGrievanceCu = $this->pipelineModel->addGrievanceandCustomerServicTable($z_division_id,$z_citys,$grievance_name,$grivance_customer_name,$grivance_via,$register_date,$grivance_status,$resolved_with_in_time_limit,$resolved_after_time_limit);
-                if ($insertGrievanceCu) {
-                    $res = array("res" => "success");
-                } else {
-                    $res = array("res" => "failed");
-                }
-            
+            $insertGrievanceCu = $this->pipelineModel->addGrievanceandCustomerServicTable($z_division_id, $z_citys, $grievance_name, $grivance_customer_name, $grivance_via, $register_date, $grivance_status, $resolved_with_in_time_limit, $resolved_after_time_limit);
+            if ($insertGrievanceCu) {
+                $res = array("res" => "success");
+            } else {
+                $res = array("res" => "failed");
+            }
         }
         echo json_encode($res);
     }
@@ -745,7 +756,7 @@ class PipelineController extends WebController
         $allRevenueTabledata = $this->pipelineModel->getWaterQualityTableTable();
         echo json_encode($allRevenueTabledata);
     }
-   public function waterQualityPage()
+    public function waterQualityPage()
     {
         $this->data['title'] = 'Revenue Collection Master';
         $this->data['css'] = 'dmatablegrid,sweetalert,validation,alertify';
@@ -756,7 +767,7 @@ class PipelineController extends WebController
         // $this->data['city'] = $city;
         // $this->data['component'] = array();
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
-        $this->data['activemenu']=array('amenuactive'=>'pe','divshow'=> 'pe','aliactive'=> 'pewaterquality');
+        $this->data['activemenu'] = array('amenuactive' => 'pe', 'divshow' => 'pe', 'aliactive' => 'pewaterquality');
         return view('templates/header', $this->data)
             . view('masterdata/waterqualitymaster', $this->data)
             . view('templates/footer', $this->data);
@@ -771,29 +782,28 @@ class PipelineController extends WebController
             $res = array("res" => "enterCity");
         } elseif ($no_of_sample_taken == "") {
             $res = array("res" => "no_of_sample_taken");
-        }else {
-            
-           
-            $no_of_sample_taken = $no_of_sample_taken != NULL ? $no_of_sample_taken: "0";
-            $sample_collected_at_wtp = $sample_collected_at_wtp != NULL ? $sample_collected_at_wtp: "0";
-            $sample_collected_at_storage = $sample_collected_at_storage != NULL ? $sample_collected_at_storage: "0";
-            $resolved_after_time_limit = $resolved_after_time_limit != NULL ? $resolved_after_time_limit: "0";
-            $sample_collected_from_distribution_network = $sample_collected_from_distribution_network != NULL ? $sample_collected_from_distribution_network: "0";
-            $sample_collected_at_consumer_point = $sample_collected_at_consumer_point != NULL ? $sample_collected_at_consumer_point: "0";
-            $no_of_parameter_tested = $no_of_parameter_tested != NULL ? $no_of_parameter_tested: "0";
-            $no_of_sample_failed = $no_of_sample_failed != NULL ? $no_of_sample_failed: "0";
-            $sample_colected_date = $sample_colected_date != NULL ? $sample_colected_date: "";
+        } else {
+
+
+            $no_of_sample_taken = $no_of_sample_taken != NULL ? $no_of_sample_taken : "0";
+            $sample_collected_at_wtp = $sample_collected_at_wtp != NULL ? $sample_collected_at_wtp : "0";
+            $sample_collected_at_storage = $sample_collected_at_storage != NULL ? $sample_collected_at_storage : "0";
+            $resolved_after_time_limit = $resolved_after_time_limit != NULL ? $resolved_after_time_limit : "0";
+            $sample_collected_from_distribution_network = $sample_collected_from_distribution_network != NULL ? $sample_collected_from_distribution_network : "0";
+            $sample_collected_at_consumer_point = $sample_collected_at_consumer_point != NULL ? $sample_collected_at_consumer_point : "0";
+            $no_of_parameter_tested = $no_of_parameter_tested != NULL ? $no_of_parameter_tested : "0";
+            $no_of_sample_failed = $no_of_sample_failed != NULL ? $no_of_sample_failed : "0";
+            $sample_colected_date = $sample_colected_date != NULL ? $sample_colected_date : "";
 
 
 
-            
-                $insertGrievanceCu = $this->pipelineModel->addWaterQualityTable($z_division_id,$z_citys,$no_of_sample_taken,$sample_collected_at_wtp,$sample_collected_at_storage,$resolved_after_time_limit,$sample_collected_from_distribution_network,$sample_collected_at_consumer_point,$no_of_parameter_tested,$no_of_sample_failed,$sample_colected_date);
-                if ($insertGrievanceCu) {
-                    $res = array("res" => "success");
-                } else {
-                    $res = array("res" => "failed");
-                }
-            
+
+            $insertGrievanceCu = $this->pipelineModel->addWaterQualityTable($z_division_id, $z_citys, $no_of_sample_taken, $sample_collected_at_wtp, $sample_collected_at_storage, $resolved_after_time_limit, $sample_collected_from_distribution_network, $sample_collected_at_consumer_point, $no_of_parameter_tested, $no_of_sample_failed, $sample_colected_date);
+            if ($insertGrievanceCu) {
+                $res = array("res" => "success");
+            } else {
+                $res = array("res" => "failed");
+            }
         }
         echo json_encode($res);
     }
@@ -809,5 +819,4 @@ class PipelineController extends WebController
             return json_encode(['error' => 'An error occurred']);
         }
     }
-
 }
