@@ -72,7 +72,7 @@ $usertypelogin = (isset($_SESSION['usertype'])) ? $_SESSION['usertype'] :'';
                                 <a href="/DmaInfoPage" class="nav-link <?= isset($activemenu['aliactive']) ? ($activemenu['aliactive'] == 'puvwdmainfo' ? 'active' : '') : ''; ?>" data-key="t-sweet-alerts">DMA Information</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link <?= isset($activemenu['aliactive']) ? ($activemenu['aliactive'] == 'puvwrtm' ? 'active' : '') : ''; ?>" data-key="t-sweet-alerts">Realtime Monitoring</a>
+                                <a href="/pageRtm" class="nav-link <?= isset($activemenu['aliactive']) ? ($activemenu['aliactive'] == 'puvwrtm' ? 'active' : '') : ''; ?>" data-key="t-sweet-alerts">Realtime Monitoring</a>
                             </li>
                         </ul>
                     </div>

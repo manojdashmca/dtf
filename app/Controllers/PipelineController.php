@@ -595,7 +595,6 @@ class PipelineController extends WebController
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
         $this->data['cityjalasathi'] = $this->pipelineModel->getCityJalasathi();
         $city_id = session()->get('usercities');
-        // print_r($city_id);die;
         if(is_numeric($city_id)){
             $this->data['sessiondivision'] = $this->pipelineModel->getDivisionCities($city_id);
         }

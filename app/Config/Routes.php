@@ -212,6 +212,8 @@ $routes->match(['get', 'post'], 'addWaterQualitys', 'PipelineController::addWate
 
 // Dma View 
 $routes->match(['get', 'post'], 'getDmaView', 'PipelineController::getDmaView');
+// realtime monitering
+$routes->match(['get', 'post'], 'pageRtm', 'LoginCityController::realTimeMonitoring');
 
 //----------------------------------------
 
