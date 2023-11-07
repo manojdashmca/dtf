@@ -19,14 +19,25 @@
     <div class="row mb-3">
         <div class="col-4">
             <form name='fileter' id='filter' action='' method='get'>
-                <input type="hidden" name="pager" value="<?= $pagerid ?>" />
+                <?php 
+                if (isset($sessiondivision)) {
+                    ?>
+                        <input type="hidden" name="division" id="divisions" value="<?php echo $sessiondivision[0]->division_id; ?>">
+                    <?php
+                }else{
+                    ?>
+                        <input type="hidden" name="pager" value="<?= $pagerid ?>" />
                 <select onchange="this.form.submit();" name="division" id="divisions" class="form-control form-select">
                     <option value="" class="text-danger">Select Division</option>
-                    <?php for ($x = 0; $x < count($alldivisionname); $x++) { ?>
+                    <?php for ($x = 0; $x < count($alldivisionname); $x++) { ?> 
                         <option <?= ($division == $alldivisionname[$x]->id) ? 'selected="selected"' : '' ?> value='<?= $alldivisionname[$x]->id ?>'><?= $alldivisionname[$x]->division_name ?></option>
                     <?php } ?>
                 </select>
                 <input type="hidden" name="transactionid" value="<?= $session->get('trnid') ?>" />
+                    <?php
+                }
+                ?>
+                
             </form>
         </div>
         <div class="col-4">
@@ -34,6 +45,13 @@
         </div>
         <div class="col-4">
             <form name='fileter1' id='filter1' action='' method='get'>
+            <?php 
+                if (isset($sessiondivision)) {
+                    ?>
+                        <input type="hidden" name="city" id="city" value="<?php echo $sessiondivision[0]->city_id; ?>">
+                    <?php
+                }else{
+                    ?>
                 <input type="hidden" name="pager" value="<?= $pagerid ?>" />
                 <input type="hidden" name="division" value="<?= $division ?>" />
                 <select name='city' id='city' class='form-control  form-select' onchange="this.form.submit();">
@@ -43,6 +61,9 @@
                     <?php } ?>
                 </select>
                 <input type="hidden" name="transactionid" value="<?= $session->get('trnid') ?>" />
+                <?php 
+                }
+                ?>
             </form>
         </div>
     </div>
