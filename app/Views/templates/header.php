@@ -18,7 +18,7 @@
         ?>
         <link rel="stylesheet" href="assets/libs/gridjs/theme/mermaid.min.css">
         <!-- gride Table -->
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css">
         <!-- Layout config Js -->
         <script src="assets/js/layout.js"></script>
         <!-- Bootstrap Css -->

@@ -32,16 +32,21 @@
 .avatar-title {
     text-align: left;
 }
+
 .construction-progress {
     position: absolute;
     bottom: 0;
     right: 0;
 }
+
 .construction-progress img {
     width: 28px;
     margin-right: 5px;
-}	
+}
 
+circle[data-slide-to="0"] {
+    cursor: pointer;
+}
 </style>
 
 <section id="carouselExampleIndicators" class="map-section carousel slide" data-ride="carousel">
@@ -1050,9 +1055,9 @@
 								L143.938,354.032z"></path>
                                 </a> </g>
                         </g>
-                        <circle data-target="#carousel-example-generic" data-slide-to="0" fill="#1e5ca5" cx="348.348"
+                        <circle data-target="#carouselExampleIndicators" data-slide-to="0" fill="#1e5ca5" cx="348.348"
                             cy="558.958" r="14.075"></circle>
-                        <g enable-background="new ">
+                        <g enable-background="new" data-target="#carouselExampleIndicators" data-slide-to="0">
                             <path data-target="#carouselExampleIndicators" data-slide-to="31"
                                 d="M391.861,560.322c0,4.354-2.646,6.662-5.875,6.662c-3.341,0-5.687-2.59-5.687-6.418c0-4.017,2.496-6.645,5.874-6.645
 								C389.627,553.922,391.861,556.568,391.861,560.322z M382.045,560.528c0,2.703,1.465,5.124,4.035,5.124
@@ -2159,9 +2164,14 @@
                     </svg>
 
                     <div class="construction-progress">
+<<<<<<< HEAD
+                        <h5><img src="images/icon/progress.png" alt=""> Construction Progress: <span
+                                class="text-info">45%</span></h5>
+=======
 						<a href="/dashboard">
                         	<h5><img src="images/icon/progress.png" alt=""> Construction Progress: <span class="text-info">45%</span></h5>
 						</a>
+>>>>>>> master
                     </div>
 
                 </div>
@@ -2197,7 +2207,7 @@
 
                                         <div class="col-6 map-box-col">
                                             <div class="map-box2">
-                                                <a href="#" class="content">
+                                                <div class="content">
                                                     <div class="icon-1">
                                                         <img src="images/icon/DMAwithDFT.png" alt="">
                                                     </div>
@@ -2215,12 +2225,12 @@
                                                     <h5>DMA With DFT : <span
 														id="total_dma_with_dft_ds"><?= $allstataedata[0]->dft_with_dma ?></span>
                                                     </h5>
-                                                </a>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-6 map-box-col">
                                             <div class="map-box2">
-                                                <a href="#" class="content" style="background:#e2fff2;">
+                                                <div class="content" style="background:#e2fff2;">
                                                     <div class="icon-1">
                                                         <img src="images/icon/nrw.png" alt="">
                                                     </div>
@@ -2230,12 +2240,12 @@
                                                         <div class="progress-bar progress-bar-striped progress-bar-animated h-100" id="nrw_average_value_dsb_bar" 
                                                             style="width:<?=  isset($allstataedata[0]->nrw_average_value) ? $allstataedata[0]->nrw_average_value : '0' ?>%"></div>
                                                     </div>
-                                                </a>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-6 map-box-col">
                                             <div class="map-box2">
-                                                <a href="#" class="content" style="background:#fff7e9;">
+                                                <div class="content" style="background:#fff7e9;">
                                                     <div class="icon-1">
                                                         <img src="images/icon/population.png" alt="">
                                                     </div>
@@ -2253,12 +2263,12 @@
                                                     <h5>Population With DFT : <span
 														id="benefit_population_ds"><?= $allstataedata[0]->beneficiary_population ?></span>
                                                     </h5>
-                                                </a>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-6 map-box-col">
                                             <div class="map-box2">
-                                                <a href="#" class="content" style="background:#fff2f4;">
+                                                <div class="content" style="background:#fff2f4;">
                                                     <div class="icon-1">
                                                         <img src="images/icon/pipe-connection.png" alt="">
                                                     </div>
@@ -2276,13 +2286,13 @@
                                                     <h5>Connection Achieved : <span
                                                             id="total_house_connection_progress"><?= $allstataedata[0]->house_connection_progress ?></span>
                                                     </h5>
-                                                </a>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-6 map-box-col">
 											
                                             <div class="map-box2">
-                                                <a href="#" class="content" style="background:#f2e8ff;">
+                                                <div class="content" style="background:#f2e8ff;">
                                                     <div class="icon-1">
                                                         <img src="images/icon/metered.png" alt="">
                                                     </div>
@@ -2298,20 +2308,20 @@
 													<h5>Connection Achieved : <span
                                                             id="total_meter_connection_progress"><?= $allstataedata[0]->meter_connection_progress ?></span>
                                                     </h5>
-                                                </a>
+                                                </div>
                                             </div>
                                         </div>
 
                                         <div class="col-6 map-box-col">
                                             <div class="map-box2">
-                                                <a href="#" class="content" style="background:#dcf3ff;">
+                                                <div class="content" style="background:#dcf3ff;">
                                                     <div class="icon-1">
                                                         <img src="images/icon/jalsathi.png" alt="">
                                                     </div>
                                                     <h4>Nos. of Jalsathi</h4>
                                                     <h3 id="h_jalasathi"><?= $allstataedata[0]->total_jalasathi ?></h3>
 
-                                                </a>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -2334,42 +2344,53 @@
 						// print_r('</pre>');
 						
 						for ($x = 0; $x < count($getall); $x++) { ?>
-                        <div class="carousel-item">
+                        <div class="carousel-item second-item">
                             <div class="statistics-sec">
                                 <h3>DIVISION: <span><?= $getall[$x]['division_name']; ?></span></h3>
                             </div>
                             <div class="row">
                                 <div class="col-sm-3 col-6">
                                     <div class="map-box2">
-
-                                        <div class="content">
+                                        <div class="content" style="background:#dcf3ff;">
+                                            <div class="icon-1">
+                                                <img src="images/icon/jalsathi.png" alt="">
+                                            </div>
                                             <h3><?= $getall[$x]['division_jalasathi']; ?></h3>
-                                            <p>Jal Sathi</p>
+                                            <h4>Jal Sathi</h4>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-3 col-6">
                                     <div class="map-box2">
-                                        <div class="content">
+                                        <div class="content" style="background:#fff7e9; padding-right: 59px;">
+                                            <div class="icon-1">
+                                                <img src="images/icon/population.png" alt="">
+                                            </div>
                                             <h3><?= $getall[$x]['division_population']; ?></h3>
-                                            <p>Total No. of Population</p>
+                                            <h4>Total No. of Population</h4>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-3 col-6">
                                     <div class="map-box2">
 
-                                        <div class="content">
+                                        <div class="content" style="background:#fff2f4;">
+                                            <div class="icon-1">
+                                                <img src="images/icon/pipe-connection.png" alt="">
+                                            </div>
                                             <h3><?= $getall[$x]['division_house_connection']; ?></h3>
-                                            <p>Total No. of House Connection</p>
+                                            <h4>Total No. of House Connection</h4>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-3 col-6">
                                     <div class="map-box2">
-                                        <div class="content">
+                                        <div class="content" style="padding-right: 52px;">
+                                            <div class="icon-1">
+                                                <img src="images/icon/metered.png" alt="">
+                                            </div>
                                             <h3><?= $getall[$x]['division_meter_connection']; ?></h3>
-                                            <p>Total No. of Meter Connection</p>
+                                            <h4>Total No. of Meter Connection</h4>
                                         </div>
                                     </div>
                                 </div>

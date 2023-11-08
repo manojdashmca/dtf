@@ -295,22 +295,6 @@ section.map-section .nav-tabs .nav-link.active {
     margin-bottom: 6px;
     color: #fff;
 }
-.map-box2 .content {
-    width: 100%;
-    border: 1px solid #eff5ff;
-    float: right;
-    border-radius: 10px;
-    text-align: center;
-    padding: 10px;
-    background: #eff5ff;
-    /* height: 90px; */
-    position: relative;
-    box-shadow: 0 0 8px #00000036;
-    text-decoration: none;
-    color: #4c4c4c;
-    text-align: left;
-    min-height: 142px;
-}
 .explore-more {
     display: inline-block;
     background: #eb9018;
@@ -362,6 +346,11 @@ section.map-section .nav-tabs .nav-link.active {
     text-decoration: none;
     color: #4c4c4c;
     text-align: left;
+    min-height: 142px;
+
+}
+.second-item .map-box2 .content {
+    min-height: 110PX;
 }
 .map-box2 .content h3 {
     font-size: 26px;
