@@ -265,4 +265,70 @@ $(document).ready(function () {
     });
 });
 
+$(document).ready(function () {
+    $('#city_dropdown').change(function () {
+        var ccty_id = $(this).val();
+        $.post("getCitydropdownDashboard", { cty_id: ccty_id }, function (data) {
+            var ctyalldata = JSON.parse(data);
+            console.log(ctyalldata);
+            if (ctyalldata != null) {
+
+                $('#dashboard_total_city').hide();
+                
+                // dma 
+                $('#total_dma_ds').text(ctyalldata[0]['total_dma'] !== null ? ctyalldata[0]['total_dma'] : 0);
+                $('#total_dma_with_dft_ds').text(ctyalldata[0]['dma_with_dft'] !== null ? ctyalldata[0]['dma_with_dft'] : 0);
+                let total_dma = ctyalldata[0]['total_dma'];
+                let dma_with_dft = ctyalldata[0]['dma_with_dft'];
+                let dma_dft_persentage = dma_with_dft / total_dma * 100;
+
+                let dma_dft_persentage_p = isNaN(dma_dft_persentage) ? 0 : dma_dft_persentage;
+                $('#dma_dft_persentage').text(Math.round(dma_dft_persentage_p * 100)/100 + '%');
+                let dma_dft_persentage_bar = dma_dft_persentage_p+'%';
+                $("#dma_dft_persentage_bar").css("width", dma_dft_persentage_bar);
+                
+                // nrw 
+                let nrw_average_value = ctyalldata[0]['nrw_average_value'] !== null ? ctyalldata[0]['nrw_average_value'] : 0;
+                $('#nrw_average_value_dsb').text(nrw_average_value);
+                $("#nrw_average_value_dsb_bar").css("width", nrw_average_value+'%');
+
+                // population 
+                $('#total_population_ds').text(ctyalldata[0]['total_population'] !== null ? ctyalldata[0]['total_population'] : 0);
+                $('#benefit_population_ds').text(ctyalldata[0]['benefit_population'] !== null ? ctyalldata[0]['benefit_population'] : 0);
+                let total_population = ctyalldata[0]['total_population'] !== null ? ctyalldata[0]['total_population'] : 0;
+                let benefit_population = ctyalldata[0]['benefit_population'] !== null ? ctyalldata[0]['benefit_population'] : 0;
+
+                let total_population_persentage = benefit_population / total_population * 100;
+                let total_population_persentage_p = isNaN(total_population_persentage) ? 0 : total_population_persentage;
+                $('#total_population_persentage').text(Math.round(total_population_persentage_p * 100)/100 + '%');
+                $("#total_population_persentage_bar").css("width", total_population_persentage_p+'%');
+
+                // house conection 
+                $('#total_house_connection_scope').text(ctyalldata[0]['total_house_connection_scope'] !== null ? ctyalldata[0]['total_house_connection_scope'] : 0);
+                $('#total_house_connection_progress').text(ctyalldata[0]['total_house_connection_progress'] !== null ? ctyalldata[0]['total_house_connection_progress'] : 0);
+                let total_house_connection_scope = ctyalldata[0]['total_house_connection_scope'] !== null ? ctyalldata[0]['total_house_connection_scope'] : 0;
+                let total_house_connection_progress = ctyalldata[0]['total_house_connection_progress'] !== null ? ctyalldata[0]['total_house_connection_progress'] : 0;
+
+                let total_house_connection_persentage = total_house_connection_progress / total_house_connection_scope * 100;
+                let total_house_connection_persentage_p = isNaN(total_house_connection_persentage) ? 0 : total_house_connection_persentage;
+                $('#total_house_connection_persentage').text(Math.round(total_house_connection_persentage_p * 100)/100 + '%');
+                $("#total_house_connection_persentage_bar").css("width", total_house_connection_persentage_p+'%');
+
+                // meter connection 
+                let total_meter_connection_scope = ctyalldata[0]['total_meter_connection_scope'] !== null ? ctyalldata[0]['total_meter_connection_scope'] : 0;
+                let total_meter_connection_progress = ctyalldata[0]['total_meter_connection_progress'] !== null ? ctyalldata[0]['total_meter_connection_progress'] : 0;
+                $('#total_meter_connection_scope').text(total_meter_connection_scope);
+                $('#total_meter_connection_progress').text(total_meter_connection_progress);
+
+                let total_meter_connection_persentage = total_meter_connection_progress / total_meter_connection_scope * 100;
+                let total_meter_connection_persentage_p = isNaN(total_meter_connection_persentage) ? 0 : total_meter_connection_persentage;
+                $('#total_meter_connection_persentage').text(Math.round(total_meter_connection_persentage_p * 100)/100 + '%');
+                $("#total_meter_connection_persentage_bar").css("width", total_meter_connection_persentage_p+'%');
+
+                // jalasathi 
+                $('#h_jalasathi').text(ctyalldata[0]['total_jalasathi'] !== null ? ctyalldata[0]['total_jalasathi'] : 0);
+            }
+        });
+    });
+});
 

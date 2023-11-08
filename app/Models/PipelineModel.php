@@ -105,15 +105,16 @@ FROM dma_master z;";
 
     public function getAll()
     {
-        $district_query = "SELECT d.id AS division_id, 
-        d.division_name, 
-        SUM(z.dma_population) AS division_population,
-        sum(z.house_connection_progress) AS division_house_connection, 
-        sum(z.meter_connection_progress) AS division_meter_connection,
-        sum(z.house_connection_scope) AS house_connection_scope,
-        sum(z.meter_connection_scope) AS meter_connection_scope,
-        (SELECT count(id) FROM `jalsathi_word` 
-        WHERE division_id = d.id) division_jalasathi FROM divisions d INNER JOIN dma_master z ON d.id = z.division_id GROUP BY division_id;";
+        // $district_query = "SELECT d.id AS division_id, 
+        // d.division_name, 
+        // SUM(z.dma_population) AS division_population,
+        // sum(z.house_connection_progress) AS division_house_connection, 
+        // sum(z.meter_connection_progress) AS division_meter_connection,
+        // sum(z.house_connection_scope) AS house_connection_scope,
+        // sum(z.meter_connection_scope) AS meter_connection_scope,
+        // (SELECT count(id) FROM `jalsathi_word` 
+        // WHERE division_id = d.id) division_jalasathi FROM divisions d INNER JOIN dma_master z ON d.id = z.division_id GROUP BY division_id;";
+        $district_query = "SELECT d.id AS division_id, d.division_name, SUM(z.dma_population) AS division_population, sum(z.house_connection_progress) AS division_house_connection, sum(z.meter_connection_progress) AS division_meter_connection, sum(z.house_connection_scope) AS house_connection_scope, sum(z.meter_connection_scope) AS meter_connection_scope, (SELECT count(id) FROM `jalsathi_word` WHERE division_id = d.id) division_jalasathi FROM divisions d INNER JOIN dma_master z ON d.id = z.division_id GROUP BY d.id ORDER BY d.id;";
         $division_result = $this->db->query($district_query);
         $finddata = array();
         $division_data = $division_result->getResult();
@@ -466,7 +467,7 @@ FROM dma_master z;";
 // Dma Master
     public function getAllDmaMasterData()
     {
-        $sql = "SELECT * FROM dma_master;";
+        $sql = "SELECT * FROM dma_master ORDER BY id DESC;";
         $result = $this->db->query($sql);
         $return = $result->getResult();
         return $return;
@@ -770,6 +771,37 @@ FROM dma_master z;";
     public function getDivisionCities($city_id)
     {
         $sql = "SELECT c.city_id AS city_id,c.city_name AS city_name,d.id AS division_id,d.division_name AS division_name FROM divisions d INNER JOIN cities_master c ON d.id = c.division_id WHERE city_id = '$city_id';";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        return $return;
+    }
+
+    public function getAllCitysDropdown()
+    {
+        $sql = "SELECT city_id, city_name FROM cities_master;";
+        $result = $this->db->query($sql);
+        $return = $result->getResult();
+        return $return;
+    }
+
+    public function getCitydropdownDashboardData($cty_id)
+    {
+        $sql = "SELECT 
+        COUNT(id) as total_dma,
+        SUM(CASE WHEN house_connection_scope = house_connection_progress AND meter_connection_scope = meter_connection_progress THEN 1 ELSE 0 END) as dma_with_dft,
+        ROUND(AVG(nrw_progress), 2) AS nrw_average_value,
+        SUM(dma_population) as total_population,
+        SUM(CASE 
+            WHEN house_connection_scope = house_connection_progress AND meter_connection_scope = meter_connection_progress 
+            THEN dma_population 
+            ELSE 0
+          END) as benefit_population,
+         SUM(house_connection_scope) as total_house_connection_scope,
+         SUM(house_connection_progress) as total_house_connection_progress,
+         SUM(meter_connection_scope) as total_meter_connection_scope,
+         SUM(meter_connection_progress) as total_meter_connection_progress,
+         (SELECT COUNT(id) FROM `jalsathi_word` WHERE jalsathi_ulb_city_id = '$cty_id') as total_jalasathi 
+         FROM dma_master WHERE city_id = '$cty_id';";
         $result = $this->db->query($sql);
         $return = $result->getResult();
         return $return;

@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="text-center">DMA LEVEL INFORMATION</h4>
+                <h4 class="text-center">DMA LEVEL INFORMATION</h4>
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
@@ -17,34 +17,45 @@
     <div class="card">
         <div class="card-body">
             <div class="row">
+            <?php
+            if (isset($sessiondivision)){
+
+            }else{
+            ?>
                 <div class="col-lg-4 col-sm-12">
                     <form name='fileter' id='filter' action='' method='get'>
-                        <input type="hidden" name="pager" value="<?= $pagerid ?>" />
-                        <label for="">Select Division</label>
-                        <select onchange="this.form.submit();" name="division_dtl" id="divisions" class="form-control form-select">
-                            <option value="" class="text-danger">Select Division</option>
-                            <?php for ($x = 0; $x < count($alldivisionname); $x++) { ?>
-                                <option <?= ($division_dtl == $alldivisionname[$x]->id) ? 'selected="selected"' : '' ?> value='<?= $alldivisionname[$x]->id ?>'><?= $alldivisionname[$x]->division_name ?></option>
-                            <?php } ?>
-                        </select>
-                        <input type="hidden" name="transactionid" value="<?= $session->get('trnid') ?>" />
+                            <input type="hidden" name="pager" value="<?= $pagerid ?>" />
+                            <label for="">Select Division</label>
+                            <select onchange="this.form.submit();" name="division_dtl" id="divisions" class="form-control form-select">
+                                <option value="" class="text-danger">Select Division</option>
+                                <?php for ($x = 0; $x < count($alldivisionname); $x++) { ?>
+                                    <option <?= ($division_dtl == $alldivisionname[$x]->id) ? 'selected="selected"' : '' ?> value='<?= $alldivisionname[$x]->id ?>'><?= $alldivisionname[$x]->division_name ?></option>
+                                <?php } ?>
+                            </select>
+                            <input type="hidden" name="transactionid" value="<?= $session->get('trnid') ?>" />
                     </form>
                 </div>
 
                 <div class="col-lg-4 col-sm-12">
                     <form name='fileter1' id='filter1' action='' method='get'>
-                        <input type="hidden" name="pager" value="<?= $pagerid ?>" />
-                        <input type="hidden" name="division_dtl" value="<?= $division_dtl ?>" />
-                        <label for="">Select City</label>
-                        <select name='city_dtl' id='city_dtl' class='form-control  form-select' onchange="this.form.submit();">
-                            <option value="">Select City</option>
-                            <?php for ($x = 0; $x < count($dmacitydropdown); $x++) { ?>
-                                <option value='<?= $dmacitydropdown[$x]->city_id ?>' <?= ($city_dtl == $dmacitydropdown[$x]->city_id) ? 'selected="selected"' : '' ?>><?= $dmacitydropdown[$x]->city_name ?></option>
-                            <?php } ?>
-                        </select>
-                        <input type="hidden" name="transactionid" value="<?= $session->get('trnid') ?>" />
+                        
+                            <input type="hidden" name="pager" value="<?= $pagerid ?>" />
+                            <input type="hidden" name="division_dtl" value="<?= $division_dtl ?>" />
+                            <label for="">Select City</label>
+                            <select name='city_dtl' id='city_dtl' class='form-control  form-select' onchange="this.form.submit();">
+                                <option value="">Select City</option>
+                                <?php for ($x = 0; $x < count($dmacitydropdown); $x++) { ?>
+                                    <option value='<?= $dmacitydropdown[$x]->city_id ?>' <?= ($city_dtl == $dmacitydropdown[$x]->city_id) ? 'selected="selected"' : '' ?>><?= $dmacitydropdown[$x]->city_name ?></option>
+                                <?php } ?>
+                            </select>
+                            <input type="hidden" name="transactionid" value="<?= $session->get('trnid') ?>" />
+                        
                     </form>
                 </div>
+                <?php
+            }
+            ?>
+
                 <div class="col-lg-4 col-sm-12">
                     <form name='fileter1' id='filter1' action='' method='get'>
                         <input type="hidden" name="pager" value="<?= $pagerid ?>" />
@@ -82,7 +93,7 @@
         if ($asset_mapping_scope != 0) {
             $asset_mapping_percentage = round(($asset_mapping_progress / $asset_mapping_scope) * 100, 2);
         } else {
-            $asset_mapping_percentage = 0; 
+            $asset_mapping_percentage = 0;
         }
 
         $consumer_mapping_scope = isset($getdmainfoonid[0]->consumer_mapping_scope) ? $getdmainfoonid[0]->consumer_mapping_scope : "0";
@@ -90,7 +101,7 @@
         if ($consumer_mapping_scope != 0) {
             $consumer_mapping_percentage = round(($consumer_mapping_progress / $consumer_mapping_scope) * 100, 2);
         } else {
-            $consumer_mapping_percentage = 0; 
+            $consumer_mapping_percentage = 0;
         }
 
         $distribution_pipe_line_scope = isset($getdmainfoonid[0]->distribution_pipe_line_scope) ? $getdmainfoonid[0]->distribution_pipe_line_scope : "0";
@@ -98,7 +109,7 @@
         if ($distribution_pipe_line_scope != 0) {
             $distribution_pipe_line_percentage = round(($distribution_pipe_line_progress / $distribution_pipe_line_scope) * 100, 2);
         } else {
-            $distribution_pipe_line_percentage = 0; 
+            $distribution_pipe_line_percentage = 0;
         }
 
         $pumping_main_scope = isset($getdmainfoonid[0]->pumping_main_scope) ? $getdmainfoonid[0]->pumping_main_scope : "0";
@@ -106,7 +117,7 @@
         if ($pumping_main_scope != 0) {
             $pumping_main_percentage = round(($pumping_main_progress / $pumping_main_scope) * 100, 2);
         } else {
-            $pumping_main_percentage = 0; 
+            $pumping_main_percentage = 0;
         }
 
         $storage_resorvoir_scope = isset($getdmainfoonid[0]->storage_resorvoir_scope) ? $getdmainfoonid[0]->storage_resorvoir_scope : "0";
@@ -114,7 +125,7 @@
         if ($storage_resorvoir_scope != 0) {
             $storage_resorvoir_percentage = round(($storage_resorvoir_progress / $storage_resorvoir_scope) * 100, 2);
         } else {
-            $storage_resorvoir_percentage = 0; 
+            $storage_resorvoir_percentage = 0;
         }
 
         $pumping_station_scope = isset($getdmainfoonid[0]->pumping_station_scope) ? $getdmainfoonid[0]->pumping_station_scope : "0";
@@ -122,7 +133,7 @@
         if ($pumping_station_scope != 0) {
             $pumping_station_percentage = round(($pumping_station_progress / $pumping_station_scope) * 100, 2);
         } else {
-            $pumping_station_percentage = 0; 
+            $pumping_station_percentage = 0;
         }
 
         $flowmeter_scope = isset($getdmainfoonid[0]->flowmeter_scope) ? $getdmainfoonid[0]->flowmeter_scope : "0";
@@ -130,7 +141,7 @@
         if ($flowmeter_scope != 0) {
             $flowmeter_percentage = round(($flowmeter_progress / $flowmeter_scope) * 100, 2);
         } else {
-            $flowmeter_percentage = 0; 
+            $flowmeter_percentage = 0;
         }
 
         $pressure_treansmitter_scope = isset($getdmainfoonid[0]->pressure_treansmitter_scope) ? $getdmainfoonid[0]->pressure_treansmitter_scope : "0";
@@ -138,7 +149,7 @@
         if ($pressure_treansmitter_scope != 0) {
             $pressure_treansmitter_percentage = round(($pressure_treansmitter_progress / $pressure_treansmitter_scope) * 100, 2);
         } else {
-            $pressure_treansmitter_percentage = 0; 
+            $pressure_treansmitter_percentage = 0;
         }
 
         $level_treansmitter_scope = isset($getdmainfoonid[0]->level_treansmitter_scope) ? $getdmainfoonid[0]->level_treansmitter_scope : "0";
@@ -146,7 +157,7 @@
         if ($level_treansmitter_scope != 0) {
             $level_treansmitter_percentage = round(($level_treansmitter_progress / $level_treansmitter_scope) * 100, 2);
         } else {
-            $level_treansmitter_percentage = 0; 
+            $level_treansmitter_percentage = 0;
         }
 
         $sluice_valve_scope = isset($getdmainfoonid[0]->sluice_valve_scope) ? $getdmainfoonid[0]->sluice_valve_scope : "0";
@@ -154,7 +165,7 @@
         if ($sluice_valve_scope != 0) {
             $sluice_valve_percentage = round(($sluice_valve_progress / $sluice_valve_scope) * 100, 2);
         } else {
-            $sluice_valve_percentage = 0; 
+            $sluice_valve_percentage = 0;
         }
 
         $plc_scope = isset($getdmainfoonid[0]->plc_scope) ? $getdmainfoonid[0]->plc_scope : "0";
@@ -162,7 +173,7 @@
         if ($plc_scope != 0) {
             $plc_percentage = round(($plc_progress / $plc_scope) * 100, 2);
         } else {
-            $plc_percentage = 0; 
+            $plc_percentage = 0;
         }
         // print_r($plc_percentage);
         $house_connection_scope = isset($getdmainfoonid[0]->house_connection_scope) ? $getdmainfoonid[0]->house_connection_scope : "0";
@@ -170,15 +181,15 @@
         if ($house_connection_scope != 0) {
             $house_connection_percentage = round(($house_connection_progress / $house_connection_scope) * 100, 2);
         } else {
-            $house_connection_percentage = 0; 
+            $house_connection_percentage = 0;
         }
-        
+
         $meter_connection_scope = isset($getdmainfoonid[0]->meter_connection_scope) ? $getdmainfoonid[0]->meter_connection_scope : "0";
         $meter_connection_progress = isset($getdmainfoonid[0]->meter_connection_progress) ? $getdmainfoonid[0]->meter_connection_progress : "0";
         if ($meter_connection_scope != 0) {
             $meter_connection_percentage = round(($meter_connection_progress / $meter_connection_scope) * 100, 2);
         } else {
-            $meter_connection_percentage = 0; 
+            $meter_connection_percentage = 0;
         }
 
         $nrw_scope = isset($getdmainfoonid[0]->nrw_scope) ? $getdmainfoonid[0]->nrw_scope : "0";
@@ -186,13 +197,13 @@
         if ($nrw_scope != 0) {
             $nrw_percentage = round(($nrw_progress / $nrw_scope) * 100, 2);
         } else {
-            $nrw_percentage = 0; 
+            $nrw_percentage = 0;
         }
 
         $water_balancing_along_plc_with_server = isset($getdmainfoonid[0]->water_balancing_along_plc_with_server) ? $getdmainfoonid[0]->water_balancing_along_plc_with_server : "XXXX";
         $updated_by = isset($getdmainfoonid[0]->updated_by) ? $getdmainfoonid[0]->updated_by : "XXXX";
         $updated_date = isset($getdmainfoonid[0]->updated_date) ? $getdmainfoonid[0]->updated_date : "XXXX";
-   
+
 
         ?>
         <div class="col-lg-2 col-sm-12"></div>

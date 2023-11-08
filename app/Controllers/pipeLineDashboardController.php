@@ -25,7 +25,7 @@ class pipeLineDashboardController extends WebController {
         $this->data['js']='';
         $this->data['alldivisionname']=$this->pipelineModel->getAllDivisionName();
         $this->data['allstataedata']=$this->pipelineModel->getAllStatedata();
-        // $this->data['allcitydata']=$this->pipelineModel->getAllCityDetails();
+        $this->data['getallcitiesdropdown']=$this->pipelineModel->getAllCitysDropdown();
         $this->data['getall'] = $this->pipelineModel->getAll();
         $loginmenu = session()->get('loginheadermenu');
         $this->data['loginlinkdashboard'] = ($loginmenu == 'buttondashboard') ? '/dashboard' : '/login';
@@ -265,6 +265,17 @@ class pipeLineDashboardController extends WebController {
             extract($_POST);
             $dma_d = $this->pipelineModel->getDmadataInfo($dma_id); 
             return json_encode($dma_d);
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            return json_encode(['error' => 'An error occurred']);
+        }
+    }
+
+    public function getCitydropdownDashboard() { 
+        try {
+            extract($_POST);
+            $h_dropdown = $this->pipelineModel->getCitydropdownDashboardData($cty_id); 
+            return json_encode($h_dropdown);
         } catch (Exception $e) {
             error_log($e->getMessage());
             return json_encode(['error' => 'An error occurred']);

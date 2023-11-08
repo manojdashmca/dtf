@@ -11,9 +11,6 @@ function getAllDmaInfo() {
             const outputArray = data.map(item => [
                 item.id,
                 item.dma_name,
-                item.dma_population,
-                item.commissioning_status,
-               
                 item.updated_date,
             ]);
             document.getElementById("table-gridjs-dma") && new gridjs.Grid({
@@ -27,12 +24,6 @@ function getAllDmaInfo() {
                 }, {
                     name: "dma name",
                     width: "150px"
-                }, {
-                    name: "dma population",
-                    width: "150px"
-                }, {
-                    name: "commissioning status",
-                    width: "100px"
                 }, {
                     name: "updated date",
                     width: "100px"

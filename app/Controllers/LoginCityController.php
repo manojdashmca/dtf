@@ -106,6 +106,11 @@ class LoginCityController extends WebController {
         }
         $this->data['citydropdown'] = $citydropdown;
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
+        // get session value
+        $city_id = session()->get('usercities');
+        if(is_numeric($city_id)){
+            $this->data['sessiondivision'] = $this->pipelineModel->getDivisionCities($city_id);
+        }
 
         // print_r($division);
         $this->data['alldmadata'] = $this->pipelineModel->getAllStatedataMaster($division,$city);
@@ -500,5 +505,12 @@ class LoginCityController extends WebController {
             $res = array("res" => "failed");
         }
         echo json_encode($res);
+    }
+
+    public function realTimeMonitoring() {
+        $this->data['activemenu']=array('amenuactive'=>'pu','divshow'=> 'pu','aliactive'=> 'puvwrtm');
+        return view('templates/header', $this->data)
+                . view('logincity/realtimemonetring', $this->data)
+                . view('templates/footer', $this->data);
     }
 }
