@@ -134,7 +134,7 @@ FROM dma_master z;";
             $city_result = $this->db->query($city_query);
             $city_data = $city_result->getResult();
 
-            $city_details = array(); 
+            $city_details = array();
             foreach ($city_data as $city_row) {
                 $city_details[] = array(
                     'city_id' => $city_row->city_id,
@@ -164,7 +164,7 @@ FROM dma_master z;";
             );
         }
 
-        return $finddata; 
+        return $finddata;
     }
 
     public function getPipeMeterConDivisionControl($div_id)
@@ -560,7 +560,7 @@ FROM dma_master z;";
     }
     public function getJalsathiOnDivisionAndCity($data)
     {
-        $daysarray = array(0, '01'=>31, '02'=>28, '03'=>31, '04'=>30, '05'=>31, '06'=>30, '07'=>31, '08'=>31, '09'=>30, '10'=>31, '11'=>30, '12'=>31);
+        $daysarray = array(0, '01' => 31, '02' => 28, '03' => 31, '04' => 30, '05' => 31, '06' => 30, '07' => 31, '08' => 31, '09' => 30, '10' => 31, '11' => 30, '12' => 31);
         $sql = "SELECT sum(no_of_new_jalasathi_added) AS no_of_jalasathi,
         SUM(collection_by_jalasathi) AS revenue_collected_by_jalasathi,
         SUM(total_incentive_of_jalasathi)AS incentive_paid_to_jalsathi,
@@ -570,7 +570,7 @@ FROM dma_master z;";
         (!empty($data['city'])) ? $sql .= " AND jalsathi_ulb_city_id = '" . $data['city'] . "'" : '';
         (!empty($data['year'])) ? $sql .= " AND YEAR(create_date) = '" . $data['year'] . "'" : '';
         (!empty($data['month'])) ? $sql .= " AND MONTH(create_date) = '" . $data['month'] . "'" : '';
-        
+
         if (!empty($data['week'])) {
             if ($data['week'] == 1) {
                 $std = '1';
@@ -589,24 +589,23 @@ FROM dma_master z;";
                 if (!empty($data['year']) && !empty($data['month'])) {
                     $days = cal_days_in_month(CAL_GREGORIAN, $data['month'], $data['year']);
                     $cld = $days;
-                } elseif(!empty($data['month'])) {
+                } elseif (!empty($data['month'])) {
                     $cld = $daysarray[$data['month']];
-                }else{
-                    $cld=31;
+                } else {
+                    $cld = 31;
                 }
-                
             }
-            $sql.=" AND date_format(create_date,'%d') >=$std AND date_format(create_date,'%d')<=$cld";
-            
+            $sql .= " AND date_format(create_date,'%d') >=$std AND date_format(create_date,'%d')<=$cld";
         }
-//echo $sql;exit;
+        //echo $sql;exit;
         $result = $this->db->query($sql);
         $return = $result->getRow();
         return $return;
         // $this->db->close();
     }
-    public function getRevenueFilter($division, $city)
+    public function getRevenueFilter($data)
     {
+        $daysarray = array(0, '01' => 31, '02' => 28, '03' => 31, '04' => 30, '05' => 31, '06' => 30, '07' => 31, '08' => 31, '09' => 30, '10' => 31, '11' => 30, '12' => 31);
         $sql = "SELECT SUM(no_bill_generate) AS total_bill_generate,
         SUM(no_bill_distributed) AS total_bill_distributed,
         SUM(no_bill_distributed) AS total_bill_distributed,
@@ -614,12 +613,40 @@ FROM dma_master z;";
         SUM(total_revenue_collected) AS total_revenue_collected,
         SUM(revenue_collected_by_jalasathi)AS total_revenue_collected_by_jalasathi,
         MAX(revenue_collected_date)AS last_revenue_collected_date
-        FROM `revenue_collection_master` ";
-        if ($division && $city == "") {
-            $sql .= "WHERE division_id = '$division';";
-        } else if ($city != "" && $division != "") {
-            $sql .= "WHERE city_id = '$city';";
+        FROM `revenue_collection_master` WHERE 1=1 ";
+        (!empty($data['division'])) ? $sql .= " AND division_id = '" . $data['division'] . "'" : '';
+        (!empty($data['city'])) ? $sql .= " AND city_id = '" . $data['city'] . "'" : '';
+        (!empty($data['year'])) ? $sql .= " AND YEAR(create_date) = '" . $data['year'] . "'" : '';
+        (!empty($data['month'])) ? $sql .= " AND MONTH(create_date) = '" . $data['month'] . "'" : '';
+
+        if (!empty($data['week'])) {
+            if ($data['week'] == 1) {
+                $std = '1';
+                $cld = '7';
+            }
+            if ($data['week'] == 2) {
+                $std = '8';
+                $cld = '14';
+            }
+            if ($data['week'] == 3) {
+                $std = '15';
+                $cld = '21';
+            }
+            if ($data['week'] == 4) {
+                $std = '22';
+                if (!empty($data['year']) && !empty($data['month'])) {
+                    $days = cal_days_in_month(CAL_GREGORIAN, $data['month'], $data['year']);
+                    $cld = $days;
+                } elseif (!empty($data['month'])) {
+                    $cld = $daysarray[$data['month']];
+                } else {
+                    $cld = 31;
+                }
+            }
+            $sql .= " AND date_format(create_date,'%d') >=$std AND date_format(create_date,'%d')<=$cld";
         }
+        // echo $sql;exit;
+
         $result = $this->db->query($sql);
         $return = $result->getRow();
         return $return;
@@ -724,9 +751,9 @@ FROM dma_master z;";
         $return = $result->getResult();
         return $return;
     }
-    public function addRevenueCollectionMasterTable($z_division_id, $z_citys, $no_bill_generate, $no_bill_distributed, $incentive_paid_to_jalasathi, $total_revenue_collected, $revenue_collected_by_jalasathi, $revenue_collected_date)
+    public function addRevenueCollectionMasterTable($z_division_id, $z_citys, $no_bill_generate, $no_bill_distributed, $incentive_paid_to_jalasathi, $total_revenue_collected, $revenue_collected_by_jalasathi)
     {
-        $sql = "INSERT INTO revenue_collection_master(division_id,city_id,no_bill_generate,no_bill_distributed,incentive_paid_to_jalasathi,total_revenue_collected,revenue_collected_by_jalasathi,revenue_collected_date,created_by)VALUES('$z_division_id','$z_citys','$no_bill_generate','$no_bill_distributed','$incentive_paid_to_jalasathi','$total_revenue_collected','$revenue_collected_by_jalasathi','$revenue_collected_date',NOW());";
+        $sql = "INSERT INTO revenue_collection_master(division_id,city_id,no_bill_generate,no_bill_distributed,incentive_paid_to_jalasathi,total_revenue_collected,revenue_collected_by_jalasathi,create_date,created_by)VALUES('$z_division_id','$z_citys','$no_bill_generate','$no_bill_distributed','$incentive_paid_to_jalasathi','$total_revenue_collected','$revenue_collected_by_jalasathi',NOW(),'');";
         $result = $this->db->query($sql);
 
         return $result;
