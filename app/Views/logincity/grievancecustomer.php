@@ -323,13 +323,13 @@
                     <div class="row">
                         <div class="col-6">
                             <div>
-                                <label for="placeholderInput" class="form-label">TOTAL NOS. OF GRIEVANCE RECEIVED :</label>
+                                <label for="placeholderInput" class="form-label">TOTAL NO OF GRIEVANCE RECEIVED :</label>
                                 <input type="text" class="form-control" name="city_user_dft_complete_m_y" placeholder="0000" value="">
                             </div>
                         </div>
                         <div class="col-6">
                             <div>
-                                <label for="placeholderInput" class="form-label">NOS OF GRIEVENCED ADDRESSED :</label>
+                                <label for="placeholderInput" class="form-label">NO OF GRIEVENCE ADDRESSED :</label>
                                 <input type="text" class="form-control" name="city_user_dft_complete_m_y" placeholder="0000" value="">
                             </div>
                         </div>

@@ -285,7 +285,8 @@ FROM dma_master z;";
         return $return;
     }
 
-    public function getDmadataOnCityId($city_id){
+    public function getDmadataOnCityId($city_id)
+    {
         $sql = "SELECT id,dma_no,area_name FROM zone_master WHERE city_id = '$city_id';";
         $result = $this->db->query($sql);
         $return = $result->getResult();
@@ -293,7 +294,8 @@ FROM dma_master z;";
         return $return;
     }
 
-    public function getDmadataInfo($dma_id){
+    public function getDmadataInfo($dma_id)
+    {
         $sql = "SELECT id,dma_no,area_name,dft_complete_m_y,dft_target_date_completion,SUM(population) AS total_population, SUM(no_house_holds) AS house_holds, SUM(no_house_coction) AS total_house_connection,SUM(no_metered_house_connections) AS total_meter_connection,FLOOR((SUM(no_house_coction) / SUM(no_house_holds) * 100)) AS house_connection_percentage,(FLOOR(SUM(no_metered_house_connections) / SUM(no_house_holds) * 100)) AS metered_connections_percentage,nrw FROM zone_master WHERE id = '$dma_id';";
         $result = $this->db->query($sql);
         $return = $result->getRow();
@@ -319,7 +321,7 @@ FROM dma_master z;";
         $this->db->close();
     }
 
-    public function checkDuplicateDma($z_division_id,$z_citys,$z_zone)
+    public function checkDuplicateDma($z_division_id, $z_citys, $z_zone)
     {
         $sql = "SELECT dma_no from zone_master WHERE division_id = '$z_division_id' AND city_id='$z_citys' AND dma_no = '$z_zone';";
         $result = $this->db->query($sql);
@@ -328,7 +330,7 @@ FROM dma_master z;";
         $this->db->close();
     }
 
-    public function insertDmaTable($z_division_id,$z_citys,$z_zone,$z_area_name,$z_population,$z_no_of_house_holds,$z_house_connection_replaced,$z_house_connection,$z_meter_connection,$z_dft_complete_month_year,$z_dft_target_date,$z_nrw)
+    public function insertDmaTable($z_division_id, $z_citys, $z_zone, $z_area_name, $z_population, $z_no_of_house_holds, $z_house_connection_replaced, $z_house_connection, $z_meter_connection, $z_dft_complete_month_year, $z_dft_target_date, $z_nrw)
     {
         $sql = "INSERT INTO zone_master(division_id,city_id,dma_no,area_name,`population`,no_house_holds,no_house_coction,no_house_connection_replaced,no_metered_house_connections,dft_complete_m_y,dft_target_date_completion,nrw,modification_date)VALUES('$z_division_id','$z_citys','$z_zone','$z_area_name','$z_population','$z_no_of_house_holds','$z_house_connection_replaced','$z_house_connection','$z_meter_connection','$z_dft_complete_month_year','$z_dft_target_date','$z_nrw',NOW())";
         $result = $this->db->query($sql);
@@ -354,7 +356,6 @@ FROM dma_master z;";
         $return = $result->getResult();
         return $return;
         $this->db->close();
-        
     }
 
     public function getNrwProgressCitywiseData($cit_id)
@@ -364,7 +365,6 @@ FROM dma_master z;";
         $return = $result->getResult();
         return $return;
         $this->db->close();
-        
     }
 
     public function getNrwProgressDivisionwiseData($div_id)
@@ -374,29 +374,28 @@ FROM dma_master z;";
         $return = $result->getResult();
         return $return;
         $this->db->close();
-        
     }
 
-    public function dateBetweenNrwfromtoData($nrw_monthly_date,$nrw_weekly_date,$storeTypeFilterData)
+    public function dateBetweenNrwfromtoData($nrw_monthly_date, $nrw_weekly_date, $storeTypeFilterData)
     {
         $currentDate = date('Y-m-d');
         // print_r($storeTypeFilterData);die;
         $sql = "SELECT round(avg(nrw),2) AS nrw_dn,
         DATE_FORMAT(modification_date, '%d-%m-%Y') AS modification_date_dn 
         FROM `vw_city_wise_nrws`";
-        if($storeTypeFilterData == "all"){
+        if ($storeTypeFilterData == "all") {
             $sql .= "";
-        }else if($storeTypeFilterData == "today"){
+        } else if ($storeTypeFilterData == "today") {
             $sql .= "WHERE DATE(modification_date) = '$currentDate' ";
-        }else if($storeTypeFilterData != ""){
+        } else if ($storeTypeFilterData != "") {
             $sql .= "WHERE modification_date BETWEEN $storeTypeFilterData ";
-        }else if(($nrw_monthly_date != "") && ($nrw_weekly_date != "")){
+        } else if (($nrw_monthly_date != "") && ($nrw_weekly_date != "")) {
             $sql .= "WHERE MONTH(modification_date) = '$nrw_monthly_date' AND DAY(modification_date) BETWEEN $nrw_weekly_date ";
-        }        
+        }
         $sql .= "GROUP BY MONTH(modification_date) ORDER BY modification_date ASC;";
         // print_r($sql);die;
 
-        
+
         $result = $this->db->query($sql);
         $return = $result->getResult();
         return $return;
@@ -410,10 +409,10 @@ FROM dma_master z;";
         // $return = $result->getResult();
         // return $return;
         // $this->db->close();
-        
+
     }
 
-    public function updateDmaTable($old_dma_id,$z_division_id_u,$z_citys_d,$dma_edit_dma_name,$dma_edit_area_name,$dma_edit_population,$dma_edit_no_of_house_holds,$dma_edit_house_connection_replaced,$dma_edit_house_connection,$dma_edit_meter_connection,$dma_edit_dft_complete_month_year,$dma_edit_dft_target_date,$dma_edit_nrw)
+    public function updateDmaTable($old_dma_id, $z_division_id_u, $z_citys_d, $dma_edit_dma_name, $dma_edit_area_name, $dma_edit_population, $dma_edit_no_of_house_holds, $dma_edit_house_connection_replaced, $dma_edit_house_connection, $dma_edit_meter_connection, $dma_edit_dft_complete_month_year, $dma_edit_dft_target_date, $dma_edit_nrw)
     {
         $sql = "UPDATE zone_master SET division_id = '$z_division_id_u',city_id = '$z_citys_d',dma_no = '$dma_edit_dma_name',area_name = '$dma_edit_area_name',population = '$dma_edit_population',no_house_holds = '$dma_edit_no_of_house_holds',no_house_coction = '$dma_edit_house_connection',no_house_connection_replaced = '$dma_edit_house_connection_replaced',no_metered_house_connections = '$dma_edit_meter_connection',dft_complete_m_y = '$dma_edit_dft_complete_month_year',dft_target_date_completion = '$dma_edit_dft_target_date',nrw = '$dma_edit_nrw',modification_date = NOW() WHERE id='$old_dma_id';";
         $result = $this->db->query($sql);
@@ -447,7 +446,7 @@ FROM dma_master z;";
         $this->db->close();
     }
 
-    public function updateCityTable($city_id,$division_id,$city_name)
+    public function updateCityTable($city_id, $division_id, $city_name)
     {
         $sql = "UPDATE cities_master SET division_id = '$division_id',city_name = '$city_name' WHERE city_id ='$city_id';";
         $result = $this->db->query($sql);
@@ -464,7 +463,7 @@ FROM dma_master z;";
     }
 
 
-// Dma Master
+    // Dma Master
     public function getAllDmaMasterData()
     {
         $sql = "SELECT * FROM dma_master ORDER BY id DESC;";
@@ -473,7 +472,7 @@ FROM dma_master z;";
         return $return;
     }
 
-    public function checkDuplicateDmaMaster($z_division_id,$z_citys,$dma_name)
+    public function checkDuplicateDmaMaster($z_division_id, $z_citys, $dma_name)
     {
         $sql = "SELECT dma_name from dma_master WHERE division_id = '$z_division_id' AND city_id='$z_citys' AND dma_name = '$dma_name';";
         $result = $this->db->query($sql);
@@ -481,8 +480,8 @@ FROM dma_master z;";
         return $return;
         $this->db->close();
     }
-    
-    public function insertDmaMasterTable($z_division_id,$z_citys,$dma_name,$dma_population,$commissioning_status,$dma_updated_date,$distribution_pipe_line_scope,$distribution_pipe_line_progress,$pumping_main_scope,$pumping_main_progress,$storage_resorvoir_scope,$storage_resorvoir_progress,$pumping_station_scope,$pumping_station_progress,$flowmeter_scope,$flowmeter_progress,$pressure_treansmitter_scope,$pressure_treansmitter_progress,$level_treansmitter_scope,$level_treansmitter_progress,$sluice_valve_scope,$sluice_valve_progress,$plc_scope,$plc_progress,$house_connection_scope,$house_connection_progress,$meter_connection_scope,$meter_connection_progress,$nrw_scope,$nrw_progress)
+
+    public function insertDmaMasterTable($z_division_id, $z_citys, $dma_name, $dma_population, $commissioning_status, $dma_updated_date, $distribution_pipe_line_scope, $distribution_pipe_line_progress, $pumping_main_scope, $pumping_main_progress, $storage_resorvoir_scope, $storage_resorvoir_progress, $pumping_station_scope, $pumping_station_progress, $flowmeter_scope, $flowmeter_progress, $pressure_treansmitter_scope, $pressure_treansmitter_progress, $level_treansmitter_scope, $level_treansmitter_progress, $sluice_valve_scope, $sluice_valve_progress, $plc_scope, $plc_progress, $house_connection_scope, $house_connection_progress, $meter_connection_scope, $meter_connection_progress, $nrw_scope, $nrw_progress)
     {
         $sql = "INSERT INTO dma_master(division_id,city_id,dma_name,dma_population,commissioning_status,dma_updated_date,distribution_pipe_line_scope,distribution_pipe_line_progress,pumping_main_scope,pumping_main_progress,storage_resorvoir_scope,storage_resorvoir_progress,pumping_station_scope,pumping_station_progress,flowmeter_scope,flowmeter_progress,pressure_treansmitter_scope,pressure_treansmitter_progress,level_treansmitter_scope,level_treansmitter_progress,sluice_valve_scope,sluice_valve_progress,plc_scope,plc_progress,house_connection_scope,house_connection_progress,meter_connection_scope,meter_connection_progress,nrw_scope,nrw_progress,updated_by,updated_date)VALUES
         ('$z_division_id','$z_citys','$dma_name','$dma_population','$commissioning_status','$dma_updated_date','$distribution_pipe_line_scope','$distribution_pipe_line_progress','$pumping_main_scope','$pumping_main_progress','$storage_resorvoir_scope','$storage_resorvoir_progress','$pumping_station_scope','$pumping_station_progress','$flowmeter_scope','$flowmeter_progress','$pressure_treansmitter_scope','$pressure_treansmitter_progress','$level_treansmitter_scope','$level_treansmitter_progress','$sluice_valve_scope','$sluice_valve_progress','$plc_scope','$plc_progress','$house_connection_scope','$house_connection_progress','$meter_connection_scope','$meter_connection_progress','$nrw_scope','$nrw_progress','1',NOW())";
@@ -502,7 +501,7 @@ FROM dma_master z;";
         $this->db->close();
     }
 
-    public function updateDmaMasterTable($old_dma_id, $z_division_id_u, $z_citys_d, $edit_dma_name,$edit_dma_population,$edit_commissioning_status,$edit_dma_updated_date,$edit_distribution_pipe_line_scope,$edit_distribution_pipe_line_progress,$edit_pumping_main_scope,$edit_pumping_main_progress,$edit_storage_resorvoir_scope,$edit_storage_resorvoir_progress,$edit_pumping_station_scope,$edit_pumping_station_progress,$edit_flowmeter_scope,$edit_flowmeter_progress,$edit_pressure_treansmitter_scope,$edit_pressure_treansmitter_progress,$edit_level_treansmitter_scope,$edit_level_treansmitter_progress,$edit_sluice_valve_scope,$edit_sluice_valve_progress,$edit_plc_scope,$edit_plc_progress,$edit_house_connection_scope,$edit_house_connection_progress,$edit_meter_connection_scope,$edit_meter_connection_progress,$edit_nrw_scope,$edit_nrw_progress)
+    public function updateDmaMasterTable($old_dma_id, $z_division_id_u, $z_citys_d, $edit_dma_name, $edit_dma_population, $edit_commissioning_status, $edit_dma_updated_date, $edit_distribution_pipe_line_scope, $edit_distribution_pipe_line_progress, $edit_pumping_main_scope, $edit_pumping_main_progress, $edit_storage_resorvoir_scope, $edit_storage_resorvoir_progress, $edit_pumping_station_scope, $edit_pumping_station_progress, $edit_flowmeter_scope, $edit_flowmeter_progress, $edit_pressure_treansmitter_scope, $edit_pressure_treansmitter_progress, $edit_level_treansmitter_scope, $edit_level_treansmitter_progress, $edit_sluice_valve_scope, $edit_sluice_valve_progress, $edit_plc_scope, $edit_plc_progress, $edit_house_connection_scope, $edit_house_connection_progress, $edit_meter_connection_scope, $edit_meter_connection_progress, $edit_nrw_scope, $edit_nrw_progress)
     {
         $sql = "UPDATE dma_master SET division_id = '$z_division_id_u',city_id = '$z_citys_d',
         dma_name = '$edit_dma_name',
@@ -540,45 +539,73 @@ FROM dma_master z;";
         $this->db->close();
     }
 
-    public function getAllStatedataMaster($division,$city)
+    public function getAllStatedataMaster($division, $city)
     {
-        $sql="SELECT SUM(dm.dma_population) AS dma_population,
+        $sql = "SELECT SUM(dm.dma_population) AS dma_population,
         SUM(dm.house_connection_scope) AS house_connection_scope,
         SUM(dm.house_connection_progress) AS house_connection_progress,
         SUM(dm.meter_connection_scope) AS meter_connection_scope,
         SUM(dm.meter_connection_progress) AS meter_connection_progress,
         COUNT(DISTINCT(dm.city_id)) AS total_cities 
         FROM dma_master dm ";
-         if($division && $city == ""){
+        if ($division && $city == "") {
             $sql .= "WHERE dm.division_id = '$division';";
-            
-         }else if($city != "" && $division != ""){
+        } else if ($city != "" && $division != "") {
             $sql .= "WHERE dm.city_id = '$city';";
-         }
-        
+        }
+
         $result = $this->db->query($sql);
         $return = $result->getResult();
         return $return;
     }
-    public function getJalsathiOnDivisionAndCity($division,$city)
+    public function getJalsathiOnDivisionAndCity($data)
     {
-        $sql = "SELECT COUNT(id) AS no_of_jalasathi,
+        $daysarray = array(0, '01'=>31, '02'=>28, '03'=>31, '04'=>30, '05'=>31, '06'=>30, '07'=>31, '08'=>31, '09'=>30, '10'=>31, '11'=>30, '12'=>31);
+        $sql = "SELECT sum(no_of_new_jalasathi_added) AS no_of_jalasathi,
         SUM(collection_by_jalasathi) AS revenue_collected_by_jalasathi,
         SUM(total_incentive_of_jalasathi)AS incentive_paid_to_jalsathi,
         SUM(ibu_water_quality_tests)AS no_of_test_conducted_by_jalasathi
-        FROM `jalsathi_word`";
-        if($division && $city == ""){
-            $sql .= "WHERE division_id = '$division';";
+        FROM `jalsathi_word` WHERE 1=1 ";
+        (!empty($data['division'])) ? $sql .= " AND division_id = '" . $data['division'] . "'" : '';
+        (!empty($data['city'])) ? $sql .= " AND jalsathi_ulb_city_id = '" . $data['city'] . "'" : '';
+        (!empty($data['year'])) ? $sql .= " AND YEAR(create_date) = '" . $data['year'] . "'" : '';
+        (!empty($data['month'])) ? $sql .= " AND MONTH(create_date) = '" . $data['month'] . "'" : '';
+        
+        if (!empty($data['week'])) {
+            if ($data['week'] == 1) {
+                $std = '1';
+                $cld = '7';
+            }
+            if ($data['week'] == 2) {
+                $std = '8';
+                $cld = '14';
+            }
+            if ($data['week'] == 3) {
+                $std = '15';
+                $cld = '21';
+            }
+            if ($data['week'] == 4) {
+                $std = '22';
+                if (!empty($data['year']) && !empty($data['month'])) {
+                    $days = cal_days_in_month(CAL_GREGORIAN, $data['month'], $data['year']);
+                    $cld = $days;
+                } elseif(!empty($data['month'])) {
+                    $cld = $daysarray[$data['month']];
+                }else{
+                    $cld=31;
+                }
+                
+            }
+            $sql.=" AND date_format(create_date,'%d') >=$std AND date_format(create_date,'%d')<=$cld";
             
-         }else if($city != "" && $division != ""){
-            $sql .= "WHERE jalsathi_ulb_city_id = '$city';";
-         }
+        }
+//echo $sql;exit;
         $result = $this->db->query($sql);
         $return = $result->getRow();
         return $return;
         // $this->db->close();
     }
-    public function getRevenueFilter($division,$city)
+    public function getRevenueFilter($division, $city)
     {
         $sql = "SELECT SUM(no_bill_generate) AS total_bill_generate,
         SUM(no_bill_distributed) AS total_bill_distributed,
@@ -588,19 +615,18 @@ FROM dma_master z;";
         SUM(revenue_collected_by_jalasathi)AS total_revenue_collected_by_jalasathi,
         MAX(revenue_collected_date)AS last_revenue_collected_date
         FROM `revenue_collection_master` ";
-        if($division && $city == ""){
+        if ($division && $city == "") {
             $sql .= "WHERE division_id = '$division';";
-            
-         }else if($city != "" && $division != ""){
+        } else if ($city != "" && $division != "") {
             $sql .= "WHERE city_id = '$city';";
-         }
+        }
         $result = $this->db->query($sql);
         $return = $result->getRow();
         return $return;
         // $this->db->close();
     }
 
-    public function getFilterGrievance($division,$city)
+    public function getFilterGrievance($division, $city)
     {
         $sql = "SELECT SUM(no_bill_generate) AS total_bill_generate,
         SUM(no_bill_distributed) AS total_bill_distributed,
@@ -610,29 +636,28 @@ FROM dma_master z;";
         SUM(revenue_collected_by_jalasathi)AS total_revenue_collected_by_jalasathi,
         MAX(revenue_collected_date)AS last_revenue_collected_date
         FROM `revenue_collection_master` ";
-        if($division && $city == ""){
+        if ($division && $city == "") {
             $sql .= "WHERE division_id = '$division';";
-            
-         }else if($city != "" && $division != ""){
+        } else if ($city != "" && $division != "") {
             $sql .= "WHERE city_id = '$city';";
-         }
+        }
         $result = $this->db->query($sql);
         $return = $result->getRow();
         return $return;
         $this->db->close();
     }
 
-    public function getGrivanceFilter($division,$city,$grivance_year,$dataArray)
+    public function getGrivanceFilter($division, $city, $grivance_year, $dataArray)
     {
-         if($dataArray != "0"){
-            if(($dataArray['grivance_month'] != "0") && ($dataArray['filter_grievance_week'] != "0")) {
+        if ($dataArray != "0") {
+            if (($dataArray['grivance_month'] != "0") && ($dataArray['filter_grievance_week'] != "0")) {
                 $grivance_month_week = "AND MONTH(register_date) = '$dataArray[grivance_month]' AND DAY(register_date) BETWEEN $dataArray[filter_grievance_week]";
-             }else{
-                $grivance_month_week ="";
-             }
-         }else{
-            $grivance_month_week ="";
-         }
+            } else {
+                $grivance_month_week = "";
+            }
+        } else {
+            $grivance_month_week = "";
+        }
         $sql = "SELECT
         COUNT(*) AS total_no_of_grievance_received,
         SUM(CASE WHEN grivance_via = 'Jalsathi' THEN 1 ELSE 0 END) AS count_grivance_via_jalsathi,
@@ -643,16 +668,16 @@ FROM dma_master z;";
     FROM
         grievance_customer_service_master ";
 
-        if ($grivance_year != "0") { 
+        if ($grivance_year != "0") {
             $grivance_yesrd = " AND YEAR(register_date) = '$grivance_year'";
         } else {
-            $grivance_yesrd = ""; 
+            $grivance_yesrd = "";
         }
 
         if ($division && $city == "") {
-            $sql .= "WHERE division_id = '$division' $grivance_yesrd $grivance_month_week ;"; 
+            $sql .= "WHERE division_id = '$division' $grivance_yesrd $grivance_month_week ;";
         } else if ($city != "" && $division != "") {
-            $sql .= "WHERE city_id = '$city' $grivance_yesrd $grivance_month_week ;"; 
+            $sql .= "WHERE city_id = '$city' $grivance_yesrd $grivance_month_week ;";
         }
 
         $result = $this->db->query($sql);
@@ -663,7 +688,7 @@ FROM dma_master z;";
 
     public function getCityJalasathi()
     {
-        $sql = "SELECT d.division_name AS division_name,c.city_name AS city_name,j.word_names,j.msg_shg_name,j.jalasathi_name,j.pan_no,j.bank_account_no,j.ifsc_code,j.bank_name_branch,j.collection_by_jalasathi,j.ibu_5p_incentive_from_water_charges,j.ibu_no_new_water_supply_connection,j.ibu_total_amt_of_new_water_con,j.ibu_total_no_of_water_quality_testa,j.ibu_water_quality_tests,j.total_incentive_of_jalasathi,j.persentage_of_tds,j.current_tds,j.net_payable FROM `jalsathi_word` j INNER JOIN divisions d ON j.division_id = d.id INNER JOIN cities_master c ON j.jalsathi_ulb_city_id = c.city_id ORDER BY j.id;";
+        $sql = "SELECT d.division_name AS division_name,c.city_name AS city_name,j.word_names,j.msg_shg_name,j.jalasathi_name,j.pan_no,j.bank_account_no,j.ifsc_code,j.bank_name_branch,j.collection_by_jalasathi,j.ibu_5p_incentive_from_water_charges,j.ibu_no_new_water_supply_connection,j.ibu_total_amt_of_new_water_con,j.ibu_total_no_of_water_quality_testa,j.ibu_water_quality_tests,j.total_incentive_of_jalasathi,j.persentage_of_tds,j.current_tds,j.net_payable,j.no_of_new_jalasathi_added FROM `jalsathi_word` j INNER JOIN divisions d ON j.division_id = d.id INNER JOIN cities_master c ON j.jalsathi_ulb_city_id = c.city_id ORDER BY j.id;";
         $result = $this->db->query($sql);
         $return = $result->getResult();
         return $return;
@@ -678,10 +703,10 @@ FROM dma_master z;";
         $this->db->close();
     }
 
-    public function insertJalsathiTable($z_division_id,$z_citys,$word_names,$jal_msg_shg_name,$jal_collection_by_jalasathi,$jal_ibu_total_no_of_water_quality_testa,$jal_total_incentive_of_jalasathi)
+    public function insertJalsathiTable($z_division_id, $z_citys, $word_names, $jal_msg_shg_name, $jal_collection_by_jalasathi, $jal_ibu_total_no_of_water_quality_testa, $jal_total_incentive_of_jalasathi, $no_of_new_jalasathi_added)
     {
-        $sql = "INSERT INTO jalsathi_word(division_id,jalsathi_ulb_city_id,word_names,msg_shg_name,collection_by_jalasathi,ibu_total_no_of_water_quality_testa,total_incentive_of_jalasathi,modification_date)VALUES
-        ('$z_division_id','$z_citys','$word_names','$jal_msg_shg_name','$jal_collection_by_jalasathi','$jal_ibu_total_no_of_water_quality_testa','$jal_total_incentive_of_jalasathi',NOW());";
+        $sql = "INSERT INTO jalsathi_word(division_id,jalsathi_ulb_city_id,word_names,msg_shg_name,collection_by_jalasathi,ibu_total_no_of_water_quality_testa,total_incentive_of_jalasathi,create_date,no_of_new_jalasathi_added)VALUES
+        ('$z_division_id','$z_citys','$word_names','$jal_msg_shg_name','$jal_collection_by_jalasathi','$jal_ibu_total_no_of_water_quality_testa','$jal_total_incentive_of_jalasathi',NOW(),'$no_of_new_jalasathi_added');";
         // print_r($sql);die;
         $result = $this->db->query($sql);
         return $result;
@@ -699,7 +724,7 @@ FROM dma_master z;";
         $return = $result->getResult();
         return $return;
     }
-    public function addRevenueCollectionMasterTable($z_division_id,$z_citys,$no_bill_generate,$no_bill_distributed,$incentive_paid_to_jalasathi,$total_revenue_collected,$revenue_collected_by_jalasathi,$revenue_collected_date)
+    public function addRevenueCollectionMasterTable($z_division_id, $z_citys, $no_bill_generate, $no_bill_distributed, $incentive_paid_to_jalasathi, $total_revenue_collected, $revenue_collected_by_jalasathi, $revenue_collected_date)
     {
         $sql = "INSERT INTO revenue_collection_master(division_id,city_id,no_bill_generate,no_bill_distributed,incentive_paid_to_jalasathi,total_revenue_collected,revenue_collected_by_jalasathi,revenue_collected_date,created_by)VALUES('$z_division_id','$z_citys','$no_bill_generate','$no_bill_distributed','$incentive_paid_to_jalasathi','$total_revenue_collected','$revenue_collected_by_jalasathi','$revenue_collected_date',NOW());";
         $result = $this->db->query($sql);
@@ -720,7 +745,7 @@ FROM dma_master z;";
         return $return;
     }
 
-    public function addGrievanceandCustomerServicTable($z_division_id,$z_citys,$grievance_name,$grivance_customer_name,$grivance_via,$register_date,$grivance_status,$resolved_with_in_time_limit,$resolved_after_time_limit)
+    public function addGrievanceandCustomerServicTable($z_division_id, $z_citys, $grievance_name, $grivance_customer_name, $grivance_via, $register_date, $grivance_status, $resolved_with_in_time_limit, $resolved_after_time_limit)
     {
         $sql = "INSERT INTO grievance_customer_service_master(division_id,city_id,grievance_name,grivance_customer_name,grivance_via,register_date,grivance_status,resolved_with_in_time_limit,resolved_after_time_limit,created_date)VALUES('$z_division_id','$z_citys','$grievance_name','$grivance_customer_name','$grivance_via','$register_date','$grivance_status','$resolved_with_in_time_limit','$resolved_after_time_limit',NOW());";
         $result = $this->db->query($sql);
@@ -741,7 +766,7 @@ FROM dma_master z;";
         return $return;
     }
 
-    public function addWaterQualityTable($z_division_id,$z_citys,$no_of_sample_taken,$sample_collected_at_wtp,$sample_collected_at_storage,$resolved_after_time_limit,$sample_collected_from_distribution_network,$sample_collected_at_consumer_point,$no_of_parameter_tested,$no_of_sample_failed,$sample_colected_date)
+    public function addWaterQualityTable($z_division_id, $z_citys, $no_of_sample_taken, $sample_collected_at_wtp, $sample_collected_at_storage, $resolved_after_time_limit, $sample_collected_from_distribution_network, $sample_collected_at_consumer_point, $no_of_parameter_tested, $no_of_sample_failed, $sample_colected_date)
     {
         $sql = "INSERT INTO water_quality_master(division_id,city_id,no_of_sample_taken,sample_collected_at_wtp,sample_collected_at_storage,resolved_after_time_limit,sample_collected_from_distribution_network,sample_collected_at_consumer_point,no_of_parameter_tested,no_of_sample_failed,sample_colected_date,created_date)VALUES('$z_division_id','$z_citys','$no_of_sample_taken','$sample_collected_at_wtp','$sample_collected_at_storage','$resolved_after_time_limit','$sample_collected_from_distribution_network','$sample_collected_at_consumer_point','$no_of_parameter_tested','$no_of_sample_failed','$sample_colected_date',NOW());";
         $result = $this->db->query($sql);
@@ -750,7 +775,7 @@ FROM dma_master z;";
         $this->db->close();
     }
 
-    public function getDmaonCityDetails($division_id,$city_id)
+    public function getDmaonCityDetails($division_id, $city_id)
     {
 
         $sql = "SELECT id,dma_name FROM dma_master WHERE division_id='$division_id' AND city_id = '$city_id';";
@@ -806,6 +831,4 @@ FROM dma_master z;";
         $return = $result->getResult();
         return $return;
     }
-
-
 }

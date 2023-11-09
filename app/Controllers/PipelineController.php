@@ -241,11 +241,8 @@ class PipelineController extends WebController
         $s_city_id = session()->get('usercities');
         if (is_numeric($s_city_id)) {
             $dma_city = $this->pipelineModel->getDivisionCities($s_city_id);
-            // print_r($dma_city[0]['']);die;
             $this->data['sessiondivision'] = $this->pipelineModel->getDivisionCities($s_city_id);
-            // $dmadatadtl = [];
             $dmadatadtl = $this->pipelineModel->getDmaonCityDetails($dma_city[0]->division_id,$dma_city[0]->city_id);
-            // print_r($dmadatadtl);die;
         } else {
             $dmadatadtl = [];
             if (!empty($city_dtl)) {
@@ -637,7 +634,7 @@ class PipelineController extends WebController
             } else {
 
 
-                $insertCityTable = $this->pipelineModel->insertJalsathiTable($z_division_id, $z_citys, $word_names, $jal_msg_shg_name, $jal_collection_by_jalasathi, $jal_ibu_total_no_of_water_quality_testa, $jal_total_incentive_of_jalasathi);
+                $insertCityTable = $this->pipelineModel->insertJalsathiTable($z_division_id, $z_citys, $word_names, $jal_msg_shg_name, $jal_collection_by_jalasathi, $jal_ibu_total_no_of_water_quality_testa, $jal_total_incentive_of_jalasathi, $no_of_new_jalasathi_added);
                 if ($insertCityTable) {
                     $res = array("res" => "success", "word_names" => $word_names);
                 } else {

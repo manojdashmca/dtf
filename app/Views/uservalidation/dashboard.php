@@ -40,7 +40,7 @@ for ($x = 0; $x < count($financialdata); $x++) {
 //                                    console.log(event);
 //                                    console.log(chartContext);
 //                                    console.log(opts);
-                                    window.open("<?= base_url() ?>/physical-progress?pager=<?= $pagerid ?>&city=" + cityids[opts.dataPointIndex]+"&transactionid=<?= $session->get('trnid') ?>");
+window.location="<?= base_url() ?>/physical-progress?pager=<?= $pagerid ?>&city=" + cityids[opts.dataPointIndex]+"&transactionid=<?= $session->get('trnid') ?>";
 
                                 }
                             }
