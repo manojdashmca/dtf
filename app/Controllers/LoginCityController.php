@@ -145,7 +145,6 @@ class LoginCityController extends WebController {
         $grivance_year = $this->request->getVar('filter_grievance_year');
         $grivance_month = $this->request->getVar('filter_grievance_month');
         $grivance_week = $this->request->getVar('filter_grievance_week');
-        $data = ['division'=>$division,'city'=>$city,'year'=>$grivance_year,'month'=>$grivance_month,'week'=>$grivance_week];
 
 
         $s_city_id = session()->get('usercities');
@@ -185,11 +184,12 @@ class LoginCityController extends WebController {
         $this->data['css'] = 'sweetalert,validation,alertify';
         $this->data['js'] = 'sweetalert,validation,alertify';
 
-        $division = $this->request->getVar('division');
-       
+        $division = $this->request->getVar('division');       
         $city = $this->request->getVar('city');
-        $this->data['city'] = $city;
-        $this->data['division'] = $division;
+        $grivance_year = $this->request->getVar('filter_grievance_year');
+        $grivance_month = $this->request->getVar('filter_grievance_month');
+        $grivance_week = $this->request->getVar('filter_grievance_week');
+
         $citydropdown = [];
         if (!empty($division)) {
             $citydropdown = $this->pipelineModel->getCityOnDivision($division);
@@ -197,7 +197,24 @@ class LoginCityController extends WebController {
         $this->data['citydropdown'] = $citydropdown;
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
 
-        $this->data['allrevenuecollectionfilter'] = $this->pipelineModel->getRevenueFilter($division,$city);
+        $s_city_id = session()->get('usercities');
+        if (is_numeric($s_city_id)) {
+            $dma_city = $this->pipelineModel->getDivisionCities($s_city_id);
+            $this->data['sessiondivision'] = $dma_city;
+            $session_city = $dma_city[0]->city_id;
+            $data = ['division'=>$division,'city'=>$session_city,'year'=>$grivance_year,'month'=>$grivance_month,'week'=>$grivance_week];
+        }else{
+            $data = ['division'=>$division,'city'=>$city,'year'=>$grivance_year,'month'=>$grivance_month,'week'=>$grivance_week];
+        }
+
+        $this->data['allrevenuecollectionfilter'] = $this->pipelineModel->getRevenueFilter($data);
+
+        $this->data['city'] = $city;
+        $this->data['division'] = $division;
+        $this->data['filter_grievance_year'] = $grivance_year;
+        $this->data['filter_grievance_month'] = $grivance_month;
+        $this->data['filter_grievance_week'] = $grivance_week;
+
         $this->data['activemenu']=array('amenuactive'=>'pu','divshow'=> 'pu','aliactive'=> 'puvwrevenuecollection');
         return view('templates/header', $this->data)
                 . view('logincity/getrevenuecollection', $this->data)

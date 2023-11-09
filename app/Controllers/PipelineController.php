@@ -679,7 +679,7 @@ class PipelineController extends WebController
             $revenue_collected_by_jalasathi = $revenue_collected_by_jalasathi != NULL ? $revenue_collected_by_jalasathi : "0";
             $revenue_collected_date = $revenue_collected_date != NULL ? $revenue_collected_date : "";
 
-            $insertRevenueCollection = $this->pipelineModel->addRevenueCollectionMasterTable($z_division_id, $z_citys, $no_bill_generate, $no_bill_distributed, $incentive_paid_to_jalasathi, $total_revenue_collected, $revenue_collected_by_jalasathi, $revenue_collected_date);
+            $insertRevenueCollection = $this->pipelineModel->addRevenueCollectionMasterTable($z_division_id, $z_citys, $no_bill_generate, $no_bill_distributed, $incentive_paid_to_jalasathi, $total_revenue_collected, $revenue_collected_by_jalasathi);
             if ($insertRevenueCollection) {
                 $res = array("res" => "success");
             } else {
