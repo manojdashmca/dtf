@@ -138,7 +138,6 @@ class LoginCityController extends WebController {
         $this->data['citydropdown'] = $citydropdown;
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
 
-        $this->data['allJalasathifilter'] = $this->pipelineModel->getJalsathiOnDivisionAndCity($division,$city);
         $this->data['activemenu']=array('amenuactive'=>'pu','divshow'=> 'pu','aliactive'=> 'puvwjalsathi');
 
         $division = $this->request->getVar('division');       
@@ -146,6 +145,19 @@ class LoginCityController extends WebController {
         $grivance_year = $this->request->getVar('filter_grievance_year');
         $grivance_month = $this->request->getVar('filter_grievance_month');
         $grivance_week = $this->request->getVar('filter_grievance_week');
+        $data = ['division'=>$division,'city'=>$city,'year'=>$grivance_year,'month'=>$grivance_month,'week'=>$grivance_week];
+
+
+        $s_city_id = session()->get('usercities');
+        if (is_numeric($s_city_id)) {
+            $dma_city = $this->pipelineModel->getDivisionCities($s_city_id);
+            $this->data['sessiondivision'] = $dma_city;
+            $session_city = $dma_city[0]->city_id;
+            $data = ['division'=>$division,'city'=>$session_city,'year'=>$grivance_year,'month'=>$grivance_month,'week'=>$grivance_week];
+        }else{
+            $data = ['division'=>$division,'city'=>$city,'year'=>$grivance_year,'month'=>$grivance_month,'week'=>$grivance_week];
+        }
+        $this->data['allJalasathifilter'] = $this->pipelineModel->getJalsathiOnDivisionAndCity($data);
 
         if((!empty($grivance_month)) && (empty($grivance_year))){
             echo '<script>alert("Please Select a Year First")</script>'; 
@@ -162,20 +174,6 @@ class LoginCityController extends WebController {
             "filter_grievance_week" => isset($grivance_week) ? $grivance_week : '0'
         );
 
-        // $citydropdown = [];
-        // if (!empty($division)) {
-        //     $citydropdown = $this->pipelineModel->getCityOnDivision($division);
-        // }
-        // $this->data['citydropdown'] = $citydropdown;
-        // $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
-
-
-        if(!empty($grivance_year)){
-            
-            $this->data['filtergrievance'] = $this->pipelineModel->getGrivanceFilter($division,$city,$grivance_year,$dataArray);
-        }else{
-            $this->data['filtergrievance'] = $this->pipelineModel->getGrivanceFilter($division,$city,$grivance_year = "0",$dataArray = "0");
-        }
 
         return view('templates/header', $this->data)
                 . view('logincity/getjalasathi', $this->data)

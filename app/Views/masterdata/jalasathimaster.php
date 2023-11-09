@@ -72,10 +72,16 @@
                                     <?php
                                     }
                                     ?>
-                                    <div class="col-xl-12">
+                                    <div class="col-xl-6">
                                         <div class="mb-3">
                                             <label for="cleave-date" class="form-label">WARD NUMBER: <span class="text-danger">*</span> </label>
                                             <input type="text" class="form-control" name="word_names" id="word_names">
+                                        </div>
+                                    </div><!-- end col -->
+                                    <div class="col-xl-6">
+                                        <div class="mb-3">
+                                            <label for="cleave-date" class="form-label">No Of New Jalasathi Joined: <span class="text-danger">*</span> </label>
+                                            <input type="text" class="form-control" name="no_of_new_jalasathi_added" id="no_of_new_jalasathi_added">
                                         </div>
                                     </div><!-- end col -->
                                     <div class="col-xl-6">
@@ -150,7 +156,7 @@
 
                                     <th>WARD NO</th>
                                     <th>NAME OF THE MSG/SHG</th>
-                                    <!-- <th>JALASATHI NAME</th> -->
+                                    <th>NEW JALASATHI ADDED</th>
                                     <!-- <th>PAN NO</th>
                                     <th>BANK ACCOUNT NO</th>
                                     <th>IFSC CODE</th>
@@ -180,6 +186,7 @@
 
                                         <td><?= $jalasathi_city->word_names ?></td>
                                         <td><?= $jalasathi_city->msg_shg_name ?></td>
+                                        <td><?= $jalasathi_city->no_of_new_jalasathi_added ?></td>
 
                                         <td><?= $jalasathi_city->collection_by_jalasathi ?></td>
                                         <td><?= $jalasathi_city->ibu_total_no_of_water_quality_testa ?></td>
