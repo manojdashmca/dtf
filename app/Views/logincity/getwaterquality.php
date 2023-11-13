@@ -58,11 +58,7 @@
                         <div class="d-flex justify-content-between">
                             <div class="flex-grow-1">
                                 <p class="text-uppercase fw-medium text-muted text-truncate fs-13">
-                                    Nos
-                                    of sample taken </p>
-
                                     Nos of sample Tested </p>
-
                                 <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="0">0</span>
                                 </h4>
 
