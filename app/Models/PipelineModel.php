@@ -674,17 +674,9 @@ FROM dma_master z;";
         $this->db->close();
     }
 
-    public function getGrivanceFilter($division, $city, $grivance_year, $dataArray)
+    public function getGrivanceFilter($data)
     {
-        if ($dataArray != "0") {
-            if (($dataArray['grivance_month'] != "0") && ($dataArray['filter_grievance_week'] != "0")) {
-                $grivance_month_week = "AND MONTH(register_date) = '$dataArray[grivance_month]' AND DAY(register_date) BETWEEN $dataArray[filter_grievance_week]";
-            } else {
-                $grivance_month_week = "";
-            }
-        } else {
-            $grivance_month_week = "";
-        }
+        $daysarray = array(0, '01' => 31, '02' => 28, '03' => 31, '04' => 30, '05' => 31, '06' => 30, '07' => 31, '08' => 31, '09' => 30, '10' => 31, '11' => 30, '12' => 31);
         $sql = "SELECT
         COUNT(*) AS total_no_of_grievance_received,
         SUM(CASE WHEN grivance_via = 'Jalsathi' THEN 1 ELSE 0 END) AS count_grivance_via_jalsathi,
@@ -693,18 +685,36 @@ FROM dma_master z;";
         SUM(CASE WHEN grivance_status = '0' THEN 1 ELSE 0 END) AS count_pending_griveance,
         SUM(CASE WHEN grivance_status = '1' THEN 1 ELSE 0 END) AS count_complete_griveance
     FROM
-        grievance_customer_service_master ";
-
-        if ($grivance_year != "0") {
-            $grivance_yesrd = " AND YEAR(register_date) = '$grivance_year'";
-        } else {
-            $grivance_yesrd = "";
-        }
-
-        if ($division && $city == "") {
-            $sql .= "WHERE division_id = '$division' $grivance_yesrd $grivance_month_week ;";
-        } else if ($city != "" && $division != "") {
-            $sql .= "WHERE city_id = '$city' $grivance_yesrd $grivance_month_week ;";
+        grievance_customer_service_master WHERE 1=1 ";
+        (!empty($data['division'])) ? $sql .= " AND division_id = '" . $data['division'] . "'" : '';
+        (!empty($data['city'])) ? $sql .= " AND city_id = '" . $data['city'] . "'" : '';
+        (!empty($data['year'])) ? $sql .= " AND YEAR(create_date) = '" . $data['year'] . "'" : '';
+        (!empty($data['month'])) ? $sql .= " AND MONTH(create_date) = '" . $data['month'] . "'" : '';
+        if (!empty($data['week'])) {
+            if ($data['week'] == 1) {
+                $std = '1';
+                $cld = '7';
+            }
+            if ($data['week'] == 2) {
+                $std = '8';
+                $cld = '14';
+            }
+            if ($data['week'] == 3) {
+                $std = '15';
+                $cld = '21';
+            }
+            if ($data['week'] == 4) {
+                $std = '22';
+                if (!empty($data['year']) && !empty($data['month'])) {
+                    $days = cal_days_in_month(CAL_GREGORIAN, $data['month'], $data['year']);
+                    $cld = $days;
+                } elseif (!empty($data['month'])) {
+                    $cld = $daysarray[$data['month']];
+                } else {
+                    $cld = 31;
+                }
+            }
+            $sql .= " AND date_format(create_date,'%d') >=$std AND date_format(create_date,'%d')<=$cld";
         }
 
         $result = $this->db->query($sql);

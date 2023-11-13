@@ -7,7 +7,6 @@
 function getRevenueCollection() {
     $(document).ready(function () {
         $.getJSON('getRevenueCollection', function (data) {
-            console.log("data");
             const outputArray = data.map(item => [
                 item.id,
                 item.no_bill_generate,
