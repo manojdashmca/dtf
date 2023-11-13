@@ -242,10 +242,10 @@ class LoginCityController extends WebController {
         $this->data['filter_grievance_month'] = $grivance_month;
         $this->data['filter_grievance_week'] = $grivance_week;
 
-        $dataArray = array(
-            "grivance_month" => isset($grivance_month) ? $grivance_month : '0',
-            "filter_grievance_week" => isset($grivance_week) ? $grivance_week : '0'
-        );
+        // $dataArray = array(
+        //     "grivance_month" => isset($grivance_month) ? $grivance_month : '0',
+        //     "filter_grievance_week" => isset($grivance_week) ? $grivance_week : '0'
+        // );
 
         $citydropdown = [];
         if (!empty($division)) {
@@ -254,13 +254,16 @@ class LoginCityController extends WebController {
         $this->data['citydropdown'] = $citydropdown;
         $this->data['alldivisionname'] = $this->pipelineModel->getAllDivisionName();
 
-
-        if(!empty($grivance_year)){
-            
-            $this->data['filtergrievance'] = $this->pipelineModel->getGrivanceFilter($division,$city,$grivance_year,$dataArray);
+        $s_city_id = session()->get('usercities');
+        if (is_numeric($s_city_id)) {
+            $dma_city = $this->pipelineModel->getDivisionCities($s_city_id);
+            $this->data['sessiondivision'] = $dma_city;
+            $session_city = $dma_city[0]->city_id;
+            $data = ['division'=>$division,'city'=>$session_city,'year'=>$grivance_year,'month'=>$grivance_month,'week'=>$grivance_week];
         }else{
-            $this->data['filtergrievance'] = $this->pipelineModel->getGrivanceFilter($division,$city,$grivance_year = "0",$dataArray = "0");
+            $data = ['division'=>$division,'city'=>$city,'year'=>$grivance_year,'month'=>$grivance_month,'week'=>$grivance_week];
         }
+        $this->data['filtergrievance'] = $this->pipelineModel->getGrivanceFilter($data);
         
         $this->data['activemenu']=array('amenuactive'=>'pu','divshow'=> 'pu','aliactive'=> 'puvwgrievancered');
         return view('templates/header', $this->data)

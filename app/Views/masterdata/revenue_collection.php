@@ -79,12 +79,12 @@
                                             <input type="text" class="form-control" name="revenue_collected_by_jalasathi" id="revenue_collected_by_jalasathi">
                                         </div>
                                     </div><!-- end col -->
-                                    <div class="col-xl-6">
+                                    <!-- <div class="col-xl-6">
                                         <div class="mb-3">
                                             <label for="cleave-date" class="form-label">COLLECTED DATE <span class="text-danger">*</span> </label>
                                             <input type="date" class="form-control" name="revenue_collected_date" id="revenue_collected_date">
                                         </div>
-                                    </div><!-- end col -->
+                                    </div> -->
                                     <div class="mt-4">
                                         <div class="hstack gap-2 justify-content-center">
                                             <button type="reset" class="btn btn-info">Reset</button>
