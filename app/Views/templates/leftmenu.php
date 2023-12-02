@@ -112,13 +112,13 @@ $usertypelogin = (isset($_SESSION['usertype'])) ? $_SESSION['usertype'] :'';
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link menu-link">
+                <li class="nav-item ">
+                    <a href="<?= CUSTOMPATH ?>reportGeneration" class="nav-link menu-link <?= isset($activemenu['amenuactive']) ? ($activemenu['amenuactive'] == 'rg' ? 'active' : '') : ''; ?>">
                         <i class="bi bi-receipt"></i> <span data-key="t-two-column">Report Generation</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link menu-link">
+                    <a href="<?= CUSTOMPATH ?>reviewMeeting" class="nav-link menu-link <?= isset($activemenu['amenuactive']) ? ($activemenu['amenuactive'] == 'rm' ? 'active' : '') : ''; ?>">
                         <i class="bi bi-people"></i> <span data-key="t-two-column">Review Meeting</span>
                     </a>
                 </li>

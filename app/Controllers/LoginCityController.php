@@ -531,4 +531,16 @@ class LoginCityController extends WebController {
                 . view('logincity/realtimemonetring', $this->data)
                 . view('templates/footer', $this->data);
     }
+    public function reportGenerationPage() {
+        $this->data['activemenu']=array('amenuactive'=>'rg','divshow'=> 'rg','aliactive'=> 'rg');
+        return view('templates/header', $this->data)
+                . view('logincity/reportgeneration', $this->data)
+                . view('templates/footer', $this->data);
+    }
+    public function reviewMeetingPage() {
+        $this->data['activemenu']=array('amenuactive'=>'rm','divshow'=> 'rm','aliactive'=> 'rm');
+        return view('templates/header', $this->data)
+                . view('logincity/reviewmeeting', $this->data)
+                . view('templates/footer', $this->data);
+    }
 }

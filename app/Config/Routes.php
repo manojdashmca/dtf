@@ -215,6 +215,9 @@ $routes->match(['get', 'post'], 'getDmaView', 'PipelineController::getDmaView');
 // realtime monitering
 $routes->match(['get', 'post'], 'pageRtm', 'LoginCityController::realTimeMonitoring');
 
+// Report Generation
+$routes->match(['get', 'post'], 'reportGeneration', 'LoginCityController::reportGenerationPage');
+$routes->match(['get', 'post'], 'reviewMeeting', 'LoginCityController::reviewMeetingPage');
 //----------------------------------------
 
 /*
